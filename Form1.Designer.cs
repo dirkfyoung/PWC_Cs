@@ -125,6 +125,23 @@
             tabPage4 = new TabPage();
             tabPage5 = new TabPage();
             tabPage6 = new TabPage();
+            IsAllMedia = new CheckBox();
+            label38 = new Label();
+            label37 = new Label();
+            label36 = new Label();
+            label35 = new Label();
+            label34 = new Label();
+            ExpParameter2 = new TextBox();
+            ProfileDepth2 = new TextBox();
+            profileDepth1 = new TextBox();
+            ExpParameter1 = new TextBox();
+            RampEndValue = new TextBox();
+            ExponentialProfile = new RadioButton();
+            RampProfile = new RadioButton();
+            ConstantProfile = new RadioButton();
+            IsHydrolysisOverride = new CheckBox();
+            label33 = new Label();
+            Q10 = new TextBox();
             groupBox1 = new GroupBox();
             MassTransferRegion2GrandDaughter = new TextBox();
             MassTransferRegion2Daughter = new TextBox();
@@ -1146,6 +1163,23 @@
             // 
             // tabPage6
             // 
+            tabPage6.Controls.Add(IsAllMedia);
+            tabPage6.Controls.Add(label38);
+            tabPage6.Controls.Add(label37);
+            tabPage6.Controls.Add(label36);
+            tabPage6.Controls.Add(label35);
+            tabPage6.Controls.Add(label34);
+            tabPage6.Controls.Add(ExpParameter2);
+            tabPage6.Controls.Add(ProfileDepth2);
+            tabPage6.Controls.Add(profileDepth1);
+            tabPage6.Controls.Add(ExpParameter1);
+            tabPage6.Controls.Add(RampEndValue);
+            tabPage6.Controls.Add(ExponentialProfile);
+            tabPage6.Controls.Add(RampProfile);
+            tabPage6.Controls.Add(ConstantProfile);
+            tabPage6.Controls.Add(IsHydrolysisOverride);
+            tabPage6.Controls.Add(label33);
+            tabPage6.Controls.Add(Q10);
             tabPage6.Controls.Add(groupBox1);
             tabPage6.Location = new Point(4, 29);
             tabPage6.Name = "tabPage6";
@@ -1154,6 +1188,158 @@
             tabPage6.TabIndex = 5;
             tabPage6.Text = "Advanced";
             tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // IsAllMedia
+            // 
+            IsAllMedia.AutoSize = true;
+            IsAllMedia.Location = new Point(573, 28);
+            IsAllMedia.Name = "IsAllMedia";
+            IsAllMedia.Size = new Size(385, 24);
+            IsAllMedia.TabIndex = 41;
+            IsAllMedia.Text = "Degradation of Sorbed Chemical (Total Degradation)";
+            IsAllMedia.UseVisualStyleBackColor = true;
+            // 
+            // label38
+            // 
+            label38.AutoSize = true;
+            label38.Location = new Point(716, 398);
+            label38.Name = "label38";
+            label38.Size = new Size(259, 20);
+            label38.TabIndex = 40;
+            label38.Text = "Asymptote Value (Fraction of Surface)";
+            // 
+            // label37
+            // 
+            label37.AutoSize = true;
+            label37.Location = new Point(716, 370);
+            label37.Name = "label37";
+            label37.Size = new Size(71, 20);
+            label37.TabIndex = 39;
+            label37.Text = "Exponent";
+            // 
+            // label36
+            // 
+            label36.AutoSize = true;
+            label36.Location = new Point(711, 308);
+            label36.Name = "label36";
+            label36.Size = new Size(265, 20);
+            label36.TabIndex = 38;
+            label36.Text = "2nd Plateau Value (Fraction of Surface)";
+            // 
+            // label35
+            // 
+            label35.AutoSize = true;
+            label35.Location = new Point(711, 278);
+            label35.Name = "label35";
+            label35.Size = new Size(166, 20);
+            label35.TabIndex = 37;
+            label35.Text = "2nd Plateau Depth (cm)";
+            // 
+            // label34
+            // 
+            label34.AutoSize = true;
+            label34.Location = new Point(711, 252);
+            label34.Name = "label34";
+            label34.Size = new Size(160, 20);
+            label34.TabIndex = 36;
+            label34.Text = "1st Plateau Depth (cm)";
+            // 
+            // ExpParameter2
+            // 
+            ExpParameter2.Location = new Point(586, 393);
+            ExpParameter2.Name = "ExpParameter2";
+            ExpParameter2.Size = new Size(125, 27);
+            ExpParameter2.TabIndex = 35;
+            // 
+            // ProfileDepth2
+            // 
+            ProfileDepth2.Location = new Point(581, 275);
+            ProfileDepth2.Name = "ProfileDepth2";
+            ProfileDepth2.Size = new Size(125, 27);
+            ProfileDepth2.TabIndex = 34;
+            ProfileDepth2.Text = "200.0";
+            // 
+            // profileDepth1
+            // 
+            profileDepth1.Location = new Point(581, 248);
+            profileDepth1.Name = "profileDepth1";
+            profileDepth1.Size = new Size(125, 27);
+            profileDepth1.TabIndex = 33;
+            profileDepth1.Text = "10";
+            // 
+            // ExpParameter1
+            // 
+            ExpParameter1.Location = new Point(586, 366);
+            ExpParameter1.Name = "ExpParameter1";
+            ExpParameter1.Size = new Size(125, 27);
+            ExpParameter1.TabIndex = 32;
+            // 
+            // RampEndValue
+            // 
+            RampEndValue.Location = new Point(581, 302);
+            RampEndValue.Name = "RampEndValue";
+            RampEndValue.Size = new Size(125, 27);
+            RampEndValue.TabIndex = 31;
+            RampEndValue.Text = "0.0";
+            // 
+            // ExponentialProfile
+            // 
+            ExponentialProfile.AutoSize = true;
+            ExponentialProfile.Location = new Point(548, 336);
+            ExponentialProfile.Name = "ExponentialProfile";
+            ExponentialProfile.Size = new Size(108, 24);
+            ExponentialProfile.TabIndex = 30;
+            ExponentialProfile.Text = "Exponential";
+            ExponentialProfile.UseVisualStyleBackColor = true;
+            // 
+            // RampProfile
+            // 
+            RampProfile.AutoSize = true;
+            RampProfile.Checked = true;
+            RampProfile.Location = new Point(573, 224);
+            RampProfile.Name = "RampProfile";
+            RampProfile.Size = new Size(69, 24);
+            RampProfile.TabIndex = 29;
+            RampProfile.TabStop = true;
+            RampProfile.Text = "Ramp";
+            RampProfile.UseVisualStyleBackColor = true;
+            // 
+            // ConstantProfile
+            // 
+            ConstantProfile.AutoSize = true;
+            ConstantProfile.Location = new Point(573, 197);
+            ConstantProfile.Name = "ConstantProfile";
+            ConstantProfile.Size = new Size(135, 24);
+            ConstantProfile.TabIndex = 28;
+            ConstantProfile.Text = "Constant Profile";
+            ConstantProfile.UseVisualStyleBackColor = true;
+            // 
+            // IsHydrolysisOverride
+            // 
+            IsHydrolysisOverride.AutoSize = true;
+            IsHydrolysisOverride.Location = new Point(547, 151);
+            IsHydrolysisOverride.Name = "IsHydrolysisOverride";
+            IsHydrolysisOverride.Size = new Size(329, 44);
+            IsHydrolysisOverride.TabIndex = 27;
+            IsHydrolysisOverride.Text = "Use greater of hydrolysis or soil metaballism \r\nfor soil aqueous phase degradation\r\n";
+            IsHydrolysisOverride.UseVisualStyleBackColor = true;
+            // 
+            // label33
+            // 
+            label33.AutoSize = true;
+            label33.Location = new Point(584, 82);
+            label33.Name = "label33";
+            label33.Size = new Size(36, 20);
+            label33.TabIndex = 26;
+            label33.Text = "Q10";
+            // 
+            // Q10
+            // 
+            Q10.Location = new Point(626, 79);
+            Q10.Name = "Q10";
+            Q10.Size = new Size(43, 27);
+            Q10.TabIndex = 24;
+            Q10.Text = "2";
             // 
             // groupBox1
             // 
@@ -1186,7 +1372,7 @@
             groupBox1.Controls.Add(Nexp1Reg1);
             groupBox1.Location = new Point(20, 15);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(543, 430);
+            groupBox1.Size = new Size(522, 430);
             groupBox1.TabIndex = 23;
             groupBox1.TabStop = false;
             groupBox1.Text = "Advanced Sorption";
@@ -1428,27 +1614,27 @@
             // SaveInputFile
             // 
             SaveInputFile.Name = "SaveInputFile";
-            SaveInputFile.Size = new Size(224, 26);
+            SaveInputFile.Size = new Size(223, 26);
             SaveInputFile.Text = "Save";
             SaveInputFile.Click += SaveInputFile_Click;
             // 
             // RetrieveInputFile
             // 
             RetrieveInputFile.Name = "RetrieveInputFile";
-            RetrieveInputFile.Size = new Size(224, 26);
+            RetrieveInputFile.Size = new Size(223, 26);
             RetrieveInputFile.Text = "Retrieve";
             RetrieveInputFile.Click += RetrieveInputFile_Click;
             // 
             // WriteSchemeTable
             // 
             WriteSchemeTable.Name = "WriteSchemeTable";
-            WriteSchemeTable.Size = new Size(224, 26);
+            WriteSchemeTable.Size = new Size(223, 26);
             WriteSchemeTable.Text = "Write Scheme Table";
             // 
             // ReadSchemeTable
             // 
             ReadSchemeTable.Name = "ReadSchemeTable";
-            ReadSchemeTable.Size = new Size(224, 26);
+            ReadSchemeTable.Size = new Size(223, 26);
             ReadSchemeTable.Text = "Read Scheme Table";
             // 
             // moreTabsToolStripMenuItem
@@ -1460,10 +1646,6 @@
             // saveFileDialog1
             // 
             saveFileDialog1.Filter = "PWC 3 INPUT Files (*.PW4)|*.PW4|ALL Files (*.*)|*.*";
-            // 
-            // openFileDialog1
-            // 
-            openFileDialog1.FileName = "openFileDialog1";
             // 
             // Form1
             // 
@@ -1480,6 +1662,7 @@
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             tabPage6.ResumeLayout(false);
+            tabPage6.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             menuStrip1.ResumeLayout(false);
@@ -1624,5 +1807,22 @@
         private TextBox MassTransferRegion2;
         private Label label32;
         private OpenFileDialog openFileDialog1;
+        private TextBox Q10;
+        private Label label33;
+        private TextBox ExpParameter2;
+        private TextBox ProfileDepth2;
+        private TextBox profileDepth1;
+        private TextBox ExpParameter1;
+        private TextBox RampEndValue;
+        private RadioButton ExponentialProfile;
+        private RadioButton RampProfile;
+        private RadioButton ConstantProfile;
+        private CheckBox IsHydrolysisOverride;
+        private Label label38;
+        private Label label37;
+        private Label label36;
+        private Label label35;
+        private Label label34;
+        private CheckBox IsAllMedia;
     }
 }
