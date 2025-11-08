@@ -9,6 +9,69 @@ namespace PWC_Cs
             InitializeComponent();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            AppTableDisplay.ColumnCount=2;
+            AppTableDisplay.Columns[0].Name = "Days";
+            AppTableDisplay.Columns[0].Width = 70;
+            AppTableDisplay.Columns[1].Name = "Amount (kg/ha)";
+            AppTableDisplay.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            AppTableDisplay.Columns[1].Width = 60;
+
+            var combo = new DataGridViewComboBoxColumn{ HeaderText = "Application Method",Width = 135};
+            combo.Items.Add(Standard.Method1);
+            combo.Items.Add(Standard.Method2);
+            combo.Items.Add(Standard.Method3);
+            combo.Items.Add(Standard.Method4);
+            combo.Items.Add(Standard.Method5);
+            combo.Items.Add(Standard.Method6);
+            combo.Items.Add(Standard.Method7);
+
+            AppTableDisplay.Columns.Add(combo);
+            AppTableDisplay.Columns.Add("Depth", "Depth (cm)");
+            AppTableDisplay.Columns[3].SortMode = DataGridViewColumnSortMode.NotSortable;
+            AppTableDisplay.Columns[3].Width = 42; ;
+            AppTableDisplay.Columns.Add("Split", "Split");
+            AppTableDisplay.Columns[4].SortMode = DataGridViewColumnSortMode.NotSortable;
+            AppTableDisplay.Columns[4].Width = 44;
+
+            DataGridViewComboBoxColumn driftcombo = new DataGridViewComboBoxColumn
+            {
+                HeaderText = "Drift Type",
+                DropDownWidth = 220,
+                Width = 160,
+                FlatStyle = FlatStyle.Flat,
+                DisplayStyle = DataGridViewComboBoxDisplayStyle.DropDownButton
+            };
+
+            // Add items from Standard.sprayterm1 to sprayterm15
+            driftcombo.Items.Add(Standard.SprayTerms[1]);
+            driftcombo.Items.Add(Standard.SprayTerms[2]);
+            driftcombo.Items.Add(Standard.SprayTerms[3]);
+            driftcombo.Items.Add(Standard.SprayTerms[4]);
+            driftcombo.Items.Add(Standard.SprayTerms[5]);
+            driftcombo.Items.Add(Standard.SprayTerms[6]);
+            driftcombo.Items.Add(Standard.SprayTerms[7]);
+            driftcombo.Items.Add(Standard.SprayTerms[8]);
+            driftcombo.Items.Add(Standard.SprayTerms[9]);
+            driftcombo.Items.Add(Standard.SprayTerms[10]);
+            driftcombo.Items.Add(Standard.SprayTerms[11]);
+            driftcombo.Items.Add(Standard.SprayTerms[12]);
+            driftcombo.Items.Add(Standard.SprayTerms[13]);
+            driftcombo.Items.Add(Standard.SprayTerms[14]);
+            driftcombo.Items.Add(Standard.SprayTerms[15]);
+            // driftcombo.Items.Add(Standard.sprayterm16); // Optional
+
+            AppTableDisplay.Columns.Add(driftcombo);
+
+
+
+        }
+
+
+
+
+
         private void SaveInputFile_Click(object sender, EventArgs e)
         {
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
@@ -19,7 +82,7 @@ namespace PWC_Cs
 
         private void RetrieveInputFile_Click(object sender, EventArgs e)
         {
-            if  (openFileDialog1.ShowDialog(this) == DialogResult.OK) 
+            if (openFileDialog1.ShowDialog(this) == DialogResult.OK)
             {
                 RetrieveMainInputFromTextFile(openFileDialog1.FileName);
             }
@@ -96,8 +159,8 @@ namespace PWC_Cs
             Photo1.Text = col[0];
             Photo2.Text = col[1];
             Photo3.Text = col[2];
-            PhotoMolarRatio1.Text= col[3];
-            PhotoMolarRatio2.Text= col[4];
+            PhotoMolarRatio1.Text = col[3];
+            PhotoMolarRatio2.Text = col[4];
 
             col = lines[18].Split(",");
             PhotoLat1.Text = col[0];
@@ -108,8 +171,8 @@ namespace PWC_Cs
             Hydrolysis1.Text = col[0];
             Hydrolysis2.Text = col[1];
             Hydrolysis3.Text = col[2];
-            HydroMolarRatio1.Text= col[3];
-            HydroMolarRatio2.Text= col[4];
+            HydroMolarRatio1.Text = col[3];
+            HydroMolarRatio2.Text = col[4];
 
             col = lines[20].Split(",");
             SoilDegradation1.Text = col[0];
@@ -161,9 +224,9 @@ namespace PWC_Cs
             AirDiff3.Text = col[2];
 
             col = lines[29].Split(",");
-            HeatHenry1.Text= col[0];
-            HeatHenry2.Text= col[1];
-            HeatHenry3.Text= col[2];
+            HeatHenry1.Text = col[0];
+            HeatHenry2.Text = col[1];
+            HeatHenry3.Text = col[2];
 
             col = lines[30].Split(",");
             Q10.Text = col[0];
@@ -231,7 +294,14 @@ namespace PWC_Cs
             sw.WriteLine(ConstantProfile.Checked);
 
             sw.WriteLine(RampProfile.Checked + "," + profileDepth1.Text + "," + ProfileDepth2.Text + "," + RampEndValue.Text);
-        
+            sw.WriteLine(ExponentialProfile.Checked + "," + ExpParameter1.Text + "," + ExpParameter2.Text);
+
+
+            int NumberOfSchemes = 0;
+            int actualRowsInAppTable = 0;
+            SchemeDetails ApplicationTable = new SchemeDetails();
+
+
 
 
 
