@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -122,6 +124,11 @@
             label18 = new Label();
             tabPage2 = new TabPage();
             tabPage3 = new TabPage();
+            SchemeTableDisplay = new DataGridView();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewCheckBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewButtonColumn();
             tabPage4 = new TabPage();
             AppTableDisplay = new DataGridView();
             tabPage5 = new TabPage();
@@ -183,6 +190,8 @@
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
+            tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)SchemeTableDisplay).BeginInit();
             tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AppTableDisplay).BeginInit();
             tabPage6.SuspendLayout();
@@ -1229,6 +1238,8 @@
             // 
             // tabPage3
             // 
+            tabPage3.BackColor = Color.Gold;
+            tabPage3.Controls.Add(SchemeTableDisplay);
             tabPage3.Location = new Point(4, 34);
             tabPage3.Margin = new Padding(4);
             tabPage3.Name = "tabPage3";
@@ -1236,10 +1247,73 @@
             tabPage3.Size = new Size(1292, 766);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Schemes";
-            tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // SchemeTableDisplay
+            // 
+            SchemeTableDisplay.BackgroundColor = Color.Gold;
+            SchemeTableDisplay.BorderStyle = BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Info;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            SchemeTableDisplay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            SchemeTableDisplay.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            SchemeTableDisplay.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 });
+            SchemeTableDisplay.Location = new Point(7, 80);
+            SchemeTableDisplay.Name = "SchemeTableDisplay";
+            SchemeTableDisplay.RowHeadersVisible = false;
+            SchemeTableDisplay.RowHeadersWidth = 62;
+            SchemeTableDisplay.Size = new Size(1079, 459);
+            SchemeTableDisplay.TabIndex = 0;
+            // 
+            // Column1
+            // 
+            Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Column1.FillWeight = 10F;
+            Column1.HeaderText = "No.";
+            Column1.MinimumWidth = 8;
+            Column1.Name = "Column1";
+            Column1.Width = 76;
+            // 
+            // Column2
+            // 
+            Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Column2.FillWeight = 10F;
+            Column2.HeaderText = "Edit";
+            Column2.MinimumWidth = 8;
+            Column2.Name = "Column2";
+            Column2.Resizable = DataGridViewTriState.True;
+            Column2.SortMode = DataGridViewColumnSortMode.Automatic;
+            Column2.Width = 78;
+            // 
+            // Column3
+            // 
+            Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Column3.HeaderText = "Scheme Description";
+            Column3.MinimumWidth = 8;
+            Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(255, 128, 0);
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(255, 128, 0);
+            Column4.DefaultCellStyle = dataGridViewCellStyle2;
+            Column4.HeaderText = "Delete";
+            Column4.MinimumWidth = 8;
+            Column4.Name = "Column4";
+            Column4.Resizable = DataGridViewTriState.True;
+            Column4.SortMode = DataGridViewColumnSortMode.Automatic;
+            Column4.Text = "Delete";
+            Column4.Width = 150;
             // 
             // tabPage4
             // 
+            tabPage4.BackColor = Color.MediumSlateBlue;
             tabPage4.Controls.Add(AppTableDisplay);
             tabPage4.Location = new Point(4, 34);
             tabPage4.Margin = new Padding(4);
@@ -1248,16 +1322,16 @@
             tabPage4.Size = new Size(1292, 766);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Applications";
-            tabPage4.UseVisualStyleBackColor = true;
             // 
             // AppTableDisplay
             // 
+            AppTableDisplay.BackgroundColor = Color.MediumSlateBlue;
             AppTableDisplay.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            AppTableDisplay.Location = new Point(52, 150);
+            AppTableDisplay.Location = new Point(7, 150);
             AppTableDisplay.Name = "AppTableDisplay";
             AppTableDisplay.RowHeadersVisible = false;
             AppTableDisplay.RowHeadersWidth = 62;
-            AppTableDisplay.Size = new Size(903, 442);
+            AppTableDisplay.Size = new Size(1258, 442);
             AppTableDisplay.TabIndex = 0;
             // 
             // tabPage5
@@ -1821,6 +1895,8 @@
             tabPage1.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
+            tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)SchemeTableDisplay).EndInit();
             tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)AppTableDisplay).EndInit();
             tabPage6.ResumeLayout(false);
@@ -1987,5 +2063,10 @@
         private Label label34;
         private CheckBox IsAllMedia;
         private DataGridView AppTableDisplay;
+        private DataGridView SchemeTableDisplay;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewCheckBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewButtonColumn Column4;
     }
 }

@@ -16,9 +16,9 @@ namespace PWC_Cs
             AppTableDisplay.Columns[0].Width = 70;
             AppTableDisplay.Columns[1].Name = "Amount (kg/ha)";
             AppTableDisplay.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            AppTableDisplay.Columns[1].Width = 60;
+            AppTableDisplay.Columns[1].Width = 90;
 
-            var combo = new DataGridViewComboBoxColumn{ HeaderText = "Application Method",Width = 135};
+            var combo = new DataGridViewComboBoxColumn{ HeaderText = "Application Method",Width = 150};
             combo.Items.Add(Standard.Method1);
             combo.Items.Add(Standard.Method2);
             combo.Items.Add(Standard.Method3);
@@ -30,16 +30,16 @@ namespace PWC_Cs
             AppTableDisplay.Columns.Add(combo);
             AppTableDisplay.Columns.Add("Depth", "Depth (cm)");
             AppTableDisplay.Columns[3].SortMode = DataGridViewColumnSortMode.NotSortable;
-            AppTableDisplay.Columns[3].Width = 42; ;
+            AppTableDisplay.Columns[3].Width = 65; ;
             AppTableDisplay.Columns.Add("Split", "Split");
             AppTableDisplay.Columns[4].SortMode = DataGridViewColumnSortMode.NotSortable;
-            AppTableDisplay.Columns[4].Width = 44;
+            AppTableDisplay.Columns[4].Width = 55;
 
-            DataGridViewComboBoxColumn driftcombo = new DataGridViewComboBoxColumn
+            DataGridViewComboBoxColumn driftcombo = new()
             {
                 HeaderText = "Drift Type",
-                DropDownWidth = 220,
-                Width = 160,
+                DropDownWidth = 320,
+                Width = 325,
                 FlatStyle = FlatStyle.Flat,
                 DisplayStyle = DataGridViewComboBoxDisplayStyle.DropDownButton
             };
@@ -60,15 +60,35 @@ namespace PWC_Cs
             driftcombo.Items.Add(Standard.SprayTerms[13]);
             driftcombo.Items.Add(Standard.SprayTerms[14]);
             driftcombo.Items.Add(Standard.SprayTerms[15]);
-            // driftcombo.Items.Add(Standard.sprayterm16); // Optional
-
             AppTableDisplay.Columns.Add(driftcombo);
 
+            AppTableDisplay.Columns.Add("Buffer", "Drift Buffer (ft)");
+            AppTableDisplay.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
+            AppTableDisplay.Columns[6].Width = 90;
+
+            AppTableDisplay.Columns.Add("Periodicity", "Periodicity (days)");
+            AppTableDisplay.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;
+            AppTableDisplay.Columns[7].Width = 110;
+
+            AppTableDisplay.Columns.Add("Lag", "Lag (days)");
+            AppTableDisplay.Columns[8].SortMode = DataGridViewColumnSortMode.NotSortable;
+            AppTableDisplay.Columns[8].Width = 70;
+
+            DataGridViewButtonColumn btn = new()
+            {
+                Text = "delete",
+                HeaderText = "Delete",
+                Name = "Delete",
+                UseColumnTextForButtonValue = true,
+                FlatStyle = FlatStyle.Popup,
+                DefaultCellStyle = { BackColor = Color.Orange }
+            };
+
+            AppTableDisplay.Columns.Add(btn);
+            AppTableDisplay.Columns["Delete"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
 
         }
-
-
 
 
 
@@ -296,13 +316,13 @@ namespace PWC_Cs
             sw.WriteLine(RampProfile.Checked + "," + profileDepth1.Text + "," + ProfileDepth2.Text + "," + RampEndValue.Text);
             sw.WriteLine(ExponentialProfile.Checked + "," + ExpParameter1.Text + "," + ExpParameter2.Text);
 
-
-            int NumberOfSchemes = 0;
-            int actualRowsInAppTable = 0;
+            int NumberOfSchemes;
+            int actualRowsInAppTable; // app table rows
+            int NumberOfScenarios;
+            int referencedate;
             SchemeDetails ApplicationTable = new SchemeDetails();
 
-
-
+            AppTableDisplay.CommitEdit(DataGridViewDataErrorContexts.Commit);  //commit the cell if cursor still on box
 
 
 

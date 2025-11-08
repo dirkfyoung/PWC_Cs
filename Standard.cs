@@ -9,6 +9,8 @@ namespace PWC_Cs
 {
     internal static class Standard
     {
+        internal const string VersionNumber = "4.0";
+
         internal const string Method1 = "Below Crop";
         internal const string Method2 = "Above Crop";
         internal const string Method3 = "Uniform";
