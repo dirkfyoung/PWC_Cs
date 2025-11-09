@@ -9,14 +9,15 @@ namespace PWC_Cs
             InitializeComponent();
         }
 
+        //**********************************************************************
         private void Form1_Load(object sender, EventArgs e)
         {
             AppTableDisplay.ColumnCount=2;
             AppTableDisplay.Columns[0].Name = "Days";
-            AppTableDisplay.Columns[0].Width = 70;
+            AppTableDisplay.Columns[0].Width = 80;
             AppTableDisplay.Columns[1].Name = "Amount (kg/ha)";
             AppTableDisplay.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            AppTableDisplay.Columns[1].Width = 90;
+            AppTableDisplay.Columns[1].Width = 100;
 
             var combo = new DataGridViewComboBoxColumn{ HeaderText = "Application Method",Width = 150};
             combo.Items.Add(Standard.Method1);
@@ -30,16 +31,16 @@ namespace PWC_Cs
             AppTableDisplay.Columns.Add(combo);
             AppTableDisplay.Columns.Add("Depth", "Depth (cm)");
             AppTableDisplay.Columns[3].SortMode = DataGridViewColumnSortMode.NotSortable;
-            AppTableDisplay.Columns[3].Width = 65; ;
+            AppTableDisplay.Columns[3].Width = 100; ;
             AppTableDisplay.Columns.Add("Split", "Split");
             AppTableDisplay.Columns[4].SortMode = DataGridViewColumnSortMode.NotSortable;
-            AppTableDisplay.Columns[4].Width = 55;
+            AppTableDisplay.Columns[4].Width = 90;
 
             DataGridViewComboBoxColumn driftcombo = new()
             {
                 HeaderText = "Drift Type",
                 DropDownWidth = 320,
-                Width = 325,
+                Width = 320,
                 FlatStyle = FlatStyle.Flat,
                 DisplayStyle = DataGridViewComboBoxDisplayStyle.DropDownButton
             };
@@ -62,9 +63,11 @@ namespace PWC_Cs
             driftcombo.Items.Add(Standard.SprayTerms[15]);
             AppTableDisplay.Columns.Add(driftcombo);
 
+         
+
             AppTableDisplay.Columns.Add("Buffer", "Drift Buffer (ft)");
             AppTableDisplay.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
-            AppTableDisplay.Columns[6].Width = 90;
+            AppTableDisplay.Columns[6].Width = 110;
 
             AppTableDisplay.Columns.Add("Periodicity", "Periodicity (days)");
             AppTableDisplay.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -72,9 +75,9 @@ namespace PWC_Cs
 
             AppTableDisplay.Columns.Add("Lag", "Lag (days)");
             AppTableDisplay.Columns[8].SortMode = DataGridViewColumnSortMode.NotSortable;
-            AppTableDisplay.Columns[8].Width = 70;
+            AppTableDisplay.Columns[8].Width = 110;
 
-            DataGridViewButtonColumn btn = new()
+            DataGridViewButtonColumn btnApp = new()
             {
                 Text = "delete",
                 HeaderText = "Delete",
@@ -84,14 +87,27 @@ namespace PWC_Cs
                 DefaultCellStyle = { BackColor = Color.Orange }
             };
 
-            AppTableDisplay.Columns.Add(btn);
+            AppTableDisplay.Columns.Add(btnApp);
             AppTableDisplay.Columns["Delete"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            //AppTableDisplay.Columns["Delete"].Width = 70;
 
+            DataGridViewButtonColumn btnScheme = new()
+            {
+                Text = "delete",
+                HeaderText = "Delete",
+                Name = "Delete",
+                UseColumnTextForButtonValue = true,
+                FlatStyle = FlatStyle.Popup,
+                DefaultCellStyle = { BackColor = Color.Orange }
+            };
+
+
+            SchemeTableDisplay.Columns.Add(btnScheme);
+            SchemeTableDisplay.Columns["Delete"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            SchemeTableDisplay.Columns["Delete"].Width = 70;
 
         }
-
-
-
+        //**********************************************************************
         private void SaveInputFile_Click(object sender, EventArgs e)
         {
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
@@ -99,7 +115,7 @@ namespace PWC_Cs
                 SaveMainInputToTextFile(saveFileDialog1.FileName);
             }
         }
-
+        //**********************************************************************
         private void RetrieveInputFile_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog(this) == DialogResult.OK)
@@ -107,8 +123,7 @@ namespace PWC_Cs
                 RetrieveMainInputFromTextFile(openFileDialog1.FileName);
             }
         }
-
-
+        //**********************************************************************
         public void RetrieveMainInputFromTextFile(string readfilename)
         {
             string[] lines = File.ReadAllLines(readfilename);
@@ -260,18 +275,45 @@ namespace PWC_Cs
             ProfileDepth2.Text = col[2];
             RampEndValue.Text = col[3];
 
+            col = lines[33].Split(",");
+            ExponentialProfile.Checked = Convert.ToBoolean(col[0]);
+            ExpParameter1.Text = col[1];
+            ExpParameter2.Text = col[2];
 
-            // ExponentialProfile.Checked, ExpParameter1.Text, ExpParameter2.Text
+            col = lines[34].Split(",");
+            int NumberOfSchemes=Convert.ToInt16( col[0]);
+
+            SchemeTableDisplay.Rows.Clear();
 
 
+            //for (int i = 0; i < NumberOfSchemes; i++)
+            //{
+            //    var ApplicationTable = new SchemeDetails
+            //    {
+            //        Days = { },
+            //        Amount = { },
+            //        Method = { },
+            //        Depth = { },
+            //        Split = { },
+            //        Drift = { },
+            //        DriftBuffer = { },
+            //        Periodicity = { },
+            //        Lag = { },
+            //        Scenarios = { }
+            //    };
+
+            //    col = lines[34].Split(",");
+
+
+
+
+         
 
 
         }
-
-
+        //**********************************************************************
         public void SaveMainInputToTextFile(string savefilename)
         {
-
             //Pass the filepath and filename to the StreamWriter Constructor
             StreamWriter sw = new StreamWriter(savefilename);
             //Write a line of text
@@ -310,19 +352,53 @@ namespace PWC_Cs
             sw.WriteLine(AirDiff1.Text + "," + AirDiff2.Text + "," + AirDiff3.Text);
             sw.WriteLine(HeatHenry1.Text + "," + HeatHenry2.Text + "," + HeatHenry3.Text);
             sw.WriteLine(Q10.Text);
-
             sw.WriteLine(ConstantProfile.Checked);
-
             sw.WriteLine(RampProfile.Checked + "," + profileDepth1.Text + "," + ProfileDepth2.Text + "," + RampEndValue.Text);
             sw.WriteLine(ExponentialProfile.Checked + "," + ExpParameter1.Text + "," + ExpParameter2.Text);
 
-            int NumberOfSchemes;
+
+           
             int actualRowsInAppTable; // app table rows
             int NumberOfScenarios;
             int referencedate;
-            SchemeDetails ApplicationTable = new SchemeDetails();
+
+            
 
             AppTableDisplay.CommitEdit(DataGridViewDataErrorContexts.Commit);  //commit the cell if cursor still on box
+
+
+            //This avoids relying on (rowcout-1), which can be error-prone if the grid is empty or the new row is disabled.
+            int NumberOfSchemes = SchemeTableDisplay.Rows.Cast<DataGridViewRow>().Count(row => !row.IsNewRow);
+
+            SchemeTableDisplay.CommitEdit(DataGridViewDataErrorContexts.Commit); //commit the cell if cursor still on box
+
+            sw.WriteLine(NumberOfSchemes.ToString());
+
+
+    
+
+           //SchemeDetails ApplicationTable = new SchemeDetails();
+
+            List<SchemeDetails> schemeList = [];
+
+            for (int i = 0; i < NumberOfSchemes; i++)
+            {
+                var cellValue = SchemeTableDisplay.Rows[i].Cells[2].Value?.ToString() ?? "";
+                sw.WriteLine($"{i + 1},{cellValue}");
+
+
+
+
+            }
+
+        
+            
+
+
+
+
+
+
 
 
 
@@ -332,6 +408,91 @@ namespace PWC_Cs
             sw.Close();
 
 
+        }
+
+
+
+
+        private void RecordScheme(int schemeNumber)
+        {
+            var appData = new SchemeDetails();
+
+            AppTableDisplay.CommitEdit(DataGridViewDataErrorContexts.Commit);
+
+            for (int i = 0; i < AppTableDisplay.RowCount - 1; i++)
+            {
+                appData.Days.Add(AppTableDisplay[0, i].Value?.ToString() ?? "");
+                appData.Amount.Add(AppTableDisplay[1, i].Value?.ToString() ?? "");
+
+                var method = AppTableDisplay[2, i].Value;
+                appData.Method.Add(method switch
+                {
+                    var m when m == Standard.Method1 => "1",
+                    var m when m == Standard.Method2 => "2",
+                    var m when m == Standard.Method3 => "3",
+                    var m when m == Standard.Method4 => "4",
+                    var m when m == Standard.Method5 => "5",
+                    var m when m == Standard.Method6 => "6",
+                    var m when m == Standard.Method7 => "7",
+                    _ => "1"
+                });
+
+                appData.Depth.Add(AppTableDisplay[3, i].Value?.ToString() ?? "");
+                appData.Split.Add(AppTableDisplay[4, i].Value?.ToString() ?? "");
+
+                var drift = AppTableDisplay[5, i].Value;
+                appData.Drift.Add(drift switch
+                {
+                    var d when d == Standard.SprayTerms[1]=> "1",
+                    var d when d == Standard.SprayTerms[2] => "2",
+                    var d when d == Standard.SprayTerms[3] => "3",
+                    var d when d == Standard.SprayTerms[4] => "4",
+                    var d when d == Standard.SprayTerms[5] => "5",
+                    var d when d == Standard.SprayTerms[6] => "6",
+                    var d when d == Standard.SprayTerms[7] => "7",
+                    var d when d == Standard.SprayTerms[8] => "8",
+                    var d when d == Standard.SprayTerms[9] => "9",
+                    var d when d == Standard.SprayTerms[10] => "10",
+                    var d when d == Standard.SprayTerms[11] => "11",
+                    var d when d == Standard.SprayTerms[12] => "12",
+                    var d when d == Standard.SprayTerms[13] => "13",
+                    var d when d == Standard.SprayTerms[14] => "14",
+                    var d when d == Standard.SprayTerms[15] => "15",
+                    _ => "15"
+                });
+
+                appData.DriftBuffer.Add(AppTableDisplay[6, i].Value?.ToString() ?? "");
+                appData.Periodicity.Add(AppTableDisplay[7, i].Value?.ToString() ?? "");
+                appData.Lag.Add(AppTableDisplay[8, i].Value?.ToString() ?? "");
+            }
+
+            appData.AbsoluteRelative = AbsoluteDaysButton.Checked;
+            appData.Emerge = emerge.Checked;
+            appData.Maturity = maturity.Checked;
+            appData.Removal = removal.Checked;
+
+            appData.UseApplicationWindow = UseApplicationWindow.Checked;
+            appData.ApplicationWindowSpan = ApplicationWindowDays.Text;
+            appData.ApplicationWindowStep = ApplicationWindowStep.Text;
+
+            appData.UseRainFast = UseRainFast.Checked;
+            appData.RainLimit = RainLimit.Text;
+            appData.IntolerableRainWindow = IntolerableRainWindow.Text;
+            appData.OptimumApplicationWindow = OptimumApplicationWindow.Text;
+            appData.MinDaysBetweenApps = MinDaysBetweenApps.Text;
+
+            appData.RunoffMitigation = RunoffMitigation.Text;
+            appData.ErosionMitigation = ErosionMitigation.Text;
+            appData.DriftMitigation = DriftMitigation.Text;
+
+            appData.Scenarios = ScenarioListBox.Items.Cast<string>().ToList();
+            appData.UseBatchScenarioFile = GetScenariosBatchCheckBox.Checked;
+            appData.ScenarioBatchFileName = ScenarioBatchFileName.Text;
+
+            if (schemeInfoList.Count - 1 < schemeNumber)
+                schemeInfoList.Add(appData);
+            else if (schemeNumber >= 0)
+                schemeInfoList[schemeNumber] = appData;
         }
 
     }

@@ -9,22 +9,22 @@ namespace PWC_Cs
 {
     internal class SchemeDetails
     {
-        public IList<string> Days { get; set; }
-        public IList<string> Amount { get; set; }
-        public IList<string> Method { get; set; }
-        public IList<string> Depth { get; set; }
-        public IList<string> Split { get; set; }
-        public List<string> Drift { get; set; }
-        public List<string> DriftBuffer { get; set; }
-        public IList<string> Periodicity { get; set; }
-        public IList<string> Lag { get; set; }
-        public IList<string> Scenarios { get; set; }
-        public bool AbsoluteRelative { get; set; }
+        public List<string> Days { get; set; } = new List<string>();
+        public List<string> Amount { get; set; } = new List<string>();
+        public List<string> Method { get; set; } = new List<string>();
+        public List<string> Depth { get; set; } = new List<string>();
+        public List<string> Split { get; set; } = new List<string>();
+        public List<string> Drift { get; set; } = new List<string>();
+        public List<string> DriftBuffer { get; set; } = new List<string>();
+        public List<string> Periodicity { get; set; } = new List<string>();
+        public List<string> Lag { get; set; } = new List<string>();
+        public List<string> Scenarios { get; set; } = new List<string>();
+        public bool AbsoluteRelative { get; set; } 
         public bool Emerge { get; set; }
         public bool Maturity { get; set; }
         public bool Removal { get; set; }
         public bool UseApplicationWindow { get; set; }
-        public string ApplicationWindowSpan { get; set; }
+        public string ApplicationWindowSpan { get; set; } 
         public string ApplicationWindowStep { get; set; }
         public bool UseRainFast { get; set; }
         public string RainLimit { get; set; }
@@ -33,9 +33,9 @@ namespace PWC_Cs
         public string MinDaysBetweenApps { get; set; }
         public bool UseBatchScenarioFile { get; set; }
         public string ScenarioBatchFileName { get; set; }
-        public string RunoffMitigation { get; set; }
-        public string ErosionMitigation { get; set; }
-        public string DriftMitigation { get; set; }
+        public string RunoffMitigation { get; set; } = "1.0";
+        public string ErosionMitigation { get; set; } = "1.0";
+        public string DriftMitigation { get; set; } = "1.0";
     }
 }
 

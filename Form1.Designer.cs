@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -128,7 +127,6 @@
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewCheckBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewButtonColumn();
             tabPage4 = new TabPage();
             AppTableDisplay = new DataGridView();
             tabPage5 = new TabPage();
@@ -187,6 +185,11 @@
             moreTabsToolStripMenuItem = new ToolStripMenuItem();
             saveFileDialog1 = new SaveFileDialog();
             openFileDialog1 = new OpenFileDialog();
+            emerge = new RadioButton();
+            maturity = new RadioButton();
+            removal = new RadioButton();
+            AbsoluteDaysButton = new RadioButton();
+            groupBox2 = new GroupBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -197,6 +200,7 @@
             tabPage6.SuspendLayout();
             groupBox1.SuspendLayout();
             menuStrip1.SuspendLayout();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -212,7 +216,7 @@
             tabControl1.Margin = new Padding(4);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1300, 804);
+            tabControl1.Size = new Size(1184, 896);
             tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -223,7 +227,7 @@
             tabPage1.Margin = new Padding(4);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(4);
-            tabPage1.Size = new Size(1292, 766);
+            tabPage1.Size = new Size(1176, 858);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Chemical";
             // 
@@ -351,7 +355,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 5.263562F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 5.263562F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 5.257949F));
-            tableLayoutPanel1.Size = new Size(1235, 716);
+            tableLayoutPanel1.Size = new Size(1119, 708);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // label5
@@ -359,7 +363,7 @@
             label5.Anchor = AnchorStyles.Right;
             label5.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label5, 3);
-            label5.Location = new Point(134, 191);
+            label5.Location = new Point(94, 191);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new Size(286, 25);
@@ -371,7 +375,7 @@
             label6.Anchor = AnchorStyles.Right;
             label6.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label6, 3);
-            label6.Location = new Point(147, 228);
+            label6.Location = new Point(107, 228);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
             label6.Size = new Size(273, 25);
@@ -382,10 +386,10 @@
             // 
             label21.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label21.AutoSize = true;
-            label21.Location = new Point(1028, 6);
+            label21.Location = new Point(932, 6);
             label21.Margin = new Padding(4, 0, 4, 0);
             label21.Name = "label21";
-            label21.Size = new Size(203, 25);
+            label21.Size = new Size(183, 25);
             label21.TabIndex = 22;
             label21.Text = "Granddaughter";
             label21.TextAlign = ContentAlignment.MiddleCenter;
@@ -393,227 +397,227 @@
             // sorption3
             // 
             sorption3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            sorption3.Location = new Point(1028, 41);
+            sorption3.Location = new Point(932, 41);
             sorption3.Margin = new Padding(4);
             sorption3.Name = "sorption3";
-            sorption3.Size = new Size(203, 31);
+            sorption3.Size = new Size(183, 31);
             sorption3.TabIndex = 66;
             // 
             // WaterColMetab3
             // 
             WaterColMetab3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            WaterColMetab3.Location = new Point(1028, 78);
+            WaterColMetab3.Location = new Point(932, 78);
             WaterColMetab3.Margin = new Padding(4);
             WaterColMetab3.Name = "WaterColMetab3";
-            WaterColMetab3.Size = new Size(203, 31);
+            WaterColMetab3.Size = new Size(183, 31);
             WaterColMetab3.TabIndex = 68;
             // 
             // WaterColRef3
             // 
             WaterColRef3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            WaterColRef3.Location = new Point(1028, 115);
+            WaterColRef3.Location = new Point(932, 115);
             WaterColRef3.Margin = new Padding(4);
             WaterColRef3.Name = "WaterColRef3";
-            WaterColRef3.Size = new Size(203, 31);
+            WaterColRef3.Size = new Size(183, 31);
             WaterColRef3.TabIndex = 69;
             // 
             // BenthicMetab3
             // 
             BenthicMetab3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            BenthicMetab3.Location = new Point(1028, 152);
+            BenthicMetab3.Location = new Point(932, 152);
             BenthicMetab3.Margin = new Padding(4);
             BenthicMetab3.Name = "BenthicMetab3";
-            BenthicMetab3.Size = new Size(203, 31);
+            BenthicMetab3.Size = new Size(183, 31);
             BenthicMetab3.TabIndex = 70;
             // 
             // BenthicRef3
             // 
             BenthicRef3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            BenthicRef3.Location = new Point(1028, 189);
+            BenthicRef3.Location = new Point(932, 189);
             BenthicRef3.Margin = new Padding(4);
             BenthicRef3.Name = "BenthicRef3";
-            BenthicRef3.Size = new Size(203, 31);
+            BenthicRef3.Size = new Size(183, 31);
             BenthicRef3.TabIndex = 71;
             // 
             // Photo3
             // 
             Photo3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Photo3.Location = new Point(1028, 226);
+            Photo3.Location = new Point(932, 226);
             Photo3.Margin = new Padding(4);
             Photo3.Name = "Photo3";
-            Photo3.Size = new Size(203, 31);
+            Photo3.Size = new Size(183, 31);
             Photo3.TabIndex = 72;
             // 
             // PhotoLat3
             // 
             PhotoLat3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            PhotoLat3.Location = new Point(1028, 263);
+            PhotoLat3.Location = new Point(932, 263);
             PhotoLat3.Margin = new Padding(4);
             PhotoLat3.Name = "PhotoLat3";
-            PhotoLat3.Size = new Size(203, 31);
+            PhotoLat3.Size = new Size(183, 31);
             PhotoLat3.TabIndex = 73;
             // 
             // Hydrolysis3
             // 
             Hydrolysis3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Hydrolysis3.Location = new Point(1028, 300);
+            Hydrolysis3.Location = new Point(932, 300);
             Hydrolysis3.Margin = new Padding(4);
             Hydrolysis3.Name = "Hydrolysis3";
-            Hydrolysis3.Size = new Size(203, 31);
+            Hydrolysis3.Size = new Size(183, 31);
             Hydrolysis3.TabIndex = 74;
             // 
             // SoilDegradation3
             // 
             SoilDegradation3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            SoilDegradation3.Location = new Point(1028, 337);
+            SoilDegradation3.Location = new Point(932, 337);
             SoilDegradation3.Margin = new Padding(4);
             SoilDegradation3.Name = "SoilDegradation3";
-            SoilDegradation3.Size = new Size(203, 31);
+            SoilDegradation3.Size = new Size(183, 31);
             SoilDegradation3.TabIndex = 66;
             // 
             // SoilRef3
             // 
             SoilRef3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            SoilRef3.Location = new Point(1028, 374);
+            SoilRef3.Location = new Point(932, 374);
             SoilRef3.Margin = new Padding(4);
             SoilRef3.Name = "SoilRef3";
-            SoilRef3.Size = new Size(203, 31);
+            SoilRef3.Size = new Size(183, 31);
             SoilRef3.TabIndex = 66;
             // 
             // FoliarDeg3
             // 
             FoliarDeg3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            FoliarDeg3.Location = new Point(1028, 411);
+            FoliarDeg3.Location = new Point(932, 411);
             FoliarDeg3.Margin = new Padding(4);
             FoliarDeg3.Name = "FoliarDeg3";
-            FoliarDeg3.Size = new Size(203, 31);
+            FoliarDeg3.Size = new Size(183, 31);
             FoliarDeg3.TabIndex = 66;
             // 
             // FoliarWashoff3
             // 
             FoliarWashoff3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            FoliarWashoff3.Location = new Point(1028, 448);
+            FoliarWashoff3.Location = new Point(932, 448);
             FoliarWashoff3.Margin = new Padding(4);
             FoliarWashoff3.Name = "FoliarWashoff3";
-            FoliarWashoff3.Size = new Size(203, 31);
+            FoliarWashoff3.Size = new Size(183, 31);
             FoliarWashoff3.TabIndex = 66;
             // 
             // MWT3
             // 
             MWT3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            MWT3.Location = new Point(1028, 485);
+            MWT3.Location = new Point(932, 485);
             MWT3.Margin = new Padding(4);
             MWT3.Name = "MWT3";
-            MWT3.Size = new Size(203, 31);
+            MWT3.Size = new Size(183, 31);
             MWT3.TabIndex = 66;
             // 
             // VaporPress3
             // 
             VaporPress3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            VaporPress3.Location = new Point(1028, 522);
+            VaporPress3.Location = new Point(932, 522);
             VaporPress3.Margin = new Padding(4);
             VaporPress3.Name = "VaporPress3";
-            VaporPress3.Size = new Size(203, 31);
+            VaporPress3.Size = new Size(183, 31);
             VaporPress3.TabIndex = 66;
             // 
             // Sol3
             // 
             Sol3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Sol3.Location = new Point(1028, 559);
+            Sol3.Location = new Point(932, 559);
             Sol3.Margin = new Padding(4);
             Sol3.Name = "Sol3";
-            Sol3.Size = new Size(203, 31);
+            Sol3.Size = new Size(183, 31);
             Sol3.TabIndex = 66;
             // 
             // Henry3
             // 
             Henry3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Henry3.Location = new Point(1028, 596);
+            Henry3.Location = new Point(932, 596);
             Henry3.Margin = new Padding(4);
             Henry3.Name = "Henry3";
-            Henry3.Size = new Size(203, 31);
+            Henry3.Size = new Size(183, 31);
             Henry3.TabIndex = 66;
             // 
             // AirDiff3
             // 
             AirDiff3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            AirDiff3.Location = new Point(1028, 633);
+            AirDiff3.Location = new Point(932, 633);
             AirDiff3.Margin = new Padding(4);
             AirDiff3.Name = "AirDiff3";
-            AirDiff3.Size = new Size(203, 31);
+            AirDiff3.Size = new Size(183, 31);
             AirDiff3.TabIndex = 66;
             // 
             // HeatHenry3
             // 
             HeatHenry3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            HeatHenry3.Location = new Point(1028, 670);
+            HeatHenry3.Location = new Point(932, 670);
             HeatHenry3.Margin = new Padding(4);
             HeatHenry3.Name = "HeatHenry3";
-            HeatHenry3.Size = new Size(203, 31);
+            HeatHenry3.Size = new Size(183, 31);
             HeatHenry3.TabIndex = 66;
             // 
             // WaterMolarRatio2
             // 
             WaterMolarRatio2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            WaterMolarRatio2.Location = new Point(936, 78);
+            WaterMolarRatio2.Location = new Point(848, 78);
             WaterMolarRatio2.Margin = new Padding(4);
             WaterMolarRatio2.Name = "WaterMolarRatio2";
-            WaterMolarRatio2.Size = new Size(84, 31);
+            WaterMolarRatio2.Size = new Size(76, 31);
             WaterMolarRatio2.TabIndex = 65;
             // 
             // BenthicMolarRatio2
             // 
             BenthicMolarRatio2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            BenthicMolarRatio2.Location = new Point(936, 152);
+            BenthicMolarRatio2.Location = new Point(848, 152);
             BenthicMolarRatio2.Margin = new Padding(4);
             BenthicMolarRatio2.Name = "BenthicMolarRatio2";
-            BenthicMolarRatio2.Size = new Size(84, 31);
+            BenthicMolarRatio2.Size = new Size(76, 31);
             BenthicMolarRatio2.TabIndex = 66;
             // 
             // PhotoMolarRatio2
             // 
             PhotoMolarRatio2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            PhotoMolarRatio2.Location = new Point(936, 226);
+            PhotoMolarRatio2.Location = new Point(848, 226);
             PhotoMolarRatio2.Margin = new Padding(4);
             PhotoMolarRatio2.Name = "PhotoMolarRatio2";
-            PhotoMolarRatio2.Size = new Size(84, 31);
+            PhotoMolarRatio2.Size = new Size(76, 31);
             PhotoMolarRatio2.TabIndex = 67;
             // 
             // HydroMolarRatio2
             // 
             HydroMolarRatio2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            HydroMolarRatio2.Location = new Point(936, 300);
+            HydroMolarRatio2.Location = new Point(848, 300);
             HydroMolarRatio2.Margin = new Padding(4);
             HydroMolarRatio2.Name = "HydroMolarRatio2";
-            HydroMolarRatio2.Size = new Size(84, 31);
+            HydroMolarRatio2.Size = new Size(76, 31);
             HydroMolarRatio2.TabIndex = 66;
             // 
             // SoilMolarRatio2
             // 
             SoilMolarRatio2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            SoilMolarRatio2.Location = new Point(936, 337);
+            SoilMolarRatio2.Location = new Point(848, 337);
             SoilMolarRatio2.Margin = new Padding(4);
             SoilMolarRatio2.Name = "SoilMolarRatio2";
-            SoilMolarRatio2.Size = new Size(84, 31);
+            SoilMolarRatio2.Size = new Size(76, 31);
             SoilMolarRatio2.TabIndex = 66;
             // 
             // FoliarMolarRatio2
             // 
             FoliarMolarRatio2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            FoliarMolarRatio2.Location = new Point(936, 411);
+            FoliarMolarRatio2.Location = new Point(848, 411);
             FoliarMolarRatio2.Margin = new Padding(4);
             FoliarMolarRatio2.Name = "FoliarMolarRatio2";
-            FoliarMolarRatio2.Size = new Size(84, 31);
+            FoliarMolarRatio2.Size = new Size(76, 31);
             FoliarMolarRatio2.TabIndex = 66;
             // 
             // label20
             // 
             label20.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label20.AutoSize = true;
-            label20.Location = new Point(728, 6);
+            label20.Location = new Point(660, 6);
             label20.Margin = new Padding(4, 0, 4, 0);
             label20.Name = "label20";
-            label20.Size = new Size(200, 25);
+            label20.Size = new Size(180, 25);
             label20.TabIndex = 21;
             label20.Text = "Daughter";
             label20.TextAlign = ContentAlignment.MiddleCenter;
@@ -621,218 +625,218 @@
             // sorption2
             // 
             sorption2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            sorption2.Location = new Point(728, 41);
+            sorption2.Location = new Point(660, 41);
             sorption2.Margin = new Padding(4);
             sorption2.Name = "sorption2";
-            sorption2.Size = new Size(200, 31);
+            sorption2.Size = new Size(180, 31);
             sorption2.TabIndex = 47;
             // 
             // WaterColMetab2
             // 
             WaterColMetab2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            WaterColMetab2.Location = new Point(728, 78);
+            WaterColMetab2.Location = new Point(660, 78);
             WaterColMetab2.Margin = new Padding(4);
             WaterColMetab2.Name = "WaterColMetab2";
-            WaterColMetab2.Size = new Size(200, 31);
+            WaterColMetab2.Size = new Size(180, 31);
             WaterColMetab2.TabIndex = 48;
             // 
             // WaterColRef2
             // 
             WaterColRef2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            WaterColRef2.Location = new Point(728, 115);
+            WaterColRef2.Location = new Point(660, 115);
             WaterColRef2.Margin = new Padding(4);
             WaterColRef2.Name = "WaterColRef2";
-            WaterColRef2.Size = new Size(200, 31);
+            WaterColRef2.Size = new Size(180, 31);
             WaterColRef2.TabIndex = 49;
             // 
             // BenthicMetab2
             // 
             BenthicMetab2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            BenthicMetab2.Location = new Point(728, 152);
+            BenthicMetab2.Location = new Point(660, 152);
             BenthicMetab2.Margin = new Padding(4);
             BenthicMetab2.Name = "BenthicMetab2";
-            BenthicMetab2.Size = new Size(200, 31);
+            BenthicMetab2.Size = new Size(180, 31);
             BenthicMetab2.TabIndex = 50;
             // 
             // BenthicRef2
             // 
             BenthicRef2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            BenthicRef2.Location = new Point(728, 189);
+            BenthicRef2.Location = new Point(660, 189);
             BenthicRef2.Margin = new Padding(4);
             BenthicRef2.Name = "BenthicRef2";
-            BenthicRef2.Size = new Size(200, 31);
+            BenthicRef2.Size = new Size(180, 31);
             BenthicRef2.TabIndex = 51;
             // 
             // Photo2
             // 
             Photo2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Photo2.Location = new Point(728, 226);
+            Photo2.Location = new Point(660, 226);
             Photo2.Margin = new Padding(4);
             Photo2.Name = "Photo2";
-            Photo2.Size = new Size(200, 31);
+            Photo2.Size = new Size(180, 31);
             Photo2.TabIndex = 52;
             // 
             // PhotoLat2
             // 
             PhotoLat2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            PhotoLat2.Location = new Point(728, 263);
+            PhotoLat2.Location = new Point(660, 263);
             PhotoLat2.Margin = new Padding(4);
             PhotoLat2.Name = "PhotoLat2";
-            PhotoLat2.Size = new Size(200, 31);
+            PhotoLat2.Size = new Size(180, 31);
             PhotoLat2.TabIndex = 53;
             // 
             // Hydrolysis2
             // 
             Hydrolysis2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Hydrolysis2.Location = new Point(728, 300);
+            Hydrolysis2.Location = new Point(660, 300);
             Hydrolysis2.Margin = new Padding(4);
             Hydrolysis2.Name = "Hydrolysis2";
-            Hydrolysis2.Size = new Size(200, 31);
+            Hydrolysis2.Size = new Size(180, 31);
             Hydrolysis2.TabIndex = 54;
             // 
             // SoilDegradation2
             // 
             SoilDegradation2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            SoilDegradation2.Location = new Point(728, 337);
+            SoilDegradation2.Location = new Point(660, 337);
             SoilDegradation2.Margin = new Padding(4);
             SoilDegradation2.Name = "SoilDegradation2";
-            SoilDegradation2.Size = new Size(200, 31);
+            SoilDegradation2.Size = new Size(180, 31);
             SoilDegradation2.TabIndex = 55;
             // 
             // SoilRef2
             // 
             SoilRef2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            SoilRef2.Location = new Point(728, 374);
+            SoilRef2.Location = new Point(660, 374);
             SoilRef2.Margin = new Padding(4);
             SoilRef2.Name = "SoilRef2";
-            SoilRef2.Size = new Size(200, 31);
+            SoilRef2.Size = new Size(180, 31);
             SoilRef2.TabIndex = 56;
             // 
             // FoliarDeg2
             // 
             FoliarDeg2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            FoliarDeg2.Location = new Point(728, 411);
+            FoliarDeg2.Location = new Point(660, 411);
             FoliarDeg2.Margin = new Padding(4);
             FoliarDeg2.Name = "FoliarDeg2";
-            FoliarDeg2.Size = new Size(200, 31);
+            FoliarDeg2.Size = new Size(180, 31);
             FoliarDeg2.TabIndex = 57;
             // 
             // FoliarWashoff2
             // 
             FoliarWashoff2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            FoliarWashoff2.Location = new Point(728, 448);
+            FoliarWashoff2.Location = new Point(660, 448);
             FoliarWashoff2.Margin = new Padding(4);
             FoliarWashoff2.Name = "FoliarWashoff2";
-            FoliarWashoff2.Size = new Size(200, 31);
+            FoliarWashoff2.Size = new Size(180, 31);
             FoliarWashoff2.TabIndex = 58;
             // 
             // MWT2
             // 
             MWT2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            MWT2.Location = new Point(728, 485);
+            MWT2.Location = new Point(660, 485);
             MWT2.Margin = new Padding(4);
             MWT2.Name = "MWT2";
-            MWT2.Size = new Size(200, 31);
+            MWT2.Size = new Size(180, 31);
             MWT2.TabIndex = 59;
             // 
             // VaporPress2
             // 
             VaporPress2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            VaporPress2.Location = new Point(728, 522);
+            VaporPress2.Location = new Point(660, 522);
             VaporPress2.Margin = new Padding(4);
             VaporPress2.Name = "VaporPress2";
-            VaporPress2.Size = new Size(200, 31);
+            VaporPress2.Size = new Size(180, 31);
             VaporPress2.TabIndex = 60;
             // 
             // Sol2
             // 
             Sol2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Sol2.Location = new Point(728, 559);
+            Sol2.Location = new Point(660, 559);
             Sol2.Margin = new Padding(4);
             Sol2.Name = "Sol2";
-            Sol2.Size = new Size(200, 31);
+            Sol2.Size = new Size(180, 31);
             Sol2.TabIndex = 61;
             // 
             // Henry2
             // 
             Henry2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Henry2.Location = new Point(728, 596);
+            Henry2.Location = new Point(660, 596);
             Henry2.Margin = new Padding(4);
             Henry2.Name = "Henry2";
-            Henry2.Size = new Size(200, 31);
+            Henry2.Size = new Size(180, 31);
             Henry2.TabIndex = 62;
             // 
             // AirDiff2
             // 
             AirDiff2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            AirDiff2.Location = new Point(728, 633);
+            AirDiff2.Location = new Point(660, 633);
             AirDiff2.Margin = new Padding(4);
             AirDiff2.Name = "AirDiff2";
-            AirDiff2.Size = new Size(200, 31);
+            AirDiff2.Size = new Size(180, 31);
             AirDiff2.TabIndex = 63;
             // 
             // HeatHenry2
             // 
             HeatHenry2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            HeatHenry2.Location = new Point(728, 670);
+            HeatHenry2.Location = new Point(660, 670);
             HeatHenry2.Margin = new Padding(4);
             HeatHenry2.Name = "HeatHenry2";
-            HeatHenry2.Size = new Size(200, 31);
+            HeatHenry2.Size = new Size(180, 31);
             HeatHenry2.TabIndex = 64;
             // 
             // FoliarMolarRatio1
             // 
             FoliarMolarRatio1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            FoliarMolarRatio1.Location = new Point(636, 411);
+            FoliarMolarRatio1.Location = new Point(576, 411);
             FoliarMolarRatio1.Margin = new Padding(4);
             FoliarMolarRatio1.Name = "FoliarMolarRatio1";
-            FoliarMolarRatio1.Size = new Size(84, 31);
+            FoliarMolarRatio1.Size = new Size(76, 31);
             FoliarMolarRatio1.TabIndex = 46;
             // 
             // SoilMolarRatio1
             // 
             SoilMolarRatio1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            SoilMolarRatio1.Location = new Point(636, 337);
+            SoilMolarRatio1.Location = new Point(576, 337);
             SoilMolarRatio1.Margin = new Padding(4);
             SoilMolarRatio1.Name = "SoilMolarRatio1";
-            SoilMolarRatio1.Size = new Size(84, 31);
+            SoilMolarRatio1.Size = new Size(76, 31);
             SoilMolarRatio1.TabIndex = 45;
             // 
             // HydroMolarRatio1
             // 
             HydroMolarRatio1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            HydroMolarRatio1.Location = new Point(636, 300);
+            HydroMolarRatio1.Location = new Point(576, 300);
             HydroMolarRatio1.Margin = new Padding(4);
             HydroMolarRatio1.Name = "HydroMolarRatio1";
-            HydroMolarRatio1.Size = new Size(84, 31);
+            HydroMolarRatio1.Size = new Size(76, 31);
             HydroMolarRatio1.TabIndex = 44;
             // 
             // PhotoMolarRatio1
             // 
             PhotoMolarRatio1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            PhotoMolarRatio1.Location = new Point(636, 226);
+            PhotoMolarRatio1.Location = new Point(576, 226);
             PhotoMolarRatio1.Margin = new Padding(4);
             PhotoMolarRatio1.Name = "PhotoMolarRatio1";
-            PhotoMolarRatio1.Size = new Size(84, 31);
+            PhotoMolarRatio1.Size = new Size(76, 31);
             PhotoMolarRatio1.TabIndex = 43;
             // 
             // BenthicMolarRatio1
             // 
             BenthicMolarRatio1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            BenthicMolarRatio1.Location = new Point(636, 152);
+            BenthicMolarRatio1.Location = new Point(576, 152);
             BenthicMolarRatio1.Margin = new Padding(4);
             BenthicMolarRatio1.Name = "BenthicMolarRatio1";
-            BenthicMolarRatio1.Size = new Size(84, 31);
+            BenthicMolarRatio1.Size = new Size(76, 31);
             BenthicMolarRatio1.TabIndex = 42;
             // 
             // label19
             // 
             label19.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label19.AutoSize = true;
-            label19.Location = new Point(428, 6);
+            label19.Location = new Point(388, 6);
             label19.Margin = new Padding(4, 0, 4, 0);
             label19.Name = "label19";
-            label19.Size = new Size(200, 25);
+            label19.Size = new Size(180, 25);
             label19.TabIndex = 19;
             label19.Text = "Parent";
             label19.TextAlign = ContentAlignment.MiddleCenter;
@@ -840,163 +844,163 @@
             // sorption1
             // 
             sorption1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            sorption1.Location = new Point(428, 41);
+            sorption1.Location = new Point(388, 41);
             sorption1.Margin = new Padding(4);
             sorption1.Name = "sorption1";
-            sorption1.Size = new Size(200, 31);
+            sorption1.Size = new Size(180, 31);
             sorption1.TabIndex = 23;
             // 
             // WaterColMetab1
             // 
             WaterColMetab1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            WaterColMetab1.Location = new Point(428, 78);
+            WaterColMetab1.Location = new Point(388, 78);
             WaterColMetab1.Margin = new Padding(4);
             WaterColMetab1.Name = "WaterColMetab1";
-            WaterColMetab1.Size = new Size(200, 31);
+            WaterColMetab1.Size = new Size(180, 31);
             WaterColMetab1.TabIndex = 24;
             // 
             // WaterColRef1
             // 
             WaterColRef1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            WaterColRef1.Location = new Point(428, 115);
+            WaterColRef1.Location = new Point(388, 115);
             WaterColRef1.Margin = new Padding(4);
             WaterColRef1.Name = "WaterColRef1";
-            WaterColRef1.Size = new Size(200, 31);
+            WaterColRef1.Size = new Size(180, 31);
             WaterColRef1.TabIndex = 25;
             // 
             // BenthicMetab1
             // 
             BenthicMetab1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            BenthicMetab1.Location = new Point(428, 152);
+            BenthicMetab1.Location = new Point(388, 152);
             BenthicMetab1.Margin = new Padding(4);
             BenthicMetab1.Name = "BenthicMetab1";
-            BenthicMetab1.Size = new Size(200, 31);
+            BenthicMetab1.Size = new Size(180, 31);
             BenthicMetab1.TabIndex = 26;
             // 
             // BenthicRef1
             // 
             BenthicRef1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            BenthicRef1.Location = new Point(428, 189);
+            BenthicRef1.Location = new Point(388, 189);
             BenthicRef1.Margin = new Padding(4);
             BenthicRef1.Name = "BenthicRef1";
-            BenthicRef1.Size = new Size(200, 31);
+            BenthicRef1.Size = new Size(180, 31);
             BenthicRef1.TabIndex = 27;
             // 
             // Photo1
             // 
             Photo1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Photo1.Location = new Point(428, 226);
+            Photo1.Location = new Point(388, 226);
             Photo1.Margin = new Padding(4);
             Photo1.Name = "Photo1";
-            Photo1.Size = new Size(200, 31);
+            Photo1.Size = new Size(180, 31);
             Photo1.TabIndex = 28;
             // 
             // PhotoLat1
             // 
             PhotoLat1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            PhotoLat1.Location = new Point(428, 263);
+            PhotoLat1.Location = new Point(388, 263);
             PhotoLat1.Margin = new Padding(4);
             PhotoLat1.Name = "PhotoLat1";
-            PhotoLat1.Size = new Size(200, 31);
+            PhotoLat1.Size = new Size(180, 31);
             PhotoLat1.TabIndex = 29;
             // 
             // Hydrolysis1
             // 
             Hydrolysis1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Hydrolysis1.Location = new Point(428, 300);
+            Hydrolysis1.Location = new Point(388, 300);
             Hydrolysis1.Margin = new Padding(4);
             Hydrolysis1.Name = "Hydrolysis1";
-            Hydrolysis1.Size = new Size(200, 31);
+            Hydrolysis1.Size = new Size(180, 31);
             Hydrolysis1.TabIndex = 30;
             // 
             // SoilDegradation1
             // 
             SoilDegradation1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            SoilDegradation1.Location = new Point(428, 337);
+            SoilDegradation1.Location = new Point(388, 337);
             SoilDegradation1.Margin = new Padding(4);
             SoilDegradation1.Name = "SoilDegradation1";
-            SoilDegradation1.Size = new Size(200, 31);
+            SoilDegradation1.Size = new Size(180, 31);
             SoilDegradation1.TabIndex = 31;
             // 
             // SoilRef1
             // 
             SoilRef1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            SoilRef1.Location = new Point(428, 374);
+            SoilRef1.Location = new Point(388, 374);
             SoilRef1.Margin = new Padding(4);
             SoilRef1.Name = "SoilRef1";
-            SoilRef1.Size = new Size(200, 31);
+            SoilRef1.Size = new Size(180, 31);
             SoilRef1.TabIndex = 32;
             // 
             // FoliarDeg1
             // 
             FoliarDeg1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            FoliarDeg1.Location = new Point(428, 411);
+            FoliarDeg1.Location = new Point(388, 411);
             FoliarDeg1.Margin = new Padding(4);
             FoliarDeg1.Name = "FoliarDeg1";
-            FoliarDeg1.Size = new Size(200, 31);
+            FoliarDeg1.Size = new Size(180, 31);
             FoliarDeg1.TabIndex = 33;
             // 
             // FoliarWashoff1
             // 
             FoliarWashoff1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            FoliarWashoff1.Location = new Point(428, 448);
+            FoliarWashoff1.Location = new Point(388, 448);
             FoliarWashoff1.Margin = new Padding(4);
             FoliarWashoff1.Name = "FoliarWashoff1";
-            FoliarWashoff1.Size = new Size(200, 31);
+            FoliarWashoff1.Size = new Size(180, 31);
             FoliarWashoff1.TabIndex = 34;
             // 
             // MWT1
             // 
             MWT1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            MWT1.Location = new Point(428, 485);
+            MWT1.Location = new Point(388, 485);
             MWT1.Margin = new Padding(4);
             MWT1.Name = "MWT1";
-            MWT1.Size = new Size(200, 31);
+            MWT1.Size = new Size(180, 31);
             MWT1.TabIndex = 35;
             // 
             // VaporPress1
             // 
             VaporPress1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            VaporPress1.Location = new Point(428, 522);
+            VaporPress1.Location = new Point(388, 522);
             VaporPress1.Margin = new Padding(4);
             VaporPress1.Name = "VaporPress1";
-            VaporPress1.Size = new Size(200, 31);
+            VaporPress1.Size = new Size(180, 31);
             VaporPress1.TabIndex = 36;
             // 
             // Sol1
             // 
             Sol1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Sol1.Location = new Point(428, 559);
+            Sol1.Location = new Point(388, 559);
             Sol1.Margin = new Padding(4);
             Sol1.Name = "Sol1";
-            Sol1.Size = new Size(200, 31);
+            Sol1.Size = new Size(180, 31);
             Sol1.TabIndex = 37;
             // 
             // Henry1
             // 
             Henry1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Henry1.Location = new Point(428, 596);
+            Henry1.Location = new Point(388, 596);
             Henry1.Margin = new Padding(4);
             Henry1.Name = "Henry1";
-            Henry1.Size = new Size(200, 31);
+            Henry1.Size = new Size(180, 31);
             Henry1.TabIndex = 38;
             // 
             // AirDiff1
             // 
             AirDiff1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            AirDiff1.Location = new Point(428, 633);
+            AirDiff1.Location = new Point(388, 633);
             AirDiff1.Margin = new Padding(4);
             AirDiff1.Name = "AirDiff1";
-            AirDiff1.Size = new Size(200, 31);
+            AirDiff1.Size = new Size(180, 31);
             AirDiff1.TabIndex = 39;
             // 
             // HeatHenry1
             // 
             HeatHenry1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            HeatHenry1.Location = new Point(428, 670);
+            HeatHenry1.Location = new Point(388, 670);
             HeatHenry1.Margin = new Padding(4);
             HeatHenry1.Name = "HeatHenry1";
-            HeatHenry1.Size = new Size(200, 31);
+            HeatHenry1.Size = new Size(180, 31);
             HeatHenry1.TabIndex = 40;
             // 
             // label17
@@ -1004,7 +1008,7 @@
             label17.Anchor = AnchorStyles.Right;
             label17.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label17, 3);
-            label17.Location = new Point(138, 635);
+            label17.Location = new Point(98, 635);
             label17.Margin = new Padding(4, 0, 4, 0);
             label17.Name = "label17";
             label17.Size = new Size(282, 25);
@@ -1016,7 +1020,7 @@
             label16.Anchor = AnchorStyles.Right;
             label16.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label16, 3);
-            label16.Location = new Point(351, 598);
+            label16.Location = new Point(311, 598);
             label16.Margin = new Padding(4, 0, 4, 0);
             label16.Name = "label16";
             label16.Size = new Size(69, 25);
@@ -1028,7 +1032,7 @@
             label15.Anchor = AnchorStyles.Right;
             label15.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label15, 3);
-            label15.Location = new Point(278, 561);
+            label15.Location = new Point(238, 561);
             label15.Margin = new Padding(4, 0, 4, 0);
             label15.Name = "label15";
             label15.Size = new Size(142, 25);
@@ -1040,7 +1044,7 @@
             label14.Anchor = AnchorStyles.Right;
             label14.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label14, 3);
-            label14.Location = new Point(246, 524);
+            label14.Location = new Point(206, 524);
             label14.Margin = new Padding(4, 0, 4, 0);
             label14.Name = "label14";
             label14.Size = new Size(174, 25);
@@ -1052,7 +1056,7 @@
             label13.Anchor = AnchorStyles.Right;
             label13.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label13, 3);
-            label13.Location = new Point(206, 487);
+            label13.Location = new Point(166, 487);
             label13.Margin = new Padding(4, 0, 4, 0);
             label13.Name = "label13";
             label13.Size = new Size(214, 25);
@@ -1064,7 +1068,7 @@
             label12.Anchor = AnchorStyles.Right;
             label12.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label12, 3);
-            label12.Location = new Point(242, 450);
+            label12.Location = new Point(202, 450);
             label12.Margin = new Padding(4, 0, 4, 0);
             label12.Name = "label12";
             label12.Size = new Size(178, 25);
@@ -1076,7 +1080,7 @@
             label11.Anchor = AnchorStyles.Right;
             label11.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label11, 3);
-            label11.Location = new Point(261, 413);
+            label11.Location = new Point(221, 413);
             label11.Margin = new Padding(4, 0, 4, 0);
             label11.Name = "label11";
             label11.Size = new Size(159, 25);
@@ -1088,7 +1092,7 @@
             label10.Anchor = AnchorStyles.Right;
             label10.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label10, 3);
-            label10.Location = new Point(162, 376);
+            label10.Location = new Point(122, 376);
             label10.Margin = new Padding(4, 0, 4, 0);
             label10.Name = "label10";
             label10.Size = new Size(258, 25);
@@ -1100,7 +1104,7 @@
             label9.Anchor = AnchorStyles.Right;
             label9.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label9, 3);
-            label9.Location = new Point(275, 339);
+            label9.Location = new Point(235, 339);
             label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
             label9.Size = new Size(145, 25);
@@ -1112,7 +1116,7 @@
             label8.Anchor = AnchorStyles.Right;
             label8.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label8, 3);
-            label8.Location = new Point(221, 302);
+            label8.Location = new Point(181, 302);
             label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
             label8.Size = new Size(199, 25);
@@ -1124,7 +1128,7 @@
             label7.Anchor = AnchorStyles.Right;
             label7.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label7, 3);
-            label7.Location = new Point(143, 265);
+            label7.Location = new Point(103, 265);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
             label7.Size = new Size(277, 25);
@@ -1136,7 +1140,7 @@
             label4.Anchor = AnchorStyles.Right;
             label4.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label4, 3);
-            label4.Location = new Point(247, 154);
+            label4.Location = new Point(207, 154);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new Size(173, 25);
@@ -1148,7 +1152,7 @@
             label3.Anchor = AnchorStyles.Right;
             label3.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label3, 3);
-            label3.Location = new Point(145, 117);
+            label3.Location = new Point(105, 117);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(275, 25);
@@ -1172,7 +1176,7 @@
             // 
             radioButton3.AutoSize = true;
             radioButton3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            radioButton3.Location = new Point(90, 41);
+            radioButton3.Location = new Point(82, 41);
             radioButton3.Margin = new Padding(4);
             radioButton3.Name = "radioButton3";
             radioButton3.Size = new Size(58, 29);
@@ -1185,7 +1189,7 @@
             // 
             label1.Anchor = AnchorStyles.Right;
             label1.AutoSize = true;
-            label1.Location = new Point(282, 43);
+            label1.Location = new Point(242, 43);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(138, 25);
@@ -1197,7 +1201,7 @@
             label2.Anchor = AnchorStyles.Right;
             label2.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label2, 3);
-            label2.Location = new Point(209, 80);
+            label2.Location = new Point(169, 80);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(211, 25);
@@ -1207,10 +1211,10 @@
             // WaterMolarRatio1
             // 
             WaterMolarRatio1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            WaterMolarRatio1.Location = new Point(636, 78);
+            WaterMolarRatio1.Location = new Point(576, 78);
             WaterMolarRatio1.Margin = new Padding(4);
             WaterMolarRatio1.Name = "WaterMolarRatio1";
-            WaterMolarRatio1.Size = new Size(84, 31);
+            WaterMolarRatio1.Size = new Size(76, 31);
             WaterMolarRatio1.TabIndex = 41;
             // 
             // label18
@@ -1218,7 +1222,7 @@
             label18.Anchor = AnchorStyles.Right;
             label18.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label18, 3);
-            label18.Location = new Point(238, 678);
+            label18.Location = new Point(198, 674);
             label18.Margin = new Padding(4, 0, 4, 0);
             label18.Name = "label18";
             label18.Size = new Size(182, 25);
@@ -1231,7 +1235,7 @@
             tabPage2.Margin = new Padding(4);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(4);
-            tabPage2.Size = new Size(1292, 766);
+            tabPage2.Size = new Size(1176, 858);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Target Body";
             tabPage2.UseVisualStyleBackColor = true;
@@ -1244,7 +1248,7 @@
             tabPage3.Margin = new Padding(4);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(4);
-            tabPage3.Size = new Size(1292, 766);
+            tabPage3.Size = new Size(1176, 858);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Schemes";
             // 
@@ -1261,12 +1265,12 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             SchemeTableDisplay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             SchemeTableDisplay.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            SchemeTableDisplay.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 });
-            SchemeTableDisplay.Location = new Point(7, 80);
+            SchemeTableDisplay.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3 });
+            SchemeTableDisplay.Location = new Point(3, 54);
             SchemeTableDisplay.Name = "SchemeTableDisplay";
             SchemeTableDisplay.RowHeadersVisible = false;
             SchemeTableDisplay.RowHeadersWidth = 62;
-            SchemeTableDisplay.Size = new Size(1079, 459);
+            SchemeTableDisplay.Size = new Size(1163, 477);
             SchemeTableDisplay.TabIndex = 0;
             // 
             // Column1
@@ -1296,30 +1300,17 @@
             Column3.MinimumWidth = 8;
             Column3.Name = "Column3";
             // 
-            // Column4
-            // 
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(255, 128, 0);
-            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = Color.FromArgb(255, 128, 0);
-            Column4.DefaultCellStyle = dataGridViewCellStyle2;
-            Column4.HeaderText = "Delete";
-            Column4.MinimumWidth = 8;
-            Column4.Name = "Column4";
-            Column4.Resizable = DataGridViewTriState.True;
-            Column4.SortMode = DataGridViewColumnSortMode.Automatic;
-            Column4.Text = "Delete";
-            Column4.Width = 150;
-            // 
             // tabPage4
             // 
             tabPage4.BackColor = Color.MediumSlateBlue;
+            tabPage4.Controls.Add(groupBox2);
             tabPage4.Controls.Add(AppTableDisplay);
+            tabPage4.ForeColor = Color.White;
             tabPage4.Location = new Point(4, 34);
             tabPage4.Margin = new Padding(4);
             tabPage4.Name = "tabPage4";
             tabPage4.Padding = new Padding(4);
-            tabPage4.Size = new Size(1292, 766);
+            tabPage4.Size = new Size(1176, 858);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Applications";
             // 
@@ -1327,11 +1318,11 @@
             // 
             AppTableDisplay.BackgroundColor = Color.MediumSlateBlue;
             AppTableDisplay.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            AppTableDisplay.Location = new Point(7, 150);
+            AppTableDisplay.Location = new Point(7, 207);
             AppTableDisplay.Name = "AppTableDisplay";
             AppTableDisplay.RowHeadersVisible = false;
             AppTableDisplay.RowHeadersWidth = 62;
-            AppTableDisplay.Size = new Size(1258, 442);
+            AppTableDisplay.Size = new Size(1161, 385);
             AppTableDisplay.TabIndex = 0;
             // 
             // tabPage5
@@ -1340,7 +1331,7 @@
             tabPage5.Margin = new Padding(4);
             tabPage5.Name = "tabPage5";
             tabPage5.Padding = new Padding(4);
-            tabPage5.Size = new Size(1292, 766);
+            tabPage5.Size = new Size(1176, 858);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Scenarios";
             tabPage5.UseVisualStyleBackColor = true;
@@ -1369,7 +1360,7 @@
             tabPage6.Margin = new Padding(4);
             tabPage6.Name = "tabPage6";
             tabPage6.Padding = new Padding(4);
-            tabPage6.Size = new Size(1292, 766);
+            tabPage6.Size = new Size(1176, 858);
             tabPage6.TabIndex = 5;
             tabPage6.Text = "Advanced";
             tabPage6.UseVisualStyleBackColor = true;
@@ -1832,7 +1823,7 @@
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(8, 2, 0, 2);
-            menuStrip1.Size = new Size(1300, 33);
+            menuStrip1.Size = new Size(1184, 33);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -1879,11 +1870,75 @@
             // 
             saveFileDialog1.Filter = "PWC 3 INPUT Files (*.PW4)|*.PW4|ALL Files (*.*)|*.*";
             // 
+            // emerge
+            // 
+            emerge.AutoSize = true;
+            emerge.Font = new Font("Microsoft Sans Serif", 10F);
+            emerge.Location = new Point(19, 34);
+            emerge.Name = "emerge";
+            emerge.Size = new Size(137, 29);
+            emerge.TabIndex = 1;
+            emerge.TabStop = true;
+            emerge.Text = "Emergence";
+            emerge.UseVisualStyleBackColor = true;
+            // 
+            // maturity
+            // 
+            maturity.AutoSize = true;
+            maturity.Font = new Font("Microsoft Sans Serif", 10F);
+            maturity.ForeColor = Color.White;
+            maturity.Location = new Point(19, 66);
+            maturity.Name = "maturity";
+            maturity.Size = new Size(106, 29);
+            maturity.TabIndex = 2;
+            maturity.TabStop = true;
+            maturity.Text = "Maturity";
+            maturity.UseVisualStyleBackColor = true;
+            // 
+            // removal
+            // 
+            removal.AutoSize = true;
+            removal.Font = new Font("Microsoft Sans Serif", 10F);
+            removal.Location = new Point(19, 98);
+            removal.Name = "removal";
+            removal.Size = new Size(113, 29);
+            removal.TabIndex = 3;
+            removal.TabStop = true;
+            removal.Text = "Removal";
+            removal.UseVisualStyleBackColor = true;
+            // 
+            // AbsoluteDaysButton
+            // 
+            AbsoluteDaysButton.AutoSize = true;
+            AbsoluteDaysButton.Font = new Font("Microsoft Sans Serif", 10F);
+            AbsoluteDaysButton.Location = new Point(183, 98);
+            AbsoluteDaysButton.Name = "AbsoluteDaysButton";
+            AbsoluteDaysButton.Size = new Size(268, 29);
+            AbsoluteDaysButton.TabIndex = 4;
+            AbsoluteDaysButton.TabStop = true;
+            AbsoluteDaysButton.Text = "Dates are absolute (m/d/y)";
+            AbsoluteDaysButton.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(AbsoluteDaysButton);
+            groupBox2.Controls.Add(removal);
+            groupBox2.Controls.Add(maturity);
+            groupBox2.Controls.Add(emerge);
+            groupBox2.Font = new Font("Microsoft Sans Serif", 10F);
+            groupBox2.ForeColor = Color.White;
+            groupBox2.Location = new Point(42, 35);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(497, 149);
+            groupBox2.TabIndex = 5;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Dates relative to:";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1300, 858);
+            ClientSize = new Size(1184, 950);
             Controls.Add(tabControl1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
@@ -1905,6 +1960,8 @@
             groupBox1.PerformLayout();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -2067,6 +2124,10 @@
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewCheckBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
-        private DataGridViewButtonColumn Column4;
+        private RadioButton removal;
+        private RadioButton maturity;
+        private RadioButton emerge;
+        private RadioButton AbsoluteDaysButton;
+        private GroupBox groupBox2;
     }
 }
