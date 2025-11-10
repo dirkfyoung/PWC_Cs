@@ -4,6 +4,9 @@ namespace PWC_Cs
 {
     public partial class Form1 : Form
     {
+
+        private readonly List<SchemeDetails> SchemeInfoList = new List<SchemeDetails>();
+
         public Form1()
         {
             InitializeComponent();
@@ -12,14 +15,14 @@ namespace PWC_Cs
         //**********************************************************************
         private void Form1_Load(object sender, EventArgs e)
         {
-            AppTableDisplay.ColumnCount=2;
+            AppTableDisplay.ColumnCount = 2;
             AppTableDisplay.Columns[0].Name = "Days";
-            AppTableDisplay.Columns[0].Width = 80;
+            AppTableDisplay.Columns[0].Width = 55;
             AppTableDisplay.Columns[1].Name = "Amount (kg/ha)";
             AppTableDisplay.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            AppTableDisplay.Columns[1].Width = 100;
+            AppTableDisplay.Columns[1].Width = 75;
 
-            var combo = new DataGridViewComboBoxColumn{ HeaderText = "Application Method",Width = 150};
+            var combo = new DataGridViewComboBoxColumn { HeaderText = "Application Method", Width = 120 };
             combo.Items.Add(Standard.Method1);
             combo.Items.Add(Standard.Method2);
             combo.Items.Add(Standard.Method3);
@@ -31,16 +34,16 @@ namespace PWC_Cs
             AppTableDisplay.Columns.Add(combo);
             AppTableDisplay.Columns.Add("Depth", "Depth (cm)");
             AppTableDisplay.Columns[3].SortMode = DataGridViewColumnSortMode.NotSortable;
-            AppTableDisplay.Columns[3].Width = 100; ;
+            AppTableDisplay.Columns[3].Width = 70; ;
             AppTableDisplay.Columns.Add("Split", "Split");
             AppTableDisplay.Columns[4].SortMode = DataGridViewColumnSortMode.NotSortable;
-            AppTableDisplay.Columns[4].Width = 90;
+            AppTableDisplay.Columns[4].Width = 60;
 
             DataGridViewComboBoxColumn driftcombo = new()
             {
                 HeaderText = "Drift Type",
-                DropDownWidth = 320,
-                Width = 320,
+                DropDownWidth = 240,
+                Width = 240,
                 FlatStyle = FlatStyle.Flat,
                 DisplayStyle = DataGridViewComboBoxDisplayStyle.DropDownButton
             };
@@ -63,19 +66,19 @@ namespace PWC_Cs
             driftcombo.Items.Add(Standard.SprayTerms[15]);
             AppTableDisplay.Columns.Add(driftcombo);
 
-         
+
 
             AppTableDisplay.Columns.Add("Buffer", "Drift Buffer (ft)");
             AppTableDisplay.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
-            AppTableDisplay.Columns[6].Width = 110;
+            AppTableDisplay.Columns[6].Width = 90;
 
-            AppTableDisplay.Columns.Add("Periodicity", "Periodicity (days)");
+            AppTableDisplay.Columns.Add("Periodicity", "Period (days)");
             AppTableDisplay.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;
-            AppTableDisplay.Columns[7].Width = 110;
+            AppTableDisplay.Columns[7].Width = 65;
 
             AppTableDisplay.Columns.Add("Lag", "Lag (days)");
             AppTableDisplay.Columns[8].SortMode = DataGridViewColumnSortMode.NotSortable;
-            AppTableDisplay.Columns[8].Width = 110;
+            AppTableDisplay.Columns[8].Width = 65;
 
             DataGridViewButtonColumn btnApp = new()
             {
@@ -215,6 +218,7 @@ namespace PWC_Cs
             SoilDegradation3.Text = col[2];
             SoilMolarRatio1.Text = col[3];
             SoilMolarRatio2.Text = col[4];
+            IsAllMedia.Checked = Convert.ToBoolean(col[5]);
 
             col = lines[21].Split(",");
             SoilRef1.Text = col[0];
@@ -281,7 +285,7 @@ namespace PWC_Cs
             ExpParameter2.Text = col[2];
 
             col = lines[34].Split(",");
-            int NumberOfSchemes=Convert.ToInt16( col[0]);
+            int NumberOfSchemes = Convert.ToInt16(col[0]);
 
             SchemeTableDisplay.Rows.Clear();
 
@@ -307,7 +311,7 @@ namespace PWC_Cs
 
 
 
-         
+
 
 
         }
@@ -357,12 +361,12 @@ namespace PWC_Cs
             sw.WriteLine(ExponentialProfile.Checked + "," + ExpParameter1.Text + "," + ExpParameter2.Text);
 
 
-           
+
             int actualRowsInAppTable; // app table rows
             int NumberOfScenarios;
             int referencedate;
 
-            
+
 
             AppTableDisplay.CommitEdit(DataGridViewDataErrorContexts.Commit);  //commit the cell if cursor still on box
 
@@ -374,25 +378,35 @@ namespace PWC_Cs
 
             sw.WriteLine(NumberOfSchemes.ToString());
 
+            //SchemeInfoList.Clear();
 
-    
+            SchemeDetails ApplicationTable = new SchemeDetails();
 
-           //SchemeDetails ApplicationTable = new SchemeDetails();
+            // List<SchemeDetails> schemeList = [];
 
-            List<SchemeDetails> schemeList = [];
+
+
 
             for (int i = 0; i < NumberOfSchemes; i++)
+
             {
+                RecordScheme(i);
                 var cellValue = SchemeTableDisplay.Rows[i].Cells[2].Value?.ToString() ?? "";
                 sw.WriteLine($"{i + 1},{cellValue}");
 
+
+                ApplicationTable = SchemeInfoList[i];
+
+                //Go through the apps
+
+                sw.WriteLine("try this: " + ApplicationTable.DriftBuffer[i]);
 
 
 
             }
 
-        
-            
+
+
 
 
 
@@ -443,7 +457,7 @@ namespace PWC_Cs
                 var drift = AppTableDisplay[5, i].Value;
                 appData.Drift.Add(drift switch
                 {
-                    var d when d == Standard.SprayTerms[1]=> "1",
+                    var d when d == Standard.SprayTerms[1] => "1",
                     var d when d == Standard.SprayTerms[2] => "2",
                     var d when d == Standard.SprayTerms[3] => "3",
                     var d when d == Standard.SprayTerms[4] => "4",
@@ -485,15 +499,20 @@ namespace PWC_Cs
             appData.ErosionMitigation = ErosionMitigation.Text;
             appData.DriftMitigation = DriftMitigation.Text;
 
-            appData.Scenarios = ScenarioListBox.Items.Cast<string>().ToList();
-            appData.UseBatchScenarioFile = GetScenariosBatchCheckBox.Checked;
-            appData.ScenarioBatchFileName = ScenarioBatchFileName.Text;
+            //appData.Scenarios = ScenarioListBox.Items.Cast<string>().ToList();
+            //appData.UseBatchScenarioFile = GetScenariosBatchCheckBox.Checked;
+            //appData.ScenarioBatchFileName = ScenarioBatchFileName.Text;
 
-            if (schemeInfoList.Count - 1 < schemeNumber)
-                schemeInfoList.Add(appData);
-            else if (schemeNumber >= 0)
-                schemeInfoList[schemeNumber] = appData;
+            //if (schemeInfoList.Count - 1 < schemeNumber)
+            //    schemeInfoList.Add(appData);
+            //else if (schemeNumber >= 0)
+            //    schemeInfoList[schemeNumber] = appData;
+
+            SchemeInfoList[schemeNumber] = appData;
+
+
         }
 
+  
     }
 }
