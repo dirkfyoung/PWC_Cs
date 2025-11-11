@@ -1,4 +1,6 @@
 using System.Windows.Forms;
+using System.Linq;
+
 
 namespace PWC_Cs
 {
@@ -17,12 +19,12 @@ namespace PWC_Cs
         {
             AppTableDisplay.ColumnCount = 2;
             AppTableDisplay.Columns[0].Name = "Days";
-            AppTableDisplay.Columns[0].Width = 55;
+            AppTableDisplay.Columns[0].Width = 75;
             AppTableDisplay.Columns[1].Name = "Amount (kg/ha)";
             AppTableDisplay.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            AppTableDisplay.Columns[1].Width = 75;
+            AppTableDisplay.Columns[1].Width = 90;
 
-            var combo = new DataGridViewComboBoxColumn { HeaderText = "Application Method", Width = 120 };
+            var combo = new DataGridViewComboBoxColumn { HeaderText = "Application Method", Width = 190 };
             combo.Items.Add(Standard.Method1);
             combo.Items.Add(Standard.Method2);
             combo.Items.Add(Standard.Method3);
@@ -34,16 +36,16 @@ namespace PWC_Cs
             AppTableDisplay.Columns.Add(combo);
             AppTableDisplay.Columns.Add("Depth", "Depth (cm)");
             AppTableDisplay.Columns[3].SortMode = DataGridViewColumnSortMode.NotSortable;
-            AppTableDisplay.Columns[3].Width = 70; ;
+            AppTableDisplay.Columns[3].Width = 75; ;
             AppTableDisplay.Columns.Add("Split", "Split");
             AppTableDisplay.Columns[4].SortMode = DataGridViewColumnSortMode.NotSortable;
-            AppTableDisplay.Columns[4].Width = 60;
+            AppTableDisplay.Columns[4].Width = 65;
 
             DataGridViewComboBoxColumn driftcombo = new()
             {
                 HeaderText = "Drift Type",
-                DropDownWidth = 240,
-                Width = 240,
+                DropDownWidth = 350,
+                Width = 350,
                 FlatStyle = FlatStyle.Flat,
                 DisplayStyle = DataGridViewComboBoxDisplayStyle.DropDownButton
             };
@@ -70,15 +72,15 @@ namespace PWC_Cs
 
             AppTableDisplay.Columns.Add("Buffer", "Drift Buffer (ft)");
             AppTableDisplay.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
-            AppTableDisplay.Columns[6].Width = 90;
+            AppTableDisplay.Columns[6].Width = 110;
 
             AppTableDisplay.Columns.Add("Periodicity", "Period (days)");
             AppTableDisplay.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;
-            AppTableDisplay.Columns[7].Width = 65;
+            AppTableDisplay.Columns[7].Width = 75;
 
             AppTableDisplay.Columns.Add("Lag", "Lag (days)");
             AppTableDisplay.Columns[8].SortMode = DataGridViewColumnSortMode.NotSortable;
-            AppTableDisplay.Columns[8].Width = 65;
+            AppTableDisplay.Columns[8].Width = 75;
 
             DataGridViewButtonColumn btnApp = new()
             {
@@ -108,6 +110,12 @@ namespace PWC_Cs
             SchemeTableDisplay.Columns.Add(btnScheme);
             SchemeTableDisplay.Columns["Delete"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             SchemeTableDisplay.Columns["Delete"].Width = 70;
+
+
+
+            SchemeTableDisplay.CellValueChanged += SchemeTableDisplay_CellValueChanged;
+            SchemeTableDisplay.CurrentCellDirtyStateChanged += SchemeTableDisplay_CurrentCellDirtyStateChanged;
+
 
         }
         //**********************************************************************
@@ -319,122 +327,159 @@ namespace PWC_Cs
         public void SaveMainInputToTextFile(string savefilename)
         {
             //Pass the filepath and filename to the StreamWriter Constructor
-            StreamWriter sw = new StreamWriter(savefilename);
-            //Write a line of text
-            sw.WriteLine("version info");
-            sw.WriteLine("working directory");
-            sw.WriteLine("family name");
-            sw.WriteLine("scenario directory");
-            sw.WriteLine("pfac");
-            sw.WriteLine("options");
-            sw.WriteLine("nchem");
-
-            sw.WriteLine(sorption1.Text + "," + sorption2.Text + "," + sorption3.Text);
-            sw.WriteLine(Nexp1Reg1.Text + "," + Nexp2Reg1.Text + "," + Nexp3Reg1.Text);
-            sw.WriteLine(Kf1Reg2.Text + "," + Kf2Reg2.Text + "," + Kf3Reg2.Text);
-            sw.WriteLine(Nexp1Reg2.Text + "," + Nexp2Reg2.Text + "," + Nexp3Reg2.Text);
-            sw.WriteLine(MassTransferRegion2.Text + "," + MassTransferRegion2Daughter.Text + "," + MassTransferRegion2GrandDaughter.Text);
-            sw.WriteLine(FreundlichMinimumConc.Text + "," + SubTimeSteps.Text);
-
-            sw.WriteLine(WaterColMetab1.Text + "," + WaterColMetab2.Text + "," + WaterColMetab3.Text + "," + WaterMolarRatio1.Text + "," + WaterMolarRatio2.Text);
-            sw.WriteLine(WaterColRef1.Text + "," + WaterColRef2.Text + "," + WaterColRef3.Text);
-
-            sw.WriteLine(BenthicMetab1.Text + "," + BenthicMetab2.Text + "," + BenthicMetab3.Text + "," + BenthicMolarRatio1.Text + "," + BenthicMolarRatio2.Text);
-            sw.WriteLine(BenthicRef1.Text + "," + BenthicRef2.Text + "," + BenthicRef3.Text);
-            sw.WriteLine(Photo1.Text + "," + Photo2.Text + "," + Photo3.Text + "," + PhotoMolarRatio1.Text + "," + PhotoMolarRatio2.Text);
-            sw.WriteLine(PhotoLat1.Text + "," + PhotoLat2.Text + "," + PhotoLat3.Text);
-            sw.WriteLine(Hydrolysis1.Text + "," + Hydrolysis2.Text + "," + Hydrolysis3.Text + "," + HydroMolarRatio1.Text + "," + HydroMolarRatio2.Text);
-            sw.WriteLine(SoilDegradation1.Text + "," + SoilDegradation2.Text + "," + SoilDegradation3.Text + "," + SoilMolarRatio1.Text + "," + SoilMolarRatio2.Text + "," + IsAllMedia.Checked);
-            sw.WriteLine(SoilRef1.Text + "," + SoilRef2.Text + "," + SoilRef3.Text);
-            sw.WriteLine(FoliarDeg1.Text + "," + FoliarDeg2.Text + "," + FoliarDeg3.Text + "," + FoliarMolarRatio1.Text + "," + FoliarMolarRatio2.Text);
-            sw.WriteLine(FoliarWashoff1.Text + "," + FoliarWashoff2.Text + "," + FoliarWashoff3.Text);
-
-            sw.WriteLine(MWT1.Text + "," + MWT2.Text + "," + MWT3.Text);
-            sw.WriteLine(VaporPress1.Text + "," + VaporPress2.Text + "," + VaporPress3.Text);
-            sw.WriteLine(Sol1.Text + "," + Sol2.Text + "," + Sol3.Text);
-            sw.WriteLine(Henry1.Text + "," + Henry2.Text + "," + Henry3.Text);
-            sw.WriteLine(AirDiff1.Text + "," + AirDiff2.Text + "," + AirDiff3.Text);
-            sw.WriteLine(HeatHenry1.Text + "," + HeatHenry2.Text + "," + HeatHenry3.Text);
-            sw.WriteLine(Q10.Text);
-            sw.WriteLine(ConstantProfile.Checked);
-            sw.WriteLine(RampProfile.Checked + "," + profileDepth1.Text + "," + ProfileDepth2.Text + "," + RampEndValue.Text);
-            sw.WriteLine(ExponentialProfile.Checked + "," + ExpParameter1.Text + "," + ExpParameter2.Text);
-
-
-
-            int actualRowsInAppTable; // app table rows
-            int NumberOfScenarios;
-            int referencedate;
-
-
-
-            AppTableDisplay.CommitEdit(DataGridViewDataErrorContexts.Commit);  //commit the cell if cursor still on box
-
-
-            //This avoids relying on (rowcout-1), which can be error-prone if the grid is empty or the new row is disabled.
-            int NumberOfSchemes = SchemeTableDisplay.Rows.Cast<DataGridViewRow>().Count(row => !row.IsNewRow);
-
-            SchemeTableDisplay.CommitEdit(DataGridViewDataErrorContexts.Commit); //commit the cell if cursor still on box
-
-            sw.WriteLine(NumberOfSchemes.ToString());
-
-            //SchemeInfoList.Clear();
-
-            SchemeDetails ApplicationTable = new SchemeDetails();
-
-            // List<SchemeDetails> schemeList = [];
-
-
-
-
-            for (int i = 0; i < NumberOfSchemes; i++)
-
+            using StreamWriter sw = new StreamWriter(savefilename);
             {
-                RecordScheme(i);
-                var cellValue = SchemeTableDisplay.Rows[i].Cells[2].Value?.ToString() ?? "";
-                sw.WriteLine($"{i + 1},{cellValue}");
+
+                //the following will be populated later with varibles. leave asis for now
+                sw.WriteLine("version info");
+                sw.WriteLine("working directory");
+                sw.WriteLine("family name");
+                sw.WriteLine("scenario directory");
+                sw.WriteLine("pfac");
+                sw.WriteLine("options");
+                sw.WriteLine("nchem");
+
+                //Chemical properties 
+                sw.WriteLine(string.Join(",", sorption1.Text, sorption2.Text, sorption3.Text));
+                sw.WriteLine(string.Join(",", Nexp1Reg1.Text, Nexp2Reg1.Text, Nexp3Reg1.Text));
+                sw.WriteLine(string.Join(",", Kf1Reg2.Text, Kf2Reg2.Text, Kf3Reg2.Text));
+                sw.WriteLine(string.Join(",", Nexp1Reg2.Text, Nexp2Reg2.Text, Nexp3Reg2.Text));
+                sw.WriteLine(string.Join(",", MassTransferRegion2.Text, MassTransferRegion2Daughter.Text, MassTransferRegion2GrandDaughter.Text));
+                sw.WriteLine(string.Join(",", FreundlichMinimumConc.Text, SubTimeSteps.Text));
+                sw.WriteLine(string.Join(",", WaterColMetab1.Text, WaterColMetab2.Text, WaterColMetab3.Text, WaterMolarRatio1.Text, WaterMolarRatio2.Text));
+                sw.WriteLine(string.Join(",", WaterColRef1.Text, WaterColRef2.Text, WaterColRef3.Text));
+                sw.WriteLine(string.Join(",", BenthicMetab1.Text, BenthicMetab2.Text, BenthicMetab3.Text, BenthicMolarRatio1.Text, BenthicMolarRatio2.Text));
+                sw.WriteLine(string.Join(",", BenthicRef1.Text, BenthicRef2.Text, BenthicRef3.Text));
+                sw.WriteLine(string.Join(",", Photo1.Text, Photo2.Text, Photo3.Text, PhotoMolarRatio1.Text, PhotoMolarRatio2.Text));
+                sw.WriteLine(string.Join(",", PhotoLat1.Text, PhotoLat2.Text, PhotoLat3.Text));
+                sw.WriteLine(string.Join(",", Hydrolysis1.Text, Hydrolysis2.Text, Hydrolysis3.Text, HydroMolarRatio1.Text, HydroMolarRatio2.Text));
+                sw.WriteLine(string.Join(",", SoilDegradation1.Text, SoilDegradation2.Text, SoilDegradation3.Text, SoilMolarRatio1.Text, SoilMolarRatio2.Text, IsAllMedia.Checked.ToString()));
+                sw.WriteLine(string.Join(",", SoilRef1.Text, SoilRef2.Text, SoilRef3.Text));
+                sw.WriteLine(string.Join(",", FoliarDeg1.Text, FoliarDeg2.Text, FoliarDeg3.Text, FoliarMolarRatio1.Text, FoliarMolarRatio2.Text));
+                sw.WriteLine(string.Join(",", FoliarWashoff1.Text, FoliarWashoff2.Text, FoliarWashoff3.Text));
+                sw.WriteLine(string.Join(",", MWT1.Text, MWT2.Text, MWT3.Text));
+                sw.WriteLine(string.Join(",", VaporPress1.Text, VaporPress2.Text, VaporPress3.Text));
+                sw.WriteLine(string.Join(",", Sol1.Text, Sol2.Text, Sol3.Text));
+                sw.WriteLine(string.Join(",", Henry1.Text, Henry2.Text, Henry3.Text));
+                sw.WriteLine(string.Join(",", AirDiff1.Text, AirDiff2.Text, AirDiff3.Text));
+                sw.WriteLine(string.Join(",", HeatHenry1.Text, HeatHenry2.Text, HeatHenry3.Text));
+
+                sw.WriteLine(Q10.Text);
+                sw.WriteLine(ConstantProfile.Checked.ToString());
+                sw.WriteLine(string.Join(",", RampProfile.Checked.ToString(), profileDepth1.Text, ProfileDepth2.Text, RampEndValue.Text));
+                sw.WriteLine(string.Join(",", ExponentialProfile.Checked.ToString(), ExpParameter1.Text, ExpParameter2.Text));
 
 
-                ApplicationTable = SchemeInfoList[i];
+                // *********************Process the schemes: Extract info from SchemeInfo **************************
+                AppTableDisplay.CommitEdit(DataGridViewDataErrorContexts.Commit);  //commit the cell if cursor still on box
+                SchemeTableDisplay.CommitEdit(DataGridViewDataErrorContexts.Commit); //commit the cell if cursor still on box
+                //This avoids relying on (rowcout-1), which can be error-prone if the grid is empty or the new row is disabled.
+                int NumberOfSchemes = SchemeTableDisplay.Rows.Cast<DataGridViewRow>().Count(row => !row.IsNewRow);
 
-                //Go through the apps
+                sw.WriteLine(NumberOfSchemes.ToString());
 
-                sw.WriteLine("try this: " + ApplicationTable.DriftBuffer[i]);
-
-
-
-            }
-
-
-
-
+                //commit the scheme to ShemeInfoList in case it has been edited. Only the current scheme needs to be committed.
+                //find which row is current in SchemeTableDisplay
+                int checkedRowIndex = -1;
 
 
+                //******** This section finds which row has a check mark in Edit Box so that it can be saved to SchemeInfoList****
+                // Find the column index where HeaderText is "Edit"
+                int editColumnIndex = -1;
+                foreach (DataGridViewColumn col in SchemeTableDisplay.Columns)
+                {
+                    if (col.HeaderText == "Edit")
+                    {
+                        editColumnIndex = col.Index;
+                        break;
+                    }
+                }
 
+                if (editColumnIndex == -1)
+                {
+                    return;
+                }
 
+                // Now scan for the checked row
+                foreach (DataGridViewRow row in SchemeTableDisplay.Rows)
+                {
+                    if (row.IsNewRow) continue;
 
+                    if (Convert.ToBoolean(row.Cells[editColumnIndex].Value))
+                    {
+                        checkedRowIndex = row.Index;
+                        break;
+                    }
+                }
+                RecordScheme(checkedRowIndex);
+                ///**************** End of Looking for Check now record it in SchemInfoList ***************************************
 
+               
+                int referencedate;
+                for (int i = 0; i < NumberOfSchemes; i++)
 
+                {
 
-            //Write a second line of text
-            sw.WriteLine("From the StreamWriter class");
-            //Close the file
-            sw.Close();
+                    var cellValue = SchemeTableDisplay.Rows[i].Cells[2].Value?.ToString() ?? "";
+                    sw.WriteLine($"{i + 1},{cellValue}");
 
+                    if (SchemeInfoList[i].AbsoluteRelative)
+                        referencedate = 0;
+                    else if (SchemeInfoList[i].Emerge)
+                        referencedate = 1;
+                    else if (SchemeInfoList[i].Maturity)
+                        referencedate = 2;
+                    else if (SchemeInfoList[i].Removal)
+                        referencedate = 3;
+                    else
+                        referencedate = 99;
 
+                    //Go through the apps
+
+                    for (int j = 0; j < SchemeInfoList[i].Days.Count; j++)
+                    {
+                        sw.WriteLine(string.Join(",",
+                            SchemeInfoList[i].Days[j],
+                            SchemeInfoList[i].Amount[j],
+                            SchemeInfoList[i].Method[j],
+                            SchemeInfoList[i].Depth[j],
+                            SchemeInfoList[i].Split[j],
+                            SchemeInfoList[i].Drift[j],
+                            SchemeInfoList[i].DriftBuffer[j],
+                            SchemeInfoList[i].Periodicity[j],
+                            SchemeInfoList[i].Lag[j]
+                            ));
+                    }
+
+                  //  sw.WriteLine("try this: " + SchemeInfoList[i].DriftBuffer[1] + SchemeInfoList[i].DriftBuffer[1]);
+                    sw.WriteLine(string.Join(",", SchemeInfoList[i].DriftBuffer));
+                }
+
+                //Write a second line of text
+                sw.WriteLine("From the StreamWriter class");
+
+            } // The using statement automatically closes the StreamWriter
         }
-
-
-
 
         private void RecordScheme(int schemeNumber)
         {
+
+            if (schemeNumber<0)
+            {
+                MessageBox.Show($"Row {schemeNumber} is checked.");
+                return; 
+            }
+            
             var appData = new SchemeDetails();
 
             AppTableDisplay.CommitEdit(DataGridViewDataErrorContexts.Commit);
 
-            for (int i = 0; i < AppTableDisplay.RowCount - 1; i++)
+
+            for (int i = 0; i < AppTableDisplay.Rows.Count; i++)
             {
+                if (AppTableDisplay.Rows[i].IsNewRow) continue;
+                // rest of logic
+
                 appData.Days.Add(AppTableDisplay[0, i].Value?.ToString() ?? "");
                 appData.Amount.Add(AppTableDisplay[1, i].Value?.ToString() ?? "");
 
@@ -508,11 +553,61 @@ namespace PWC_Cs
             //else if (schemeNumber >= 0)
             //    schemeInfoList[schemeNumber] = appData;
 
-            SchemeInfoList[schemeNumber] = appData;
 
-
+            if (schemeNumber >= 0 && schemeNumber < SchemeInfoList.Count)
+            {
+                // Index exists — overwrite
+                SchemeInfoList[schemeNumber] = appData;
+            }
+            else
+            {
+                // Index doesn't exist — add to the end
+                SchemeInfoList.Add(appData);
+            }
         }
 
-  
+        private void SchemeTableDisplay_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            // Find the column index with header "Edit"
+            int editColumnIndex = -1;
+            foreach (DataGridViewColumn col in SchemeTableDisplay.Columns)
+            {
+                if (col.HeaderText == "Edit")
+                {
+                    editColumnIndex = col.Index;
+                    break;
+                }
+            }
+
+            if (editColumnIndex == -1 || e.ColumnIndex != editColumnIndex) return;
+            if (e.RowIndex < 0 || e.RowIndex >= SchemeTableDisplay.Rows.Count)return;
+
+            // If the new value is true, uncheck all other rows
+            var changedRow = SchemeTableDisplay.Rows[e.RowIndex];
+
+            bool isChecked = Convert.ToBoolean(changedRow.Cells[editColumnIndex].Value);
+
+            if (isChecked)
+            {
+                foreach (DataGridViewRow row in SchemeTableDisplay.Rows)
+                {
+                    if (row.Index != e.RowIndex && !row.IsNewRow)
+                    {
+                        row.Cells[editColumnIndex].Value = false;
+                    }
+                }
+            }
+        }
+
+
+
+        private void SchemeTableDisplay_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (SchemeTableDisplay.CurrentCell is DataGridViewCheckBoxCell && SchemeTableDisplay.IsCurrentCellDirty)
+            {
+                SchemeTableDisplay.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+
+        }
     }
 }
