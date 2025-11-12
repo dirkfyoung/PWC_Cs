@@ -22,9 +22,9 @@ namespace PWC_Cs
             AppTableDisplay.Columns[0].Width = 75;
             AppTableDisplay.Columns[1].Name = "Amount (kg/ha)";
             AppTableDisplay.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            AppTableDisplay.Columns[1].Width = 90;
+            AppTableDisplay.Columns[1].Width = 75;
 
-            var combo = new DataGridViewComboBoxColumn { HeaderText = "Application Method", Width = 190 };
+            var combo = new DataGridViewComboBoxColumn { HeaderText = "Application Method", Width = 135 };
             combo.Items.Add(Standard.Method1);
             combo.Items.Add(Standard.Method2);
             combo.Items.Add(Standard.Method3);
@@ -44,8 +44,8 @@ namespace PWC_Cs
             DataGridViewComboBoxColumn driftcombo = new()
             {
                 HeaderText = "Drift Type",
-                DropDownWidth = 350,
-                Width = 350,
+                DropDownWidth = 270,
+                Width = 250,
                 FlatStyle = FlatStyle.Flat,
                 DisplayStyle = DataGridViewComboBoxDisplayStyle.DropDownButton
             };
@@ -72,7 +72,7 @@ namespace PWC_Cs
 
             AppTableDisplay.Columns.Add("Buffer", "Drift Buffer (ft)");
             AppTableDisplay.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
-            AppTableDisplay.Columns[6].Width = 110;
+            AppTableDisplay.Columns[6].Width = 75;
 
             AppTableDisplay.Columns.Add("Periodicity", "Period (days)");
             AppTableDisplay.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;

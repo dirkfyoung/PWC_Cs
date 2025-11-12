@@ -9,7 +9,6 @@ namespace PWC_Cs
     public partial class Form1 : Form
     {
 
-
         private void RecordScheme(int schemeNumber)
         {
 
@@ -116,8 +115,6 @@ namespace PWC_Cs
         }
 
 
-
-
         private void SchemeTableDisplay_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             // Find the column index with header "Edit"
@@ -134,14 +131,10 @@ namespace PWC_Cs
             if (editColumnIndex == -1 || e.ColumnIndex != editColumnIndex) return;
             if (e.RowIndex < 0 || e.RowIndex >= SchemeTableDisplay.Rows.Count) return;
 
-            // If the new value is true, uncheck all other rows
             var changedRow = SchemeTableDisplay.Rows[e.RowIndex];
-
             bool isChecked = Convert.ToBoolean(changedRow.Cells[editColumnIndex].Value);
 
-
-
-            if (isChecked)  // find the one that just got unchecked and RecordScheme
+            if (isChecked)  // find the row that just got unchecked and RecordScheme
             {
                 foreach (DataGridViewRow row in SchemeTableDisplay.Rows)
                 {
@@ -149,7 +142,7 @@ namespace PWC_Cs
                     {
                         if (Convert.ToBoolean(row.Cells[editColumnIndex].Value)) 
                         {
-                            RecordScheme(row.Index);  //previously checked scheme
+                            RecordScheme(row.Index);  //this is the previously checked scheme
                         }
 
                     }
@@ -181,65 +174,6 @@ namespace PWC_Cs
                     }
                 }
             }
-
-
-
-            //        private void SchemeTableDisplay_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-            //        {
-            //            if (e.ColumnIndex == yourCheckBoxColumnIndex)
-            //            {
-            //                bool isChecked = Convert.ToBoolean(SchemeTableDisplay[e.ColumnIndex, e.RowIndex].Value);
-
-            //                if (isChecked)
-            //                {
-            //                    // Uncheck the previously checked row
-            //                    if (previouslyCheckedRow.HasValue && previouslyCheckedRow != e.RowIndex)
-            //                    {
-            //                        SchemeTableDisplay[e.ColumnIndex, previouslyCheckedRow.Value].Value = false;
-            //                    }
-
-            //                    previouslyCheckedRow = e.RowIndex;
-            //                }
-            //                else if (previouslyCheckedRow == e.RowIndex)
-            //                {
-            //                    previouslyCheckedRow = null;
-            //                }
-            //            }
-            //        }
-
-
-
-
-
-
-
-
-
-
-
-
-            //from ai
-            //    private void SchemeTableDisplay_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-            //{
-            //    if (e.ColumnIndex == yourCheckBoxColumnIndex)
-            //    {
-            //        bool isChecked = Convert.ToBoolean(SchemeTableDisplay[e.ColumnIndex, e.RowIndex].Value);
-
-            //        if (isChecked)
-            //        {
-            //            // ✅ This is the new checked row
-            //            int newCheckedRow = e.RowIndex;
-            //            Console.WriteLine($"New checked row: {newCheckedRow}");
-
-            //            // You can now uncheck the previous one if needed
-            //        }
-            //    }
-            //}
-
-
-
-
-
         }
 
 
@@ -251,53 +185,7 @@ namespace PWC_Cs
             }
 
 
-
-
-
-
-
-            ////////////////////////////////////////////////////////////////
-
-        //private void SchemeTableDisplay_CurrentCellDirtyStateChanged(object sender, EventArgs e)
-//        {
-//            if (SchemeTableDisplay.IsCurrentCellDirty)
-//            {
-//                // Commit the edit so CellValueChanged will fire
-//                SchemeTableDisplay.CommitEdit(DataGridViewDataErrorContexts.Commit);
-//            }
-//        }
-
-
-
-
-
-
-
-        ////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    }
+        }
     // Other event handlers or logic
 
 
@@ -309,17 +197,5 @@ namespace PWC_Cs
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-}
+    }
 }
