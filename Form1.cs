@@ -328,7 +328,7 @@ namespace PWC_Cs
             {
 
                 //the following will be populated later with varibles. leave asis for now
-                sw.WriteLine("version info");
+                sw.WriteLine("PWC Version 4.0 C#");
                 sw.WriteLine("working directory");
                 sw.WriteLine("family name");
                 sw.WriteLine("scenario directory");
@@ -366,56 +366,22 @@ namespace PWC_Cs
                 sw.WriteLine(string.Join(",", RampProfile.Checked.ToString(), profileDepth1.Text, ProfileDepth2.Text, RampEndValue.Text));
                 sw.WriteLine(string.Join(",", ExponentialProfile.Checked.ToString(), ExpParameter1.Text, ExpParameter2.Text));
 
-
                 // *********************Process the schemes: Extract info from SchemeInfo **************************
+
                 AppTableDisplay.CommitEdit(DataGridViewDataErrorContexts.Commit);  //commit the cell if cursor still on box
                 SchemeTableDisplay.CommitEdit(DataGridViewDataErrorContexts.Commit); //commit the cell if cursor still on box
+                RecordCheckedScheme(); //save the current scheme to SchemeInfoList in case it has been edited. 
+
                 //This avoids relying on (rowcout-1), which can be error-prone if the grid is empty or the new row is disabled.
                 int NumberOfSchemes = SchemeTableDisplay.Rows.Cast<DataGridViewRow>().Count(row => !row.IsNewRow);
 
-                sw.WriteLine(NumberOfSchemes.ToString());
-
-                //commit the scheme to ShemeInfoList in case it has been edited. Only the current scheme needs to be committed.
-                //find which row is current in SchemeTableDisplay
-                int checkedRowIndex = -1;
-
-
-                //******** This section finds which row has a check mark in Edit Box so that it can be saved to SchemeInfoList****
-                // Find the column index where HeaderText is "Edit"
-                int editColumnIndex = -1;
-                foreach (DataGridViewColumn col in SchemeTableDisplay.Columns)
-                {
-                    if (col.HeaderText == "Edit")
-                    {
-                        editColumnIndex = col.Index;
-                        break;
-                    }
-                }
-
-                if (editColumnIndex == -1)
-                {
-                    return;
-                }
-
-                // Now scan for the checked row
-                foreach (DataGridViewRow row in SchemeTableDisplay.Rows)
-                {
-                    if (row.IsNewRow) continue;
-
-                    if (Convert.ToBoolean(row.Cells[editColumnIndex].Value))
-                    {
-                        checkedRowIndex = row.Index;
-                        break;
-                    }
-                }
-                RecordScheme(checkedRowIndex);
-                ///**************** End of Looking for Check now record it in SchemInfoList ***************************************
+                sw.WriteLine(NumberOfSchemes.ToString());  //Line 35
 
 
                 for (int i = 0; i < NumberOfSchemes; i++)
                 {
                     var cellValue = SchemeTableDisplay.Rows[i].Cells[2].Value?.ToString() ?? "";
-                    sw.WriteLine($"{i + 1},{cellValue}");
+                    sw.WriteLine($"{i + 1},{cellValue}");                 //scheme number and description  Line 36
 
                     int referencedate;
                     if (SchemeInfoList[i].AbsoluteRelative) referencedate = 0;
@@ -441,8 +407,13 @@ namespace PWC_Cs
                             ));
                     }
 
-                    //  sw.WriteLine("try this: " + SchemeInfoList[i].DriftBuffer[1] + SchemeInfoList[i].DriftBuffer[1]);
-                    sw.WriteLine(string.Join(",", SchemeInfoList[i].DriftBuffer));
+                    sw.WriteLine(string.Join(",", SchemeInfoList[i].UseApplicationWindow, SchemeInfoList[i].ApplicationWindowSpan, SchemeInfoList[i].ApplicationWindowStep   ));
+                    sw.WriteLine(string.Join(",", SchemeInfoList[i].UseRainFast, SchemeInfoList[i].RainLimit, SchemeInfoList[i].IntolerableRainWindow, SchemeInfoList[i].OptimumApplicationWindow, SchemeInfoList[i].MinDaysBetweenApps));
+
+                    sw.WriteLine(SchemeInfoList[i].Scenarios.Count);  //number of scenarios
+
+
+
                 }
 
                 //Write a second line of text

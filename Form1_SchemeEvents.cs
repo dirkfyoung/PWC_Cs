@@ -183,10 +183,61 @@ namespace PWC_Cs
             {
                 SchemeTableDisplay.CommitEdit(DataGridViewDataErrorContexts.Commit);
             }
-
+            
 
         }
-    // Other event handlers or logic
+       
+        private void RecordCheckedScheme()
+        {
+            //Routine commits the checked scheme to SchemeInfoList. Currently called by Save File and Calculate 
+
+            //******** This section finds which row has a check mark in Edit Box so that it can be saved to SchemeInfoList****
+            int checkedRowIndex = -1;
+
+            // Find the column index where HeaderText is "Edit"
+            int editColumnIndex = -1;
+            foreach (DataGridViewColumn col in SchemeTableDisplay.Columns)
+            {
+                if (col.HeaderText == "Edit")
+                {
+                    editColumnIndex = col.Index;
+                    break;
+                }
+            }
+
+            if (editColumnIndex == -1)
+            {
+                return;
+            }
+
+            // Now scan for the checked row
+            foreach (DataGridViewRow row in SchemeTableDisplay.Rows)
+            {
+                if (row.IsNewRow) continue;
+
+                if (Convert.ToBoolean(row.Cells[editColumnIndex].Value))
+                {
+                    checkedRowIndex = row.Index;
+                    break;
+                }
+            }
+            RecordScheme(checkedRowIndex);
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
