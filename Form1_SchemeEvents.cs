@@ -141,9 +141,36 @@ namespace PWC_Cs
 
 
 
+            if (isChecked)  // find the one that just got unchecked and RecordScheme
+            {
+                foreach (DataGridViewRow row in SchemeTableDisplay.Rows)
+                {
+                    if (row.Index != e.RowIndex && !row.IsNewRow)
+                    {
+                        if (Convert.ToBoolean(row.Cells[editColumnIndex].Value)) 
+                        {
+                            RecordScheme(row.Index);  //previously checked scheme
+                        }
 
-            // i think this should be moved to after routine that follow currently commnted out
+                    }
+                }
+            }
 
+            if (!isChecked) // if one was just unchecked and nothing else checked then record the newly unchecked scheme
+            {
+                bool nothingChecked = true;
+                foreach (DataGridViewRow row in SchemeTableDisplay.Rows)
+                {
+                    if (!row.IsNewRow)
+                    {
+                        if (Convert.ToBoolean(row.Cells[editColumnIndex].Value)) nothingChecked = false;
+                    }  
+                }
+                if (nothingChecked) RecordScheme(e.RowIndex);  //unchecked box and nothing else checked
+            }
+
+
+            //Now go through schemes and uncheck anything except the newly checked box
             if (isChecked)
             {
                 foreach (DataGridViewRow row in SchemeTableDisplay.Rows)
