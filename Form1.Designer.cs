@@ -252,7 +252,7 @@
             tabPage1.Controls.Add(tableLayoutPanel1);
             tabPage1.Location = new Point(4, 29);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3, 3, 3, 3);
+            tabPage1.Padding = new Padding(3);
             tabPage1.Size = new Size(980, 620);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Chemical";
@@ -1169,7 +1169,7 @@
             // 
             tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3, 3, 3, 3);
+            tabPage2.Padding = new Padding(3);
             tabPage2.Size = new Size(980, 620);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Target Body";
@@ -1181,7 +1181,7 @@
             tabPage3.Controls.Add(SchemeTableDisplay);
             tabPage3.Location = new Point(4, 29);
             tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(3, 3, 3, 3);
+            tabPage3.Padding = new Padding(3);
             tabPage3.Size = new Size(980, 620);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Schemes";
@@ -1270,7 +1270,7 @@
             tabPage4.ForeColor = Color.Black;
             tabPage4.Location = new Point(4, 29);
             tabPage4.Name = "tabPage4";
-            tabPage4.Padding = new Padding(3, 3, 3, 3);
+            tabPage4.Padding = new Padding(3);
             tabPage4.Size = new Size(980, 620);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Applications";
@@ -1568,7 +1568,7 @@
             tabPage5.Controls.Add(ScenarioListBox);
             tabPage5.Location = new Point(4, 29);
             tabPage5.Name = "tabPage5";
-            tabPage5.Padding = new Padding(3, 3, 3, 3);
+            tabPage5.Padding = new Padding(3);
             tabPage5.Size = new Size(980, 620);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Scenarios";
@@ -1642,7 +1642,7 @@
             tabPage6.Controls.Add(groupBox1);
             tabPage6.Location = new Point(4, 29);
             tabPage6.Name = "tabPage6";
-            tabPage6.Padding = new Padding(3, 3, 3, 3);
+            tabPage6.Padding = new Padding(3);
             tabPage6.Size = new Size(980, 620);
             tabPage6.TabIndex = 5;
             tabPage6.Text = "Advanced";

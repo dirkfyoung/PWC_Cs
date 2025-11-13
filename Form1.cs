@@ -1,5 +1,11 @@
 using System.Windows.Forms;
 using System.Linq;
+using System.IO;
+using Microsoft.VisualBasic.Logging;
+using static System.Net.Mime.MediaTypeNames;
+using static System.Net.WebRequestMethods;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Xml.Linq;
 
 
 namespace PWC_Cs
@@ -146,90 +152,91 @@ namespace PWC_Cs
         //**********************************************************************
         public void RetrieveMainInputFromTextFile(string readfilename)
         {
-            string[] lines = File.ReadAllLines(readfilename);
+            using StreamReader reader = new StreamReader(readfilename);
             string[] col;
+            string line;
 
-            col = lines[0].Split(',');//Version
-            col = lines[1].Split(',');
-            col = lines[2].Split(',');
-            col = lines[3].Split(',');
-            col = lines[4].Split(',');
-            col = lines[5].Split(',');
-            col = lines[6].Split(',');
+            line = reader.ReadLine()!;//Version
+            line = reader.ReadLine()!;
+            line = reader.ReadLine()!;
+            line = reader.ReadLine()!;
+            line = reader.ReadLine()!;
+            line = reader.ReadLine()!;
+            line = reader.ReadLine()!;
 
-            col = lines[7].Split(','); //sorption
+            col = reader.ReadLine()!.Split(',');
             sorption1.Text = col[0];
             sorption2.Text = col[1];
             sorption3.Text = col[2];
 
-            col = lines[8].Split(",");
+            col = reader.ReadLine()!.Split(',');
             Nexp1Reg1.Text = col[0];
             Nexp2Reg1.Text = col[1];
             Nexp3Reg1.Text = col[2];
 
-            col = lines[9].Split(",");
+            col = reader.ReadLine()!.Split(',');
             Kf1Reg2.Text = col[0];
             Kf2Reg2.Text = col[1];
             Kf3Reg2.Text = col[2];
 
-            col = lines[10].Split(",");
+            col = reader.ReadLine()!.Split(',');
             Nexp1Reg2.Text = col[0];
             Nexp2Reg2.Text = col[1];
             Nexp3Reg2.Text = col[2];
 
-            col = lines[11].Split(",");
+            col = reader.ReadLine()!.Split(',');
             MassTransferRegion2.Text = col[0];
             MassTransferRegion2Daughter.Text = col[1];
             MassTransferRegion2GrandDaughter.Text = col[2];
 
-            col = lines[12].Split(",");
+            col = reader.ReadLine()!.Split(',');
             FreundlichMinimumConc.Text = col[0];
             SubTimeSteps.Text = col[1];
 
-            col = lines[13].Split(",");
+            col = reader.ReadLine()!.Split(',');
             WaterColMetab1.Text = col[0];
             WaterColMetab2.Text = col[1];
             WaterColMetab3.Text = col[2];
             WaterMolarRatio1.Text = col[3];
             WaterMolarRatio2.Text = col[4];
 
-            col = lines[14].Split(",");
+            col = reader.ReadLine()!.Split(',');
             WaterColRef1.Text = col[0];
             WaterColRef2.Text = col[1];
             WaterColRef3.Text = col[2];
 
-            col = lines[15].Split(",");
+            col = reader.ReadLine()!.Split(',');
             BenthicMetab1.Text = col[0];
             BenthicMetab2.Text = col[1];
             BenthicMetab3.Text = col[2];
             BenthicMolarRatio1.Text = col[3];
             BenthicMolarRatio2.Text = col[4];
 
-            col = lines[16].Split(",");
+            col = reader.ReadLine()!.Split(',');
             BenthicRef1.Text = col[0];
             BenthicRef2.Text = col[1];
             BenthicRef3.Text = col[2];
 
-            col = lines[17].Split(",");
+            col = reader.ReadLine()!.Split(',');
             Photo1.Text = col[0];
             Photo2.Text = col[1];
             Photo3.Text = col[2];
             PhotoMolarRatio1.Text = col[3];
             PhotoMolarRatio2.Text = col[4];
 
-            col = lines[18].Split(",");
+            col = reader.ReadLine()!.Split(',');
             PhotoLat1.Text = col[0];
             PhotoLat2.Text = col[1];
             PhotoLat3.Text = col[2];
 
-            col = lines[19].Split(",");
+            col = reader.ReadLine()!.Split(',');
             Hydrolysis1.Text = col[0];
             Hydrolysis2.Text = col[1];
             Hydrolysis3.Text = col[2];
             HydroMolarRatio1.Text = col[3];
             HydroMolarRatio2.Text = col[4];
 
-            col = lines[20].Split(",");
+            col = reader.ReadLine()!.Split(',');
             SoilDegradation1.Text = col[0];
             SoilDegradation2.Text = col[1];
             SoilDegradation3.Text = col[2];
@@ -237,93 +244,458 @@ namespace PWC_Cs
             SoilMolarRatio2.Text = col[4];
             IsAllMedia.Checked = Convert.ToBoolean(col[5]);
 
-            col = lines[21].Split(",");
+            col = reader.ReadLine()!.Split(',');
             SoilRef1.Text = col[0];
             SoilRef2.Text = col[1];
             SoilRef3.Text = col[2];
 
-            col = lines[22].Split(",");
+            col = reader.ReadLine()!.Split(',');
             FoliarDeg1.Text = col[0];
             FoliarDeg2.Text = col[1];
             FoliarDeg3.Text = col[2];
             FoliarMolarRatio1.Text = col[3];
             FoliarMolarRatio2.Text = col[4];
 
-            col = lines[23].Split(",");
+            col = reader.ReadLine()!.Split(',');
             FoliarWashoff1.Text = col[0];
             FoliarWashoff2.Text = col[1];
             FoliarWashoff3.Text = col[2];
 
-            col = lines[24].Split(",");
+            col = reader.ReadLine()!.Split(',');
             MWT1.Text = col[0];
             MWT2.Text = col[1];
             MWT3.Text = col[2];
 
-            col = lines[25].Split(",");
+            col = reader.ReadLine()!.Split(',');
             VaporPress1.Text = col[0];
             VaporPress2.Text = col[1];
             VaporPress3.Text = col[2];
 
-            col = lines[26].Split(",");
+            col = reader.ReadLine()!.Split(',');
             Sol1.Text = col[0];
             Sol2.Text = col[1];
             Sol3.Text = col[2];
 
-            col = lines[27].Split(",");
+            col = reader.ReadLine()!.Split(',');
             Henry1.Text = col[0];
             Henry2.Text = col[1];
             Henry3.Text = col[2];
 
-            col = lines[28].Split(",");
+            col = reader.ReadLine()!.Split(',');
             AirDiff1.Text = col[0];
             AirDiff2.Text = col[1];
             AirDiff3.Text = col[2];
 
-            col = lines[29].Split(",");
+            col = reader.ReadLine()!.Split(',');
             HeatHenry1.Text = col[0];
             HeatHenry2.Text = col[1];
             HeatHenry3.Text = col[2];
 
-            col = lines[30].Split(",");
+            col = reader.ReadLine()!.Split(',');
             Q10.Text = col[0];
 
-            col = lines[31].Split(",");
+            col = reader.ReadLine()!.Split(',');
             ConstantProfile.Checked = Convert.ToBoolean(col[0]);
 
-            col = lines[32].Split(",");
+            col = reader.ReadLine()!.Split(',');
             RampProfile.Checked = Convert.ToBoolean(col[0]);
             profileDepth1.Text = col[1];
             ProfileDepth2.Text = col[2];
             RampEndValue.Text = col[3];
 
-            col = lines[33].Split(",");
+            col = reader.ReadLine()!.Split(',');
             ExponentialProfile.Checked = Convert.ToBoolean(col[0]);
             ExpParameter1.Text = col[1];
             ExpParameter2.Text = col[2];
 
-            col = lines[34].Split(",");
+            col = reader.ReadLine()!.Split(',');
             int NumberOfSchemes = Convert.ToInt16(col[0]);
+
+
+           
+           MessageBox.Show("num sch " + col[0]);
 
             SchemeTableDisplay.Rows.Clear();
 
+            for (int i = 0; i < NumberOfSchemes; i++) 
+            { 
+                SchemeDetails SingleScheme = new SchemeDetails();
+                col = reader.ReadLine()!.Split(',');
+                SchemeTableDisplay.Rows.Add();
 
-            //for (int i = 0; i < NumberOfSchemes; i++)
-            //{
-            //    var ApplicationTable = new SchemeDetails
-            //    {
-            //        Days = { },
-            //        Amount = { },
-            //        Method = { },
-            //        Depth = { },
-            //        Split = { },
-            //        Drift = { },
-            //        DriftBuffer = { },
-            //        Periodicity = { },
-            //        Lag = { },
-            //        Scenarios = { }
-            //    };
+                SchemeTableDisplay.Rows[i].Cells[2].Value = col[1];   // description is only store in GUI
 
-            //    col = lines[34].Split(",");
+                MessageBox.Show("desc " + col[1]);
+
+                // read the relative app reference 
+
+                SingleScheme.AbsoluteRelative = false;
+                SingleScheme.Emerge           = false;
+                SingleScheme.Maturity         = false;
+                SingleScheme.Removal          = false;
+
+                col = reader.ReadLine()!.Split(',');
+
+                MessageBox.Show(col[0]);
+
+                int ff = Convert.ToInt32(col[0]);
+                switch (ff)
+                {
+                    case 0:
+                        SingleScheme.AbsoluteRelative = true;
+                        break;
+                    case 1:
+                        SingleScheme.Emerge = true;
+                        break;
+                    case 2:
+                        SingleScheme.Maturity = true;
+                        break;
+                    case 3:
+                        SingleScheme.Removal = true;
+                        break;
+                }
+
+                col = reader.ReadLine()!.Split(',');
+                int NumberOfApps = Convert.ToInt32(col[0]);
+
+                MessageBox.Show("num apps " + col[0]);
+
+                for (int j = 0; i < NumberOfApps; i++)
+                {
+                    col = reader.ReadLine()!.Split(',');
+                    SingleScheme.Days.Add(col[0]);
+                    SingleScheme.Amount.Add(col[1]);
+                    SingleScheme.Method.Add(col[2]);
+                    SingleScheme.Depth.Add(col[3]);
+                    SingleScheme.Split.Add(col[4]);
+                    SingleScheme.Drift.Add(col[5]);
+                    SingleScheme.DriftBuffer.Add(col[6]);
+                    SingleScheme.Periodicity.Add(col[7]);
+                    SingleScheme.Lag.Add(col[8]);
+                }
+
+
+              
+
+                   //  sw.WriteLine(SchemeInfoList[i].Days.Count + 1);
+                ////Go through the apps
+                //for (int j = 0; j < SchemeInfoList[i].Days.Count; j++)
+                //{
+                //    sw.WriteLine(string.Join(",",
+                //        SchemeInfoList[i].Days[j],
+                //        SchemeInfoList[i].Amount[j],
+                //        SchemeInfoList[i].Method[j],
+                //        SchemeInfoList[i].Depth[j],
+                //        SchemeInfoList[i].Split[j],
+                //        SchemeInfoList[i].Drift[j],
+                //        SchemeInfoList[i].DriftBuffer[j],
+                //        SchemeInfoList[i].Periodicity[j],
+                //        SchemeInfoList[i].Lag[j]
+                //        ));
+                //}
+
+
+
+
+                //sw.WriteLine(string.Join(",", SchemeInfoList[i].UseApplicationWindow, SchemeInfoList[i].ApplicationWindowSpan, SchemeInfoList[i].ApplicationWindowStep));
+                //sw.WriteLine(string.Join(",", SchemeInfoList[i].UseRainFast, SchemeInfoList[i].RainLimit, SchemeInfoList[i].IntolerableRainWindow, SchemeInfoList[i].OptimumApplicationWindow, SchemeInfoList[i].MinDaysBetweenApps));
+
+                //sw.WriteLine(SchemeInfoList[i].Scenarios.Count);  //number of scenarios
+
+
+
+            }
+
+
+
+
+
+
+            //    currentrow = MyReader.ReadFields
+            //    numRows = currentrow(0) 'number of application (rows) in app table
+
+
+            //    For j As Integer = 0 To numRows -1
+            //        currentrow = MyReader.ReadFields               'Not read if zero rows
+            //        ApplicationTable.Days.Add(currentrow(0))
+            //        ApplicationTable.Amount.Add(currentrow(1))
+            //        ApplicationTable.Method.Add(currentrow(2))
+            //        ApplicationTable.Depth.Add(currentrow(3))
+            //        ApplicationTable.Split.Add(currentrow(4))
+            //        ApplicationTable.Drift.Add(currentrow(5))
+            //        ApplicationTable.DriftBuffer.Add(currentrow(6))
+            //        ApplicationTable.Periodicity.Add(currentrow(7))
+            //        ApplicationTable.Lag.Add(currentrow(8))
+            //    Next
+
+            //    currentrow = MyReader.ReadFields
+            //    ApplicationTable.UseApplicationWindow = currentrow(0)
+            //    ApplicationTable.ApplicationWindowSpan = currentrow(1)
+            //    ApplicationTable.ApplicationWindowStep = currentrow(2)
+
+            //    currentrow = MyReader.ReadFields                          'LINE 40
+            //    ApplicationTable.UseRainFast = currentrow(0)
+            //    ApplicationTable.RainLimit = currentrow(1)
+            //    ApplicationTable.IntolerableRainWindow = currentrow(2)
+            //    ApplicationTable.OptimumApplicationWindow = currentrow(3)
+            //    ApplicationTable.MinDaysBetweenApps = currentrow(4)
+
+            //    currentrow = MyReader.ReadFields  'Read number of scenarios    
+
+            //    NumberOfScenarios = currentrow(0)
+
+
+            //    For j As Integer = 0 To NumberOfScenarios -1
+            //        'currentrow = MyReader.ReadFields
+            //        'ApplicationTable.Scenarios.Add(currentrow(0)) ' commas in name were causing problems READ Entire line instead
+            //        blip = MyReader.ReadLine()
+            //        ApplicationTable.Scenarios.Add(blip)
+            //    Next
+            //    currentrow = MyReader.ReadFields
+            //    ApplicationTable.UseBatchScenarioFile = currentrow(0)
+
+            //    currentrow = MyReader.ReadFields
+            //    ApplicationTable.ScenarioBatchFileName = currentrow(0)
+
+
+
+
+            //    If MyReader.PeekChars(11) = "Mitigations" Then
+
+
+            //        MyReader.ReadLine() 'skip over the Mitigations line
+
+
+            //        currentrow = MyReader.ReadFields
+            //            ApplicationTable.RunoffMitigation = currentrow(0)
+            //            ApplicationTable.ErosionMitigation = currentrow(1)
+            //            ApplicationTable.DriftMitigation = currentrow(2)
+
+            //    Else
+
+
+
+            //        ApplicationTable.RunoffMitigation = "1.0"
+            //        ApplicationTable.ErosionMitigation = "1.0"
+            //        ApplicationTable.DriftMitigation = "1.0"
+            //    End If
+
+
+            //    SchemeInfoList.Add(ApplicationTable)
+            //Next
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            ///////////////////////////////////////////////////////////////////////////
+            //string[] lines = File.ReadAllLines(readfilename);
+            //string[] col;
+
+            //col = lines[0].Split(',');//Version
+            //col = lines[1].Split(',');
+            //col = lines[2].Split(',');
+            //col = lines[3].Split(',');
+            //col = lines[4].Split(',');
+            //col = lines[5].Split(',');
+            //col = lines[6].Split(',');
+
+            //col = lines[7].Split(','); //sorption
+            //sorption1.Text = col[0];
+            //sorption2.Text = col[1];
+            //sorption3.Text = col[2];
+
+            //col = lines[8].Split(",");
+            //Nexp1Reg1.Text = col[0];
+            //Nexp2Reg1.Text = col[1];
+            //Nexp3Reg1.Text = col[2];
+
+            //col = lines[9].Split(",");
+            //Kf1Reg2.Text = col[0];
+            //Kf2Reg2.Text = col[1];
+            //Kf3Reg2.Text = col[2];
+
+            //col = lines[10].Split(",");
+            //Nexp1Reg2.Text = col[0];
+            //Nexp2Reg2.Text = col[1];
+            //Nexp3Reg2.Text = col[2];
+
+            //col = lines[11].Split(",");
+            //MassTransferRegion2.Text = col[0];
+            //MassTransferRegion2Daughter.Text = col[1];
+            //MassTransferRegion2GrandDaughter.Text = col[2];
+
+            //col = lines[12].Split(",");
+            //FreundlichMinimumConc.Text = col[0];
+            //SubTimeSteps.Text = col[1];
+
+            //col = lines[13].Split(",");
+            //WaterColMetab1.Text = col[0];
+            //WaterColMetab2.Text = col[1];
+            //WaterColMetab3.Text = col[2];
+            //WaterMolarRatio1.Text = col[3];
+            //WaterMolarRatio2.Text = col[4];
+
+            //col = lines[14].Split(",");
+            //WaterColRef1.Text = col[0];
+            //WaterColRef2.Text = col[1];
+            //WaterColRef3.Text = col[2];
+
+            //col = lines[15].Split(",");
+            //BenthicMetab1.Text = col[0];
+            //BenthicMetab2.Text = col[1];
+            //BenthicMetab3.Text = col[2];
+            //BenthicMolarRatio1.Text = col[3];
+            //BenthicMolarRatio2.Text = col[4];
+
+            //col = lines[16].Split(",");
+            //BenthicRef1.Text = col[0];
+            //BenthicRef2.Text = col[1];
+            //BenthicRef3.Text = col[2];
+
+            //col = lines[17].Split(",");
+            //Photo1.Text = col[0];
+            //Photo2.Text = col[1];
+            //Photo3.Text = col[2];
+            //PhotoMolarRatio1.Text = col[3];
+            //PhotoMolarRatio2.Text = col[4];
+
+            //col = lines[18].Split(",");
+            //PhotoLat1.Text = col[0];
+            //PhotoLat2.Text = col[1];
+            //PhotoLat3.Text = col[2];
+
+            //col = lines[19].Split(",");
+            //Hydrolysis1.Text = col[0];
+            //Hydrolysis2.Text = col[1];
+            //Hydrolysis3.Text = col[2];
+            //HydroMolarRatio1.Text = col[3];
+            //HydroMolarRatio2.Text = col[4];
+
+            //col = lines[20].Split(",");
+            //SoilDegradation1.Text = col[0];
+            //SoilDegradation2.Text = col[1];
+            //SoilDegradation3.Text = col[2];
+            //SoilMolarRatio1.Text = col[3];
+            //SoilMolarRatio2.Text = col[4];
+            //IsAllMedia.Checked = Convert.ToBoolean(col[5]);
+
+            //col = lines[21].Split(",");
+            //SoilRef1.Text = col[0];
+            //SoilRef2.Text = col[1];
+            //SoilRef3.Text = col[2];
+
+            //col = lines[22].Split(",");
+            //FoliarDeg1.Text = col[0];
+            //FoliarDeg2.Text = col[1];
+            //FoliarDeg3.Text = col[2];
+            //FoliarMolarRatio1.Text = col[3];
+            //FoliarMolarRatio2.Text = col[4];
+
+            //col = lines[23].Split(",");
+            //FoliarWashoff1.Text = col[0];
+            //FoliarWashoff2.Text = col[1];
+            //FoliarWashoff3.Text = col[2];
+
+            //col = lines[24].Split(",");
+            //MWT1.Text = col[0];
+            //MWT2.Text = col[1];
+            //MWT3.Text = col[2];
+
+            //col = lines[25].Split(",");
+            //VaporPress1.Text = col[0];
+            //VaporPress2.Text = col[1];
+            //VaporPress3.Text = col[2];
+
+            //col = lines[26].Split(",");
+            //Sol1.Text = col[0];
+            //Sol2.Text = col[1];
+            //Sol3.Text = col[2];
+
+            //col = lines[27].Split(",");
+            //Henry1.Text = col[0];
+            //Henry2.Text = col[1];
+            //Henry3.Text = col[2];
+
+            //col = lines[28].Split(",");
+            //AirDiff1.Text = col[0];
+            //AirDiff2.Text = col[1];
+            //AirDiff3.Text = col[2];
+
+            //col = lines[29].Split(",");
+            //HeatHenry1.Text = col[0];
+            //HeatHenry2.Text = col[1];
+            //HeatHenry3.Text = col[2];
+
+            //col = lines[30].Split(",");
+            //Q10.Text = col[0];
+
+            //col = lines[31].Split(",");
+            //ConstantProfile.Checked = Convert.ToBoolean(col[0]);
+
+            //col = lines[32].Split(",");
+            //RampProfile.Checked = Convert.ToBoolean(col[0]);
+            //profileDepth1.Text = col[1];
+            //ProfileDepth2.Text = col[2];
+            //RampEndValue.Text = col[3];
+
+            //col = lines[33].Split(",");
+            //ExponentialProfile.Checked = Convert.ToBoolean(col[0]);
+            //ExpParameter1.Text = col[1];
+            //ExpParameter2.Text = col[2];
+
+            //col = lines[34].Split(",");
+            //int NumberOfSchemes = Convert.ToInt16(col[0]);
+
+            //SchemeTableDisplay.Rows.Clear();
+
+
+            ////for (int i = 0; i < NumberOfSchemes; i++)
+            ////{
+            ////    var ApplicationTable = new SchemeDetails
+            ////    {
+            ////        Days = { },
+            ////        Amount = { },
+            ////        Method = { },
+            ////        Depth = { },
+            ////        Split = { },
+            ////        Drift = { },
+            ////        DriftBuffer = { },
+            ////        Periodicity = { },
+            ////        Lag = { },
+            ////        Scenarios = { }
+            ////    };
+
+            ////    col = lines[34].Split(",");
 
 
 
@@ -387,7 +759,7 @@ namespace PWC_Cs
                 //This avoids relying on (rowcout-1), which can be error-prone if the grid is empty or the new row is disabled.
                 int NumberOfSchemes = SchemeTableDisplay.Rows.Cast<DataGridViewRow>().Count(row => !row.IsNewRow);
 
-                sw.WriteLine(NumberOfSchemes.ToString());  //Line 35
+                sw.WriteLine(NumberOfSchemes.ToString() + ", ***** Schemes Start Here ******");  //Line 35
 
 
                 for (int i = 0; i < NumberOfSchemes; i++)
@@ -402,6 +774,9 @@ namespace PWC_Cs
                     else if (SchemeInfoList[i].Removal) referencedate = 3;
                     else referencedate = 99;
                     sw.WriteLine(referencedate);
+
+
+                    sw.WriteLine(SchemeInfoList[i].Days.Count+1);
 
                     //Go through the apps
                     for (int j = 0; j < SchemeInfoList[i].Days.Count; j++)
