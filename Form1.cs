@@ -17,14 +17,16 @@ namespace PWC_Cs
         //**********************************************************************
         private void Form1_Load(object sender, EventArgs e)
         {
+            AppTableDisplay.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            AppTableDisplay.ColumnHeadersHeight = AppTableDisplay.ColumnHeadersHeight * 2;
             AppTableDisplay.ColumnCount = 2;
             AppTableDisplay.Columns[0].Name = "Days";
-            AppTableDisplay.Columns[0].Width = 75;
-            AppTableDisplay.Columns[1].Name = "Amount (kg/ha)";
-            AppTableDisplay.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            AppTableDisplay.Columns[1].Width = 75;
+            AppTableDisplay.Columns[0].FillWeight = 10;
 
-            var combo = new DataGridViewComboBoxColumn { HeaderText = "Application Method", Width = 135 };
+            AppTableDisplay.Columns[1].Name = "Amount (kg/ha)";
+            AppTableDisplay.Columns[1].FillWeight = 15;
+
+            var combo = new DataGridViewComboBoxColumn { HeaderText = "Application Method", FillWeight = 30 };
             combo.Items.Add(Standard.Method1);
             combo.Items.Add(Standard.Method2);
             combo.Items.Add(Standard.Method3);
@@ -36,16 +38,17 @@ namespace PWC_Cs
             AppTableDisplay.Columns.Add(combo);
             AppTableDisplay.Columns.Add("Depth", "Depth (cm)");
             AppTableDisplay.Columns[3].SortMode = DataGridViewColumnSortMode.NotSortable;
-            AppTableDisplay.Columns[3].Width = 75; ;
+            AppTableDisplay.Columns[3].FillWeight = 10;
+
             AppTableDisplay.Columns.Add("Split", "Split");
             AppTableDisplay.Columns[4].SortMode = DataGridViewColumnSortMode.NotSortable;
-            AppTableDisplay.Columns[4].Width = 65;
+            AppTableDisplay.Columns[4].FillWeight = 10;
 
             DataGridViewComboBoxColumn driftcombo = new()
             {
                 HeaderText = "Drift Type",
                 DropDownWidth = 270,
-                Width = 250,
+                FillWeight = 50,
                 FlatStyle = FlatStyle.Flat,
                 DisplayStyle = DataGridViewComboBoxDisplayStyle.DropDownButton
             };
@@ -68,19 +71,17 @@ namespace PWC_Cs
             driftcombo.Items.Add(Standard.SprayTerms[15]);
             AppTableDisplay.Columns.Add(driftcombo);
 
-
-
             AppTableDisplay.Columns.Add("Buffer", "Drift Buffer (ft)");
             AppTableDisplay.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
-            AppTableDisplay.Columns[6].Width = 75;
+            AppTableDisplay.Columns[6].FillWeight = 15;
 
             AppTableDisplay.Columns.Add("Periodicity", "Period (days)");
             AppTableDisplay.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;
-            AppTableDisplay.Columns[7].Width = 75;
+            AppTableDisplay.Columns[7].FillWeight = 11;
 
             AppTableDisplay.Columns.Add("Lag", "Lag (days)");
             AppTableDisplay.Columns[8].SortMode = DataGridViewColumnSortMode.NotSortable;
-            AppTableDisplay.Columns[8].Width = 75;
+            AppTableDisplay.Columns[8].FillWeight = 11;
 
             DataGridViewButtonColumn btnApp = new()
             {
@@ -93,23 +94,34 @@ namespace PWC_Cs
             };
 
             AppTableDisplay.Columns.Add(btnApp);
-            AppTableDisplay.Columns["Delete"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            //AppTableDisplay.Columns["Delete"].Width = 70;
-
-            DataGridViewButtonColumn btnScheme = new()
-            {
-                Text = "delete",
-                HeaderText = "Delete",
-                Name = "Delete",
-                UseColumnTextForButtonValue = true,
-                FlatStyle = FlatStyle.Popup,
-                DefaultCellStyle = { BackColor = Color.Orange }
-            };
+            AppTableDisplay.Columns["Delete"].FillWeight = 12;
 
 
-            SchemeTableDisplay.Columns.Add(btnScheme);
-            SchemeTableDisplay.Columns["Delete"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            SchemeTableDisplay.Columns["Delete"].Width = 70;
+
+
+
+
+
+
+
+
+
+
+
+            //DataGridViewButtonColumn btnScheme = new()
+            //{
+            //    Text = "delete",
+            //    HeaderText = "Delete",
+            //    Name = "Delete",
+            //    UseColumnTextForButtonValue = true,
+            //    FlatStyle = FlatStyle.Popup,
+            //    DefaultCellStyle = { BackColor = Color.Orange }
+            //};
+
+
+            //SchemeTableDisplay.Columns.Add(btnScheme);
+            //SchemeTableDisplay.Columns["Delete"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            //SchemeTableDisplay.Columns["Delete"].FillWeight = 20;
 
             //SchemeTableDisplay.CellValueChanged += SchemeTableDisplay_CellValueChanged;
             //SchemeTableDisplay.CurrentCellDirtyStateChanged += SchemeTableDisplay_CurrentCellDirtyStateChanged;
