@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -226,6 +226,51 @@
             moreTabsToolStripMenuItem = new ToolStripMenuItem();
             saveFileDialog1 = new SaveFileDialog();
             openFileDialog1 = new OpenFileDialog();
+            OptionalOutputTab = new TabPage();
+            outputPestRunoff = new CheckBox();
+            outputPestErosion = new CheckBox();
+            outputDailyFieldVolatilization = new CheckBox();
+            outputDailyPestLeached = new CheckBox();
+            outputConcLastLayer = new CheckBox();
+            outputMassOnFoliage = new CheckBox();
+            outputDecayedPest = new CheckBox();
+            outputMassInSoilProfile = new CheckBox();
+            outputMassSoilSpecific = new CheckBox();
+            outputInfiltratedWaterLastLayer = new CheckBox();
+            outputRunoff = new CheckBox();
+            outputErosion = new CheckBox();
+            outputPrecipitation = new CheckBox();
+            outputActualEvap = new CheckBox();
+            outputTotalSoilWater = new CheckBox();
+            outputIrrigation = new CheckBox();
+            chemInfiltrationDepth = new TextBox();
+            label50 = new Label();
+            outputDecayDepth1 = new TextBox();
+            outputDecayDepth2 = new TextBox();
+            label51 = new Label();
+            label52 = new Label();
+            label53 = new Label();
+            label54 = new Label();
+            label55 = new Label();
+            label56 = new Label();
+            outputMassDepth2 = new TextBox();
+            outputMassDepth1 = new TextBox();
+            outputInfiltrationAtDepth = new CheckBox();
+            outputWaterConc = new CheckBox();
+            output_GW_BTC = new CheckBox();
+            checkBox5 = new CheckBox();
+            OutputInfiltrationDepth = new TextBox();
+            label57 = new Label();
+            CalculateEoF = new CheckBox();
+            outputSpraydrift = new CheckBox();
+            dataGridView1 = new DataGridView();
+            Item = new DataGridViewTextBoxColumn();
+            Chem = new DataGridViewTextBoxColumn();
+            Mode = new DataGridViewTextBoxColumn();
+            Arg1 = new DataGridViewTextBoxColumn();
+            Arg2 = new DataGridViewTextBoxColumn();
+            Multiplier = new DataGridViewTextBoxColumn();
+            Delete = new DataGridViewButtonColumn();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -239,6 +284,8 @@
             tabPage6.SuspendLayout();
             groupBox1.SuspendLayout();
             menuStrip1.SuspendLayout();
+            OptionalOutputTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -250,6 +297,7 @@
             tabControl1.Controls.Add(tabPage4);
             tabControl1.Controls.Add(tabPage5);
             tabControl1.Controls.Add(tabPage6);
+            tabControl1.Controls.Add(OptionalOutputTab);
             tabControl1.Location = new Point(0, 39);
             tabControl1.Margin = new Padding(4);
             tabControl1.Name = "tabControl1";
@@ -1358,18 +1406,18 @@
             // SchemeTableDisplay
             // 
             SchemeTableDisplay.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.Gold;
-            SchemeTableDisplay.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = Color.Gold;
+            SchemeTableDisplay.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             SchemeTableDisplay.BackgroundColor = Color.Gold;
             SchemeTableDisplay.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Info;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            SchemeTableDisplay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Info;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            SchemeTableDisplay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             SchemeTableDisplay.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             SchemeTableDisplay.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3 });
             SchemeTableDisplay.Location = new Point(24, 69);
@@ -2383,6 +2431,444 @@
             // 
             saveFileDialog1.Filter = "PWC 3 INPUT Files (*.PW4)|*.PW4|ALL Files (*.*)|*.*";
             // 
+            // OptionalOutputTab
+            // 
+            OptionalOutputTab.Controls.Add(dataGridView1);
+            OptionalOutputTab.Controls.Add(outputSpraydrift);
+            OptionalOutputTab.Controls.Add(CalculateEoF);
+            OptionalOutputTab.Controls.Add(label57);
+            OptionalOutputTab.Controls.Add(OutputInfiltrationDepth);
+            OptionalOutputTab.Controls.Add(outputWaterConc);
+            OptionalOutputTab.Controls.Add(output_GW_BTC);
+            OptionalOutputTab.Controls.Add(checkBox5);
+            OptionalOutputTab.Controls.Add(outputInfiltrationAtDepth);
+            OptionalOutputTab.Controls.Add(label54);
+            OptionalOutputTab.Controls.Add(label55);
+            OptionalOutputTab.Controls.Add(label56);
+            OptionalOutputTab.Controls.Add(outputMassDepth2);
+            OptionalOutputTab.Controls.Add(outputMassDepth1);
+            OptionalOutputTab.Controls.Add(label53);
+            OptionalOutputTab.Controls.Add(label52);
+            OptionalOutputTab.Controls.Add(label51);
+            OptionalOutputTab.Controls.Add(outputDecayDepth2);
+            OptionalOutputTab.Controls.Add(outputDecayDepth1);
+            OptionalOutputTab.Controls.Add(label50);
+            OptionalOutputTab.Controls.Add(chemInfiltrationDepth);
+            OptionalOutputTab.Controls.Add(outputIrrigation);
+            OptionalOutputTab.Controls.Add(outputTotalSoilWater);
+            OptionalOutputTab.Controls.Add(outputActualEvap);
+            OptionalOutputTab.Controls.Add(outputPrecipitation);
+            OptionalOutputTab.Controls.Add(outputErosion);
+            OptionalOutputTab.Controls.Add(outputRunoff);
+            OptionalOutputTab.Controls.Add(outputInfiltratedWaterLastLayer);
+            OptionalOutputTab.Controls.Add(outputMassSoilSpecific);
+            OptionalOutputTab.Controls.Add(outputMassInSoilProfile);
+            OptionalOutputTab.Controls.Add(outputDecayedPest);
+            OptionalOutputTab.Controls.Add(outputMassOnFoliage);
+            OptionalOutputTab.Controls.Add(outputConcLastLayer);
+            OptionalOutputTab.Controls.Add(outputDailyPestLeached);
+            OptionalOutputTab.Controls.Add(outputDailyFieldVolatilization);
+            OptionalOutputTab.Controls.Add(outputPestErosion);
+            OptionalOutputTab.Controls.Add(outputPestRunoff);
+            OptionalOutputTab.Location = new Point(4, 34);
+            OptionalOutputTab.Name = "OptionalOutputTab";
+            OptionalOutputTab.Padding = new Padding(3);
+            OptionalOutputTab.Size = new Size(1227, 778);
+            OptionalOutputTab.TabIndex = 6;
+            OptionalOutputTab.Text = "tabPage7";
+            OptionalOutputTab.UseVisualStyleBackColor = true;
+            // 
+            // outputPestRunoff
+            // 
+            outputPestRunoff.AutoSize = true;
+            outputPestRunoff.Location = new Point(57, 65);
+            outputPestRunoff.Name = "outputPestRunoff";
+            outputPestRunoff.Size = new Size(221, 29);
+            outputPestRunoff.TabIndex = 0;
+            outputPestRunoff.Text = "Pesticide runoff (kg/ha)";
+            outputPestRunoff.UseVisualStyleBackColor = true;
+            // 
+            // outputPestErosion
+            // 
+            outputPestErosion.AutoSize = true;
+            outputPestErosion.Location = new Point(57, 94);
+            outputPestErosion.Name = "outputPestErosion";
+            outputPestErosion.Size = new Size(229, 29);
+            outputPestErosion.TabIndex = 1;
+            outputPestErosion.Text = "Pesticide eroded (kg/ha)";
+            outputPestErosion.UseVisualStyleBackColor = true;
+            // 
+            // outputDailyFieldVolatilization
+            // 
+            outputDailyFieldVolatilization.AutoSize = true;
+            outputDailyFieldVolatilization.Location = new Point(57, 123);
+            outputDailyFieldVolatilization.Name = "outputDailyFieldVolatilization";
+            outputDailyFieldVolatilization.Size = new Size(321, 29);
+            outputDailyFieldVolatilization.TabIndex = 2;
+            outputDailyFieldVolatilization.Text = "Daily volatilzation from field (kg/ha)";
+            outputDailyFieldVolatilization.UseVisualStyleBackColor = true;
+            // 
+            // outputDailyPestLeached
+            // 
+            outputDailyPestLeached.AutoSize = true;
+            outputDailyPestLeached.Location = new Point(57, 152);
+            outputDailyPestLeached.Name = "outputDailyPestLeached";
+            outputDailyPestLeached.Size = new Size(377, 29);
+            outputDailyPestLeached.TabIndex = 3;
+            outputDailyPestLeached.Text = "Daily pesticide leached (kg/ha) at depth of ";
+            outputDailyPestLeached.UseVisualStyleBackColor = true;
+            // 
+            // outputConcLastLayer
+            // 
+            outputConcLastLayer.AutoSize = true;
+            outputConcLastLayer.Location = new Point(57, 181);
+            outputConcLastLayer.Name = "outputConcLastLayer";
+            outputConcLastLayer.Size = new Size(324, 29);
+            outputConcLastLayer.TabIndex = 4;
+            outputConcLastLayer.Text = "Concentration in bottom layer (ppb)";
+            outputConcLastLayer.UseVisualStyleBackColor = true;
+            // 
+            // outputMassOnFoliage
+            // 
+            outputMassOnFoliage.AutoSize = true;
+            outputMassOnFoliage.Location = new Point(57, 210);
+            outputMassOnFoliage.Name = "outputMassOnFoliage";
+            outputMassOnFoliage.Size = new Size(298, 29);
+            outputMassOnFoliage.TabIndex = 5;
+            outputMassOnFoliage.Text = "Pesticide mass on foliage (kg/ha)";
+            outputMassOnFoliage.UseVisualStyleBackColor = true;
+            // 
+            // outputDecayedPest
+            // 
+            outputDecayedPest.AutoSize = true;
+            outputDecayedPest.Location = new Point(57, 239);
+            outputDecayedPest.Name = "outputDecayedPest";
+            outputDecayedPest.Size = new Size(296, 29);
+            outputDecayedPest.TabIndex = 6;
+            outputDecayedPest.Text = "Pesticide decayed in field (kg/ha)";
+            outputDecayedPest.UseVisualStyleBackColor = true;
+            // 
+            // outputMassInSoilProfile
+            // 
+            outputMassInSoilProfile.AutoSize = true;
+            outputMassInSoilProfile.Location = new Point(57, 268);
+            outputMassInSoilProfile.Name = "outputMassInSoilProfile";
+            outputMassInSoilProfile.Size = new Size(323, 29);
+            outputMassInSoilProfile.TabIndex = 7;
+            outputMassInSoilProfile.Text = "Pesticide in entire soil profile (kg/ha)";
+            outputMassInSoilProfile.UseVisualStyleBackColor = true;
+            // 
+            // outputMassSoilSpecific
+            // 
+            outputMassSoilSpecific.AutoSize = true;
+            outputMassSoilSpecific.Location = new Point(57, 297);
+            outputMassSoilSpecific.Name = "outputMassSoilSpecific";
+            outputMassSoilSpecific.Size = new Size(333, 29);
+            outputMassSoilSpecific.TabIndex = 8;
+            outputMassSoilSpecific.Text = "Pesticide in part of soil profile (kg/ha)";
+            outputMassSoilSpecific.UseVisualStyleBackColor = true;
+            // 
+            // outputInfiltratedWaterLastLayer
+            // 
+            outputInfiltratedWaterLastLayer.AutoSize = true;
+            outputInfiltratedWaterLastLayer.Location = new Point(779, 239);
+            outputInfiltratedWaterLastLayer.Name = "outputInfiltratedWaterLastLayer";
+            outputInfiltratedWaterLastLayer.Size = new Size(308, 29);
+            outputInfiltratedWaterLastLayer.TabIndex = 9;
+            outputInfiltratedWaterLastLayer.Text = "Infiltration at lower boundary (cm)";
+            outputInfiltratedWaterLastLayer.UseVisualStyleBackColor = true;
+            // 
+            // outputRunoff
+            // 
+            outputRunoff.AutoSize = true;
+            outputRunoff.Location = new Point(779, 65);
+            outputRunoff.Name = "outputRunoff";
+            outputRunoff.Size = new Size(131, 29);
+            outputRunoff.TabIndex = 10;
+            outputRunoff.Text = "Runoff (cm)";
+            outputRunoff.UseVisualStyleBackColor = true;
+            // 
+            // outputErosion
+            // 
+            outputErosion.AutoSize = true;
+            outputErosion.Location = new Point(779, 94);
+            outputErosion.Name = "outputErosion";
+            outputErosion.Size = new Size(139, 29);
+            outputErosion.TabIndex = 11;
+            outputErosion.Text = "Erosion (Mg)";
+            outputErosion.UseVisualStyleBackColor = true;
+            // 
+            // outputPrecipitation
+            // 
+            outputPrecipitation.AutoSize = true;
+            outputPrecipitation.Location = new Point(779, 123);
+            outputPrecipitation.Name = "outputPrecipitation";
+            outputPrecipitation.Size = new Size(175, 29);
+            outputPrecipitation.TabIndex = 12;
+            outputPrecipitation.Text = "Precipitation (cm)";
+            outputPrecipitation.UseVisualStyleBackColor = true;
+            // 
+            // outputActualEvap
+            // 
+            outputActualEvap.AutoSize = true;
+            outputActualEvap.Location = new Point(779, 152);
+            outputActualEvap.Name = "outputActualEvap";
+            outputActualEvap.Size = new Size(226, 29);
+            outputActualEvap.TabIndex = 13;
+            outputActualEvap.Text = "Evapotranspiration (cm)";
+            outputActualEvap.UseVisualStyleBackColor = true;
+            // 
+            // outputTotalSoilWater
+            // 
+            outputTotalSoilWater.AutoSize = true;
+            outputTotalSoilWater.Location = new Point(779, 181);
+            outputTotalSoilWater.Name = "outputTotalSoilWater";
+            outputTotalSoilWater.Size = new Size(278, 29);
+            outputTotalSoilWater.TabIndex = 14;
+            outputTotalSoilWater.Text = "Soil water in entire profile (cm)";
+            outputTotalSoilWater.UseVisualStyleBackColor = true;
+            // 
+            // outputIrrigation
+            // 
+            outputIrrigation.AutoSize = true;
+            outputIrrigation.Location = new Point(779, 210);
+            outputIrrigation.Name = "outputIrrigation";
+            outputIrrigation.Size = new Size(149, 29);
+            outputIrrigation.TabIndex = 15;
+            outputIrrigation.Text = "Irrigation (cm)";
+            outputIrrigation.UseVisualStyleBackColor = true;
+            // 
+            // chemInfiltrationDepth
+            // 
+            chemInfiltrationDepth.Location = new Point(427, 152);
+            chemInfiltrationDepth.Name = "chemInfiltrationDepth";
+            chemInfiltrationDepth.Size = new Size(73, 31);
+            chemInfiltrationDepth.TabIndex = 16;
+            // 
+            // label50
+            // 
+            label50.AutoSize = true;
+            label50.Location = new Point(506, 153);
+            label50.Name = "label50";
+            label50.Size = new Size(36, 25);
+            label50.TabIndex = 17;
+            label50.Text = "cm";
+            // 
+            // outputDecayDepth1
+            // 
+            outputDecayDepth1.Location = new Point(416, 238);
+            outputDecayDepth1.Name = "outputDecayDepth1";
+            outputDecayDepth1.Size = new Size(78, 31);
+            outputDecayDepth1.TabIndex = 18;
+            // 
+            // outputDecayDepth2
+            // 
+            outputDecayDepth2.Location = new Point(536, 238);
+            outputDecayDepth2.Name = "outputDecayDepth2";
+            outputDecayDepth2.Size = new Size(85, 31);
+            outputDecayDepth2.TabIndex = 19;
+            // 
+            // label51
+            // 
+            label51.AutoSize = true;
+            label51.Location = new Point(359, 241);
+            label51.Name = "label51";
+            label51.Size = new Size(51, 25);
+            label51.TabIndex = 20;
+            label51.Text = "from";
+            // 
+            // label52
+            // 
+            label52.AutoSize = true;
+            label52.Location = new Point(505, 241);
+            label52.Name = "label52";
+            label52.Size = new Size(29, 25);
+            label52.TabIndex = 21;
+            label52.Text = "to";
+            // 
+            // label53
+            // 
+            label53.AutoSize = true;
+            label53.Location = new Point(631, 241);
+            label53.Name = "label53";
+            label53.Size = new Size(36, 25);
+            label53.TabIndex = 22;
+            label53.Text = "cm";
+            // 
+            // label54
+            // 
+            label54.AutoSize = true;
+            label54.Location = new Point(660, 297);
+            label54.Name = "label54";
+            label54.Size = new Size(36, 25);
+            label54.TabIndex = 27;
+            label54.Text = "cm";
+            // 
+            // label55
+            // 
+            label55.AutoSize = true;
+            label55.Location = new Point(534, 297);
+            label55.Name = "label55";
+            label55.Size = new Size(29, 25);
+            label55.TabIndex = 26;
+            label55.Text = "to";
+            // 
+            // label56
+            // 
+            label56.AutoSize = true;
+            label56.Location = new Point(388, 297);
+            label56.Name = "label56";
+            label56.Size = new Size(51, 25);
+            label56.TabIndex = 25;
+            label56.Text = "from";
+            // 
+            // outputMassDepth2
+            // 
+            outputMassDepth2.Location = new Point(565, 294);
+            outputMassDepth2.Name = "outputMassDepth2";
+            outputMassDepth2.Size = new Size(85, 31);
+            outputMassDepth2.TabIndex = 24;
+            // 
+            // outputMassDepth1
+            // 
+            outputMassDepth1.Location = new Point(445, 294);
+            outputMassDepth1.Name = "outputMassDepth1";
+            outputMassDepth1.Size = new Size(78, 31);
+            outputMassDepth1.TabIndex = 23;
+            // 
+            // outputInfiltrationAtDepth
+            // 
+            outputInfiltrationAtDepth.AutoSize = true;
+            outputInfiltrationAtDepth.Location = new Point(779, 268);
+            outputInfiltrationAtDepth.Name = "outputInfiltrationAtDepth";
+            outputInfiltrationAtDepth.Size = new Size(271, 29);
+            outputInfiltrationAtDepth.TabIndex = 28;
+            outputInfiltrationAtDepth.Text = "Infiltration (cm) at a depth of ";
+            outputInfiltrationAtDepth.UseVisualStyleBackColor = true;
+            // 
+            // outputWaterConc
+            // 
+            outputWaterConc.AutoSize = true;
+            outputWaterConc.Location = new Point(36, 650);
+            outputWaterConc.Name = "outputWaterConc";
+            outputWaterConc.Size = new Size(779, 54);
+            outputWaterConc.TabIndex = 31;
+            outputWaterConc.Text = "Print daily waterbody output to a water.out File\r\nIncludes waterbody depth, water column concentration, and benthic pore water concentration\r\n";
+            outputWaterConc.UseVisualStyleBackColor = true;
+            // 
+            // output_GW_BTC
+            // 
+            output_GW_BTC.AutoSize = true;
+            output_GW_BTC.Location = new Point(779, 306);
+            output_GW_BTC.Name = "output_GW_BTC";
+            output_GW_BTC.Size = new Size(412, 54);
+            output_GW_BTC.TabIndex = 30;
+            output_GW_BTC.Text = "Groundwater Breakthrough Curve \r\n(pore volumes and throughput vs aquifer conc)\r\n";
+            output_GW_BTC.UseVisualStyleBackColor = true;
+            // 
+            // checkBox5
+            // 
+            checkBox5.AutoSize = true;
+            checkBox5.Location = new Point(779, 326);
+            checkBox5.Name = "checkBox5";
+            checkBox5.Size = new Size(121, 29);
+            checkBox5.TabIndex = 29;
+            checkBox5.Text = "checkBox5";
+            checkBox5.UseVisualStyleBackColor = true;
+            // 
+            // OutputInfiltrationDepth
+            // 
+            OutputInfiltrationDepth.Location = new Point(1042, 267);
+            OutputInfiltrationDepth.Name = "OutputInfiltrationDepth";
+            OutputInfiltrationDepth.Size = new Size(73, 31);
+            OutputInfiltrationDepth.TabIndex = 32;
+            // 
+            // label57
+            // 
+            label57.AutoSize = true;
+            label57.Location = new Point(1121, 270);
+            label57.Name = "label57";
+            label57.Size = new Size(36, 25);
+            label57.TabIndex = 33;
+            label57.Text = "cm";
+            // 
+            // CalculateEoF
+            // 
+            CalculateEoF.AutoSize = true;
+            CalculateEoF.Location = new Point(36, 710);
+            CalculateEoF.Name = "CalculateEoF";
+            CalculateEoF.Size = new Size(223, 29);
+            CalculateEoF.TabIndex = 34;
+            CalculateEoF.Text = "Print Edge-of-Field files";
+            CalculateEoF.UseVisualStyleBackColor = true;
+            // 
+            // outputSpraydrift
+            // 
+            outputSpraydrift.AutoSize = true;
+            outputSpraydrift.Location = new Point(841, 734);
+            outputSpraydrift.Name = "outputSpraydrift";
+            outputSpraydrift.Size = new Size(341, 29);
+            outputSpraydrift.TabIndex = 35;
+            outputSpraydrift.Text = "Print spraydrift values in run_status file";
+            outputSpraydrift.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Item, Chem, Mode, Arg1, Arg2, Multiplier, Delete });
+            dataGridView1.Location = new Point(93, 408);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.RowHeadersWidth = 62;
+            dataGridView1.Size = new Size(957, 225);
+            dataGridView1.TabIndex = 36;
+            // 
+            // Item
+            // 
+            Item.HeaderText = "Item";
+            Item.MinimumWidth = 8;
+            Item.Name = "Item";
+            // 
+            // Chem
+            // 
+            Chem.HeaderText = "Chem";
+            Chem.MinimumWidth = 8;
+            Chem.Name = "Chem";
+            // 
+            // Mode
+            // 
+            Mode.HeaderText = "Mode";
+            Mode.MinimumWidth = 8;
+            Mode.Name = "Mode";
+            // 
+            // Arg1
+            // 
+            Arg1.HeaderText = "Arg1";
+            Arg1.MinimumWidth = 8;
+            Arg1.Name = "Arg1";
+            // 
+            // Arg2
+            // 
+            Arg2.HeaderText = "Arg2";
+            Arg2.MinimumWidth = 8;
+            Arg2.Name = "Arg2";
+            // 
+            // Multiplier
+            // 
+            Multiplier.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Multiplier.HeaderText = "Multiplier";
+            Multiplier.MinimumWidth = 8;
+            Multiplier.Name = "Multiplier";
+            // 
+            // Delete
+            // 
+            Delete.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Delete.HeaderText = "Delete";
+            Delete.MinimumWidth = 8;
+            Delete.Name = "Delete";
+            Delete.Text = "X";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -2416,6 +2902,9 @@
             groupBox1.PerformLayout();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            OptionalOutputTab.ResumeLayout(false);
+            OptionalOutputTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -2618,5 +3107,50 @@
         private CheckBox ItsaReservoir;
         private CheckBox ItsaPond;
         private ListBox WaterbodyList;
+        private TabPage OptionalOutputTab;
+        private CheckBox outputIrrigation;
+        private CheckBox outputTotalSoilWater;
+        private CheckBox outputActualEvap;
+        private CheckBox outputPrecipitation;
+        private CheckBox outputErosion;
+        private CheckBox outputRunoff;
+        private CheckBox outputInfiltratedWaterLastLayer;
+        private CheckBox outputMassSoilSpecific;
+        private CheckBox outputMassInSoilProfile;
+        private CheckBox outputDecayedPest;
+        private CheckBox outputMassOnFoliage;
+        private CheckBox outputConcLastLayer;
+        private CheckBox outputDailyPestLeached;
+        private CheckBox outputDailyFieldVolatilization;
+        private CheckBox outputPestErosion;
+        private CheckBox outputPestRunoff;
+        private Label label50;
+        private TextBox chemInfiltrationDepth;
+        private Label label54;
+        private Label label55;
+        private Label label56;
+        private TextBox outputMassDepth2;
+        private TextBox outputMassDepth1;
+        private Label label53;
+        private Label label52;
+        private Label label51;
+        private TextBox outputDecayDepth2;
+        private TextBox outputDecayDepth1;
+        private CheckBox outputWaterConc;
+        private CheckBox output_GW_BTC;
+        private CheckBox checkBox5;
+        private CheckBox outputInfiltrationAtDepth;
+        private Label label57;
+        private TextBox OutputInfiltrationDepth;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn Item;
+        private DataGridViewTextBoxColumn Chem;
+        private DataGridViewTextBoxColumn Mode;
+        private DataGridViewTextBoxColumn Arg1;
+        private DataGridViewTextBoxColumn Arg2;
+        private DataGridViewTextBoxColumn Multiplier;
+        private DataGridViewButtonColumn Delete;
+        private CheckBox outputSpraydrift;
+        private CheckBox CalculateEoF;
     }
 }
