@@ -111,6 +111,8 @@ namespace PWC_Cs
             {
                 // Index doesn't exist — add to the end
                 SchemeInfoList.Add(appData);
+
+                MessageBox.Show(Convert.ToString(SchemeInfoList.Count));
             }
         }
 
@@ -183,46 +185,24 @@ namespace PWC_Cs
             {
                 SchemeTableDisplay.CommitEdit(DataGridViewDataErrorContexts.Commit);
             }
-            
-
         }
        
         private void RecordCheckedScheme()
         {
-            //Routine commits the checked scheme to SchemeInfoList. Currently called by Save File and Calculate 
-
-            //******** This section finds which row has a check mark in Edit Box so that it can be saved to SchemeInfoList****
-            int checkedRowIndex = -1;
-
-            // Find the column index where HeaderText is "Edit"
-            int editColumnIndex = -1;
-            foreach (DataGridViewColumn col in SchemeTableDisplay.Columns)
+            //Record the possibly uncommitted scheme with the checked box
+            SchemeTableDisplay.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            int checkboxColumnIndex = 1; // set to your checkbox column index
+            int checkedrow = -1;
+            for (int r = 0; r < SchemeTableDisplay.Rows.Count; r++)
             {
-                if (col.HeaderText == "Edit")
+                var cell = SchemeTableDisplay[checkboxColumnIndex, r];
+                if (cell?.Value is bool b && b)
                 {
-                    editColumnIndex = col.Index;
+                    checkedrow = r;
                     break;
                 }
             }
-
-            if (editColumnIndex == -1)
-            {
-                return;
-            }
-
-            // Now scan for the checked row
-            foreach (DataGridViewRow row in SchemeTableDisplay.Rows)
-            {
-                if (row.IsNewRow) continue;
-
-                if (Convert.ToBoolean(row.Cells[editColumnIndex].Value))
-                {
-                    checkedRowIndex = row.Index;
-                    break;
-                }
-            }
-            RecordScheme(checkedRowIndex);
-
+            RecordScheme(checkedrow); //save current scheme before saving file
         }
 
 

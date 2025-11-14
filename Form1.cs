@@ -313,7 +313,7 @@ namespace PWC_Cs
 
 
            
-           MessageBox.Show("num sch " + col[0]);
+           MessageBox.Show("number of schemes " + col[0]);
 
             SchemeTableDisplay.Rows.Clear();
 
@@ -325,7 +325,6 @@ namespace PWC_Cs
 
                 SchemeTableDisplay.Rows[i].Cells[2].Value = col[1];   // description is only store in GUI
 
-                MessageBox.Show("desc " + col[1]);
 
                 // read the relative app reference 
 
@@ -335,150 +334,91 @@ namespace PWC_Cs
                 SingleScheme.Removal          = false;
 
                 col = reader.ReadLine()!.Split(',');
-
-                MessageBox.Show(col[0]);
-
                 int ff = Convert.ToInt32(col[0]);
-                switch (ff)
-                {
-                    case 0:
-                        SingleScheme.AbsoluteRelative = true;
-                        break;
-                    case 1:
-                        SingleScheme.Emerge = true;
-                        break;
-                    case 2:
-                        SingleScheme.Maturity = true;
-                        break;
-                    case 3:
-                        SingleScheme.Removal = true;
-                        break;
-                }
+
+                SingleScheme.AbsoluteRelative = ff == 0;
+                SingleScheme.Emerge           = ff == 1;
+                SingleScheme.Maturity         = ff == 2;
+                SingleScheme.Removal          = ff == 3;
+
 
                 col = reader.ReadLine()!.Split(',');
                 int NumberOfApps = Convert.ToInt32(col[0]);
 
                 MessageBox.Show("num apps " + col[0]);
 
-                for (int j = 0; i < NumberOfApps; i++)
+                for (int _ = 0; _ < NumberOfApps; _++)
                 {
-                    col = reader.ReadLine()!.Split(',');
-                    SingleScheme.Days.Add(col[0]);
-                    SingleScheme.Amount.Add(col[1]);
-                    SingleScheme.Method.Add(col[2]);
-                    SingleScheme.Depth.Add(col[3]);
-                    SingleScheme.Split.Add(col[4]);
-                    SingleScheme.Drift.Add(col[5]);
-                    SingleScheme.DriftBuffer.Add(col[6]);
-                    SingleScheme.Periodicity.Add(col[7]);
-                    SingleScheme.Lag.Add(col[8]);
+                    line = reader.ReadLine();
+                    if (line == null) break; // stop if file ended early
+
+                    col = line.Split(',');
+
+                    SingleScheme.Days.Add(col.Length > 0 ? col[0].Trim() : "");
+                    SingleScheme.Amount.Add(col.Length > 1 ? col[1].Trim() : "");
+                    SingleScheme.Method.Add(col.Length > 2 ? col[2].Trim() : "");
+                    SingleScheme.Depth.Add(col.Length > 3 ? col[3].Trim() : "");
+                    SingleScheme.Split.Add(col.Length > 4 ? col[4].Trim() : "");
+                    SingleScheme.Drift.Add(col.Length > 5 ? col[5].Trim() : "");
+                    SingleScheme.DriftBuffer.Add(col.Length > 6 ? col[6].Trim() : "");
+                    SingleScheme.Periodicity.Add(col.Length > 7 ? col[7].Trim() : "");
+                    SingleScheme.Lag.Add(col.Length > 8 ? col[8].Trim() : "");
                 }
 
 
-              
 
-                   //  sw.WriteLine(SchemeInfoList[i].Days.Count + 1);
-                ////Go through the apps
-                //for (int j = 0; j < SchemeInfoList[i].Days.Count; j++)
-                //{
-                //    sw.WriteLine(string.Join(",",
-                //        SchemeInfoList[i].Days[j],
-                //        SchemeInfoList[i].Amount[j],
-                //        SchemeInfoList[i].Method[j],
-                //        SchemeInfoList[i].Depth[j],
-                //        SchemeInfoList[i].Split[j],
-                //        SchemeInfoList[i].Drift[j],
-                //        SchemeInfoList[i].DriftBuffer[j],
-                //        SchemeInfoList[i].Periodicity[j],
-                //        SchemeInfoList[i].Lag[j]
-                //        ));
-                //}
+                col = reader.ReadLine()!.Split(',');                 //Application Window
+                SingleScheme.UseApplicationWindow = Convert.ToBoolean(col[0]);
+                SingleScheme.ApplicationWindowSpan = col[1];
+                SingleScheme.ApplicationWindowStep = col[2];
+
+                col = reader.ReadLine()!.Split(',');                  //Rain Restrictions
+                SingleScheme.UseRainFast = Convert.ToBoolean(col[0]);
+                SingleScheme.RainLimit = col[1];
+                SingleScheme.IntolerableRainWindow = col[2];
+                SingleScheme.OptimumApplicationWindow = col[3];
+                SingleScheme.MinDaysBetweenApps = col[4];
+
+                col = reader.ReadLine()!.Split(',');                  //Number of scenarios
+                int numScenarios = Convert.ToInt32(col[0]);
+
+                for (int s = 0; s < numScenarios; s++)
+                {
+                    line = reader.ReadLine();
+                    if (line == null) break; // stop if file ended early
+                    SingleScheme.Scenarios.Add(line);
+                }
+                col = reader.ReadLine()!.Split(',');
+                SingleScheme.UseBatchScenarioFile = Convert.ToBoolean(col[0]);
+                col = reader.ReadLine()!.Split(',');
+                SingleScheme.ScenarioBatchFileName = col[0];
+
+         
+                line = reader.ReadLine();  // Mitigations
+                if (line != null && !line.StartsWith("Mitigations"))
+                {
+                    // No mitigations provided, set defaults
+                    SingleScheme.RunoffMitigation = "1.0";
+                    SingleScheme.ErosionMitigation = "1.0";
+                    SingleScheme.DriftMitigation = "1.0";
+                }
+                else
+                {
+                    col = line!.Split(',');
+                    SingleScheme.RunoffMitigation = col[0];
+                    SingleScheme.ErosionMitigation = col[1];
+                    SingleScheme.DriftMitigation = col[2];
+                }   
 
 
 
-
-                //sw.WriteLine(string.Join(",", SchemeInfoList[i].UseApplicationWindow, SchemeInfoList[i].ApplicationWindowSpan, SchemeInfoList[i].ApplicationWindowStep));
-                //sw.WriteLine(string.Join(",", SchemeInfoList[i].UseRainFast, SchemeInfoList[i].RainLimit, SchemeInfoList[i].IntolerableRainWindow, SchemeInfoList[i].OptimumApplicationWindow, SchemeInfoList[i].MinDaysBetweenApps));
-
-                //sw.WriteLine(SchemeInfoList[i].Scenarios.Count);  //number of scenarios
-
-
+                SchemeInfoList.Add(SingleScheme);
 
             }
 
 
 
 
-
-
-            //    currentrow = MyReader.ReadFields
-            //    numRows = currentrow(0) 'number of application (rows) in app table
-
-
-            //    For j As Integer = 0 To numRows -1
-            //        currentrow = MyReader.ReadFields               'Not read if zero rows
-            //        ApplicationTable.Days.Add(currentrow(0))
-            //        ApplicationTable.Amount.Add(currentrow(1))
-            //        ApplicationTable.Method.Add(currentrow(2))
-            //        ApplicationTable.Depth.Add(currentrow(3))
-            //        ApplicationTable.Split.Add(currentrow(4))
-            //        ApplicationTable.Drift.Add(currentrow(5))
-            //        ApplicationTable.DriftBuffer.Add(currentrow(6))
-            //        ApplicationTable.Periodicity.Add(currentrow(7))
-            //        ApplicationTable.Lag.Add(currentrow(8))
-            //    Next
-
-            //    currentrow = MyReader.ReadFields
-            //    ApplicationTable.UseApplicationWindow = currentrow(0)
-            //    ApplicationTable.ApplicationWindowSpan = currentrow(1)
-            //    ApplicationTable.ApplicationWindowStep = currentrow(2)
-
-            //    currentrow = MyReader.ReadFields                          'LINE 40
-            //    ApplicationTable.UseRainFast = currentrow(0)
-            //    ApplicationTable.RainLimit = currentrow(1)
-            //    ApplicationTable.IntolerableRainWindow = currentrow(2)
-            //    ApplicationTable.OptimumApplicationWindow = currentrow(3)
-            //    ApplicationTable.MinDaysBetweenApps = currentrow(4)
-
-            //    currentrow = MyReader.ReadFields  'Read number of scenarios    
-
-            //    NumberOfScenarios = currentrow(0)
-
-
-            //    For j As Integer = 0 To NumberOfScenarios -1
-            //        'currentrow = MyReader.ReadFields
-            //        'ApplicationTable.Scenarios.Add(currentrow(0)) ' commas in name were causing problems READ Entire line instead
-            //        blip = MyReader.ReadLine()
-            //        ApplicationTable.Scenarios.Add(blip)
-            //    Next
-            //    currentrow = MyReader.ReadFields
-            //    ApplicationTable.UseBatchScenarioFile = currentrow(0)
-
-            //    currentrow = MyReader.ReadFields
-            //    ApplicationTable.ScenarioBatchFileName = currentrow(0)
-
-
-
-
-            //    If MyReader.PeekChars(11) = "Mitigations" Then
-
-
-            //        MyReader.ReadLine() 'skip over the Mitigations line
-
-
-            //        currentrow = MyReader.ReadFields
-            //            ApplicationTable.RunoffMitigation = currentrow(0)
-            //            ApplicationTable.ErosionMitigation = currentrow(1)
-            //            ApplicationTable.DriftMitigation = currentrow(2)
-
-            //    Else
-
-
-
-            //        ApplicationTable.RunoffMitigation = "1.0"
-            //        ApplicationTable.ErosionMitigation = "1.0"
-            //        ApplicationTable.DriftMitigation = "1.0"
-            //    End If
 
 
             //    SchemeInfoList.Add(ApplicationTable)
@@ -699,10 +639,6 @@ namespace PWC_Cs
 
 
 
-
-
-
-
         }
         //**********************************************************************
         public void SaveMainInputToTextFile(string savefilename)
@@ -761,7 +697,7 @@ namespace PWC_Cs
 
                 sw.WriteLine(NumberOfSchemes.ToString() + ", ***** Schemes Start Here ******");  //Line 35
 
-
+ 
                 for (int i = 0; i < NumberOfSchemes; i++)
                 {
                     var cellValue = SchemeTableDisplay.Rows[i].Cells[2].Value?.ToString() ?? "";
@@ -809,11 +745,6 @@ namespace PWC_Cs
             } // The using statement automatically closes the StreamWriter
         }
 
-        private void SchemeTableDisplay_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-
-
-        }
     }
 }
