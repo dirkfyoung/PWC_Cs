@@ -123,6 +123,12 @@
             WaterMolarRatio1 = new TextBox();
             label18 = new Label();
             tabPage2 = new TabPage();
+            WaterbodyList = new ListBox();
+            UseTPEZbuffers = new CheckBox();
+            ItsTPEZWPEZ = new CheckBox();
+            ItsOther = new CheckBox();
+            ItsaReservoir = new CheckBox();
+            ItsaPond = new CheckBox();
             tabPage3 = new TabPage();
             SchemeTableDisplay = new DataGridView();
             Column1 = new DataGridViewTextBoxColumn();
@@ -163,6 +169,9 @@
             GetScenariosBatchCheckBox = new CheckBox();
             ScenarioListBox = new ListBox();
             tabPage6 = new TabPage();
+            AdjustCN = new CheckBox();
+            label49 = new Label();
+            ErosionFlag = new TextBox();
             IsAllMedia = new CheckBox();
             label38 = new Label();
             label37 = new Label();
@@ -220,6 +229,7 @@
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
+            tabPage2.SuspendLayout();
             tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SchemeTableDisplay).BeginInit();
             tabPage4.SuspendLayout();
@@ -1259,6 +1269,13 @@
             // 
             // tabPage2
             // 
+            tabPage2.BackColor = Color.Aqua;
+            tabPage2.Controls.Add(WaterbodyList);
+            tabPage2.Controls.Add(UseTPEZbuffers);
+            tabPage2.Controls.Add(ItsTPEZWPEZ);
+            tabPage2.Controls.Add(ItsOther);
+            tabPage2.Controls.Add(ItsaReservoir);
+            tabPage2.Controls.Add(ItsaPond);
             tabPage2.Location = new Point(4, 34);
             tabPage2.Margin = new Padding(4);
             tabPage2.Name = "tabPage2";
@@ -1266,7 +1283,65 @@
             tabPage2.Size = new Size(1227, 778);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Target Body";
-            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // WaterbodyList
+            // 
+            WaterbodyList.FormattingEnabled = true;
+            WaterbodyList.ItemHeight = 25;
+            WaterbodyList.Location = new Point(66, 217);
+            WaterbodyList.Name = "WaterbodyList";
+            WaterbodyList.Size = new Size(732, 404);
+            WaterbodyList.TabIndex = 5;
+            // 
+            // UseTPEZbuffers
+            // 
+            UseTPEZbuffers.AutoSize = true;
+            UseTPEZbuffers.Location = new Point(644, 103);
+            UseTPEZbuffers.Name = "UseTPEZbuffers";
+            UseTPEZbuffers.Size = new Size(280, 29);
+            UseTPEZbuffers.TabIndex = 4;
+            UseTPEZbuffers.Text = "Use spraydrift buffers for TPEZ";
+            UseTPEZbuffers.UseVisualStyleBackColor = true;
+            // 
+            // ItsTPEZWPEZ
+            // 
+            ItsTPEZWPEZ.AutoSize = true;
+            ItsTPEZWPEZ.Location = new Point(618, 55);
+            ItsTPEZWPEZ.Name = "ItsTPEZWPEZ";
+            ItsTPEZWPEZ.Size = new Size(208, 29);
+            ItsTPEZWPEZ.TabIndex = 3;
+            ItsTPEZWPEZ.Text = "USEPA TPEZ && WPEZ ";
+            ItsTPEZWPEZ.UseVisualStyleBackColor = true;
+            // 
+            // ItsOther
+            // 
+            ItsOther.AutoSize = true;
+            ItsOther.Location = new Point(66, 143);
+            ItsOther.Name = "ItsOther";
+            ItsOther.Size = new Size(91, 29);
+            ItsOther.TabIndex = 2;
+            ItsOther.Text = "Others";
+            ItsOther.UseVisualStyleBackColor = true;
+            // 
+            // ItsaReservoir
+            // 
+            ItsaReservoir.AutoSize = true;
+            ItsaReservoir.Location = new Point(66, 108);
+            ItsaReservoir.Name = "ItsaReservoir";
+            ItsaReservoir.Size = new Size(256, 29);
+            ItsaReservoir.TabIndex = 1;
+            ItsaReservoir.Text = "USEPA Reservoir Watershed";
+            ItsaReservoir.UseVisualStyleBackColor = true;
+            // 
+            // ItsaPond
+            // 
+            ItsaPond.AutoSize = true;
+            ItsaPond.Location = new Point(66, 73);
+            ItsaPond.Name = "ItsaPond";
+            ItsaPond.Size = new Size(225, 29);
+            ItsaPond.TabIndex = 0;
+            ItsaPond.Text = "USEPA Pond Watershed";
+            ItsaPond.UseVisualStyleBackColor = true;
             // 
             // tabPage3
             // 
@@ -1745,6 +1820,9 @@
             // 
             // tabPage6
             // 
+            tabPage6.Controls.Add(AdjustCN);
+            tabPage6.Controls.Add(label49);
+            tabPage6.Controls.Add(ErosionFlag);
             tabPage6.Controls.Add(IsAllMedia);
             tabPage6.Controls.Add(label38);
             tabPage6.Controls.Add(label37);
@@ -1771,6 +1849,34 @@
             tabPage6.TabIndex = 5;
             tabPage6.Text = "Advanced";
             tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // AdjustCN
+            // 
+            AdjustCN.AutoSize = true;
+            AdjustCN.Checked = true;
+            AdjustCN.CheckState = CheckState.Checked;
+            AdjustCN.Location = new Point(33, 661);
+            AdjustCN.Name = "AdjustCN";
+            AdjustCN.Size = new Size(253, 29);
+            AdjustCN.TabIndex = 44;
+            AdjustCN.Text = "Adjust CN for soil moisture";
+            AdjustCN.UseVisualStyleBackColor = true;
+            // 
+            // label49
+            // 
+            label49.AutoSize = true;
+            label49.Location = new Point(126, 586);
+            label49.Name = "label49";
+            label49.Size = new Size(180, 50);
+            label49.TabIndex = 43;
+            label49.Text = "Erosion model (1,2,3)\r\nMUSL, MUST,MUSS";
+            // 
+            // ErosionFlag
+            // 
+            ErosionFlag.Location = new Point(25, 586);
+            ErosionFlag.Name = "ErosionFlag";
+            ErosionFlag.Size = new Size(71, 31);
+            ErosionFlag.TabIndex = 42;
             // 
             // IsAllMedia
             // 
@@ -2293,6 +2399,8 @@
             tabPage1.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
             tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)SchemeTableDisplay).EndInit();
             tabPage4.ResumeLayout(false);
@@ -2501,5 +2609,14 @@
         private TextBox ScenarioBatchFileName;
         private CheckBox GetScenariosBatchCheckBox;
         private Label label48;
+        private Label label49;
+        private TextBox ErosionFlag;
+        private CheckBox AdjustCN;
+        private CheckBox UseTPEZbuffers;
+        private CheckBox ItsTPEZWPEZ;
+        private CheckBox ItsOther;
+        private CheckBox ItsaReservoir;
+        private CheckBox ItsaPond;
+        private ListBox WaterbodyList;
     }
 }

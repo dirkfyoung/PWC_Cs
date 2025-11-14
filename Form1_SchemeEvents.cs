@@ -14,7 +14,6 @@ namespace PWC_Cs
 
             if (schemeNumber < 0)
             {
-                MessageBox.Show($"Row {schemeNumber} is checked.");
                 return;
             }
 

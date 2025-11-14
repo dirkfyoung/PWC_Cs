@@ -311,10 +311,6 @@ namespace PWC_Cs
             col = reader.ReadLine()!.Split(',');
             int NumberOfSchemes = Convert.ToInt16(col[0]);
 
-
-           
-           MessageBox.Show("number of schemes " + col[0]);
-
             SchemeTableDisplay.Rows.Clear();
 
             for (int i = 0; i < NumberOfSchemes; i++) 
@@ -341,11 +337,8 @@ namespace PWC_Cs
                 SingleScheme.Maturity         = ff == 2;
                 SingleScheme.Removal          = ff == 3;
 
-
                 col = reader.ReadLine()!.Split(',');
                 int NumberOfApps = Convert.ToInt32(col[0]);
-
-                MessageBox.Show("num apps " + col[0]);
 
                 for (int _ = 0; _ < NumberOfApps; _++)
                 {
@@ -404,6 +397,7 @@ namespace PWC_Cs
                 }
                 else
                 {
+                    line = reader.ReadLine();
                     col = line!.Split(',');
                     SingleScheme.RunoffMitigation = col[0];
                     SingleScheme.ErosionMitigation = col[1];
@@ -413,7 +407,7 @@ namespace PWC_Cs
 
 
                 SchemeInfoList.Add(SingleScheme);
-
+       
             }
 
 
@@ -712,7 +706,7 @@ namespace PWC_Cs
                     sw.WriteLine(referencedate);
 
 
-                    sw.WriteLine(SchemeInfoList[i].Days.Count+1);
+                    sw.WriteLine(SchemeInfoList[i].Days.Count);
 
                     //Go through the apps
                     for (int j = 0; j < SchemeInfoList[i].Days.Count; j++)
@@ -733,14 +727,39 @@ namespace PWC_Cs
                     sw.WriteLine(string.Join(",", SchemeInfoList[i].UseApplicationWindow, SchemeInfoList[i].ApplicationWindowSpan, SchemeInfoList[i].ApplicationWindowStep   ));
                     sw.WriteLine(string.Join(",", SchemeInfoList[i].UseRainFast, SchemeInfoList[i].RainLimit, SchemeInfoList[i].IntolerableRainWindow, SchemeInfoList[i].OptimumApplicationWindow, SchemeInfoList[i].MinDaysBetweenApps));
 
+                    
                     sw.WriteLine(SchemeInfoList[i].Scenarios.Count);  //number of scenarios
 
+                    for (int j = 0; j < SchemeInfoList[i].Scenarios.Count; j++) 
+                    {
+                        sw.WriteLine(SchemeInfoList[i].Scenarios[j]);
+                    }
 
-
+                    sw.WriteLine(SchemeInfoList[i].UseBatchScenarioFile);
+                    sw.WriteLine(SchemeInfoList[i].ScenarioBatchFileName);
+                    sw.WriteLine("Mitigations (flag to make older versions still readable)");
+                    sw.WriteLine(string.Join(",", SchemeInfoList[i].RunoffMitigation, SchemeInfoList[i].ErosionMitigation, SchemeInfoList[i].DriftMitigation));
                 }
 
+                sw.WriteLine(string.Join(",", ErosionFlag.Text));
+                sw.WriteLine(',');
+                sw.WriteLine(',');
+                sw.WriteLine(',');
+                sw.WriteLine(',');
+                sw.WriteLine(',');
+                sw.WriteLine(string.Join(",", AdjustCN.Checked));
+                sw.WriteLine(string.Join(",", ItsaPond.Checked, ItsaReservoir.Checked, ItsOther.Checked, ItsTPEZWPEZ.Checked, UseTPEZbuffers.Checked));
+                sw.WriteLine(WaterbodyList.Items.Count);
+
+                foreach (object item in WaterbodyList.Items)
+                {
+                    string s = item?.ToString()?.Trim() ?? string.Empty;
+                    sw.WriteLine($"\"{s}\"");
+                }
+
+
                 //Write a second line of text
-                sw.WriteLine("From the StreamWriter class");
+                sw.WriteLine("done...........");
 
             } // The using statement automatically closes the StreamWriter
         }
