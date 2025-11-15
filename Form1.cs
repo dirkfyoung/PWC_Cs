@@ -1,11 +1,12 @@
-using System.Windows.Forms;
-using System.Linq;
-using System.IO;
 using Microsoft.VisualBasic.Logging;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Net.WebRequestMethods;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System.Xml.Linq;
 
 
 namespace PWC_Cs
@@ -637,48 +638,60 @@ namespace PWC_Cs
         //**********************************************************************
         public void SaveMainInputToTextFile(string savefilename)
         {
+            // place near top of method
+
+            string Bool(bool b) => b.ToString();               // change to b ? "1" : "0" if you want numeric flags
+            static string Safe(object? o) => o?.ToString()?.Trim() ?? string.Empty;
+
+
+            void WriteCsvLine(StreamWriter writer, params object?[] parts)
+            {
+                //Trailing comma to indicate end of line, especially for Fortran compatibility
+                writer.WriteLine(string.Join(",", parts.Select(Safe)) + ",");
+            }
+
+
             //Pass the filepath and filename to the StreamWriter Constructor
             using StreamWriter sw = new StreamWriter(savefilename);
             {
-
                 //the following will be populated later with varibles. leave asis for now
-                sw.WriteLine("PWC Version 4.0 C#");
-                sw.WriteLine("working directory");
-                sw.WriteLine("family name");
-                sw.WriteLine("scenario directory");
-                sw.WriteLine("pfac");
-                sw.WriteLine("options");
-                sw.WriteLine("nchem");
+                WriteCsvLine(sw, "PWC Version 4.0 C#");
+                WriteCsvLine(sw, "working directory");
+                WriteCsvLine(sw, "family name");
+                WriteCsvLine(sw, "scenario directory");
+                WriteCsvLine(sw, "pfac");
+                WriteCsvLine(sw, "options");
+                WriteCsvLine(sw, "nchem");
 
                 //Chemical properties 
-                sw.WriteLine(string.Join(",", sorption1.Text, sorption2.Text, sorption3.Text));
-                sw.WriteLine(string.Join(",", Nexp1Reg1.Text, Nexp2Reg1.Text, Nexp3Reg1.Text));
-                sw.WriteLine(string.Join(",", Kf1Reg2.Text, Kf2Reg2.Text, Kf3Reg2.Text));
-                sw.WriteLine(string.Join(",", Nexp1Reg2.Text, Nexp2Reg2.Text, Nexp3Reg2.Text));
-                sw.WriteLine(string.Join(",", MassTransferRegion2.Text, MassTransferRegion2Daughter.Text, MassTransferRegion2GrandDaughter.Text));
-                sw.WriteLine(string.Join(",", FreundlichMinimumConc.Text, SubTimeSteps.Text));
-                sw.WriteLine(string.Join(",", WaterColMetab1.Text, WaterColMetab2.Text, WaterColMetab3.Text, WaterMolarRatio1.Text, WaterMolarRatio2.Text));
-                sw.WriteLine(string.Join(",", WaterColRef1.Text, WaterColRef2.Text, WaterColRef3.Text));
-                sw.WriteLine(string.Join(",", BenthicMetab1.Text, BenthicMetab2.Text, BenthicMetab3.Text, BenthicMolarRatio1.Text, BenthicMolarRatio2.Text));
-                sw.WriteLine(string.Join(",", BenthicRef1.Text, BenthicRef2.Text, BenthicRef3.Text));
-                sw.WriteLine(string.Join(",", Photo1.Text, Photo2.Text, Photo3.Text, PhotoMolarRatio1.Text, PhotoMolarRatio2.Text));
-                sw.WriteLine(string.Join(",", PhotoLat1.Text, PhotoLat2.Text, PhotoLat3.Text));
-                sw.WriteLine(string.Join(",", Hydrolysis1.Text, Hydrolysis2.Text, Hydrolysis3.Text, HydroMolarRatio1.Text, HydroMolarRatio2.Text));
-                sw.WriteLine(string.Join(",", SoilDegradation1.Text, SoilDegradation2.Text, SoilDegradation3.Text, SoilMolarRatio1.Text, SoilMolarRatio2.Text, IsAllMedia.Checked.ToString()));
-                sw.WriteLine(string.Join(",", SoilRef1.Text, SoilRef2.Text, SoilRef3.Text));
-                sw.WriteLine(string.Join(",", FoliarDeg1.Text, FoliarDeg2.Text, FoliarDeg3.Text, FoliarMolarRatio1.Text, FoliarMolarRatio2.Text));
-                sw.WriteLine(string.Join(",", FoliarWashoff1.Text, FoliarWashoff2.Text, FoliarWashoff3.Text));
-                sw.WriteLine(string.Join(",", MWT1.Text, MWT2.Text, MWT3.Text));
-                sw.WriteLine(string.Join(",", VaporPress1.Text, VaporPress2.Text, VaporPress3.Text));
-                sw.WriteLine(string.Join(",", Sol1.Text, Sol2.Text, Sol3.Text));
-                sw.WriteLine(string.Join(",", Henry1.Text, Henry2.Text, Henry3.Text));
-                sw.WriteLine(string.Join(",", AirDiff1.Text, AirDiff2.Text, AirDiff3.Text));
-                sw.WriteLine(string.Join(",", HeatHenry1.Text, HeatHenry2.Text, HeatHenry3.Text));
+                WriteCsvLine(sw, sorption1.Text, sorption2.Text, sorption3.Text);
+                WriteCsvLine(sw, Nexp1Reg1.Text, Nexp2Reg1.Text, Nexp3Reg1.Text);
+                WriteCsvLine(sw, Kf1Reg2.Text, Kf2Reg2.Text, Kf3Reg2.Text);
+                WriteCsvLine(sw, Nexp1Reg2.Text, Nexp2Reg2.Text, Nexp3Reg2.Text);
+                WriteCsvLine(sw, MassTransferRegion2.Text, MassTransferRegion2Daughter.Text, MassTransferRegion2GrandDaughter.Text);
+                WriteCsvLine(sw, FreundlichMinimumConc.Text, SubTimeSteps.Text);
+                WriteCsvLine(sw, WaterColMetab1.Text, WaterColMetab2.Text, WaterColMetab3.Text, WaterMolarRatio1.Text, WaterMolarRatio2.Text);
+                WriteCsvLine(sw, WaterColRef1.Text, WaterColRef2.Text, WaterColRef3.Text);
+                WriteCsvLine(sw, BenthicMetab1.Text, BenthicMetab2.Text, BenthicMetab3.Text, BenthicMolarRatio1.Text, BenthicMolarRatio2.Text);
+                WriteCsvLine(sw, BenthicRef1.Text, BenthicRef2.Text, BenthicRef3.Text);
+                WriteCsvLine(sw, Photo1.Text, Photo2.Text, Photo3.Text, PhotoMolarRatio1.Text, PhotoMolarRatio2.Text);
+                WriteCsvLine(sw, PhotoLat1.Text, PhotoLat2.Text, PhotoLat3.Text);
+                WriteCsvLine(sw, Hydrolysis1.Text, Hydrolysis2.Text, Hydrolysis3.Text, HydroMolarRatio1.Text, HydroMolarRatio2.Text);
+                WriteCsvLine(sw, SoilDegradation1.Text, SoilDegradation2.Text, SoilDegradation3.Text, SoilMolarRatio1.Text, SoilMolarRatio2.Text, IsAllMedia.Checked);
+                WriteCsvLine(sw, SoilRef1.Text, SoilRef2.Text, SoilRef3.Text);
+                WriteCsvLine(sw, FoliarDeg1.Text, FoliarDeg2.Text, FoliarDeg3.Text, FoliarMolarRatio1.Text, FoliarMolarRatio2.Text);
+                WriteCsvLine(sw, FoliarWashoff1.Text, FoliarWashoff2.Text, FoliarWashoff3.Text);
+                WriteCsvLine(sw, MWT1.Text, MWT2.Text, MWT3.Text);
+                WriteCsvLine(sw, VaporPress1.Text, VaporPress2.Text, VaporPress3.Text);
+                WriteCsvLine(sw, Sol1.Text, Sol2.Text, Sol3.Text);
+                WriteCsvLine(sw, Henry1.Text, Henry2.Text, Henry3.Text);
+                WriteCsvLine(sw, AirDiff1.Text, AirDiff2.Text, AirDiff3.Text);
+                WriteCsvLine(sw, HeatHenry1.Text, HeatHenry2.Text, HeatHenry3.Text);
 
-                sw.WriteLine(Q10.Text);
-                sw.WriteLine(ConstantProfile.Checked.ToString());
-                sw.WriteLine(string.Join(",", RampProfile.Checked.ToString(), profileDepth1.Text, ProfileDepth2.Text, RampEndValue.Text));
-                sw.WriteLine(string.Join(",", ExponentialProfile.Checked.ToString(), ExpParameter1.Text, ExpParameter2.Text));
+                WriteCsvLine(sw, Q10.Text);
+                WriteCsvLine(sw, ConstantProfile.Checked);
+                WriteCsvLine(sw, RampProfile.Checked.ToString(), profileDepth1.Text, ProfileDepth2.Text, RampEndValue.Text);
+                WriteCsvLine(sw, ExponentialProfile.Checked.ToString(), ExpParameter1.Text, ExpParameter2.Text);
 
                 // *********************Process the schemes: Extract info from SchemeInfo **************************
 
@@ -689,13 +702,14 @@ namespace PWC_Cs
                 //This avoids relying on (rowcout-1), which can be error-prone if the grid is empty or the new row is disabled.
                 int NumberOfSchemes = SchemeTableDisplay.Rows.Cast<DataGridViewRow>().Count(row => !row.IsNewRow);
 
-                sw.WriteLine(NumberOfSchemes.ToString() + ", ***** Schemes Start Here ******");  //Line 35
+                WriteCsvLine(sw, NumberOfSchemes, " ***** Schemes Start Here ******");  //Line 35
 
  
                 for (int i = 0; i < NumberOfSchemes; i++)
                 {
-                    var cellValue = SchemeTableDisplay.Rows[i].Cells[2].Value?.ToString() ?? "";
-                    sw.WriteLine($"{i + 1},{cellValue}");                 //scheme number and description  Line 36
+                    //var cellValue = SchemeTableDisplay.Rows[i].Cells[2].Value?.ToString() ?? "";
+                    //sw.WriteLine($"{i + 1},{cellValue}");                 //scheme number and description  Line 36
+                    WriteCsvLine(sw, i + 1, SchemeTableDisplay.Rows[i].Cells[2].Value);
 
                     int referencedate;
                     if (SchemeInfoList[i].AbsoluteRelative) referencedate = 0;
@@ -703,10 +717,10 @@ namespace PWC_Cs
                     else if (SchemeInfoList[i].Maturity) referencedate = 2;
                     else if (SchemeInfoList[i].Removal) referencedate = 3;
                     else referencedate = 99;
-                    sw.WriteLine(referencedate);
+                    WriteCsvLine(sw, referencedate);
 
 
-                    sw.WriteLine(SchemeInfoList[i].Days.Count);
+                    WriteCsvLine(sw, SchemeInfoList[i].Days.Count);
 
                     //Go through the apps
                     for (int j = 0; j < SchemeInfoList[i].Days.Count; j++)
@@ -724,41 +738,102 @@ namespace PWC_Cs
                             ));
                     }
 
-                    sw.WriteLine(string.Join(",", SchemeInfoList[i].UseApplicationWindow, SchemeInfoList[i].ApplicationWindowSpan, SchemeInfoList[i].ApplicationWindowStep   ));
-                    sw.WriteLine(string.Join(",", SchemeInfoList[i].UseRainFast, SchemeInfoList[i].RainLimit, SchemeInfoList[i].IntolerableRainWindow, SchemeInfoList[i].OptimumApplicationWindow, SchemeInfoList[i].MinDaysBetweenApps));
-
-                    
-                    sw.WriteLine(SchemeInfoList[i].Scenarios.Count);  //number of scenarios
+                    WriteCsvLine(sw, SchemeInfoList[i].UseApplicationWindow, SchemeInfoList[i].ApplicationWindowSpan, SchemeInfoList[i].ApplicationWindowStep   );
+                    WriteCsvLine(sw, SchemeInfoList[i].UseRainFast, SchemeInfoList[i].RainLimit, SchemeInfoList[i].IntolerableRainWindow, SchemeInfoList[i].OptimumApplicationWindow, SchemeInfoList[i].MinDaysBetweenApps);
+                    WriteCsvLine(sw, SchemeInfoList[i].Scenarios.Count);  //number of scenarios
 
                     for (int j = 0; j < SchemeInfoList[i].Scenarios.Count; j++) 
                     {
-                        sw.WriteLine(SchemeInfoList[i].Scenarios[j]);
+                        WriteCsvLine(sw, SchemeInfoList[i].Scenarios[j]);
                     }
 
-                    sw.WriteLine(SchemeInfoList[i].UseBatchScenarioFile);
-                    sw.WriteLine(SchemeInfoList[i].ScenarioBatchFileName);
-                    sw.WriteLine("Mitigations (flag to make older versions still readable)");
-                    sw.WriteLine(string.Join(",", SchemeInfoList[i].RunoffMitigation, SchemeInfoList[i].ErosionMitigation, SchemeInfoList[i].DriftMitigation));
+                    WriteCsvLine(sw, SchemeInfoList[i].UseBatchScenarioFile);
+                    WriteCsvLine(sw, SchemeInfoList[i].ScenarioBatchFileName);
+                    WriteCsvLine(sw, "Mitigations (flag to make older versions still readable)");
+                    WriteCsvLine(sw, SchemeInfoList[i].RunoffMitigation, SchemeInfoList[i].ErosionMitigation, SchemeInfoList[i].DriftMitigation);
                 }
 
-                sw.WriteLine(string.Join(",", ErosionFlag.Text));
+                WriteCsvLine(sw, ErosionFlag.Text);
                 sw.WriteLine(',');
                 sw.WriteLine(',');
                 sw.WriteLine(',');
                 sw.WriteLine(',');
                 sw.WriteLine(',');
-                sw.WriteLine(string.Join(",", AdjustCN.Checked));
-                sw.WriteLine(string.Join(",", ItsaPond.Checked, ItsaReservoir.Checked, ItsOther.Checked, ItsTPEZWPEZ.Checked, UseTPEZbuffers.Checked));
-                sw.WriteLine(WaterbodyList.Items.Count);
+                WriteCsvLine(sw, AdjustCN.Checked);
+                WriteCsvLine(sw, ItsaPond.Checked, ItsaReservoir.Checked, ItsOther.Checked, ItsTPEZWPEZ.Checked, UseTPEZbuffers.Checked);
+                WriteCsvLine(sw, WaterbodyList.Items.Count);
 
-                foreach (object item in WaterbodyList.Items)
+                foreach (var item in WaterbodyList.Items)
                 {
-                    string s = item?.ToString()?.Trim() ?? string.Empty;
-                    sw.WriteLine($"\"{s}\"");
+                    WriteCsvLine(sw, item);
                 }
 
 
-                //Write a second line of text
+                //*********** OUTPUT *****************************
+
+                string SafeText(string? s) => (s ?? string.Empty).Trim();
+
+                string CellValue(int row, int col) =>
+                    AdditionalOutputGridView.Rows[row].Cells[col].Value?.ToString() is string v ? SafeText(v) : string.Empty;
+
+                int numberAdditionalOutputs = Math.Max(0, AdditionalOutputGridView.Rows.Count - 1);
+
+
+                // Simple flags (one-per-line)
+                WriteCsvLine(sw,outputRunoff.Checked);
+                WriteCsvLine(sw,outputErosion.Checked);
+                WriteCsvLine(sw,outputPestRunoff.Checked);
+                WriteCsvLine(sw,outputPestErosion.Checked);
+
+                WriteCsvLine(sw, outputConcLastLayer.Checked);
+                WriteCsvLine(sw, outputDailyFieldVolatilization.Checked);
+
+                WriteCsvLine(sw, outputDailyPestLeached.Checked, chemInfiltrationDepth.Text);
+                WriteCsvLine(sw, outputDecayedPest.Checked, outputDecayDepth1.Text, outputDecayDepth2.Text);
+
+                WriteCsvLine(sw, outputMassInSoilProfile.Checked);
+                WriteCsvLine(sw, outputMassSoilSpecific.Checked, outputMassDepth1.Text, outputMassDepth2.Text);
+                WriteCsvLine(sw, outputMassOnFoliage.Checked);
+
+                WriteCsvLine(sw, outputPrecipitation.Checked);
+                WriteCsvLine(sw,outputActualEvap.Checked);
+                WriteCsvLine(sw,outputTotalSoilWater.Checked);
+                WriteCsvLine(sw,outputIrrigation.Checked);
+
+                WriteCsvLine(sw, outputInfiltrationAtDepth.Checked, OutputInfiltrationDepth.Text);
+                WriteCsvLine(sw, outputInfiltratedWaterLastLayer.Checked);
+
+                WriteCsvLine(sw, outputWaterConc.Checked);
+                WriteCsvLine(sw,outputSpraydrift.Checked);
+                WriteCsvLine(sw,output_GW_BTC.Checked);
+
+                // placeholders
+                sw.WriteLine("holder for future expansion,");
+                sw.WriteLine("holder for future expansion,");
+                sw.WriteLine("holder for future expansion,");
+                sw.WriteLine("holder for future expansion,");
+                WriteCsvLine(sw, CalculateEoF.Checked);
+
+                // Additional outputs count
+                WriteCsvLine(sw, numberAdditionalOutputs);
+
+
+                // Additional outputs rows
+                for (int i = 0; i < numberAdditionalOutputs; i++)
+                {
+                    var parts = new[]
+                    {
+                       CellValue(i, 0),
+                       CellValue(i, 1),
+                       CellValue(i, 2),
+                       CellValue(i, 3),
+                       CellValue(i, 4),
+                       CellValue(i, 5)
+                    };
+                    sw.WriteLine();
+                    WriteCsvLine(sw, parts);
+                }
+
                 sw.WriteLine("done...........");
 
             } // The using statement automatically closes the StreamWriter
