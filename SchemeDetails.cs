@@ -9,6 +9,7 @@ namespace PWC_Cs
 {
     internal class SchemeDetails
     {
+        public string SchemeDescription { get; set; } 
         public List<string> Days { get; set; } = new List<string>();
         public List<string> Amount { get; set; } = new List<string>();
         public List<string> Method { get; set; } = new List<string>();

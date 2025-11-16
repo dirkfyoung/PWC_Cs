@@ -8,7 +8,6 @@ namespace PWC_Cs
 {
     public partial class Form1 : Form
     {
-
         private void RecordScheme(int schemeNumber)
         {
 
@@ -203,28 +202,6 @@ namespace PWC_Cs
             }
             RecordScheme(checkedrow); //save current scheme before saving file
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     }

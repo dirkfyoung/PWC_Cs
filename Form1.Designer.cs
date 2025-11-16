@@ -134,6 +134,7 @@
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewCheckBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewButtonColumn();
             tabPage4 = new TabPage();
             label45 = new Label();
             label46 = new Label();
@@ -1408,21 +1409,19 @@
             // SchemeTableDisplay
             // 
             SchemeTableDisplay.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = Color.Gold;
-            SchemeTableDisplay.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             SchemeTableDisplay.BackgroundColor = Color.Gold;
             SchemeTableDisplay.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Info;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            SchemeTableDisplay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Info;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            SchemeTableDisplay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             SchemeTableDisplay.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            SchemeTableDisplay.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3 });
-            SchemeTableDisplay.Location = new Point(24, 69);
+            SchemeTableDisplay.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 });
+            SchemeTableDisplay.Location = new Point(7, 61);
             SchemeTableDisplay.Margin = new Padding(2);
             SchemeTableDisplay.Name = "SchemeTableDisplay";
             SchemeTableDisplay.RowHeadersVisible = false;
@@ -1458,6 +1457,22 @@
             Column3.HeaderText = "Scheme Description";
             Column3.MinimumWidth = 8;
             Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.LightCoral;
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = Color.LightCoral;
+            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
+            Column4.DefaultCellStyle = dataGridViewCellStyle2;
+            Column4.FlatStyle = FlatStyle.Popup;
+            Column4.HeaderText = "Delete";
+            Column4.MinimumWidth = 8;
+            Column4.Name = "Column4";
+            Column4.Resizable = DataGridViewTriState.True;
+            Column4.SortMode = DataGridViewColumnSortMode.Automatic;
+            Column4.Width = 150;
             // 
             // tabPage4
             // 
@@ -3087,9 +3102,6 @@
         private CheckBox IsAllMedia;
         private DataGridView AppTableDisplay;
         private DataGridView SchemeTableDisplay;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewCheckBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
         private RadioButton removal;
         private RadioButton maturity;
         private RadioButton emerge;
@@ -3177,5 +3189,9 @@
         private CheckBox CalculateEoF;
         private Label label59;
         private Label label58;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewCheckBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewButtonColumn Column4;
     }
 }
