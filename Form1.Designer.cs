@@ -159,7 +159,7 @@
             RainLimit = new TextBox();
             label40 = new Label();
             label39 = new Label();
-            ApplicationWindowDays = new TextBox();
+            ApplicationWindowSpan = new TextBox();
             UseApplicationWindow = new CheckBox();
             UseRainFast = new CheckBox();
             groupBox2 = new GroupBox();
@@ -245,12 +245,10 @@
             outputInfiltrationAtDepth = new CheckBox();
             label54 = new Label();
             label55 = new Label();
-            label56 = new Label();
             outputMassDepth2 = new TextBox();
             outputMassDepth1 = new TextBox();
             label53 = new Label();
             label52 = new Label();
-            label51 = new Label();
             outputDecayDepth2 = new TextBox();
             outputDecayDepth1 = new TextBox();
             label50 = new Label();
@@ -1462,7 +1460,7 @@
             tabPage4.Controls.Add(RainLimit);
             tabPage4.Controls.Add(label40);
             tabPage4.Controls.Add(label39);
-            tabPage4.Controls.Add(ApplicationWindowDays);
+            tabPage4.Controls.Add(ApplicationWindowSpan);
             tabPage4.Controls.Add(UseApplicationWindow);
             tabPage4.Controls.Add(UseRainFast);
             tabPage4.Controls.Add(groupBox2);
@@ -1639,12 +1637,12 @@
             label39.TabIndex = 4;
             label39.Text = "Window span (days)";
             // 
-            // ApplicationWindowDays
+            // ApplicationWindowSpan
             // 
-            ApplicationWindowDays.Location = new Point(15, 488);
-            ApplicationWindowDays.Name = "ApplicationWindowDays";
-            ApplicationWindowDays.Size = new Size(48, 27);
-            ApplicationWindowDays.TabIndex = 2;
+            ApplicationWindowSpan.Location = new Point(15, 488);
+            ApplicationWindowSpan.Name = "ApplicationWindowSpan";
+            ApplicationWindowSpan.Size = new Size(48, 27);
+            ApplicationWindowSpan.TabIndex = 2;
             // 
             // UseApplicationWindow
             // 
@@ -2306,12 +2304,10 @@
             OptionalOutputTab.Controls.Add(outputInfiltrationAtDepth);
             OptionalOutputTab.Controls.Add(label54);
             OptionalOutputTab.Controls.Add(label55);
-            OptionalOutputTab.Controls.Add(label56);
             OptionalOutputTab.Controls.Add(outputMassDepth2);
             OptionalOutputTab.Controls.Add(outputMassDepth1);
             OptionalOutputTab.Controls.Add(label53);
             OptionalOutputTab.Controls.Add(label52);
-            OptionalOutputTab.Controls.Add(label51);
             OptionalOutputTab.Controls.Add(outputDecayDepth2);
             OptionalOutputTab.Controls.Add(outputDecayDepth1);
             OptionalOutputTab.Controls.Add(label50);
@@ -2460,7 +2456,7 @@
             // label57
             // 
             label57.AutoSize = true;
-            label57.Location = new Point(883, 216);
+            label57.Location = new Point(908, 216);
             label57.Margin = new Padding(2, 0, 2, 0);
             label57.Name = "label57";
             label57.Size = new Size(29, 20);
@@ -2469,7 +2465,7 @@
             // 
             // outputInfiltrationDepth
             // 
-            outputInfiltrationDepth.Location = new Point(834, 214);
+            outputInfiltrationDepth.Location = new Point(855, 214);
             outputInfiltrationDepth.Margin = new Padding(2);
             outputInfiltrationDepth.Name = "outputInfiltrationDepth";
             outputInfiltrationDepth.Size = new Size(45, 27);
@@ -2522,7 +2518,7 @@
             // label54
             // 
             label54.AutoSize = true;
-            label54.Location = new Point(477, 238);
+            label54.Location = new Point(493, 238);
             label54.Margin = new Padding(2, 0, 2, 0);
             label54.Name = "label54";
             label54.Size = new Size(29, 20);
@@ -2532,26 +2528,16 @@
             // label55
             // 
             label55.AutoSize = true;
-            label55.Location = new Point(402, 238);
+            label55.Location = new Point(418, 238);
             label55.Margin = new Padding(2, 0, 2, 0);
             label55.Name = "label55";
             label55.Size = new Size(23, 20);
             label55.TabIndex = 26;
             label55.Text = "to";
             // 
-            // label56
-            // 
-            label56.AutoSize = true;
-            label56.Location = new Point(310, 238);
-            label56.Margin = new Padding(2, 0, 2, 0);
-            label56.Name = "label56";
-            label56.Size = new Size(41, 20);
-            label56.TabIndex = 25;
-            label56.Text = "from";
-            // 
             // outputMassDepth2
             // 
-            outputMassDepth2.Location = new Point(427, 235);
+            outputMassDepth2.Location = new Point(443, 235);
             outputMassDepth2.Margin = new Padding(2);
             outputMassDepth2.Name = "outputMassDepth2";
             outputMassDepth2.Size = new Size(48, 27);
@@ -2559,7 +2545,7 @@
             // 
             // outputMassDepth1
             // 
-            outputMassDepth1.Location = new Point(352, 235);
+            outputMassDepth1.Location = new Point(365, 235);
             outputMassDepth1.Margin = new Padding(2);
             outputMassDepth1.Name = "outputMassDepth1";
             outputMassDepth1.Size = new Size(48, 27);
@@ -2585,16 +2571,6 @@
             label52.TabIndex = 21;
             label52.Text = "to";
             // 
-            // label51
-            // 
-            label51.AutoSize = true;
-            label51.Location = new Point(287, 193);
-            label51.Margin = new Padding(2, 0, 2, 0);
-            label51.Name = "label51";
-            label51.Size = new Size(41, 20);
-            label51.TabIndex = 20;
-            label51.Text = "from";
-            // 
             // outputDecayDepth2
             // 
             outputDecayDepth2.Location = new Point(409, 190);
@@ -2605,7 +2581,7 @@
             // 
             // outputDecayDepth1
             // 
-            outputDecayDepth1.Location = new Point(330, 190);
+            outputDecayDepth1.Location = new Point(331, 190);
             outputDecayDepth1.Margin = new Padding(2);
             outputDecayDepth1.Name = "outputDecayDepth1";
             outputDecayDepth1.Size = new Size(48, 27);
@@ -2614,7 +2590,7 @@
             // label50
             // 
             label50.AutoSize = true;
-            label50.Location = new Point(393, 123);
+            label50.Location = new Point(416, 123);
             label50.Margin = new Padding(2, 0, 2, 0);
             label50.Name = "label50";
             label50.Size = new Size(29, 20);
@@ -2623,7 +2599,7 @@
             // 
             // chemInfiltrationDepth
             // 
-            chemInfiltrationDepth.Location = new Point(342, 121);
+            chemInfiltrationDepth.Location = new Point(365, 121);
             chemInfiltrationDepth.Margin = new Padding(2);
             chemInfiltrationDepth.Name = "chemInfiltrationDepth";
             chemInfiltrationDepth.Size = new Size(48, 27);
@@ -2712,9 +2688,9 @@
             outputMassSoilSpecific.Location = new Point(46, 238);
             outputMassSoilSpecific.Margin = new Padding(2);
             outputMassSoilSpecific.Name = "outputMassSoilSpecific";
-            outputMassSoilSpecific.Size = new Size(281, 24);
+            outputMassSoilSpecific.Size = new Size(317, 24);
             outputMassSoilSpecific.TabIndex = 8;
-            outputMassSoilSpecific.Text = "Pesticide in part of soil profile (kg/ha)";
+            outputMassSoilSpecific.Text = "Pesticide in part of soil profile (kg/ha) from";
             outputMassSoilSpecific.UseVisualStyleBackColor = true;
             // 
             // outputMassInSoilProfile
@@ -2734,9 +2710,9 @@
             outputDecayedPest.Location = new Point(46, 191);
             outputDecayedPest.Margin = new Padding(2);
             outputDecayedPest.Name = "outputDecayedPest";
-            outputDecayedPest.Size = new Size(251, 24);
+            outputDecayedPest.Size = new Size(287, 24);
             outputDecayedPest.TabIndex = 6;
-            outputDecayedPest.Text = "Pesticide decayed in field (kg/ha)";
+            outputDecayedPest.Text = "Pesticide decayed in field (kg/ha) from";
             outputDecayedPest.UseVisualStyleBackColor = true;
             // 
             // outputMassOnFoliage
@@ -3064,7 +3040,7 @@
         private Label label40;
         private Label label39;
         private TextBox ApplicationWindowStep;
-        private TextBox ApplicationWindowDays;
+        private TextBox ApplicationWindowSpan;
         private CheckBox UseApplicationWindow;
         private CheckBox UseRainFast;
         private Label label44;
@@ -3117,12 +3093,10 @@
         private TextBox chemInfiltrationDepth;
         private Label label54;
         private Label label55;
-        private Label label56;
         private TextBox outputMassDepth2;
         private TextBox outputMassDepth1;
         private Label label53;
         private Label label52;
-        private Label label51;
         private TextBox outputDecayDepth2;
         private TextBox outputDecayDepth1;
         private CheckBox outputWaterConc;

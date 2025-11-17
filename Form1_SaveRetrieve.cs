@@ -210,7 +210,7 @@ namespace PWC_Cs
                 col = reader.ReadLine()!.Split(',');
                 int NumberOfApps = Convert.ToInt32(col[0]);
 
-                for (int _ = 0; _ < NumberOfApps; _++)
+                for (int j = 0; j < NumberOfApps; j++)
                 {
                     line = reader.ReadLine()!;
                     if (line == null) break; // stop if file ended early
@@ -227,8 +227,6 @@ namespace PWC_Cs
                     SingleScheme.Periodicity.Add(col.Length > 7 ? col[7].Trim() : "");
                     SingleScheme.Lag.Add(col.Length > 8 ? col[8].Trim() : "");
                 }
-
-
 
                 col = reader.ReadLine()!.Split(',');                 //Application Window
                 SingleScheme.UseApplicationWindow = Convert.ToBoolean(col[0]);
@@ -371,80 +369,39 @@ namespace PWC_Cs
             outputInfiltrationDepth.Text = col[1];
 
             col = reader.ReadLine()!.Split(',');
-
+            outputInfiltratedWaterLastLayer.Checked = Convert.ToBoolean(col[0]);
 
             col = reader.ReadLine()!.Split(',');
+            outputWaterConc.Checked = Convert.ToBoolean(col[0]);
+
+            bool isChecked;
             col = reader.ReadLine()!.Split(',');
+            bool.TryParse(col[0].ToString(), out isChecked);
+            outputSpraydrift.Checked = isChecked;
 
-            //currentrow = MyReader.ReadFields
-            //outputInfiltratedWaterLastLayer.Checked = currentrow(0)
+            col = reader.ReadLine()!.Split(',');
+            bool.TryParse(col[0].ToString(), out isChecked);
+            output_GW_BTC.Checked = isChecked;
 
-            //currentrow = MyReader.ReadFields
-            //outputWaterConc.Checked = currentrow(0)
+            reader.ReadLine();  //blank lines for future
+            reader.ReadLine();
+            reader.ReadLine();
+            reader.ReadLine();
 
-
-            //currentrow = MyReader.ReadFields
-
-            //If currentrow(0) = "True" Or "False" Then
-            //    outputSpraydrift.Checked = currentrow(0)
-            //Else
-            //    outputSpraydrift.Checked = False
-            //End If
-
-            //currentrow = MyReader.ReadFields
-            //If currentrow(0) = "True" Or "False" Then
-            //    output_GW_BTC.Checked = currentrow(0)
-            //Else
-            //    output_GW_BTC.Checked = False
-            //End If
-
-            //MyReader.ReadLine() 'expansion lines
-            //MyReader.ReadLine()
-            //MyReader.ReadLine()
-            //MyReader.ReadLine()
-
-            //currentrow = MyReader.ReadFields
-
-            //If currentrow(0) = "True" Or currentrow(0) = "False" Then  ' for backward compatibiilty cuz line used to be unused
-            //    CalculateEoF.Checked = currentrow(0)
-            //End If
-
-            //Dim NumOutputRows As Integer
-            //currentrow = MyReader.ReadFields
-            //NumOutputRows = currentrow(0)
-
-            //AdditionalOutputGridView.Rows.Clear()
-            //For j As Integer = 0 To NumOutputRows -1
-            //    currentrow = MyReader.ReadFields
-            //    AdditionalOutputGridView.Rows.Add(currentrow(0), currentrow(1), currentrow(2), currentrow(3), currentrow(4), currentrow(5))
-            //Next
+            col = reader.ReadLine()!.Split(',');
+            bool.TryParse(col[0].ToString(), out isChecked);
+            CalculateEoF.Checked = isChecked;
 
 
+            int NumberOfVintagePRZMrows;
+            col = reader.ReadLine()!.Split(',');
+            NumberOfVintagePRZMrows = Convert.ToInt32(col[0]);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            for (int i = 0; i < NumberOfVintagePRZMrows; i++)
+            {
+                col = reader.ReadLine()!.Split(',');
+                AdditionalOutputGridView.Rows.Add(col[0], col[1], col[2], col[3], col[4], col[5]);
+            }
 
 
 
@@ -607,12 +564,12 @@ namespace PWC_Cs
 
 
                 // Simple flags (one-per-line)
-                WriteCsvLine(sw, outputRunoff.Checked);
-                WriteCsvLine(sw, outputErosion.Checked);
-                WriteCsvLine(sw, outputPestRunoff.Checked);
-                WriteCsvLine(sw, outputPestErosion.Checked);
+                WriteCsvLine(sw, outputRunoff.Checked, "runoff output");
+                WriteCsvLine(sw, outputErosion.Checked, "erosion output");
+                WriteCsvLine(sw, outputPestRunoff.Checked, "chem runoff");
+                WriteCsvLine(sw, outputPestErosion.Checked, "chem erosion");
 
-                WriteCsvLine(sw, outputConcLastLayer.Checked);
+                WriteCsvLine(sw, outputConcLastLayer.Checked, "last conc");
                 WriteCsvLine(sw, outputDailyFieldVolatilization.Checked);
 
                 WriteCsvLine(sw, outputDailyPestLeached.Checked, chemInfiltrationDepth.Text);

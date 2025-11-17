@@ -77,7 +77,7 @@ namespace PWC_Cs
             appData.Removal = removal.Checked;
 
             appData.UseApplicationWindow = UseApplicationWindow.Checked;
-            appData.ApplicationWindowSpan = ApplicationWindowDays.Text;
+            appData.ApplicationWindowSpan = ApplicationWindowSpan.Text;
             appData.ApplicationWindowStep = ApplicationWindowStep.Text;
 
             appData.UseRainFast = UseRainFast.Checked;
@@ -192,9 +192,6 @@ namespace PWC_Cs
         }
        
 
-
-
-
         private void RecordCheckedScheme()
         {
             //Record the possibly uncommitted scheme with the checked box
@@ -221,7 +218,6 @@ namespace PWC_Cs
             for (int i = 0; i < numberApps; i++)
             {
                 AppTableDisplay.Rows.Add();
-
                 AppTableDisplay.Rows[i].Cells["Days"].Value = SchemeInfoList[schemeNumber].Days[i];
                 AppTableDisplay.Rows[i].Cells[1].Value= SchemeInfoList[schemeNumber].Amount[i];
                 AppTableDisplay.Rows[i].Cells[3].Value = SchemeInfoList[schemeNumber].Depth[i];
@@ -229,15 +225,32 @@ namespace PWC_Cs
                 AppTableDisplay.Rows[i].Cells[6].Value = SchemeInfoList[schemeNumber].DriftBuffer[i];
                 AppTableDisplay.Rows[i].Cells[7].Value = SchemeInfoList[schemeNumber].Periodicity[i];
                 AppTableDisplay.Rows[i].Cells[8].Value = SchemeInfoList[schemeNumber].Lag[i];
-
             }
-
 
             AbsoluteDaysButton.Checked = SchemeInfoList[schemeNumber].AbsoluteDays;
             emerge.Checked = SchemeInfoList[schemeNumber].Emerge;
             maturity.Checked = SchemeInfoList[schemeNumber].Maturity;
             removal.Checked = SchemeInfoList[schemeNumber].Removal;
 
+            UseApplicationWindow.Checked= SchemeInfoList[schemeNumber].UseApplicationWindow;
+            ApplicationWindowStep.Text = SchemeInfoList[schemeNumber].ApplicationWindowStep;
+            ApplicationWindowSpan.Text = SchemeInfoList[schemeNumber].ApplicationWindowSpan;
+
+            UseRainFast.Checked = SchemeInfoList[schemeNumber].UseRainFast;
+            RainLimit.Text= SchemeInfoList[schemeNumber].RainLimit;
+            IntolerableRainWindow.Text = SchemeInfoList[schemeNumber].IntolerableRainWindow;
+            OptimumApplicationWindow.Text = SchemeInfoList[schemeNumber].OptimumApplicationWindow;
+            MinDaysBetweenApps.Text = SchemeInfoList[schemeNumber].MinDaysBetweenApps;
+
+            ScenarioListBox.Items.Clear();
+            ScenarioListBox.Items.AddRange(SchemeInfoList[schemeNumber].Scenarios.ToArray());
+
+            GetScenariosBatchCheckBox.Checked = SchemeInfoList[schemeNumber].UseBatchScenarioFile;
+            ScenarioBatchFileName.Text = SchemeInfoList[schemeNumber].ScenarioBatchFileName;
+
+            RunoffMitigation.Text = SchemeInfoList[schemeNumber].RunoffMitigation;
+            ErosionMitigation.Text = SchemeInfoList[schemeNumber].ErosionMitigation;
+            DriftMitigation.Text = SchemeInfoList[schemeNumber].DriftMitigation;
 
         }
 
