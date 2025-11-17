@@ -145,7 +145,6 @@ namespace PWC_Cs
         //**********************************************************************
         private void RetrieveInputFile_Click(object sender, EventArgs e)
         {
-
             // configure filter
             retrieveMainInputDialog.Filter =
                 "PWC 3 INPUT Files (*.PW4)|*.PW4|PWC 3 INPUT Files (*.PW3)|*.PW3|ALL Files (*.*)|*.*";
@@ -156,7 +155,7 @@ namespace PWC_Cs
             {
                 retrieveMainInputDialog.InitialDirectory = candidate;
             }
-   
+
             retrieveMainInputDialog.FileName = string.Empty;
 
             var result = retrieveMainInputDialog.ShowDialog(this);
@@ -177,44 +176,10 @@ namespace PWC_Cs
 
             // read inputs from the selected file
             RetrieveMainInputFromTextFile(selectedFile);
-
-
         }
-
-
-
-
-
-
-
-
-            //// Opens the desktop if there is no previous open --commented out
-            //if (Directory.Exists(FileNames.WorkingDirectory))
-            //{
-            //    retrieveMainInputDialog.InitialDirectory = FileNames.WorkingDirectory;
-            //}
-            ////else
-            ////{
-            ////   retrieveMainInputDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            ////}
-
-
-            //if (retrieveMainInputDialog.ShowDialog(this) == DialogResult.OK)
-            //{
-            //    RetrieveMainInputFromTextFile(retrieveMainInputDialog.FileName);
-            //}
-
-
-
-
-
-
-
-       
 
         private void SelectOtherWaterbodies_Click(object sender, EventArgs e)
         {
-
             DialogResult result;
 
             openOtherWaterbody.Filter = "Water Body Files (*.WAT)|*.WAT|All files (*.*)|*.*";
@@ -233,7 +198,6 @@ namespace PWC_Cs
             if (!string.IsNullOrEmpty(dir))
                 FileNames.PreviousWaterBodyPath = dir;
 
-
             // Add each selected file (full path) to the list
             foreach (var selectedScenario in openOtherWaterbody.FileNames)
             {
@@ -245,11 +209,31 @@ namespace PWC_Cs
             if (!string.IsNullOrEmpty(scenarioDir))
                 FileNames.PreviousScenarioPath = scenarioDir;
 
+        }
 
+        private void ClearAllWaterBodies_Click(object sender, EventArgs e)
+        {
+            WaterbodyList.Items.Clear();
+        }
 
+        private void ClearSelectedWaterBody_Click(object sender, EventArgs e)
+        {
+            // Create a temporary list of items to remove to avoid issues while modifying the original collection
+            var itemsToRemove = new System.Collections.Generic.List<string>();
+            foreach (string selectedItem in WaterbodyList.SelectedItems)
+            {
+                itemsToRemove.Add(selectedItem);
+            }
 
+            // Remove items from the underlying collection (UI updates automatically)
+            foreach (string item in itemsToRemove)
+            {
+                WaterbodyList.Items.Remove(item);
+            }
 
         }
+
+
         //**********************************************************************
 
 

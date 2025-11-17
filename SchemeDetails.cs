@@ -20,7 +20,7 @@ namespace PWC_Cs
         public List<string> Periodicity { get; set; } = new List<string>();
         public List<string> Lag { get; set; } = new List<string>();
         public List<string> Scenarios { get; set; } = new List<string>();
-        public bool AbsoluteRelative { get; set; } 
+        public bool AbsoluteDays { get; set; } 
         public bool Emerge { get; set; }
         public bool Maturity { get; set; }
         public bool Removal { get; set; }

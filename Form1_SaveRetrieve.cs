@@ -194,7 +194,7 @@ namespace PWC_Cs
                 }
 
                 // read the relative app reference 
-                SingleScheme.AbsoluteRelative = false;
+                SingleScheme.AbsoluteDays = false;
                 SingleScheme.Emerge = false;
                 SingleScheme.Maturity = false;
                 SingleScheme.Removal = false;
@@ -202,7 +202,7 @@ namespace PWC_Cs
                 col = reader.ReadLine()!.Split(',');
                 int ff = Convert.ToInt32(col[0]);
 
-                SingleScheme.AbsoluteRelative = ff == 0;
+                SingleScheme.AbsoluteDays = ff == 0;
                 SingleScheme.Emerge = ff == 1;
                 SingleScheme.Maturity = ff == 2;
                 SingleScheme.Removal = ff == 3;
@@ -539,7 +539,7 @@ namespace PWC_Cs
                     WriteCsvLine(sw, i + 1, '"' + des + '"');  //put quotes around description
 
                     int referencedate;
-                    if (SchemeInfoList[i].AbsoluteRelative) referencedate = 0;
+                    if (SchemeInfoList[i].AbsoluteDays) referencedate = 0;
                     else if (SchemeInfoList[i].Emerge) referencedate = 1;
                     else if (SchemeInfoList[i].Maturity) referencedate = 2;
                     else if (SchemeInfoList[i].Removal) referencedate = 3;

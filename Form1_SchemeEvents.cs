@@ -71,7 +71,7 @@ namespace PWC_Cs
                 appData.Lag.Add(AppTableDisplay[8, i].Value?.ToString() ?? "");
             }
 
-            appData.AbsoluteRelative = AbsoluteDaysButton.Checked;
+            appData.AbsoluteDays = AbsoluteDaysButton.Checked;
             appData.Emerge = emerge.Checked;
             appData.Maturity = maturity.Checked;
             appData.Removal = removal.Checked;
@@ -136,7 +136,7 @@ namespace PWC_Cs
 
             if (isChecked)  // find the row that just got unchecked and RecordScheme
             {
-                foreach (DataGridViewRow row in SchemeTableDisplay.Rows)
+                foreach (DataGridViewRow row in SchemeTableDisplay.Rows) //Find just unchecked and record before loading the checked scheme
                 {
                     if (row.Index != e.RowIndex && !row.IsNewRow)
                     {
@@ -147,6 +147,12 @@ namespace PWC_Cs
 
                     }
                 }
+
+                //Now Load the checked scheme into the Dispaly Tables for apps and scenarios
+                LoadSchemeIntoDisplay(e.RowIndex);  
+
+
+
             }
 
             if (!isChecked) // if one was just unchecked and nothing else checked then record the newly unchecked scheme
@@ -185,6 +191,10 @@ namespace PWC_Cs
             }
         }
        
+
+
+
+
         private void RecordCheckedScheme()
         {
             //Record the possibly uncommitted scheme with the checked box
@@ -202,6 +212,35 @@ namespace PWC_Cs
             }
             RecordScheme(checkedrow); //save current scheme before saving file
         }
+
+
+        private void LoadSchemeIntoDisplay(int schemeNumber)
+        {
+            AppTableDisplay.Rows.Clear();
+            int numberApps = SchemeInfoList[schemeNumber].Days.Count;
+            for (int i = 0; i < numberApps; i++)
+            {
+                AppTableDisplay.Rows.Add();
+
+                AppTableDisplay.Rows[i].Cells["Days"].Value = SchemeInfoList[schemeNumber].Days[i];
+                AppTableDisplay.Rows[i].Cells[1].Value= SchemeInfoList[schemeNumber].Amount[i];
+                AppTableDisplay.Rows[i].Cells[3].Value = SchemeInfoList[schemeNumber].Depth[i];
+                AppTableDisplay.Rows[i].Cells[4].Value = SchemeInfoList[schemeNumber].Split[i];
+                AppTableDisplay.Rows[i].Cells[6].Value = SchemeInfoList[schemeNumber].DriftBuffer[i];
+                AppTableDisplay.Rows[i].Cells[7].Value = SchemeInfoList[schemeNumber].Periodicity[i];
+                AppTableDisplay.Rows[i].Cells[8].Value = SchemeInfoList[schemeNumber].Lag[i];
+
+            }
+
+
+            AbsoluteDaysButton.Checked = SchemeInfoList[schemeNumber].AbsoluteDays;
+            emerge.Checked = SchemeInfoList[schemeNumber].Emerge;
+            maturity.Checked = SchemeInfoList[schemeNumber].Maturity;
+            removal.Checked = SchemeInfoList[schemeNumber].Removal;
+
+
+        }
+
 
 
     }
