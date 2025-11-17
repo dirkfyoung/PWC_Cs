@@ -123,6 +123,9 @@
             WaterMolarRatio1 = new TextBox();
             label18 = new Label();
             tabPage2 = new TabPage();
+            ClearAllWaterBodies = new Button();
+            ClearSelectedWaterBody = new Button();
+            SelectOtherWaterbodies = new Button();
             WaterbodyList = new ListBox();
             UseTPEZbuffers = new CheckBox();
             ItsTPEZWPEZ = new CheckBox();
@@ -232,7 +235,7 @@
             outputSpraydrift = new CheckBox();
             CalculateEoF = new CheckBox();
             label57 = new Label();
-            OutputInfiltrationDepth = new TextBox();
+            outputInfiltrationDepth = new TextBox();
             outputWaterConc = new CheckBox();
             output_GW_BTC = new CheckBox();
             checkBox5 = new CheckBox();
@@ -273,7 +276,8 @@
             ReadSchemeTable = new ToolStripMenuItem();
             moreTabsToolStripMenuItem = new ToolStripMenuItem();
             saveFileDialog1 = new SaveFileDialog();
-            openFileDialog1 = new OpenFileDialog();
+            retrieveMainInputDialog = new OpenFileDialog();
+            openOtherWaterbody = new OpenFileDialog();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -1320,7 +1324,10 @@
             // 
             // tabPage2
             // 
-            tabPage2.BackColor = Color.Aqua;
+            tabPage2.BackColor = Color.Aquamarine;
+            tabPage2.Controls.Add(ClearAllWaterBodies);
+            tabPage2.Controls.Add(ClearSelectedWaterBody);
+            tabPage2.Controls.Add(SelectOtherWaterbodies);
             tabPage2.Controls.Add(WaterbodyList);
             tabPage2.Controls.Add(UseTPEZbuffers);
             tabPage2.Controls.Add(ItsTPEZWPEZ);
@@ -1335,21 +1342,50 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Target Body";
             // 
+            // ClearAllWaterBodies
+            // 
+            ClearAllWaterBodies.Location = new Point(66, 546);
+            ClearAllWaterBodies.Name = "ClearAllWaterBodies";
+            ClearAllWaterBodies.Size = new Size(164, 57);
+            ClearAllWaterBodies.TabIndex = 8;
+            ClearAllWaterBodies.Text = "Clear All";
+            ClearAllWaterBodies.UseVisualStyleBackColor = true;
+            // 
+            // ClearSelectedWaterBody
+            // 
+            ClearSelectedWaterBody.Location = new Point(66, 422);
+            ClearSelectedWaterBody.Name = "ClearSelectedWaterBody";
+            ClearSelectedWaterBody.Size = new Size(164, 57);
+            ClearSelectedWaterBody.TabIndex = 7;
+            ClearSelectedWaterBody.Text = "Clear Selected";
+            ClearSelectedWaterBody.UseVisualStyleBackColor = true;
+            // 
+            // SelectOtherWaterbodies
+            // 
+            SelectOtherWaterbodies.Location = new Point(66, 289);
+            SelectOtherWaterbodies.Name = "SelectOtherWaterbodies";
+            SelectOtherWaterbodies.Size = new Size(164, 73);
+            SelectOtherWaterbodies.TabIndex = 6;
+            SelectOtherWaterbodies.Text = "Select Other Waterbodies";
+            SelectOtherWaterbodies.UseVisualStyleBackColor = true;
+            SelectOtherWaterbodies.Click += SelectOtherWaterbodies_Click;
+            // 
             // WaterbodyList
             // 
             WaterbodyList.FormattingEnabled = true;
             WaterbodyList.ItemHeight = 25;
-            WaterbodyList.Location = new Point(66, 217);
+            WaterbodyList.Location = new Point(322, 262);
             WaterbodyList.Name = "WaterbodyList";
-            WaterbodyList.Size = new Size(732, 404);
+            WaterbodyList.Size = new Size(860, 404);
             WaterbodyList.TabIndex = 5;
             // 
             // UseTPEZbuffers
             // 
             UseTPEZbuffers.AutoSize = true;
-            UseTPEZbuffers.Location = new Point(644, 103);
+            UseTPEZbuffers.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            UseTPEZbuffers.Location = new Point(652, 108);
             UseTPEZbuffers.Name = "UseTPEZbuffers";
-            UseTPEZbuffers.Size = new Size(280, 29);
+            UseTPEZbuffers.Size = new Size(301, 32);
             UseTPEZbuffers.TabIndex = 4;
             UseTPEZbuffers.Text = "Use spraydrift buffers for TPEZ";
             UseTPEZbuffers.UseVisualStyleBackColor = true;
@@ -1357,9 +1393,10 @@
             // ItsTPEZWPEZ
             // 
             ItsTPEZWPEZ.AutoSize = true;
-            ItsTPEZWPEZ.Location = new Point(618, 55);
+            ItsTPEZWPEZ.Font = new Font("Segoe UI", 12F);
+            ItsTPEZWPEZ.Location = new Point(620, 73);
             ItsTPEZWPEZ.Name = "ItsTPEZWPEZ";
-            ItsTPEZWPEZ.Size = new Size(208, 29);
+            ItsTPEZWPEZ.Size = new Size(267, 36);
             ItsTPEZWPEZ.TabIndex = 3;
             ItsTPEZWPEZ.Text = "USEPA TPEZ && WPEZ ";
             ItsTPEZWPEZ.UseVisualStyleBackColor = true;
@@ -1367,9 +1404,10 @@
             // ItsOther
             // 
             ItsOther.AutoSize = true;
+            ItsOther.Font = new Font("Segoe UI", 12F);
             ItsOther.Location = new Point(66, 143);
             ItsOther.Name = "ItsOther";
-            ItsOther.Size = new Size(91, 29);
+            ItsOther.Size = new Size(111, 36);
             ItsOther.TabIndex = 2;
             ItsOther.Text = "Others";
             ItsOther.UseVisualStyleBackColor = true;
@@ -1377,9 +1415,10 @@
             // ItsaReservoir
             // 
             ItsaReservoir.AutoSize = true;
+            ItsaReservoir.Font = new Font("Segoe UI", 12F);
             ItsaReservoir.Location = new Point(66, 108);
             ItsaReservoir.Name = "ItsaReservoir";
-            ItsaReservoir.Size = new Size(256, 29);
+            ItsaReservoir.Size = new Size(331, 36);
             ItsaReservoir.TabIndex = 1;
             ItsaReservoir.Text = "USEPA Reservoir Watershed";
             ItsaReservoir.UseVisualStyleBackColor = true;
@@ -1387,9 +1426,10 @@
             // ItsaPond
             // 
             ItsaPond.AutoSize = true;
+            ItsaPond.Font = new Font("Segoe UI", 12F);
             ItsaPond.Location = new Point(66, 73);
             ItsaPond.Name = "ItsaPond";
-            ItsaPond.Size = new Size(225, 29);
+            ItsaPond.Size = new Size(288, 36);
             ItsaPond.TabIndex = 0;
             ItsaPond.Text = "USEPA Pond Watershed";
             ItsaPond.UseVisualStyleBackColor = true;
@@ -1942,6 +1982,7 @@
             ErosionFlag.Name = "ErosionFlag";
             ErosionFlag.Size = new Size(71, 31);
             ErosionFlag.TabIndex = 42;
+            ErosionFlag.Text = "3";
             // 
             // IsAllMedia
             // 
@@ -2403,7 +2444,7 @@
             OptionalOutputTab.Controls.Add(outputSpraydrift);
             OptionalOutputTab.Controls.Add(CalculateEoF);
             OptionalOutputTab.Controls.Add(label57);
-            OptionalOutputTab.Controls.Add(OutputInfiltrationDepth);
+            OptionalOutputTab.Controls.Add(outputInfiltrationDepth);
             OptionalOutputTab.Controls.Add(outputWaterConc);
             OptionalOutputTab.Controls.Add(output_GW_BTC);
             OptionalOutputTab.Controls.Add(checkBox5);
@@ -2548,12 +2589,12 @@
             label57.TabIndex = 33;
             label57.Text = "cm";
             // 
-            // OutputInfiltrationDepth
+            // outputInfiltrationDepth
             // 
-            OutputInfiltrationDepth.Location = new Point(1042, 267);
-            OutputInfiltrationDepth.Name = "OutputInfiltrationDepth";
-            OutputInfiltrationDepth.Size = new Size(55, 31);
-            OutputInfiltrationDepth.TabIndex = 32;
+            outputInfiltrationDepth.Location = new Point(1042, 267);
+            outputInfiltrationDepth.Name = "outputInfiltrationDepth";
+            outputInfiltrationDepth.Size = new Size(55, 31);
+            outputInfiltrationDepth.TabIndex = 32;
             // 
             // outputWaterConc
             // 
@@ -2907,6 +2948,10 @@
             // 
             saveFileDialog1.Filter = "PWC 3 INPUT Files (*.PW4)|*.PW4|ALL Files (*.*)|*.*";
             // 
+            // openOtherWaterbody
+            // 
+            openOtherWaterbody.Multiselect = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -3082,7 +3127,7 @@
         private TextBox MassTransferRegion2Daughter;
         private TextBox MassTransferRegion2;
         private Label label32;
-        private OpenFileDialog openFileDialog1;
+        private OpenFileDialog retrieveMainInputDialog;
         private TextBox Q10;
         private Label label33;
         private TextBox ExpParameter2;
@@ -3176,7 +3221,7 @@
         private CheckBox checkBox5;
         private CheckBox outputInfiltrationAtDepth;
         private Label label57;
-        private TextBox OutputInfiltrationDepth;
+        private TextBox outputInfiltrationDepth;
         private DataGridView AdditionalOutputGridView;
         private DataGridViewTextBoxColumn Item;
         private DataGridViewTextBoxColumn Chem;
@@ -3193,5 +3238,9 @@
         private DataGridViewCheckBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewButtonColumn Column4;
+        private Button ClearAllWaterBodies;
+        private Button ClearSelectedWaterBody;
+        private Button SelectOtherWaterbodies;
+        private OpenFileDialog openOtherWaterbody;
     }
 }

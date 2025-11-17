@@ -145,13 +145,113 @@ namespace PWC_Cs
         //**********************************************************************
         private void RetrieveInputFile_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog(this) == DialogResult.OK)
+
+            // configure filter
+            retrieveMainInputDialog.Filter =
+                "PWC 3 INPUT Files (*.PW4)|*.PW4|PWC 3 INPUT Files (*.PW3)|*.PW3|ALL Files (*.*)|*.*";
+
+            // use window default or previous working directory if it exists (even after previous shutdowns)
+            var candidate = FileNames.WorkingDirectory;
+            if (Directory.Exists(candidate))
             {
-                RetrieveMainInputFromTextFile(openFileDialog1.FileName);
+                retrieveMainInputDialog.InitialDirectory = candidate;
             }
+   
+            retrieveMainInputDialog.FileName = string.Empty;
+
+            var result = retrieveMainInputDialog.ShowDialog(this);
+
+            // Cancel button will cause return without further execution
+            if (result == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            // store the working directory
+            var selectedFile = retrieveMainInputDialog.FileName;
+            var dir = string.IsNullOrEmpty(selectedFile) ? null : Path.GetDirectoryName(selectedFile);
+            if (!string.IsNullOrEmpty(dir))
+            {
+                FileNames.WorkingDirectory = dir + Path.DirectorySeparatorChar;
+            }
+
+            // read inputs from the selected file
+            RetrieveMainInputFromTextFile(selectedFile);
+
+
+        }
+
+
+
+
+
+
+
+
+            //// Opens the desktop if there is no previous open --commented out
+            //if (Directory.Exists(FileNames.WorkingDirectory))
+            //{
+            //    retrieveMainInputDialog.InitialDirectory = FileNames.WorkingDirectory;
+            //}
+            ////else
+            ////{
+            ////   retrieveMainInputDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            ////}
+
+
+            //if (retrieveMainInputDialog.ShowDialog(this) == DialogResult.OK)
+            //{
+            //    RetrieveMainInputFromTextFile(retrieveMainInputDialog.FileName);
+            //}
+
+
+
+
+
+
+
+       
+
+        private void SelectOtherWaterbodies_Click(object sender, EventArgs e)
+        {
+
+            DialogResult result;
+
+            openOtherWaterbody.Filter = "Water Body Files (*.WAT)|*.WAT|All files (*.*)|*.*";
+
+            openOtherWaterbody.InitialDirectory = FileNames.DefaultWaterBodyDirectory;
+
+            if (Directory.Exists(FileNames.PreviousWaterBodyPath))
+                openOtherWaterbody.InitialDirectory = FileNames.PreviousWaterBodyPath;
+
+            result = openOtherWaterbody.ShowDialog();
+            if (result == DialogResult.Cancel)
+                return;
+
+            // store the directory of the selected file (guard against null)
+            var dir = Path.GetDirectoryName(openOtherWaterbody.FileName);
+            if (!string.IsNullOrEmpty(dir))
+                FileNames.PreviousWaterBodyPath = dir;
+
+
+            // Add each selected file (full path) to the list
+            foreach (var selectedScenario in openOtherWaterbody.FileNames)
+            {
+                WaterbodyList.Items.Add(selectedScenario);
+            }
+
+            // store previous scenario path as well (guard against null)
+            var scenarioDir = Path.GetDirectoryName(openOtherWaterbody.FileName);
+            if (!string.IsNullOrEmpty(scenarioDir))
+                FileNames.PreviousScenarioPath = scenarioDir;
+
+
+
+
+
         }
         //**********************************************************************
- 
+
 
     }
 }

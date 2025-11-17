@@ -4,6 +4,8 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 
 
@@ -270,9 +272,183 @@ namespace PWC_Cs
                     SingleScheme.RunoffMitigation = col[0];
                     SingleScheme.ErosionMitigation = col[1];
                     SingleScheme.DriftMitigation = col[2];
+
+                  
                 }
                 SchemeInfoList.Add(SingleScheme);
+            }  //end of schemes read
+
+            col = reader.ReadLine()!.Split(',');  //erosion model
+            ErosionFlag.Text = col[0];
+
+            reader.ReadLine();  //blank lines for future
+            reader.ReadLine();
+            reader.ReadLine();
+            reader.ReadLine();
+            reader.ReadLine();
+
+            col = reader.ReadLine()!.Split(',');  //CN moisture adjustment
+            AdjustCN.Checked = Convert.ToBoolean(col[0]);
+
+            //Waterbody Inputs
+            col = reader.ReadLine()!.Split(',');  //Waterbody logicals
+            ItsaPond.Checked = Convert.ToBoolean(col[0]);
+            ItsaReservoir.Checked = Convert.ToBoolean(col[1]);
+            ItsOther.Checked = Convert.ToBoolean(col[2]);
+            ItsTPEZWPEZ.Checked = Convert.ToBoolean(col[3]);
+            UseTPEZbuffers.Checked = Convert.ToBoolean(col[4]);
+
+            col = reader.ReadLine()!.Split(',');  //Waterbody others count
+            int countOfSpecialWaterbodies = Convert.ToInt32(col[0]);
+
+            WaterbodyList.Items.Clear();
+            for (int i = 0; i < countOfSpecialWaterbodies; i++)
+            {
+                string? raw = reader.ReadLine();
+                if (string.IsNullOrEmpty(raw)) continue;
+
+                var fields = raw.Split(',');
+                string name = fields.Length > 0 ? fields[0].Trim().Trim('"') : string.Empty;
+                if (!string.IsNullOrEmpty(name))
+                    WaterbodyList.Items.Add(name);
             }
+
+
+            //Read output options
+
+            col = reader.ReadLine()!.Split(',');
+            outputRunoff.Checked = Convert.ToBoolean(col[0]);
+
+            col = reader.ReadLine()!.Split(',');
+            outputErosion.Checked = Convert.ToBoolean(col[0]);
+
+            col = reader.ReadLine()!.Split(',');
+            outputPestRunoff.Checked = Convert.ToBoolean(col[0]);
+
+            col = reader.ReadLine()!.Split(',');
+            outputPestErosion.Checked = Convert.ToBoolean(col[0]);  
+
+            col = reader.ReadLine()!.Split(',');
+            outputConcLastLayer.Checked = Convert.ToBoolean(col[0]);
+
+            col = reader.ReadLine()!.Split(',');
+            outputDailyFieldVolatilization.Checked = Convert.ToBoolean(col[0]);
+
+            col = reader.ReadLine()!.Split(',');
+            outputDailyPestLeached.Checked = Convert.ToBoolean(col[0]);
+            chemInfiltrationDepth.Text = col[1];
+
+            col = reader.ReadLine()!.Split(',');
+            outputDecayedPest.Checked = Convert.ToBoolean(col[0]);
+            outputDecayDepth1.Text = col[1];
+            outputDecayDepth2.Text = col[2];
+
+            col = reader.ReadLine()!.Split(',');
+            outputMassInSoilProfile.Checked = Convert.ToBoolean(col[0]);
+
+            col = reader.ReadLine()!.Split(',');
+            outputMassSoilSpecific.Checked = Convert.ToBoolean(col[0]);
+            outputMassDepth1.Text = col[1];
+            outputMassDepth2.Text = col[2];
+
+            col = reader.ReadLine()!.Split(',');
+            outputMassOnFoliage.Checked = Convert.ToBoolean(col[0]);
+
+            col = reader.ReadLine()!.Split(',');
+            outputPrecipitation.Checked = Convert.ToBoolean(col[0]);
+
+            col = reader.ReadLine()!.Split(',');
+            outputActualEvap.Checked = Convert.ToBoolean(col[0]); 
+            
+            col = reader.ReadLine()!.Split(',');
+            outputTotalSoilWater.Checked = Convert.ToBoolean(col[0]);
+
+            col = reader.ReadLine()!.Split(',');
+            outputIrrigation.Checked = Convert.ToBoolean(col[0]);
+
+            col = reader.ReadLine()!.Split(',');
+            outputInfiltrationAtDepth.Checked = Convert.ToBoolean(col[0]);
+            outputInfiltrationDepth.Text = col[1];
+
+            col = reader.ReadLine()!.Split(',');
+
+
+            col = reader.ReadLine()!.Split(',');
+            col = reader.ReadLine()!.Split(',');
+
+            //currentrow = MyReader.ReadFields
+            //outputInfiltratedWaterLastLayer.Checked = currentrow(0)
+
+            //currentrow = MyReader.ReadFields
+            //outputWaterConc.Checked = currentrow(0)
+
+
+            //currentrow = MyReader.ReadFields
+
+            //If currentrow(0) = "True" Or "False" Then
+            //    outputSpraydrift.Checked = currentrow(0)
+            //Else
+            //    outputSpraydrift.Checked = False
+            //End If
+
+            //currentrow = MyReader.ReadFields
+            //If currentrow(0) = "True" Or "False" Then
+            //    output_GW_BTC.Checked = currentrow(0)
+            //Else
+            //    output_GW_BTC.Checked = False
+            //End If
+
+            //MyReader.ReadLine() 'expansion lines
+            //MyReader.ReadLine()
+            //MyReader.ReadLine()
+            //MyReader.ReadLine()
+
+            //currentrow = MyReader.ReadFields
+
+            //If currentrow(0) = "True" Or currentrow(0) = "False" Then  ' for backward compatibiilty cuz line used to be unused
+            //    CalculateEoF.Checked = currentrow(0)
+            //End If
+
+            //Dim NumOutputRows As Integer
+            //currentrow = MyReader.ReadFields
+            //NumOutputRows = currentrow(0)
+
+            //AdditionalOutputGridView.Rows.Clear()
+            //For j As Integer = 0 To NumOutputRows -1
+            //    currentrow = MyReader.ReadFields
+            //    AdditionalOutputGridView.Rows.Add(currentrow(0), currentrow(1), currentrow(2), currentrow(3), currentrow(4), currentrow(5))
+            //Next
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             //Load Scheme Descriptions to Scheme Table Display
             SchemeTableDisplay.Rows.Clear();
@@ -451,7 +627,7 @@ namespace PWC_Cs
                 WriteCsvLine(sw, outputTotalSoilWater.Checked);
                 WriteCsvLine(sw, outputIrrigation.Checked);
 
-                WriteCsvLine(sw, outputInfiltrationAtDepth.Checked, OutputInfiltrationDepth.Text);
+                WriteCsvLine(sw, outputInfiltrationAtDepth.Checked, outputInfiltrationDepth.Text);
                 WriteCsvLine(sw, outputInfiltratedWaterLastLayer.Checked);
 
                 WriteCsvLine(sw, outputWaterConc.Checked);
