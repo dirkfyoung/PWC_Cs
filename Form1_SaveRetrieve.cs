@@ -438,12 +438,14 @@ namespace PWC_Cs
             {
                 //the following will be populated later with varibles. leave asis for now
                 WriteCsvLine(sw, "PWC Version 4.0 C#");
-                WriteCsvLine(sw, "working directory");
-                WriteCsvLine(sw, "family name");
-                WriteCsvLine(sw, "scenario directory");
-                WriteCsvLine(sw, "pfac");
-                WriteCsvLine(sw, "options");
-                WriteCsvLine(sw, "nchem");
+                WriteCsvLine(sw, "WorkingDirectoryLabel.Text");
+                WriteCsvLine(sw, "IOFamilyName.Text");
+                WriteCsvLine(sw, WeatherFileDirectory);
+                WriteCsvLine(sw, WaterbodyEvapAdjustment.Text);
+                WriteCsvLine(sw, isKoc.Checked, UseFreundlich.Checked, UseNonequilibrium.Checked, poundToKiloConversion.Checked, IsHydrolysisOverride.Checked);
+
+                string nchem = DoDegradate1.Checked? (DoDegradate2.Checked ? "3" : "2"): "1";
+                WriteCsvLine(sw, nchem);
 
                 //Chemical properties 
                 WriteCsvLine(sw, sorption1.Text, sorption2.Text, sorption3.Text);
