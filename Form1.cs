@@ -1,4 +1,5 @@
 using Microsoft.VisualBasic.Logging;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -166,6 +167,10 @@ namespace PWC_Cs
                 return;
             }
 
+            FileNames.WorkingDirectory = Path.GetDirectoryName(retrieveMainInputDialog.FileName) + "\\";
+            WorkingDirectory.Text = FileNames.WorkingDirectory;
+            IOFamilyName.Text = Path.GetFileNameWithoutExtension(retrieveMainInputDialog.FileName);
+
             // store the working directory
             var selectedFile = retrieveMainInputDialog.FileName;
             var dir = string.IsNullOrEmpty(selectedFile) ? null : Path.GetDirectoryName(selectedFile);
@@ -233,9 +238,22 @@ namespace PWC_Cs
 
         }
 
+        private void WorkingDirectory_DoubleClick(object sender, EventArgs e)
+        {
 
-        //**********************************************************************
+            if (Directory.Exists(WorkingDirectory.Text))
+            {
+                Process.Start("explorer.exe", WorkingDirectory.Text);
+            }
 
-
+        }
+        private void WorkingDirectory_MouseEnter(object sender, EventArgs e)
+        {
+            WorkingDirectory.ForeColor = Color.Blue;
+        }
+        private void WorkingDirectory_MouseLeave(object sender, EventArgs e)
+        {
+            WorkingDirectory.ForeColor = Color.Black;
+        }
     }
 }
