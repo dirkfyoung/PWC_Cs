@@ -15,7 +15,7 @@ namespace PWC_Cs
     {
         public void RetrieveMainInputFromTextFile(string readfilename)
         {
-            using StreamReader reader = new StreamReader(readfilename);
+            using StreamReader reader = new(readfilename);
             string[] col;
             string line;
 
@@ -178,7 +178,7 @@ namespace PWC_Cs
             SchemeInfoList.Clear();
             for (int i = 0; i < NumberOfSchemes; i++)
             {
-                SchemeDetails SingleScheme = new SchemeDetails();
+                SchemeDetails SingleScheme = new();
 
                 line = reader.ReadLine()!;
                 int firstQuote = line.IndexOf('"');
@@ -434,7 +434,7 @@ namespace PWC_Cs
 
 
             //Pass the filepath and filename to the StreamWriter Constructor
-            using StreamWriter sw = new StreamWriter(savefilename);
+            using StreamWriter sw = new(savefilename);
             {
                 //the following will be populated later with varibles. leave asis for now
                 WriteCsvLine(sw, "PWC Version 4.0 C#");
@@ -625,6 +625,247 @@ namespace PWC_Cs
             } // The using statement automatically closes the StreamWriter
         }
 
+        public void SaveSchemeTableAsTextFile(string savefile)
+        {
+
+            int NumberOfSchemes = SchemeTableDisplay.RowCount - 1;
+            int actualRowsInAppTable;
+            int referencedate;
+            int numberOfScenarios;
+
+            {
+                using (StreamWriter writer = new(savefile, false, Encoding.ASCII))
+                {
+                    writer.WriteLine("PWC 3 Scheme Table");
+                    writer.WriteLine(NumberOfSchemes);
+
+                    string phrase1 = "Sch#, Description,mode,#Apps,";
+                    string phrase2 = " days,amt,method,depth,split,drift,buffer,period,lag,";
+                    string phrase3 = "window, span,step,raifast,rainlimit,intolwindow,optwindow,mindays,#scn, scn dir,  ";
+
+                    writer.WriteLine($"{phrase1}{phrase2}{phrase3}");
+
+                    int checktest;
+                    for (int i = 0; i < NumberOfSchemes; i++)
+                    {
+                        checktest = i;
+                        writer.WriteLine($"{(i + 1)},\"{SchemeTableDisplay[3, i].Value}\",");
+
+                        //ApplicationTable = SchemeInfoList[i];
+
+                        referencedate =  SchemeInfoList[i].AbsoluteDays ? 0 :
+                                         SchemeInfoList[i].Emerge       ? 1 :
+                                         SchemeInfoList[i].Maturity     ? 2 :
+                                         SchemeInfoList[i].Removal      ? 3 : 99;
+
+                        writer.Write($"{referencedate},");
+
+                        // Application Table Information
+                        actualRowsInAppTable = SchemeInfoList[i].Days.Count;
+                        writer.Write($"{actualRowsInAppTable},");
+
+                        // Maximum of 10 applications for a scheme dump
+                        if (actualRowsInAppTable - 1 > 10)
+                        {
+                            MessageBox.Show("column order is preserved only for a maximum of 10 applications");
+                        }
+
+                        for (int j = 0; j < actualRowsInAppTable; j++)
+                        {
+                            writer.Write($"{SchemeInfoList[i].Days[j]},{SchemeInfoList[i].Amount[j]},{SchemeInfoList[i].Method[j]},{SchemeInfoList[i].Depth[j]},{SchemeInfoList[i].Split[j]},");
+                            writer.Write($"{SchemeInfoList[i].Drift[j]},{SchemeInfoList[i].DriftBuffer[j]},{SchemeInfoList[i].Periodicity[j]},{SchemeInfoList[i].Lag[j]},");
+                        }
+
+                        if (actualRowsInAppTable < 10)
+                        {
+                            for (int j = 0; j < (10 - actualRowsInAppTable); j++)
+                            {
+                                writer.Write("0,0,0,0,0,0,0,0,0,");
+                            }
+                        }
+
+                        writer.Write($"{SchemeInfoList[i].UseApplicationWindow},{SchemeInfoList[i].ApplicationWindowSpan},{SchemeInfoList[i].ApplicationWindowStep},");
+                        writer.Write($"{SchemeInfoList[i].UseRainFast},{SchemeInfoList[i].RainLimit},{SchemeInfoList[i].IntolerableRainWindow},{SchemeInfoList[i].OptimumApplicationWindow},{SchemeInfoList[i].MinDaysBetweenApps},");
+
+                        numberOfScenarios = SchemeInfoList[i].Scenarios.Count;
+                        writer.Write(numberOfScenarios);
+
+                        if (numberOfScenarios == 0)
+                        {
+                            writer.Write(",");
+                        }
+                        else
+                        {
+                            string scenarioDir = Path.GetDirectoryName(SchemeInfoList[i].Scenarios[0]);
+                            writer.Write(string.IsNullOrEmpty(scenarioDir) ? "," : $",{scenarioDir}+ Path.DirectorySeparatorChar");
+                        }
+
+                        for (int j = 0; j < numberOfScenarios; j++)
+                        {
+                            writer.Write($",{Path.GetFileName(SchemeInfoList[i].Scenarios[j])}");
+                        }
+
+                        writer.WriteLine(); // End the line for the current scheme
+                    }
+                }
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //    Dim msg As String
+            //msg = "PWC 3 Scheme Table"
+
+
+
+            //'Schemes***************************
+            //Dim NumberOfSchemes As Integer
+            //Dim ApplicationTable As New SchemeDetails
+            //Dim actualRowsInAppTable As Integer 'app table rows
+
+            //Dim NumberOfScenarios As Integer
+            //Dim referencedate As Integer
+
+            //AppTableDisplay.CommitEdit(DataGridViewDataErrorContexts.Commit)  'commit the cell if cursor still on box
+
+
+            //NumberOfSchemes = SchemeTableDisplay.RowCount - 1
+
+            //If(NumberOfSchemes > SchemeInfoList.Count) Then
+            //    MsgBox("There is an uncommitted scheme. Delete it or commit it.")
+            //    Return
+            //End If
+
+
+            //msg = msg & String.Format("{0}{1}{0}", vbNewLine, NumberOfSchemes)
+            //SchemeTableDisplay.CommitEdit(DataGridViewDataErrorContexts.Commit) 'commit the cell if cursor still on box
+
+            //Dim phrase1 As String = "Sch#, Description,mode,#Apps,"
+            //Dim phrase2 As String = " days,amt,method,depth,split,drift,buffer,period,lag,"
+            //Dim phrase3 As String = "window, span,step,raifast,rainlimit,intolwindow,optwindow,mindays,#scn, scn dir,  "
+
+            //msg = msg & String.Format("{0}{1}{1}{1}{1}{1}{1}{1}{1}{1}{1}{2}", phrase1, phrase2, phrase3)
+
+
+
+            //Dim checktest As Integer
+            //Try
+
+            //    For i As Integer = 0 To NumberOfSchemes -1
+
+
+            //        checktest = i
+            //        msg = msg & String.Format("{0}{1},{2},", vbNewLine, (i + 1), """" & SchemeTableDisplay.Item(3, i).Value & """")
+
+            //        ApplicationTable = SchemeInfoList(i)
+
+            //        Select Case True
+            //            Case ApplicationTable.AbsoluteRelative
+            //                referencedate = 0
+            //            Case ApplicationTable.Emerge
+            //                referencedate = 1
+            //            Case ApplicationTable.Maturity
+            //                referencedate = 2
+            //            Case ApplicationTable.Removal
+            //                referencedate = 3
+            //            Case Else
+            //                referencedate = 99
+            //        End Select
+
+            //        msg = msg & String.Format("{0},", referencedate)
+
+            //        'Application Table Information
+            //        actualRowsInAppTable = ApplicationTable.Days.Count   'AppTableDisplay.RowCount - 1
+            //        msg = msg & String.Format("{0},", actualRowsInAppTable)
+
+
+            //        'Maximum of 10 applications for a scheme dump
+            //        If actualRowsInAppTable -1 > 10 Then
+            //            MsgBox("column order is preserved only for a maximum of 10 applications")
+            //        End If
+
+            //        For j As Integer = 0 To actualRowsInAppTable -1
+
+            //            msg = msg & String.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},", ApplicationTable.Days(j), ApplicationTable.Amount(j),
+            //                                      ApplicationTable.Method(j), ApplicationTable.Depth(j), ApplicationTable.Split(j),
+            //                                      ApplicationTable.Drift(j), ApplicationTable.DriftBuffer(j), ApplicationTable.Periodicity(j), ApplicationTable.Lag(j))
+            //        Next
+
+            //        If actualRowsInAppTable < 10 Then
+            //            For j As Integer = 1 To(10 - actualRowsInAppTable)
+            //                msg = msg & String.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},", 0, 0, 0, 0, 0, 0, 0, 0, 0)
+            //            Next
+            //        End If
+
+
+
+            //        msg = msg & String.Format("{0},{1},{2},", ApplicationTable.UseApplicationWindow, ApplicationTable.ApplicationWindowSpan, ApplicationTable.ApplicationWindowStep)
+            //        msg = msg & String.Format("{0},{1},{2},{3},{4},", ApplicationTable.UseRainFast, ApplicationTable.RainLimit, ApplicationTable.IntolerableRainWindow, ApplicationTable.OptimumApplicationWindow, ApplicationTable.MinDaysBetweenApps)
+
+
+
+            //        NumberOfScenarios = ApplicationTable.Scenarios.Count
+
+
+            //        msg = msg & NumberOfScenarios
+
+            //        If NumberOfScenarios = 0 Then
+            //            msg = msg & ","
+            //        Else
+            //            If IO.Path.GetDirectoryName(ApplicationTable.Scenarios(0)) = "" Then
+            //                msg = msg & ","
+            //            Else
+            //                msg = msg & "," & IO.Path.GetDirectoryName(ApplicationTable.Scenarios(0)) & "\"
+            //            End If
+            //        End If
+
+
+            //        For j As Integer = 0 To NumberOfScenarios -1
+
+
+            //            msg = msg & "," & IO.Path.GetFileName(ApplicationTable.Scenarios(j))
+            //        Next
+
+            //        'msg = msg & vbNewLine & ApplicationTable.UseBatchScenarioFile & ","
+            //        'msg = msg & vbNewLine & ApplicationTable.ScenarioBatchFileName & ","
+            //    Next
+
+
+            //Catch ex As Exception
+
+            //    MsgBox("There is a problem with scheme save. " & ex.Message)
+            //    Return
+            //End Try
+
+
+
+
+            //Try
+            //    My.Computer.FileSystem.WriteAllText(savefile, msg, False, System.Text.Encoding.ASCII)
+            //Catch ex As Exception
+            //    MsgBox(ex.Message)
+            //End Try
+
+        }
 
     }
 }

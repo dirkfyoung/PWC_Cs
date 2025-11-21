@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Net.WebRequestMethods;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -138,15 +139,35 @@ namespace PWC_Cs
         //**********************************************************************
         private void SaveInputFile_Click(object sender, EventArgs e)
         {
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            saveFileDialog1.Filter = "PWC 3 INPUT Files (*.PW4)|*.PW4|PWC 3 INPUT Files (*.PW3)|*.PW3|ALL Files (*.*)|*.*";
+
+            var candidate = FileNames.WorkingDirectory;
+            if (Directory.Exists(candidate))
             {
-                SaveMainInputToTextFile(saveFileDialog1.FileName);
+                saveFileDialog1.InitialDirectory = candidate;
             }
+
+            var result = saveFileDialog1.ShowDialog(this);
+            if (result == DialogResult.OK)
+            {
+                var selectedFile = saveFileDialog1.FileName;
+                var dir = string.IsNullOrEmpty(selectedFile) ? null : Path.GetDirectoryName(selectedFile);
+                if (!string.IsNullOrEmpty(dir))
+                {
+                    FileNames.WorkingDirectory = dir + Path.DirectorySeparatorChar;
+                    WorkingDirectory.Text = FileNames.WorkingDirectory;
+                    IOFamilyName.Text = Path.GetFileNameWithoutExtension(selectedFile);
+                    SaveMainInputToTextFile(selectedFile);
+                }
+            }
+
+
+
+
         }
         //**********************************************************************
         private void RetrieveInputFile_Click(object sender, EventArgs e)
         {
-            // configure filter
             retrieveMainInputDialog.Filter =
                 "PWC 3 INPUT Files (*.PW4)|*.PW4|PWC 3 INPUT Files (*.PW3)|*.PW3|ALL Files (*.*)|*.*";
 
@@ -161,58 +182,54 @@ namespace PWC_Cs
 
             var result = retrieveMainInputDialog.ShowDialog(this);
 
-            // Cancel button will cause return without further execution
-            if (result == DialogResult.Cancel)
+
+            if (result == DialogResult.OK)
             {
-                return;
+                // FileNames.WorkingDirectory = Path.GetDirectoryName(retrieveMainInputDialog.FileName) + "\\";
+
+                var selectedFile = retrieveMainInputDialog.FileName;
+                var dir = string.IsNullOrEmpty(selectedFile) ? null : Path.GetDirectoryName(selectedFile);
+                if (!string.IsNullOrEmpty(dir))
+                {
+                    FileNames.WorkingDirectory = dir + Path.DirectorySeparatorChar;
+                    WorkingDirectory.Text = FileNames.WorkingDirectory;
+                    IOFamilyName.Text = Path.GetFileNameWithoutExtension(selectedFile);
+                    RetrieveMainInputFromTextFile(selectedFile);
+                }
+
             }
 
-            FileNames.WorkingDirectory = Path.GetDirectoryName(retrieveMainInputDialog.FileName) + "\\";
-            WorkingDirectory.Text = FileNames.WorkingDirectory;
-            IOFamilyName.Text = Path.GetFileNameWithoutExtension(retrieveMainInputDialog.FileName);
-
-            // store the working directory
-            var selectedFile = retrieveMainInputDialog.FileName;
-            var dir = string.IsNullOrEmpty(selectedFile) ? null : Path.GetDirectoryName(selectedFile);
-            if (!string.IsNullOrEmpty(dir))
-            {
-                FileNames.WorkingDirectory = dir + Path.DirectorySeparatorChar;
-            }
-
-            // read inputs from the selected file
-            RetrieveMainInputFromTextFile(selectedFile);
         }
 
         private void SelectOtherWaterbodies_Click(object sender, EventArgs e)
         {
-            DialogResult result;
 
             openOtherWaterbody.Filter = "Water Body Files (*.WAT)|*.WAT|All files (*.*)|*.*";
-
-            openOtherWaterbody.InitialDirectory = FileNames.DefaultWaterBodyDirectory;
-
-            if (Directory.Exists(FileNames.PreviousWaterBodyPath))
-                openOtherWaterbody.InitialDirectory = FileNames.PreviousWaterBodyPath;
-
-            result = openOtherWaterbody.ShowDialog();
-            if (result == DialogResult.Cancel)
-                return;
-
-            // store the directory of the selected file (guard against null)
-            var dir = Path.GetDirectoryName(openOtherWaterbody.FileName);
-            if (!string.IsNullOrEmpty(dir))
-                FileNames.PreviousWaterBodyPath = dir;
-
-            // Add each selected file (full path) to the list
-            foreach (var selectedScenario in openOtherWaterbody.FileNames)
+            if (Directory.Exists(FileNames.WaterBodyDirectory))
             {
-                WaterbodyList.Items.Add(selectedScenario);
+                openOtherWaterbody.InitialDirectory = FileNames.WaterBodyDirectory;
             }
 
-            // store previous scenario path as well (guard against null)
-            var scenarioDir = Path.GetDirectoryName(openOtherWaterbody.FileName);
-            if (!string.IsNullOrEmpty(scenarioDir))
-                FileNames.PreviousScenarioPath = scenarioDir;
+
+            var result = openOtherWaterbody.ShowDialog(this);
+
+            if (result == DialogResult.OK)
+            {
+                var selectedFile = openOtherWaterbody.FileName;
+                var dir = string.IsNullOrEmpty(selectedFile) ? null : Path.GetDirectoryName(selectedFile);
+                if (!string.IsNullOrEmpty(dir))
+                {
+                    FileNames.WaterBodyDirectory = dir + Path.DirectorySeparatorChar;
+
+                    // Add each selected file (full path) to the list
+                    foreach (var selectedScenario in openOtherWaterbody.FileNames)
+                    {
+                        WaterbodyList.Items.Add(selectedScenario);
+                    }
+
+                }
+
+            }
 
         }
 
@@ -254,6 +271,82 @@ namespace PWC_Cs
         private void WorkingDirectory_MouseLeave(object sender, EventArgs e)
         {
             WorkingDirectory.ForeColor = Color.Black;
+        }
+
+        private void GetWeatherFileDirectory_Click(object sender, EventArgs e)
+        {
+            weatherFileDialog.Filter = "Weather Files (*.wea)|*.WEA|ALL Files (*.*)|*.*";
+
+            var candidate = FileNames.WeatherFileDirectory;
+            if (Directory.Exists(candidate))
+            {
+                weatherFileDialog.InitialDirectory = candidate;
+            }
+
+            weatherFileDialog.FileName = string.Empty;
+
+            var result = weatherFileDialog.ShowDialog(this);
+
+            if (result == DialogResult.OK)
+            {
+
+                var selectedFile = weatherFileDialog.FileName;
+                var dir = string.IsNullOrEmpty(selectedFile) ? null : Path.GetDirectoryName(selectedFile);
+                if (!string.IsNullOrEmpty(dir))
+                {
+                    FileNames.WeatherFileDirectory = dir + Path.DirectorySeparatorChar;
+                    WeatherFileDirectory.Text = FileNames.WeatherFileDirectory;
+                }
+
+            }
+        }
+
+
+        private void WriteSchemeTable_Click(object sender, EventArgs e)
+        {
+            saveSchemeFile.Filter = "CSV File (*.csv)|*.CSV|ALL Files (*.*)|*.*";
+            saveSchemeFile.FileName = string.Empty;
+            saveSchemeFile.InitialDirectory = FileNames.WorkingDirectory;
+
+            var result = saveSchemeFile.ShowDialog(this);
+
+            if (result == DialogResult.OK)
+            {
+                var selectedFile = saveSchemeFile.FileName;
+                var dir = string.IsNullOrEmpty(selectedFile) ? null : Path.GetDirectoryName(selectedFile);
+                if (!string.IsNullOrEmpty(dir))
+                {
+                    SaveSchemeTableAsTextFile(saveSchemeFile.FileName);
+                }
+            }
+        }
+
+        private void SelectScenarios_Click(object sender, EventArgs e)
+        {
+            openScenarios.Filter = "Scenario Files (*.SCN2)|*.SCN2|All files (*.*)|*.*";
+            if (Directory.Exists(FileNames.ScenarioDirectory))
+            {
+                openScenarios.InitialDirectory = FileNames.ScenarioDirectory;
+            }
+
+            var result = openScenarios.ShowDialog(this);
+            if (result == DialogResult.OK)
+            {
+                var selectedFile = openScenarios.FileName;
+                var dir = string.IsNullOrEmpty(selectedFile) ? null : Path.GetDirectoryName(selectedFile);
+                if (!string.IsNullOrEmpty(dir))
+                {
+                    FileNames.ScenarioDirectory = dir + Path.DirectorySeparatorChar;
+
+                    // Add each selected file (full path) to the list
+                    foreach (var selectedScenario in openScenarios.FileNames)
+                    {
+                        ScenarioListBox.Items.Add(selectedScenario);
+                    }
+                }
+            }
+
+
         }
     }
 }

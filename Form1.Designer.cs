@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -138,10 +138,11 @@
             ItsaReservoir = new CheckBox();
             ItsaPond = new CheckBox();
             tabPage3 = new TabPage();
-            label61 = new Label();
-            WeatherFileDirectory = new TextBox();
+            groupBox3 = new GroupBox();
             radioButton2 = new RadioButton();
             poundToKiloConversion = new RadioButton();
+            GetWeatherFileDirectory = new Button();
+            WeatherFileDirectory = new TextBox();
             SchemeTableDisplay = new DataGridView();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewCheckBoxColumn();
@@ -176,6 +177,9 @@
             ApplicationWindowStep = new TextBox();
             AppTableDisplay = new DataGridView();
             tabPage5 = new TabPage();
+            ClearAllScenarios = new Button();
+            ClearSelectedScenarios = new Button();
+            SelectScenarios = new Button();
             label48 = new Label();
             SelectScenarioBatchFile = new Button();
             ScenarioBatchFileName = new TextBox();
@@ -292,11 +296,16 @@
             label56 = new Label();
             label60 = new Label();
             button1 = new Button();
+            weatherFileDialog = new OpenFileDialog();
+            openSchemeFile = new OpenFileDialog();
+            saveSchemeFile = new SaveFileDialog();
+            openScenarios = new OpenFileDialog();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tabPage2.SuspendLayout();
             tabPage3.SuspendLayout();
+            groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SchemeTableDisplay).BeginInit();
             tabPage4.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -322,7 +331,7 @@
             tabControl1.Location = new Point(0, 31);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(988, 653);
+            tabControl1.Size = new Size(988, 637);
             tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -332,7 +341,7 @@
             tabPage1.Location = new Point(4, 29);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(980, 620);
+            tabPage1.Size = new Size(980, 604);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Chemical";
             // 
@@ -1287,7 +1296,7 @@
             tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(980, 620);
+            tabPage2.Size = new Size(980, 604);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Target Body";
             // 
@@ -1397,49 +1406,43 @@
             // tabPage3
             // 
             tabPage3.BackColor = Color.Gold;
-            tabPage3.Controls.Add(label61);
+            tabPage3.Controls.Add(groupBox3);
+            tabPage3.Controls.Add(GetWeatherFileDirectory);
             tabPage3.Controls.Add(WeatherFileDirectory);
-            tabPage3.Controls.Add(radioButton2);
-            tabPage3.Controls.Add(poundToKiloConversion);
             tabPage3.Controls.Add(SchemeTableDisplay);
             tabPage3.Location = new Point(4, 29);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(980, 620);
+            tabPage3.Size = new Size(980, 604);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Schemes";
             // 
-            // label61
+            // groupBox3
             // 
-            label61.AutoSize = true;
-            label61.Location = new Point(16, 578);
-            label61.Name = "label61";
-            label61.Size = new Size(156, 20);
-            label61.TabIndex = 4;
-            label61.Text = "Weather File Directory";
-            // 
-            // WeatherFileDirectory
-            // 
-            WeatherFileDirectory.Location = new Point(178, 575);
-            WeatherFileDirectory.Name = "WeatherFileDirectory";
-            WeatherFileDirectory.Size = new Size(779, 27);
-            WeatherFileDirectory.TabIndex = 3;
+            groupBox3.Controls.Add(radioButton2);
+            groupBox3.Controls.Add(poundToKiloConversion);
+            groupBox3.Location = new Point(263, 487);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(208, 60);
+            groupBox3.TabIndex = 6;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Pesticide Application Units";
             // 
             // radioButton2
             // 
             radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(120, 545);
+            radioButton2.Location = new Point(110, 33);
             radioButton2.Name = "radioButton2";
             radioButton2.Size = new Size(68, 24);
             radioButton2.TabIndex = 2;
-            radioButton2.TabStop = true;
             radioButton2.Text = "kg/ha";
             radioButton2.UseVisualStyleBackColor = true;
             // 
             // poundToKiloConversion
             // 
             poundToKiloConversion.AutoSize = true;
-            poundToKiloConversion.Location = new Point(18, 545);
+            poundToKiloConversion.Checked = true;
+            poundToKiloConversion.Location = new Point(18, 33);
             poundToKiloConversion.Name = "poundToKiloConversion";
             poundToKiloConversion.Size = new Size(77, 24);
             poundToKiloConversion.TabIndex = 1;
@@ -1447,35 +1450,52 @@
             poundToKiloConversion.Text = "lb/acre";
             poundToKiloConversion.UseVisualStyleBackColor = true;
             // 
+            // GetWeatherFileDirectory
+            // 
+            GetWeatherFileDirectory.Location = new Point(16, 543);
+            GetWeatherFileDirectory.Name = "GetWeatherFileDirectory";
+            GetWeatherFileDirectory.Size = new Size(156, 56);
+            GetWeatherFileDirectory.TabIndex = 5;
+            GetWeatherFileDirectory.Text = "Get Weather Directory";
+            GetWeatherFileDirectory.UseVisualStyleBackColor = true;
+            GetWeatherFileDirectory.Click += GetWeatherFileDirectory_Click;
+            // 
+            // WeatherFileDirectory
+            // 
+            WeatherFileDirectory.Location = new Point(178, 570);
+            WeatherFileDirectory.Name = "WeatherFileDirectory";
+            WeatherFileDirectory.Size = new Size(779, 27);
+            WeatherFileDirectory.TabIndex = 3;
+            // 
             // SchemeTableDisplay
             // 
             SchemeTableDisplay.AllowUserToResizeRows = false;
             SchemeTableDisplay.BackgroundColor = Color.Gold;
             SchemeTableDisplay.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.Info;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            SchemeTableDisplay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Info;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            SchemeTableDisplay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             SchemeTableDisplay.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             SchemeTableDisplay.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 });
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = SystemColors.Window;
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
-            SchemeTableDisplay.DefaultCellStyle = dataGridViewCellStyle8;
-            SchemeTableDisplay.Location = new Point(6, 49);
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            SchemeTableDisplay.DefaultCellStyle = dataGridViewCellStyle3;
+            SchemeTableDisplay.Location = new Point(16, 22);
             SchemeTableDisplay.Margin = new Padding(2);
             SchemeTableDisplay.Name = "SchemeTableDisplay";
             SchemeTableDisplay.RowHeadersVisible = false;
             SchemeTableDisplay.RowHeadersWidth = 62;
-            SchemeTableDisplay.Size = new Size(930, 341);
+            SchemeTableDisplay.Size = new Size(930, 443);
             SchemeTableDisplay.TabIndex = 0;
             SchemeTableDisplay.CellValueChanged += SchemeTableDisplay_CellValueChanged;
             SchemeTableDisplay.CurrentCellDirtyStateChanged += SchemeTableDisplay_CurrentCellDirtyStateChanged;
@@ -1509,12 +1529,12 @@
             // 
             // Column4
             // 
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = Color.LightCoral;
-            dataGridViewCellStyle7.ForeColor = Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = Color.LightCoral;
-            dataGridViewCellStyle7.SelectionForeColor = Color.Black;
-            Column4.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.LightCoral;
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = Color.LightCoral;
+            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
+            Column4.DefaultCellStyle = dataGridViewCellStyle2;
             Column4.FlatStyle = FlatStyle.Popup;
             Column4.HeaderText = "Delete";
             Column4.MinimumWidth = 8;
@@ -1554,7 +1574,7 @@
             tabPage4.Location = new Point(4, 29);
             tabPage4.Name = "tabPage4";
             tabPage4.Padding = new Padding(3);
-            tabPage4.Size = new Size(980, 620);
+            tabPage4.Size = new Size(980, 604);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Applications";
             // 
@@ -1844,6 +1864,9 @@
             // 
             // tabPage5
             // 
+            tabPage5.Controls.Add(ClearAllScenarios);
+            tabPage5.Controls.Add(ClearSelectedScenarios);
+            tabPage5.Controls.Add(SelectScenarios);
             tabPage5.Controls.Add(label48);
             tabPage5.Controls.Add(SelectScenarioBatchFile);
             tabPage5.Controls.Add(ScenarioBatchFileName);
@@ -1852,10 +1875,38 @@
             tabPage5.Location = new Point(4, 29);
             tabPage5.Name = "tabPage5";
             tabPage5.Padding = new Padding(3);
-            tabPage5.Size = new Size(980, 620);
+            tabPage5.Size = new Size(980, 604);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Scenarios";
             tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // ClearAllScenarios
+            // 
+            ClearAllScenarios.Location = new Point(30, 224);
+            ClearAllScenarios.Name = "ClearAllScenarios";
+            ClearAllScenarios.Size = new Size(94, 43);
+            ClearAllScenarios.TabIndex = 7;
+            ClearAllScenarios.Text = "Clear All";
+            ClearAllScenarios.UseVisualStyleBackColor = true;
+            // 
+            // ClearSelectedScenarios
+            // 
+            ClearSelectedScenarios.Location = new Point(30, 167);
+            ClearSelectedScenarios.Name = "ClearSelectedScenarios";
+            ClearSelectedScenarios.Size = new Size(94, 51);
+            ClearSelectedScenarios.TabIndex = 6;
+            ClearSelectedScenarios.Text = "Clear Selected";
+            ClearSelectedScenarios.UseVisualStyleBackColor = true;
+            // 
+            // SelectScenarios
+            // 
+            SelectScenarios.Location = new Point(30, 110);
+            SelectScenarios.Name = "SelectScenarios";
+            SelectScenarios.Size = new Size(94, 51);
+            SelectScenarios.TabIndex = 5;
+            SelectScenarios.Text = "Select Scenarios";
+            SelectScenarios.UseVisualStyleBackColor = true;
+            SelectScenarios.Click += SelectScenarios_Click;
             // 
             // label48
             // 
@@ -1897,10 +1948,11 @@
             // 
             ScenarioListBox.AccessibleDescription = "";
             ScenarioListBox.FormattingEnabled = true;
-            ScenarioListBox.Location = new Point(19, 37);
+            ScenarioListBox.HorizontalScrollbar = true;
+            ScenarioListBox.Location = new Point(161, 37);
             ScenarioListBox.Name = "ScenarioListBox";
             ScenarioListBox.SelectionMode = SelectionMode.MultiExtended;
-            ScenarioListBox.Size = new Size(939, 424);
+            ScenarioListBox.Size = new Size(797, 424);
             ScenarioListBox.TabIndex = 0;
             // 
             // tabPage6
@@ -1931,7 +1983,7 @@
             tabPage6.Location = new Point(4, 29);
             tabPage6.Name = "tabPage6";
             tabPage6.Padding = new Padding(3);
-            tabPage6.Size = new Size(980, 620);
+            tabPage6.Size = new Size(980, 604);
             tabPage6.TabIndex = 5;
             tabPage6.Text = "Advanced";
             tabPage6.UseVisualStyleBackColor = true;
@@ -2434,7 +2486,7 @@
             OptionalOutputTab.Margin = new Padding(2);
             OptionalOutputTab.Name = "OptionalOutputTab";
             OptionalOutputTab.Padding = new Padding(2);
-            OptionalOutputTab.Size = new Size(980, 620);
+            OptionalOutputTab.Size = new Size(980, 604);
             OptionalOutputTab.TabIndex = 6;
             OptionalOutputTab.Text = "Optional Output";
             // 
@@ -2462,24 +2514,24 @@
             // 
             AdditionalOutputGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             AdditionalOutputGridView.BackgroundColor = Color.White;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = SystemColors.Control;
-            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
-            AdditionalOutputGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            AdditionalOutputGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             AdditionalOutputGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             AdditionalOutputGridView.Columns.AddRange(new DataGridViewColumn[] { Item, Chem, Mode, Arg1, Arg2, Multiplier, Delete });
-            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = SystemColors.Window;
-            dataGridViewCellStyle10.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle10.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.False;
-            AdditionalOutputGridView.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = SystemColors.Window;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            AdditionalOutputGridView.DefaultCellStyle = dataGridViewCellStyle5;
             AdditionalOutputGridView.Location = new Point(18, 349);
             AdditionalOutputGridView.Margin = new Padding(2);
             AdditionalOutputGridView.Name = "AdditionalOutputGridView";
@@ -2919,6 +2971,7 @@
             WriteSchemeTable.Name = "WriteSchemeTable";
             WriteSchemeTable.Size = new Size(223, 26);
             WriteSchemeTable.Text = "Write Scheme Table";
+            WriteSchemeTable.Click += WriteSchemeTable_Click;
             // 
             // ReadSchemeTable
             // 
@@ -2943,7 +2996,7 @@
             // WorkingDirectory
             // 
             WorkingDirectory.AutoSize = true;
-            WorkingDirectory.Location = new Point(230, 687);
+            WorkingDirectory.Location = new Point(197, 682);
             WorkingDirectory.Name = "WorkingDirectory";
             WorkingDirectory.Size = new Size(142, 20);
             WorkingDirectory.TabIndex = 2;
@@ -2955,7 +3008,7 @@
             // IOFamilyName
             // 
             IOFamilyName.AutoSize = true;
-            IOFamilyName.Location = new Point(230, 718);
+            IOFamilyName.Location = new Point(197, 718);
             IOFamilyName.Name = "IOFamilyName";
             IOFamilyName.Size = new Size(108, 20);
             IOFamilyName.TabIndex = 3;
@@ -2964,7 +3017,7 @@
             // label56
             // 
             label56.AutoSize = true;
-            label56.Location = new Point(12, 687);
+            label56.Location = new Point(7, 682);
             label56.Name = "label56";
             label56.Size = new Size(167, 20);
             label56.TabIndex = 4;
@@ -2973,7 +3026,7 @@
             // label60
             // 
             label60.AutoSize = true;
-            label60.Location = new Point(78, 718);
+            label60.Location = new Point(76, 718);
             label60.Name = "label60";
             label60.Size = new Size(98, 20);
             label60.TabIndex = 5;
@@ -2981,13 +3034,26 @@
             // 
             // button1
             // 
-            button1.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(802, 690);
+            button1.Anchor = AnchorStyles.None;
+            button1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.Location = new Point(802, 710);
             button1.Name = "button1";
-            button1.Size = new Size(174, 58);
+            button1.Size = new Size(174, 44);
             button1.TabIndex = 6;
             button1.Text = "Calculate";
             button1.UseVisualStyleBackColor = true;
+            // 
+            // weatherFileDialog
+            // 
+            weatherFileDialog.Title = "Choose any file in the desired directory. Only the path is captured.";
+            // 
+            // openSchemeFile
+            // 
+            openSchemeFile.FileName = "openFileDialog1";
+            // 
+            // openScenarios
+            // 
+            openScenarios.Multiselect = true;
             // 
             // Form1
             // 
@@ -3013,6 +3079,8 @@
             tabPage2.PerformLayout();
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)SchemeTableDisplay).EndInit();
             tabPage4.ResumeLayout(false);
             tabPage4.PerformLayout();
@@ -3294,6 +3362,14 @@
         private Label label56;
         private Label label60;
         private Button button1;
-        private Label label61;
+        private Button GetWeatherFileDirectory;
+        private OpenFileDialog weatherFileDialog;
+        private GroupBox groupBox3;
+        private OpenFileDialog openSchemeFile;
+        private SaveFileDialog saveSchemeFile;
+        private Button ClearAllScenarios;
+        private Button ClearSelectedScenarios;
+        private Button SelectScenarios;
+        private OpenFileDialog openScenarios;
     }
 }

@@ -14,18 +14,15 @@ namespace PWC_Cs
         private static readonly string DefaultDocuments = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
         // Core folders/paths
-        public static string WorkingDirectory { get; set; } //= DefaultDocuments;
-        public static string PreviousScenarioPath { get; set; } = string.Empty;
-        public static string PreviousWaterBodyPath { get; set; } = string.Empty;
+        public static string WorkingDirectory { get; set; } = string.Empty; // = DefaultDocuments;
 
         // Weather & input files
         public static string WeatherFileDirectory { get; set; } = string.Empty;
-        public static string PreviousWeatherPath { get; set; } = string.Empty;
-  
+
         // Scheme / defaults
         public static string SchemeFileName { get; set; } = string.Empty;
-        public static string DefaultWaterBodyDirectory { get; set; } = DefaultDocuments;
-        public static string DefaultScenarioDirectory { get; set; } = DefaultDocuments;
+        public static string WaterBodyDirectory { get; set; } = DefaultDocuments;
+        public static string ScenarioDirectory { get; set; } = DefaultDocuments;
 
 
     }
