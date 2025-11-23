@@ -117,22 +117,42 @@ namespace PWC_Cs
 
         private void SchemeTableDisplay_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            // Find the column index with header "Edit"
-            int editColumnIndex = -1;
-            foreach (DataGridViewColumn col in SchemeTableDisplay.Columns)
-            {
-                if (col.HeaderText == "Edit")
-                {
-                    editColumnIndex = col.Index;
-                    break;
-                }
-            }
+            int editColumnIndex = 1;  // "Edit" column is the second visual column or Col 1 in programming terms
+            int deleteColumnIndex = 3;// "Delete" column is the fourth visual column or Col 3
 
-            if (editColumnIndex == -1 || e.ColumnIndex != editColumnIndex) return;
             if (e.RowIndex < 0 || e.RowIndex >= SchemeTableDisplay.Rows.Count) return;
 
             var changedRow = SchemeTableDisplay.Rows[e.RowIndex];
             bool isChecked = Convert.ToBoolean(changedRow.Cells[editColumnIndex].Value);
+
+
+
+            //First Handle the delete button
+
+            if (e.ColumnIndex == deleteColumnIndex)
+            {
+                //Delete the scheme both from display and from SchemeInfoList
+                if (e.RowIndex >= 0 && e.RowIndex < SchemeInfoList.Count)
+                {
+                    SchemeInfoList.RemoveAt(e.RowIndex);
+                }
+                SchemeTableDisplay.Rows.RemoveAt(e.RowIndex);
+                //After deletion clear the app display table
+                AppTableDisplay.Rows.Clear();
+
+                return;
+            }
+
+
+
+     
+
+
+
+
+
+
+
 
             if (isChecked)  // find the row that just got unchecked and RecordScheme
             {
@@ -144,15 +164,11 @@ namespace PWC_Cs
                         {
                             RecordScheme(row.Index);  //this is the previously checked scheme
                         }
-
                     }
                 }
 
                 //Now Load the checked scheme into the Dispaly Tables for apps and scenarios
                 LoadSchemeIntoDisplay(e.RowIndex);  
-
-
-
             }
 
             if (!isChecked) // if one was just unchecked and nothing else checked then record the newly unchecked scheme
@@ -180,6 +196,15 @@ namespace PWC_Cs
                     }
                 }
             }
+
+
+
+
+
+
+
+
+
         }
 
 
