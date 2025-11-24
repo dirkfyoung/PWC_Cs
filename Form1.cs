@@ -161,9 +161,6 @@ namespace PWC_Cs
                 }
             }
 
-
-
-
         }
         //**********************************************************************
         private void RetrieveInputFile_Click(object sender, EventArgs e)
@@ -301,7 +298,6 @@ namespace PWC_Cs
             }
         }
 
-
         private void WriteSchemeTable_Click(object sender, EventArgs e)
         {
             saveSchemeFile.Filter = "CSV File (*.csv)|*.CSV|ALL Files (*.*)|*.*";
@@ -347,6 +343,26 @@ namespace PWC_Cs
             }
 
 
+        }
+
+        private void SchemeTableDisplay_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            // Skip numbering for the new row
+            if (!SchemeTableDisplay.Rows[e.RowIndex].IsNewRow)
+            {
+                // Calculate the row number
+                string rowNumber = (e.RowIndex + 1).ToString();
+
+                // Determine the size and position of the row number
+                SizeF size = e.Graphics.MeasureString(rowNumber, SchemeTableDisplay.Font);
+                PointF location = new PointF(
+                    e.RowBounds.Location.X + 15,
+                    e.RowBounds.Location.Y + ((e.RowBounds.Height - size.Height) / 2)
+                );
+
+                // Draw the row number
+                e.Graphics.DrawString(rowNumber, SchemeTableDisplay.Font, SystemBrushes.ControlText, location);
+            }
         }
     }
 }

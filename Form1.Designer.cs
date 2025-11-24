@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -1472,33 +1473,35 @@
             SchemeTableDisplay.AllowUserToResizeRows = false;
             SchemeTableDisplay.BackgroundColor = Color.Gold;
             SchemeTableDisplay.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.Info;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            SchemeTableDisplay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Info;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            SchemeTableDisplay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             SchemeTableDisplay.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             SchemeTableDisplay.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 });
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = SystemColors.Window;
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
-            SchemeTableDisplay.DefaultCellStyle = dataGridViewCellStyle8;
-            SchemeTableDisplay.Location = new Point(16, 22);
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            SchemeTableDisplay.DefaultCellStyle = dataGridViewCellStyle3;
+            SchemeTableDisplay.Location = new Point(16, 17);
             SchemeTableDisplay.Margin = new Padding(2);
             SchemeTableDisplay.Name = "SchemeTableDisplay";
             SchemeTableDisplay.RowHeadersVisible = false;
             SchemeTableDisplay.RowHeadersWidth = 62;
             SchemeTableDisplay.Size = new Size(930, 443);
             SchemeTableDisplay.TabIndex = 0;
+            SchemeTableDisplay.CellContentClick += SchemeTableDisplay_CellContentClick;
             SchemeTableDisplay.CellValueChanged += SchemeTableDisplay_CellValueChanged;
             SchemeTableDisplay.CurrentCellDirtyStateChanged += SchemeTableDisplay_CurrentCellDirtyStateChanged;
+            SchemeTableDisplay.RowPostPaint += SchemeTableDisplay_RowPostPaint;
             // 
             // Column1
             // 
@@ -1529,19 +1532,21 @@
             // 
             // Column4
             // 
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = Color.LightCoral;
-            dataGridViewCellStyle7.ForeColor = Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = Color.LightCoral;
-            dataGridViewCellStyle7.SelectionForeColor = Color.Black;
-            Column4.DefaultCellStyle = dataGridViewCellStyle7;
+            Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.MistyRose;
+            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = Color.LightCoral;
+            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
+            Column4.DefaultCellStyle = dataGridViewCellStyle2;
+            Column4.FillWeight = 70F;
             Column4.FlatStyle = FlatStyle.Popup;
             Column4.HeaderText = "Delete";
             Column4.MinimumWidth = 8;
             Column4.Name = "Column4";
             Column4.Resizable = DataGridViewTriState.True;
             Column4.SortMode = DataGridViewColumnSortMode.Automatic;
-            Column4.Width = 150;
+            Column4.Width = 82;
             // 
             // tabPage4
             // 
@@ -2514,24 +2519,24 @@
             // 
             AdditionalOutputGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             AdditionalOutputGridView.BackgroundColor = Color.White;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = SystemColors.Control;
-            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
-            AdditionalOutputGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            AdditionalOutputGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             AdditionalOutputGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             AdditionalOutputGridView.Columns.AddRange(new DataGridViewColumn[] { Item, Chem, Mode, Arg1, Arg2, Multiplier, Delete });
-            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = SystemColors.Window;
-            dataGridViewCellStyle10.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle10.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.False;
-            AdditionalOutputGridView.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.Window;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            AdditionalOutputGridView.DefaultCellStyle = dataGridViewCellStyle6;
             AdditionalOutputGridView.Location = new Point(18, 349);
             AdditionalOutputGridView.Margin = new Padding(2);
             AdditionalOutputGridView.Name = "AdditionalOutputGridView";
@@ -2580,10 +2585,18 @@
             // Delete
             // 
             Delete.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = Color.MistyRose;
+            dataGridViewCellStyle5.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = Color.MistyRose;
+            dataGridViewCellStyle5.SelectionBackColor = Color.Red;
+            dataGridViewCellStyle5.SelectionForeColor = Color.Red;
+            Delete.DefaultCellStyle = dataGridViewCellStyle5;
+            Delete.FlatStyle = FlatStyle.Popup;
             Delete.HeaderText = "Delete";
             Delete.MinimumWidth = 8;
             Delete.Name = "Delete";
-            Delete.Text = "X";
+            Delete.Text = "DELETE";
             // 
             // outputSpraydrift
             // 
@@ -3331,21 +3344,10 @@
         private Label label57;
         private TextBox outputInfiltrationDepth;
         private DataGridView AdditionalOutputGridView;
-        private DataGridViewTextBoxColumn Item;
-        private DataGridViewTextBoxColumn Chem;
-        private DataGridViewTextBoxColumn Mode;
-        private DataGridViewTextBoxColumn Arg1;
-        private DataGridViewTextBoxColumn Arg2;
-        private DataGridViewTextBoxColumn Multiplier;
-        private DataGridViewButtonColumn Delete;
         private CheckBox outputSpraydrift;
         private CheckBox CalculateEoF;
         private Label label59;
         private Label label58;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewCheckBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewButtonColumn Column4;
         private Button ClearAllWaterBodies;
         private Button ClearSelectedWaterBody;
         private Button SelectOtherWaterbodies;
@@ -3372,5 +3374,16 @@
         private Button SelectScenarios;
         private OpenFileDialog openScenarios;
         private RadioButton isKd;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewCheckBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewButtonColumn Column4;
+        private DataGridViewTextBoxColumn Item;
+        private DataGridViewTextBoxColumn Chem;
+        private DataGridViewTextBoxColumn Mode;
+        private DataGridViewTextBoxColumn Arg1;
+        private DataGridViewTextBoxColumn Arg2;
+        private DataGridViewTextBoxColumn Multiplier;
+        private DataGridViewButtonColumn Delete;
     }
 }

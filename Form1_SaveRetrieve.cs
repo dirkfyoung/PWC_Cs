@@ -459,8 +459,8 @@ namespace PWC_Cs
             {
                 //the following will be populated later with varibles. leave asis for now
                 WriteCsvLine(sw, "PWC Version 4.0 C#");
-                WriteCsvLine(sw, "WorkingDirectoryLabel.Text");
-                WriteCsvLine(sw, "IOFamilyName.Text");
+                WriteCsvLine(sw, WorkingDirectory.Text);
+                WriteCsvLine(sw, IOFamilyName.Text);
                 WriteCsvLine(sw, WeatherFileDirectory);
                 WriteCsvLine(sw, WaterbodyEvapAdjustment.Text);
                 WriteCsvLine(sw, isKoc.Checked, UseFreundlich.Checked, UseNonequilibrium.Checked, poundToKiloConversion.Checked, IsHydrolysisOverride.Checked);

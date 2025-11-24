@@ -140,11 +140,10 @@ namespace PWC_Cs
                     }
                 }
 
-                //Now Load the checked scheme into the Dispaly Tables for apps and scenarios
-                LoadSchemeIntoDisplay(e.RowIndex);  
-
-
-
+                //Now Load the checked scheme into the Display Table for apps and scenarios
+           
+                 LoadSchemeIntoDisplay(e.RowIndex);
+               
             }
 
             if (!isChecked) // if one was just unchecked and nothing else checked then record the newly unchecked scheme
@@ -182,7 +181,21 @@ namespace PWC_Cs
                 SchemeTableDisplay.CommitEdit(DataGridViewDataErrorContexts.Commit);
             }
         }
-       
+
+
+        private void SchemeTableDisplay_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        { //Delete scheme
+            if (e.ColumnIndex == 3 && e.RowIndex >= 0 && !SchemeTableDisplay.Rows[e.RowIndex].IsNewRow)
+            {
+                RecordScheme(e.RowIndex); //got to do this for the case where someone checks an unpopulated scheme and then deletes it,so not null
+                SchemeTableDisplay.Rows.RemoveAt(e.RowIndex);
+                SchemeInfoList.RemoveAt(e.RowIndex);
+    
+            }
+        }
+
+
+
 
         private void RecordCheckedScheme()
         {
@@ -206,6 +219,14 @@ namespace PWC_Cs
         private void LoadSchemeIntoDisplay(int schemeNumber)
         {
             AppTableDisplay.Rows.Clear();
+            
+            if (schemeNumber < 0 || schemeNumber >= SchemeInfoList.Count)
+            {    
+                return;  // Scheme doesnt exist yet, dont try to load to display
+            }
+
+
+
             int numberApps = SchemeInfoList[schemeNumber].Days.Count;
             for (int i = 0; i < numberApps; i++)
             {
@@ -249,4 +270,6 @@ namespace PWC_Cs
 
 
     }
+
+
 }
