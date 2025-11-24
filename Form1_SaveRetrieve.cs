@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 
@@ -20,12 +22,31 @@ namespace PWC_Cs
             string line;
 
             line = reader.ReadLine()!;//Version
-            line = reader.ReadLine()!;
-            line = reader.ReadLine()!;
-            line = reader.ReadLine()!;
-            line = reader.ReadLine()!;
-            line = reader.ReadLine()!;
-            line = reader.ReadLine()!;
+            line = reader.ReadLine()!;//working directory
+            line = reader.ReadLine()!;//IO Family name
+
+            //Line 4
+            WeatherFileDirectory.Text = reader.ReadLine();
+            
+            //Line 5
+            col = reader.ReadLine()!.Split(',');
+            WaterbodyEvapAdjustment.Text = col[0];
+
+            //Line 6
+            col = reader.ReadLine()!.Split(',');
+            isKoc.Checked = Convert.ToBoolean(col[0]);
+            isKd.Checked = !isKoc.Checked;
+
+            UseFreundlich.Checked= Convert.ToBoolean(col[1]);
+            UseNonequilibrium.Checked= Convert.ToBoolean(col[2]);
+            poundToKiloConversion.Checked= Convert.ToBoolean(col[3]);
+            IsHydrolysisOverride.Checked= Convert.ToBoolean(col[4]);
+
+            //Line 7 nchem
+            col = reader.ReadLine()!.Split(',');
+            DoDegradate1.Checked = col[0] != "1";
+            DoDegradate2.Checked = col[0] == "3";
+
 
             col = reader.ReadLine()!.Split(',');
             sorption1.Text = col[0];
@@ -530,7 +551,7 @@ namespace PWC_Cs
 
                     for (int j = 0; j < SchemeInfoList[i].Scenarios.Count; j++)
                     {
-                        WriteCsvLine(sw, SchemeInfoList[i].Scenarios[j]);
+                        sw.WriteLine(SchemeInfoList[i].Scenarios[j]);  //write without trailing comma
                     }
 
                     WriteCsvLine(sw, SchemeInfoList[i].UseBatchScenarioFile);

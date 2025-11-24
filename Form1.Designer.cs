@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -120,7 +120,7 @@
             label4 = new Label();
             label3 = new Label();
             isKoc = new RadioButton();
-            radioButton3 = new RadioButton();
+            isKd = new RadioButton();
             label1 = new Label();
             label2 = new Label();
             WaterMolarRatio1 = new TextBox();
@@ -441,7 +441,7 @@
             tableLayoutPanel1.Controls.Add(label4, 0, 4);
             tableLayoutPanel1.Controls.Add(label3, 0, 3);
             tableLayoutPanel1.Controls.Add(isKoc, 0, 1);
-            tableLayoutPanel1.Controls.Add(radioButton3, 1, 1);
+            tableLayoutPanel1.Controls.Add(isKd, 1, 1);
             tableLayoutPanel1.Controls.Add(label1, 2, 1);
             tableLayoutPanel1.Controls.Add(label2, 0, 2);
             tableLayoutPanel1.Controls.Add(WaterMolarRatio1, 4, 2);
@@ -1203,17 +1203,17 @@
             isKoc.Text = "Koc";
             isKoc.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // isKd
             // 
-            radioButton3.AutoSize = true;
-            radioButton3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            radioButton3.Location = new Point(65, 31);
-            radioButton3.Name = "radioButton3";
-            radioButton3.Size = new Size(48, 22);
-            radioButton3.TabIndex = 80;
-            radioButton3.TabStop = true;
-            radioButton3.Text = "Kd";
-            radioButton3.UseVisualStyleBackColor = true;
+            isKd.AutoSize = true;
+            isKd.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            isKd.Location = new Point(65, 31);
+            isKd.Name = "isKd";
+            isKd.Size = new Size(48, 22);
+            isKd.TabIndex = 80;
+            isKd.TabStop = true;
+            isKd.Text = "Kd";
+            isKd.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -1472,24 +1472,24 @@
             SchemeTableDisplay.AllowUserToResizeRows = false;
             SchemeTableDisplay.BackgroundColor = Color.Gold;
             SchemeTableDisplay.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Info;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            SchemeTableDisplay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.Info;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            SchemeTableDisplay.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             SchemeTableDisplay.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             SchemeTableDisplay.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            SchemeTableDisplay.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = SystemColors.Window;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            SchemeTableDisplay.DefaultCellStyle = dataGridViewCellStyle8;
             SchemeTableDisplay.Location = new Point(16, 22);
             SchemeTableDisplay.Margin = new Padding(2);
             SchemeTableDisplay.Name = "SchemeTableDisplay";
@@ -1529,12 +1529,12 @@
             // 
             // Column4
             // 
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = Color.LightCoral;
-            dataGridViewCellStyle2.ForeColor = Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = Color.LightCoral;
-            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
-            Column4.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = Color.LightCoral;
+            dataGridViewCellStyle7.ForeColor = Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = Color.LightCoral;
+            dataGridViewCellStyle7.SelectionForeColor = Color.Black;
+            Column4.DefaultCellStyle = dataGridViewCellStyle7;
             Column4.FlatStyle = FlatStyle.Popup;
             Column4.HeaderText = "Delete";
             Column4.MinimumWidth = 8;
@@ -2514,24 +2514,24 @@
             // 
             AdditionalOutputGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             AdditionalOutputGridView.BackgroundColor = Color.White;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            AdditionalOutputGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = SystemColors.Control;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            AdditionalOutputGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             AdditionalOutputGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             AdditionalOutputGridView.Columns.AddRange(new DataGridViewColumn[] { Item, Chem, Mode, Arg1, Arg2, Multiplier, Delete });
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Window;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            AdditionalOutputGridView.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = SystemColors.Window;
+            dataGridViewCellStyle10.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle10.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.False;
+            AdditionalOutputGridView.DefaultCellStyle = dataGridViewCellStyle10;
             AdditionalOutputGridView.Location = new Point(18, 349);
             AdditionalOutputGridView.Margin = new Padding(2);
             AdditionalOutputGridView.Name = "AdditionalOutputGridView";
@@ -3371,5 +3371,6 @@
         private Button ClearSelectedScenarios;
         private Button SelectScenarios;
         private OpenFileDialog openScenarios;
+        private RadioButton isKd;
     }
 }

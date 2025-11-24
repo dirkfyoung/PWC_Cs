@@ -90,15 +90,9 @@ namespace PWC_Cs
             appData.ErosionMitigation = ErosionMitigation.Text;
             appData.DriftMitigation = DriftMitigation.Text;
 
-            //appData.Scenarios = ScenarioListBox.Items.Cast<string>().ToList();
-            //appData.UseBatchScenarioFile = GetScenariosBatchCheckBox.Checked;
-            //appData.ScenarioBatchFileName = ScenarioBatchFileName.Text;
-
-            //if (schemeInfoList.Count - 1 < schemeNumber)
-            //    schemeInfoList.Add(appData);
-            //else if (schemeNumber >= 0)
-            //    schemeInfoList[schemeNumber] = appData;
-
+            appData.Scenarios = ScenarioListBox.Items.Cast<string>().ToList();
+            appData.UseBatchScenarioFile = GetScenariosBatchCheckBox.Checked;
+            appData.ScenarioBatchFileName = ScenarioBatchFileName.Text;
 
             if (schemeNumber >= 0 && schemeNumber < SchemeInfoList.Count)
             {
@@ -109,8 +103,6 @@ namespace PWC_Cs
             {
                 // Index doesn't exist — add to the end
                 SchemeInfoList.Add(appData);
-
-                MessageBox.Show(Convert.ToString(SchemeInfoList.Count));
             }
         }
 
