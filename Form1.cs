@@ -160,7 +160,6 @@ namespace PWC_Cs
                     SaveMainInputToTextFile(selectedFile);
                 }
             }
-
         }
         //**********************************************************************
         private void RetrieveInputFile_Click(object sender, EventArgs e)
@@ -195,7 +194,6 @@ namespace PWC_Cs
                 }
 
             }
-
         }
 
         private void SelectOtherWaterbodies_Click(object sender, EventArgs e)
@@ -363,6 +361,13 @@ namespace PWC_Cs
                 // Draw the row number
                 e.Graphics.DrawString(rowNumber, SchemeTableDisplay.Font, SystemBrushes.ControlText, location);
             }
+        }
+
+        private void copyScheme_Click(object sender, EventArgs e)
+        {  //Copy a scheme into SchemeDetail variable 
+            SchemeDetails CopiedScheme = new();
+
+
         }
     }
 }

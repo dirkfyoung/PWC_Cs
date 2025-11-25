@@ -139,6 +139,8 @@
             ItsaReservoir = new CheckBox();
             ItsaPond = new CheckBox();
             tabPage3 = new TabPage();
+            pasteScheme = new Button();
+            copyScheme = new Button();
             groupBox3 = new GroupBox();
             radioButton2 = new RadioButton();
             poundToKiloConversion = new RadioButton();
@@ -1407,6 +1409,8 @@
             // tabPage3
             // 
             tabPage3.BackColor = Color.Gold;
+            tabPage3.Controls.Add(pasteScheme);
+            tabPage3.Controls.Add(copyScheme);
             tabPage3.Controls.Add(groupBox3);
             tabPage3.Controls.Add(GetWeatherFileDirectory);
             tabPage3.Controls.Add(WeatherFileDirectory);
@@ -1418,11 +1422,34 @@
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Schemes";
             // 
+            // pasteScheme
+            // 
+            pasteScheme.BackColor = Color.Khaki;
+            pasteScheme.Font = new Font("Segoe UI", 10.2F);
+            pasteScheme.Location = new Point(520, 12);
+            pasteScheme.Name = "pasteScheme";
+            pasteScheme.Size = new Size(94, 57);
+            pasteScheme.TabIndex = 8;
+            pasteScheme.Text = "Paste Scheme";
+            pasteScheme.UseVisualStyleBackColor = false;
+            // 
+            // copyScheme
+            // 
+            copyScheme.BackColor = Color.OldLace;
+            copyScheme.Font = new Font("Segoe UI", 10.2F);
+            copyScheme.Location = new Point(352, 12);
+            copyScheme.Name = "copyScheme";
+            copyScheme.Size = new Size(94, 57);
+            copyScheme.TabIndex = 7;
+            copyScheme.Text = "Copy Scheme";
+            copyScheme.UseVisualStyleBackColor = false;
+            copyScheme.Click += copyScheme_Click;
+            // 
             // groupBox3
             // 
             groupBox3.Controls.Add(radioButton2);
             groupBox3.Controls.Add(poundToKiloConversion);
-            groupBox3.Location = new Point(263, 487);
+            groupBox3.Location = new Point(16, 12);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(208, 60);
             groupBox3.TabIndex = 6;
@@ -1491,12 +1518,12 @@
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             SchemeTableDisplay.DefaultCellStyle = dataGridViewCellStyle3;
-            SchemeTableDisplay.Location = new Point(16, 17);
+            SchemeTableDisplay.Location = new Point(27, 77);
             SchemeTableDisplay.Margin = new Padding(2);
             SchemeTableDisplay.Name = "SchemeTableDisplay";
             SchemeTableDisplay.RowHeadersVisible = false;
             SchemeTableDisplay.RowHeadersWidth = 62;
-            SchemeTableDisplay.Size = new Size(930, 443);
+            SchemeTableDisplay.Size = new Size(930, 453);
             SchemeTableDisplay.TabIndex = 0;
             SchemeTableDisplay.CellContentClick += SchemeTableDisplay_CellContentClick;
             SchemeTableDisplay.CellValueChanged += SchemeTableDisplay_CellValueChanged;
@@ -3385,5 +3412,7 @@
         private DataGridViewTextBoxColumn Arg2;
         private DataGridViewTextBoxColumn Multiplier;
         private DataGridViewButtonColumn Delete;
+        private Button pasteScheme;
+        private Button copyScheme;
     }
 }

@@ -8,15 +8,10 @@ namespace PWC_Cs
 {
     public partial class Form1 : Form
     {
-        private void RecordScheme(int schemeNumber)
+
+        internal SchemeDetails GetSingleSchemeFromGUI()
         {
-
-            if (schemeNumber < 0)
-            {
-                return;
-            }
-
-            var appData = new SchemeDetails();
+            SchemeDetails singleScheme = new SchemeDetails();
 
             AppTableDisplay.CommitEdit(DataGridViewDataErrorContexts.Commit);
 
@@ -26,11 +21,11 @@ namespace PWC_Cs
                 if (AppTableDisplay.Rows[i].IsNewRow) continue;
                 // rest of logic
 
-                appData.Days.Add(AppTableDisplay[0, i].Value?.ToString() ?? "");
-                appData.Amount.Add(AppTableDisplay[1, i].Value?.ToString() ?? "");
+                singleScheme.Days.Add(AppTableDisplay[0, i].Value?.ToString() ?? "");
+                singleScheme.Amount.Add(AppTableDisplay[1, i].Value?.ToString() ?? "");
 
                 var method = AppTableDisplay[2, i].Value;
-                appData.Method.Add(method switch
+                singleScheme.Method.Add(method switch
                 {
                     var m when m == Standard.Method1 => "1",
                     var m when m == Standard.Method2 => "2",
@@ -42,11 +37,11 @@ namespace PWC_Cs
                     _ => "1"
                 });
 
-                appData.Depth.Add(AppTableDisplay[3, i].Value?.ToString() ?? "");
-                appData.Split.Add(AppTableDisplay[4, i].Value?.ToString() ?? "");
+                singleScheme.Depth.Add(AppTableDisplay[3, i].Value?.ToString() ?? "");
+                singleScheme.Split.Add(AppTableDisplay[4, i].Value?.ToString() ?? "");
 
                 var drift = AppTableDisplay[5, i].Value;
-                appData.Drift.Add(drift switch
+                singleScheme.Drift.Add(drift switch
                 {
                     var d when d == Standard.SprayTerms[1] => "1",
                     var d when d == Standard.SprayTerms[2] => "2",
@@ -66,33 +61,131 @@ namespace PWC_Cs
                     _ => "15"
                 });
 
-                appData.DriftBuffer.Add(AppTableDisplay[6, i].Value?.ToString() ?? "");
-                appData.Periodicity.Add(AppTableDisplay[7, i].Value?.ToString() ?? "");
-                appData.Lag.Add(AppTableDisplay[8, i].Value?.ToString() ?? "");
+                singleScheme.DriftBuffer.Add(AppTableDisplay[6, i].Value?.ToString() ?? "");
+                singleScheme.Periodicity.Add(AppTableDisplay[7, i].Value?.ToString() ?? "");
+                singleScheme.Lag.Add(AppTableDisplay[8, i].Value?.ToString() ?? "");
             }
 
-            appData.AbsoluteDays = AbsoluteDaysButton.Checked;
-            appData.Emerge = emerge.Checked;
-            appData.Maturity = maturity.Checked;
-            appData.Removal = removal.Checked;
+            singleScheme.AbsoluteDays = AbsoluteDaysButton.Checked;
+            singleScheme.Emerge = emerge.Checked;
+            singleScheme.Maturity = maturity.Checked;
+            singleScheme.Removal = removal.Checked;
+    
+            singleScheme.UseApplicationWindow = UseApplicationWindow.Checked;
+            singleScheme.ApplicationWindowSpan = ApplicationWindowSpan.Text;
+            singleScheme.ApplicationWindowStep = ApplicationWindowStep.Text;
+         
+            singleScheme.UseRainFast = UseRainFast.Checked;
+            singleScheme.RainLimit = RainLimit.Text;
+            singleScheme.IntolerableRainWindow = IntolerableRainWindow.Text;
+            singleScheme.OptimumApplicationWindow = OptimumApplicationWindow.Text;
+            singleScheme.MinDaysBetweenApps = MinDaysBetweenApps.Text;
+           
+            singleScheme.RunoffMitigation = RunoffMitigation.Text;
+            singleScheme.ErosionMitigation = ErosionMitigation.Text;
+            singleScheme.DriftMitigation = DriftMitigation.Text;
+            
+            singleScheme.Scenarios = ScenarioListBox.Items.Cast<string>().ToList();
+            singleScheme.UseBatchScenarioFile = GetScenariosBatchCheckBox.Checked;
+            singleScheme.ScenarioBatchFileName = ScenarioBatchFileName.Text;
 
-            appData.UseApplicationWindow = UseApplicationWindow.Checked;
-            appData.ApplicationWindowSpan = ApplicationWindowSpan.Text;
-            appData.ApplicationWindowStep = ApplicationWindowStep.Text;
+            return singleScheme;
+        }
 
-            appData.UseRainFast = UseRainFast.Checked;
-            appData.RainLimit = RainLimit.Text;
-            appData.IntolerableRainWindow = IntolerableRainWindow.Text;
-            appData.OptimumApplicationWindow = OptimumApplicationWindow.Text;
-            appData.MinDaysBetweenApps = MinDaysBetweenApps.Text;
 
-            appData.RunoffMitigation = RunoffMitigation.Text;
-            appData.ErosionMitigation = ErosionMitigation.Text;
-            appData.DriftMitigation = DriftMitigation.Text;
 
-            appData.Scenarios = ScenarioListBox.Items.Cast<string>().ToList();
-            appData.UseBatchScenarioFile = GetScenariosBatchCheckBox.Checked;
-            appData.ScenarioBatchFileName = ScenarioBatchFileName.Text;
+
+
+
+
+
+        private void RecordScheme(int schemeNumber)
+        {
+
+            if (schemeNumber < 0)
+            {
+                return;
+            }
+
+
+            SchemeDetails appData = GetSingleSchemeFromGUI(); //= new SchemeDetails();
+
+
+            // var appData = new SchemeDetails();
+            //AppTableDisplay.CommitEdit(DataGridViewDataErrorContexts.Commit);
+
+            //for (int i = 0; i < AppTableDisplay.Rows.Count; i++)
+            //{
+            //    if (AppTableDisplay.Rows[i].IsNewRow) continue;
+            //    // rest of logic
+
+            //    appData.Days.Add(AppTableDisplay[0, i].Value?.ToString() ?? "");
+            //    appData.Amount.Add(AppTableDisplay[1, i].Value?.ToString() ?? "");
+
+            //    var method = AppTableDisplay[2, i].Value;
+            //    appData.Method.Add(method switch
+            //    {
+            //        var m when m == Standard.Method1 => "1",
+            //        var m when m == Standard.Method2 => "2",
+            //        var m when m == Standard.Method3 => "3",
+            //        var m when m == Standard.Method4 => "4",
+            //        var m when m == Standard.Method5 => "5",
+            //        var m when m == Standard.Method6 => "6",
+            //        var m when m == Standard.Method7 => "7",
+            //        _ => "1"
+            //    });
+
+            //    appData.Depth.Add(AppTableDisplay[3, i].Value?.ToString() ?? "");
+            //    appData.Split.Add(AppTableDisplay[4, i].Value?.ToString() ?? "");
+
+            //    var drift = AppTableDisplay[5, i].Value;
+            //    appData.Drift.Add(drift switch
+            //    {
+            //        var d when d == Standard.SprayTerms[1] => "1",
+            //        var d when d == Standard.SprayTerms[2] => "2",
+            //        var d when d == Standard.SprayTerms[3] => "3",
+            //        var d when d == Standard.SprayTerms[4] => "4",
+            //        var d when d == Standard.SprayTerms[5] => "5",
+            //        var d when d == Standard.SprayTerms[6] => "6",
+            //        var d when d == Standard.SprayTerms[7] => "7",
+            //        var d when d == Standard.SprayTerms[8] => "8",
+            //        var d when d == Standard.SprayTerms[9] => "9",
+            //        var d when d == Standard.SprayTerms[10] => "10",
+            //        var d when d == Standard.SprayTerms[11] => "11",
+            //        var d when d == Standard.SprayTerms[12] => "12",
+            //        var d when d == Standard.SprayTerms[13] => "13",
+            //        var d when d == Standard.SprayTerms[14] => "14",
+            //        var d when d == Standard.SprayTerms[15] => "15",
+            //        _ => "15"
+            //    });
+
+            //    appData.DriftBuffer.Add(AppTableDisplay[6, i].Value?.ToString() ?? "");
+            //    appData.Periodicity.Add(AppTableDisplay[7, i].Value?.ToString() ?? "");
+            //    appData.Lag.Add(AppTableDisplay[8, i].Value?.ToString() ?? "");
+            //}
+
+            //appData.AbsoluteDays = AbsoluteDaysButton.Checked;
+            //appData.Emerge = emerge.Checked;
+            //appData.Maturity = maturity.Checked;
+            //appData.Removal = removal.Checked;
+
+            //appData.UseApplicationWindow = UseApplicationWindow.Checked;
+            //appData.ApplicationWindowSpan = ApplicationWindowSpan.Text;
+            //appData.ApplicationWindowStep = ApplicationWindowStep.Text;
+
+            //appData.UseRainFast = UseRainFast.Checked;
+            //appData.RainLimit = RainLimit.Text;
+            //appData.IntolerableRainWindow = IntolerableRainWindow.Text;
+            //appData.OptimumApplicationWindow = OptimumApplicationWindow.Text;
+            //appData.MinDaysBetweenApps = MinDaysBetweenApps.Text;
+
+            //appData.RunoffMitigation = RunoffMitigation.Text;
+            //appData.ErosionMitigation = ErosionMitigation.Text;
+            //appData.DriftMitigation = DriftMitigation.Text;
+
+            //appData.Scenarios = ScenarioListBox.Items.Cast<string>().ToList();
+            //appData.UseBatchScenarioFile = GetScenariosBatchCheckBox.Checked;
+            //appData.ScenarioBatchFileName = ScenarioBatchFileName.Text;
 
             if (schemeNumber >= 0 && schemeNumber < SchemeInfoList.Count)
             {
@@ -109,18 +202,28 @@ namespace PWC_Cs
 
         private void SchemeTableDisplay_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            // Find the column index with header "Edit"
-            int editColumnIndex = -1;
-            foreach (DataGridViewColumn col in SchemeTableDisplay.Columns)
-            {
-                if (col.HeaderText == "Edit")
-                {
-                    editColumnIndex = col.Index;
-                    break;
-                }
-            }
+            //This just handles the edit box checks
 
-            if (editColumnIndex == -1 || e.ColumnIndex != editColumnIndex) return;
+
+            // Find the column index with header "Edit"
+            //int editColumnIndex = -1;
+            //foreach (DataGridViewColumn col in SchemeTableDisplay.Columns)
+            //{
+            //    if (col.HeaderText == "Edit")
+            //    {
+            //        editColumnIndex = col.Index;
+            //        break;
+            //    }
+            //}
+
+            int editColumnIndex = 1;
+            MessageBox.Show(Convert.ToString(editColumnIndex));
+
+
+            if (e.ColumnIndex != editColumnIndex) return;
+
+            MessageBox.Show("inside");
+            //if (editColumnIndex == -1 || e.ColumnIndex != editColumnIndex) return;
             if (e.RowIndex < 0 || e.RowIndex >= SchemeTableDisplay.Rows.Count) return;
 
             var changedRow = SchemeTableDisplay.Rows[e.RowIndex];
@@ -194,14 +297,11 @@ namespace PWC_Cs
             }
         }
 
-
-
-
         private void RecordCheckedScheme()
         {
             //Record the possibly uncommitted scheme with the checked box
             SchemeTableDisplay.CommitEdit(DataGridViewDataErrorContexts.Commit);
-            int checkboxColumnIndex = 1; // set to your checkbox column index
+            int checkboxColumnIndex = 1; // set to checkbox column index
             int checkedrow = -1;
             for (int r = 0; r < SchemeTableDisplay.Rows.Count; r++)
             {
@@ -215,15 +315,18 @@ namespace PWC_Cs
             RecordScheme(checkedrow); //save current scheme before saving file
         }
 
-
         private void LoadSchemeIntoDisplay(int schemeNumber)
         {
+            
+
             AppTableDisplay.Rows.Clear();
+            ScenarioListBox.Items.Clear();
             
             if (schemeNumber < 0 || schemeNumber >= SchemeInfoList.Count)
             {    
                 return;  // Scheme doesnt exist yet, dont try to load to display
             }
+
 
 
 
@@ -255,7 +358,7 @@ namespace PWC_Cs
             OptimumApplicationWindow.Text = SchemeInfoList[schemeNumber].OptimumApplicationWindow;
             MinDaysBetweenApps.Text = SchemeInfoList[schemeNumber].MinDaysBetweenApps;
 
-            ScenarioListBox.Items.Clear();
+            
             ScenarioListBox.Items.AddRange(SchemeInfoList[schemeNumber].Scenarios.ToArray());
 
             GetScenariosBatchCheckBox.Checked = SchemeInfoList[schemeNumber].UseBatchScenarioFile;
@@ -266,8 +369,6 @@ namespace PWC_Cs
             DriftMitigation.Text = SchemeInfoList[schemeNumber].DriftMitigation;
 
         }
-
-
 
     }
 
