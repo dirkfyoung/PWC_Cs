@@ -425,9 +425,6 @@ namespace PWC_Cs
             }
 
 
-
-
-
             //Load Scheme Descriptions to Scheme Table Display
             SchemeTableDisplay.Rows.Clear();
             for (int i = 0; i < NumberOfSchemes; i++) 

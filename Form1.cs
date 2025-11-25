@@ -17,6 +17,7 @@ namespace PWC_Cs
     {
 
         private readonly List<SchemeDetails> SchemeInfoList = new List<SchemeDetails>();
+        private SchemeDetails copiedScheme;
 
         public Form1()
         {
@@ -105,35 +106,6 @@ namespace PWC_Cs
             AppTableDisplay.Columns.Add(btnApp);
             AppTableDisplay.Columns["Delete"].FillWeight = 12;
 
-
-
-
-
-
-
-
-
-
-
-
-
-            //DataGridViewButtonColumn btnScheme = new()
-            //{
-            //    Text = "delete",
-            //    HeaderText = "Delete",
-            //    Name = "Delete",
-            //    UseColumnTextForButtonValue = true,
-            //    FlatStyle = FlatStyle.Popup,
-            //    DefaultCellStyle = { BackColor = Color.Orange }
-            //};
-
-
-            //SchemeTableDisplay.Columns.Add(btnScheme);
-            //SchemeTableDisplay.Columns["Delete"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            //SchemeTableDisplay.Columns["Delete"].FillWeight = 20;
-
-            //SchemeTableDisplay.CellValueChanged += SchemeTableDisplay_CellValueChanged;
-            //SchemeTableDisplay.CurrentCellDirtyStateChanged += SchemeTableDisplay_CurrentCellDirtyStateChanged;
 
         }
         //**********************************************************************
@@ -364,10 +336,72 @@ namespace PWC_Cs
         }
 
         private void copyScheme_Click(object sender, EventArgs e)
-        {  //Copy a scheme into SchemeDetail variable 
-            SchemeDetails CopiedScheme = new();
+        {
+
+            //find row with checked box
+            foreach (DataGridViewRow row in SchemeTableDisplay.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    if (Convert.ToBoolean(row.Cells[1].Value))
+                    {  // Get Scheme number that has check to be copied
+
+                        copiedScheme = GetSingleSchemeFromGUI(row.Index);  //Copy a scheme into SchemeDetail variable 
+                        break;
+                    }
+                }
+            }
 
 
+
+
+        }
+
+        private void pasteScheme_Click(object sender, EventArgs e)
+        {
+
+            //find row with checked box
+            foreach (DataGridViewRow row in SchemeTableDisplay.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    if (Convert.ToBoolean(row.Cells[1].Value))
+                    {  // Put Scheme into SchemeInfoList and then load it into GUI
+
+
+                        if (row.Index >= 0 && row.Index < SchemeInfoList.Count)
+                        {
+                            // Index exists — overwrite
+                            SchemeInfoList[row.Index] = copiedScheme;
+                        }
+                        else
+                        {
+                            // Index doesn't exist — add to the end
+                            SchemeInfoList.Add(copiedScheme);
+                        }
+                        LoadSchemeIntoDisplay(row.Index);
+                    }
+                }
+            }
+
+
+
+
+
+
+
+
+
+        }
+
+        private void DoDegradate2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (DoDegradate2.Checked == true)
+            {
+                tableLayoutPanel1.ColumnStyles[7].Width = 0;
+            }
+            else
+                tableLayoutPanel1.ColumnStyles[7].Width = 25;
         }
     }
 }
