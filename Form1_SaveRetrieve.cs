@@ -49,9 +49,9 @@ namespace PWC_Cs
 
 
             col = reader.ReadLine()!.Split(',');
-            sorption1.Text = col[0];
-            sorption2.Text = col[1];
-            sorption3.Text = col[2];
+            Sorption1.Text = col[0];
+            Sorption2.Text = col[1];
+            Sorption3.Text = col[2];
 
             col = reader.ReadLine()!.Split(',');
             Nexp1Reg1.Text = col[0];
@@ -456,7 +456,7 @@ namespace PWC_Cs
             {
                 //the following will be populated later with varibles. leave asis for now
                 WriteCsvLine(sw, "PWC Version 4.0 C#");
-                WriteCsvLine(sw, WorkingDirectory.Text);
+                WriteCsvLine(sw, WorkingDirectoryTextBox.Text);
                 WriteCsvLine(sw, IOFamilyName.Text);
                 WriteCsvLine(sw, WeatherFileDirectory);
                 WriteCsvLine(sw, WaterbodyEvapAdjustment.Text);
@@ -466,7 +466,7 @@ namespace PWC_Cs
                 WriteCsvLine(sw, nchem);
 
                 //Chemical properties 
-                WriteCsvLine(sw, sorption1.Text, sorption2.Text, sorption3.Text);
+                WriteCsvLine(sw, Sorption1.Text, Sorption2.Text, Sorption3.Text);
                 WriteCsvLine(sw, Nexp1Reg1.Text, Nexp2Reg1.Text, Nexp3Reg1.Text);
                 WriteCsvLine(sw, Kf1Reg2.Text, Kf2Reg2.Text, Kf3Reg2.Text);
                 WriteCsvLine(sw, Nexp1Reg2.Text, Nexp2Reg2.Text, Nexp3Reg2.Text);

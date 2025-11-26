@@ -1,15 +1,15 @@
 PWC Version 4.0 C#,
 C:\Users\dyoung03\source\repos\PWC_Cs\test files\,
 save,
-System.Windows.Forms.TextBox, Text: System.Windows.Forms.TextBox, Text: C:\U...,
+System.Windows.Forms.TextBox, Text: C:\Users\dyoung03\OneDrive - Environment...,
 1,
 True,False,False,False,True,
 3,
 1,2,3,
 1,1,1,
-,,,
-,,,
-,,,
+2,2,2,
+3,3,3,
+22,33,44,
 ,1,
 4,5,6,7,8,
 9,10,11,
@@ -32,7 +32,7 @@ True,False,False,False,True,
 True,
 False,10.0,200.0,0.0,
 False,,,
-5,***** Schemes Start Here ******,
+2,***** Schemes Start Here ******,
 1,"test",
 1,
 3,
@@ -41,15 +41,9 @@ False,,,
 30,55.1,1,4.0,0.0,15,13.589,1,1
 False,,,
 False,1,2,15,5,
-8,
+2,
 Test.scn2
 TestScenario2
-Hay all-r13-A_v7.scn2
-Hay all-r14-A_v7.scn2
-Hay all-r15-A_v7.scn2
-Hay all-r16-A_v7.scn2
-Hay all-r17-A_v7.scn2
-Hay all-r18-A_v7.scn2
 False,
 ,
 Mitigations (flag to make older versions still readable),
@@ -68,80 +62,6 @@ False,
 ,
 Mitigations (flag to make older versions still readable),
 1.0,1.0,1.0,
-3,"ghjkl",
-99,
-1,
-8,8,1,8,8,15,8,8,8
-False,,,
-False,,,,,
-33,
-Christmas Trees-r03N-A_v7.scn2
-Christmas Trees-r04-A_v7.scn2
-Christmas Trees-r05-A_v7.scn2
-Christmas Trees-r06-A_v7.scn2
-Christmas Trees-r07-A_v7.scn2
-Christmas Trees-r17-A_v7.scn2
-Christmas Trees-r18-A_v7.scn2
-Corn-r01-A_v7.scn2
-Corn-r02-A_v7.scn2
-Corn-r03N-A_v7.scn2
-Corn-r03S-A_v7.scn2
-Corn-r03W-A_v7.scn2
-Corn-r04-A_v7.scn2
-Corn-r05-A_v7.scn2
-Corn-r06-A_v7.scn2
-Corn-r07-A_v7.scn2
-Corn-r08-A_v7.scn2
-Corn-r09-A_v7.scn2
-Corn-r10L-A_v7.scn2
-Corn-r10U-A_v7.scn2
-Corn-r11-A_v7.scn2
-Corn-r12-A_v7.scn2
-Corn-r13-A_v7.scn2
-Corn-r14-A_v7.scn2
-Corn-r15-A_v7.scn2
-Corn-r16-A_v7.scn2
-Corn-r17-A_v7.scn2
-Corn-r18-A_v7.scn2
-Cotton-r03N-A_v7.scn2
-Cotton-r03S-A_v7.scn2
-Cotton-r03W-A_v7.scn2
-Cotton-r08-A_v7.scn2
-Cotton-r11-A_v7.scn2
-False,
-,
-Mitigations (flag to make older versions still readable),
-1.0,1.0,1.0,
-4,"test",
-1,
-3,
-10,55.1,1,4.0,0.0,15,150.12,1,3
-20,55.1,1,4.0,0.0,15,179.89,1,2
-30,55.1,1,4.0,0.0,15,13.589,1,1
-False,,,
-False,1,2,15,5,
-2,
-Test.scn2
-TestScenario2
-False,
-,
-Mitigations (flag to make older versions still readable),
-0.66,0.77,0.88,
-5,"tresttttttttttttt",
-1,
-3,
-10,55.1,1,4.0,0.0,15,150.12,1,3
-20,55.1,1,4.0,0.0,15,179.89,1,2
-30,55.1,1,4.0,0.0,15,13.589,1,1
-False,,,
-False,1,2,15,5,
-2,
-Test.scn2
-TestScenario2
-False,
-,
-Mitigations (flag to make older versions still readable),
-0.66,0.77,0.88,
 3,
 ,
 ,
@@ -152,21 +72,21 @@ True,
 True,False,False,True,False,
 0,
 False,runoff output,
-False,erosion output,
-False,chem runoff,
+True,erosion output,
+True,chem runoff,
 False,chem erosion,
-False,last conc,
-False,
+True,last conc,
+True,
 False,,
-False,,,
+True,,,
 False,
-False,,,
-False,
-False,
+True,2,3,
 False,
 False,
+True,
 False,
-False,,
+True,
+True,,
 False,
 False,
 False,

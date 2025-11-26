@@ -127,7 +127,7 @@ namespace PWC_Cs
                 if (!string.IsNullOrEmpty(dir))
                 {
                     FileNames.WorkingDirectory = dir + Path.DirectorySeparatorChar;
-                    WorkingDirectory.Text = FileNames.WorkingDirectory;
+                    WorkingDirectoryTextBox.Text = FileNames.WorkingDirectory;
                     IOFamilyName.Text = Path.GetFileNameWithoutExtension(selectedFile);
                     SaveMainInputToTextFile(selectedFile);
                 }
@@ -160,7 +160,7 @@ namespace PWC_Cs
                 if (!string.IsNullOrEmpty(dir))
                 {
                     FileNames.WorkingDirectory = dir + Path.DirectorySeparatorChar;
-                    WorkingDirectory.Text = FileNames.WorkingDirectory;
+                    WorkingDirectoryTextBox.Text = FileNames.WorkingDirectory;
                     IOFamilyName.Text = Path.GetFileNameWithoutExtension(selectedFile);
                     RetrieveMainInputFromTextFile(selectedFile);
                 }
@@ -222,23 +222,6 @@ namespace PWC_Cs
 
         }
 
-        private void WorkingDirectory_DoubleClick(object sender, EventArgs e)
-        {
-
-            if (Directory.Exists(WorkingDirectory.Text))
-            {
-                Process.Start("explorer.exe", WorkingDirectory.Text);
-            }
-
-        }
-        private void WorkingDirectory_MouseEnter(object sender, EventArgs e)
-        {
-            WorkingDirectory.ForeColor = Color.Blue;
-        }
-        private void WorkingDirectory_MouseLeave(object sender, EventArgs e)
-        {
-            WorkingDirectory.ForeColor = Color.Black;
-        }
 
         private void GetWeatherFileDirectory_Click(object sender, EventArgs e)
         {
@@ -368,7 +351,6 @@ namespace PWC_Cs
                     if (Convert.ToBoolean(row.Cells[1].Value))
                     {  // Put Scheme into SchemeInfoList and then load it into GUI
 
-
                         if (row.Index >= 0 && row.Index < SchemeInfoList.Count)
                         {
                             // Index exists — overwrite
@@ -383,25 +365,183 @@ namespace PWC_Cs
                     }
                 }
             }
+        }
 
 
 
-
-
-
-
-
+        private void DoDegradate1_CheckedChanged(object sender, EventArgs e)
+        {
+            SetDaughterVisibleStatus(false);
+            DoDegradate2.Visible = false;
+            GranddaughterLabel.Visible = false;
+            DoDegradate2.Checked = false;
+            if (DoDegradate1.Checked == true)
+            {
+                SetDaughterVisibleStatus(true);
+                DoDegradate2.Visible = true;
+                GranddaughterLabel.Visible = true;
+            }
 
         }
+
 
         private void DoDegradate2_CheckedChanged(object sender, EventArgs e)
         {
-            if (DoDegradate2.Checked == true)
+            SetGrandaughterVisibleStatus(false);
+            if (DoDegradate2.Checked == true) SetGrandaughterVisibleStatus(true);
+        }
+
+
+        private void SetGrandaughterVisibleStatus(bool status)
+        {
+            Sorption3.Visible = status;
+            WaterColMetab3.Visible = status;
+            WaterColRef3.Visible = status;
+            BenthicMetab3.Visible = status;
+            BenthicRef3.Visible = status;
+            Photo3.Visible = status;
+            PhotoLat3.Visible = status;
+            Hydrolysis3.Visible = status;
+            SoilDegradation3.Visible = status;
+            SoilRef3.Visible = status;
+            FoliarDeg3.Visible = status;
+            FoliarWashoff3.Visible = status;
+            MWT3.Visible = status;
+            VaporPress3.Visible = status;
+            Sol3.Visible = status;
+            Henry3.Visible = status;
+            AirDiff3.Visible = status;
+            HeatHenry3.Visible = status;
+
+            WaterMolarRatio2.Visible = status;
+            BenthicMolarRatio2.Visible = status;
+            PhotoMolarRatio2.Visible = status;
+            HydroMolarRatio2.Visible = status;
+            SoilMolarRatio2.Visible = status;
+            FoliarMolarRatio2.Visible = status;
+        }
+
+        private void SetDaughterVisibleStatus(bool status)
+        {
+            Sorption2.Visible = status;
+            WaterColMetab2.Visible = status;
+            WaterColRef2.Visible = status;
+            BenthicMetab2.Visible = status;
+            BenthicRef2.Visible = status;
+            Photo2.Visible = status;
+            PhotoLat2.Visible = status;
+            Hydrolysis2.Visible = status;
+            SoilDegradation2.Visible = status;
+            SoilRef2.Visible = status;
+            FoliarDeg2.Visible = status;
+            FoliarWashoff2.Visible = status;
+            MWT2.Visible = status;
+            VaporPress2.Visible = status;
+            Sol2.Visible = status;
+            Henry2.Visible = status;
+            AirDiff2.Visible = status;
+            HeatHenry2.Visible = status;
+
+            WaterMolarRatio1.Visible = status;
+            BenthicMolarRatio1.Visible = status;
+            PhotoMolarRatio1.Visible = status;
+            HydroMolarRatio1.Visible = status;
+            SoilMolarRatio1.Visible = status;
+            FoliarMolarRatio1.Visible = status;
+        }
+
+        private void ItsaPond_CheckedChanged(object sender, EventArgs e)
+        {
+            ItsTPEZWPEZ.Enabled = false;
+            UseTPEZbuffers.Enabled = false;
+            ItsTPEZWPEZ.Checked = false;
+            UseTPEZbuffers.Checked = false;
+
+
+            if (ItsaPond.Checked)
             {
-                tableLayoutPanel1.ColumnStyles[7].Width = 0;
+                ItsTPEZWPEZ.Enabled = true;
+                UseTPEZbuffers.Enabled = true;
+            }
+        }
+
+
+
+        private void WorkingDirectory_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void WorkingDirectoryTextBox_MouseEnter(object sender, EventArgs e)
+        {
+            WorkingDirectoryTextBox.ForeColor = Color.Blue;
+        }
+
+        private void WorkingDirectoryTextBox_MouseLeave(object sender, EventArgs e)
+        {
+            WorkingDirectoryTextBox.ForeColor = Color.Black;
+        }
+
+
+
+
+
+
+
+
+        private TabPage hiddenOptionalOutputTabPage = null;
+        private TabPage hiddenAdvancedTabPage = null;
+
+        private void toggleOptionalOutput_Click(object sender, EventArgs e)
+        {
+            if (tabControl1.Contains(OptionalOutputTab))
+            {
+                hiddenOptionalOutputTabPage = HideTab(tabControl1, OptionalOutputTab, hiddenOptionalOutputTabPage);
             }
             else
-                tableLayoutPanel1.ColumnStyles[7].Width = 25;
+            {
+                ShowTab(tabControl1, hiddenOptionalOutputTabPage);
+            }
+
+        }
+        private void toggleAdvancedSettings_Click(object sender, EventArgs e)
+        {
+            if (tabControl1.Contains(AdvancedTab))
+            {
+                hiddenAdvancedTabPage = HideTab(tabControl1, AdvancedTab, hiddenAdvancedTabPage);
+            }
+            else
+            {
+                ShowTab(tabControl1, hiddenAdvancedTabPage);
+            }
+        }
+
+
+
+
+        private TabPage HideTab(TabControl tabControl, TabPage tabPage, TabPage hiddenTabPage)
+        {
+            hiddenTabPage = tabPage;
+            tabControl.TabPages.Remove(tabPage);
+            return hiddenTabPage;
+        }
+
+        private void ShowTab(TabControl tabControl, TabPage hiddenTabPage)
+        {
+            tabControl.TabPages.Add(hiddenTabPage);
+
+        }
+
+        private void WorkingDirectoryTextBox_Click(object sender, EventArgs e)
+        {
+            if (Directory.Exists(WorkingDirectoryTextBox.Text))
+            {
+                Process.Start("explorer.exe", WorkingDirectoryTextBox.Text);
+            }
         }
     }
+
+
+
+
 }

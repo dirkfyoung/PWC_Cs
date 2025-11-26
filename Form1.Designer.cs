@@ -39,8 +39,8 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             label5 = new Label();
             label6 = new Label();
-            label21 = new Label();
-            sorption3 = new TextBox();
+            GranddaughterLabel = new Label();
+            Sorption3 = new TextBox();
             WaterColMetab3 = new TextBox();
             WaterColRef3 = new TextBox();
             BenthicMetab3 = new TextBox();
@@ -65,7 +65,7 @@
             SoilMolarRatio2 = new TextBox();
             FoliarMolarRatio2 = new TextBox();
             label20 = new Label();
-            sorption2 = new TextBox();
+            Sorption2 = new TextBox();
             WaterColMetab2 = new TextBox();
             WaterColRef2 = new TextBox();
             BenthicMetab2 = new TextBox();
@@ -126,9 +126,10 @@
             label18 = new Label();
             DoDegradate2 = new CheckBox();
             DoDegradate1 = new CheckBox();
-            sorption1 = new TextBox();
+            Sorption1 = new TextBox();
             WaterColMetab1 = new TextBox();
             tabPage2 = new TabPage();
+            label21 = new Label();
             ClearAllWaterBodies = new Button();
             ClearSelectedWaterBody = new Button();
             SelectOtherWaterbodies = new Button();
@@ -188,7 +189,7 @@
             ScenarioBatchFileName = new TextBox();
             GetScenariosBatchCheckBox = new CheckBox();
             ScenarioListBox = new ListBox();
-            tabPage6 = new TabPage();
+            AdvancedTab = new TabPage();
             label51 = new Label();
             WaterbodyEvapAdjustment = new TextBox();
             AdjustCN = new CheckBox();
@@ -291,10 +292,11 @@
             WriteSchemeTable = new ToolStripMenuItem();
             ReadSchemeTable = new ToolStripMenuItem();
             moreTabsToolStripMenuItem = new ToolStripMenuItem();
+            toggleOptionalOutput = new ToolStripMenuItem();
+            toggleAdvancedSettings = new ToolStripMenuItem();
             saveFileDialog1 = new SaveFileDialog();
             retrieveMainInputDialog = new OpenFileDialog();
             openOtherWaterbody = new OpenFileDialog();
-            WorkingDirectory = new Label();
             IOFamilyName = new Label();
             label56 = new Label();
             label60 = new Label();
@@ -303,6 +305,7 @@
             openSchemeFile = new OpenFileDialog();
             saveSchemeFile = new SaveFileDialog();
             openScenarios = new OpenFileDialog();
+            WorkingDirectoryTextBox = new TextBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -314,7 +317,7 @@
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AppTableDisplay).BeginInit();
             tabPage5.SuspendLayout();
-            tabPage6.SuspendLayout();
+            AdvancedTab.SuspendLayout();
             groupBox1.SuspendLayout();
             OptionalOutputTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AdditionalOutputGridView).BeginInit();
@@ -329,7 +332,7 @@
             tabControl1.Controls.Add(tabPage3);
             tabControl1.Controls.Add(tabPage4);
             tabControl1.Controls.Add(tabPage5);
-            tabControl1.Controls.Add(tabPage6);
+            tabControl1.Controls.Add(AdvancedTab);
             tabControl1.Controls.Add(OptionalOutputTab);
             tabControl1.Location = new Point(0, 31);
             tabControl1.Name = "tabControl1";
@@ -352,18 +355,18 @@
             // 
             tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanel1.ColumnCount = 8;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 6.986131F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 6.986131F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20.42009F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.85194F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5.47486F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 18.77095F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 4.916201F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20.2234631F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 8.12182F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 8.121821F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 23.7396488F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15.9788132F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 6.364873F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15.9788132F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5.7153964F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15.9788132F));
             tableLayoutPanel1.Controls.Add(label5, 0, 5);
             tableLayoutPanel1.Controls.Add(label6, 0, 6);
-            tableLayoutPanel1.Controls.Add(label21, 7, 0);
-            tableLayoutPanel1.Controls.Add(sorption3, 7, 1);
+            tableLayoutPanel1.Controls.Add(GranddaughterLabel, 7, 0);
+            tableLayoutPanel1.Controls.Add(Sorption3, 7, 1);
             tableLayoutPanel1.Controls.Add(WaterColMetab3, 7, 2);
             tableLayoutPanel1.Controls.Add(WaterColRef3, 7, 3);
             tableLayoutPanel1.Controls.Add(BenthicMetab3, 7, 4);
@@ -388,7 +391,7 @@
             tableLayoutPanel1.Controls.Add(SoilMolarRatio2, 6, 9);
             tableLayoutPanel1.Controls.Add(FoliarMolarRatio2, 6, 11);
             tableLayoutPanel1.Controls.Add(label20, 5, 0);
-            tableLayoutPanel1.Controls.Add(sorption2, 5, 1);
+            tableLayoutPanel1.Controls.Add(Sorption2, 5, 1);
             tableLayoutPanel1.Controls.Add(WaterColMetab2, 5, 2);
             tableLayoutPanel1.Controls.Add(WaterColRef2, 5, 3);
             tableLayoutPanel1.Controls.Add(BenthicMetab2, 5, 4);
@@ -449,7 +452,7 @@
             tableLayoutPanel1.Controls.Add(label18, 0, 18);
             tableLayoutPanel1.Controls.Add(DoDegradate2, 6, 0);
             tableLayoutPanel1.Controls.Add(DoDegradate1, 4, 0);
-            tableLayoutPanel1.Controls.Add(sorption1, 3, 1);
+            tableLayoutPanel1.Controls.Add(Sorption1, 3, 1);
             tableLayoutPanel1.Controls.Add(WaterColMetab1, 3, 2);
             tableLayoutPanel1.Location = new Point(22, 6);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -481,7 +484,7 @@
             label5.Anchor = AnchorStyles.Right;
             label5.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label5, 3);
-            label5.Location = new Point(57, 144);
+            label5.Location = new Point(108, 144);
             label5.Name = "label5";
             label5.Size = new Size(245, 20);
             label5.TabIndex = 5;
@@ -492,440 +495,488 @@
             label6.Anchor = AnchorStyles.Right;
             label6.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label6, 3);
-            label6.Location = new Point(74, 172);
+            label6.Location = new Point(125, 172);
             label6.Name = "label6";
             label6.Size = new Size(228, 20);
             label6.TabIndex = 6;
             label6.Text = "Aqueous Photolysis Halflife (day)";
             // 
-            // label21
+            // GranddaughterLabel
             // 
-            label21.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            label21.AutoSize = true;
-            label21.Location = new Point(714, 4);
-            label21.Name = "label21";
-            label21.Size = new Size(178, 20);
-            label21.TabIndex = 22;
-            label21.Text = "Granddaughter";
-            label21.TextAlign = ContentAlignment.MiddleCenter;
+            GranddaughterLabel.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            GranddaughterLabel.AutoSize = true;
+            GranddaughterLabel.Location = new Point(752, 4);
+            GranddaughterLabel.Name = "GranddaughterLabel";
+            GranddaughterLabel.Size = new Size(140, 20);
+            GranddaughterLabel.TabIndex = 22;
+            GranddaughterLabel.Text = "Granddaughter";
+            GranddaughterLabel.TextAlign = ContentAlignment.MiddleCenter;
+            GranddaughterLabel.Visible = false;
             // 
-            // sorption3
+            // Sorption3
             // 
-            sorption3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            sorption3.Location = new Point(714, 31);
-            sorption3.Name = "sorption3";
-            sorption3.Size = new Size(178, 27);
-            sorption3.TabIndex = 66;
+            Sorption3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            Sorption3.Location = new Point(752, 31);
+            Sorption3.Name = "Sorption3";
+            Sorption3.Size = new Size(140, 27);
+            Sorption3.TabIndex = 66;
+            Sorption3.Visible = false;
             // 
             // WaterColMetab3
             // 
             WaterColMetab3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            WaterColMetab3.Location = new Point(714, 59);
+            WaterColMetab3.Location = new Point(752, 59);
             WaterColMetab3.Name = "WaterColMetab3";
-            WaterColMetab3.Size = new Size(178, 27);
+            WaterColMetab3.Size = new Size(140, 27);
             WaterColMetab3.TabIndex = 68;
+            WaterColMetab3.Visible = false;
             // 
             // WaterColRef3
             // 
             WaterColRef3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            WaterColRef3.Location = new Point(714, 87);
+            WaterColRef3.Location = new Point(752, 87);
             WaterColRef3.Name = "WaterColRef3";
-            WaterColRef3.Size = new Size(178, 27);
+            WaterColRef3.Size = new Size(140, 27);
             WaterColRef3.TabIndex = 69;
+            WaterColRef3.Visible = false;
             // 
             // BenthicMetab3
             // 
             BenthicMetab3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            BenthicMetab3.Location = new Point(714, 115);
+            BenthicMetab3.Location = new Point(752, 115);
             BenthicMetab3.Name = "BenthicMetab3";
-            BenthicMetab3.Size = new Size(178, 27);
+            BenthicMetab3.Size = new Size(140, 27);
             BenthicMetab3.TabIndex = 70;
+            BenthicMetab3.Visible = false;
             // 
             // BenthicRef3
             // 
             BenthicRef3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            BenthicRef3.Location = new Point(714, 143);
+            BenthicRef3.Location = new Point(752, 143);
             BenthicRef3.Name = "BenthicRef3";
-            BenthicRef3.Size = new Size(178, 27);
+            BenthicRef3.Size = new Size(140, 27);
             BenthicRef3.TabIndex = 71;
+            BenthicRef3.Visible = false;
             // 
             // Photo3
             // 
             Photo3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Photo3.Location = new Point(714, 171);
+            Photo3.Location = new Point(752, 171);
             Photo3.Name = "Photo3";
-            Photo3.Size = new Size(178, 27);
+            Photo3.Size = new Size(140, 27);
             Photo3.TabIndex = 72;
+            Photo3.Visible = false;
             // 
             // PhotoLat3
             // 
             PhotoLat3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            PhotoLat3.Location = new Point(714, 199);
+            PhotoLat3.Location = new Point(752, 199);
             PhotoLat3.Name = "PhotoLat3";
-            PhotoLat3.Size = new Size(178, 27);
+            PhotoLat3.Size = new Size(140, 27);
             PhotoLat3.TabIndex = 73;
+            PhotoLat3.Visible = false;
             // 
             // Hydrolysis3
             // 
             Hydrolysis3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Hydrolysis3.Location = new Point(714, 227);
+            Hydrolysis3.Location = new Point(752, 227);
             Hydrolysis3.Name = "Hydrolysis3";
-            Hydrolysis3.Size = new Size(178, 27);
+            Hydrolysis3.Size = new Size(140, 27);
             Hydrolysis3.TabIndex = 74;
+            Hydrolysis3.Visible = false;
             // 
             // SoilDegradation3
             // 
             SoilDegradation3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            SoilDegradation3.Location = new Point(714, 255);
+            SoilDegradation3.Location = new Point(752, 255);
             SoilDegradation3.Name = "SoilDegradation3";
-            SoilDegradation3.Size = new Size(178, 27);
+            SoilDegradation3.Size = new Size(140, 27);
             SoilDegradation3.TabIndex = 66;
+            SoilDegradation3.Visible = false;
             // 
             // SoilRef3
             // 
             SoilRef3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            SoilRef3.Location = new Point(714, 283);
+            SoilRef3.Location = new Point(752, 283);
             SoilRef3.Name = "SoilRef3";
-            SoilRef3.Size = new Size(178, 27);
+            SoilRef3.Size = new Size(140, 27);
             SoilRef3.TabIndex = 66;
+            SoilRef3.Visible = false;
             // 
             // FoliarDeg3
             // 
             FoliarDeg3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            FoliarDeg3.Location = new Point(714, 311);
+            FoliarDeg3.Location = new Point(752, 311);
             FoliarDeg3.Name = "FoliarDeg3";
-            FoliarDeg3.Size = new Size(178, 27);
+            FoliarDeg3.Size = new Size(140, 27);
             FoliarDeg3.TabIndex = 66;
+            FoliarDeg3.Visible = false;
             // 
             // FoliarWashoff3
             // 
             FoliarWashoff3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            FoliarWashoff3.Location = new Point(714, 339);
+            FoliarWashoff3.Location = new Point(752, 339);
             FoliarWashoff3.Name = "FoliarWashoff3";
-            FoliarWashoff3.Size = new Size(178, 27);
+            FoliarWashoff3.Size = new Size(140, 27);
             FoliarWashoff3.TabIndex = 66;
+            FoliarWashoff3.Visible = false;
             // 
             // MWT3
             // 
             MWT3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            MWT3.Location = new Point(714, 367);
+            MWT3.Location = new Point(752, 367);
             MWT3.Name = "MWT3";
-            MWT3.Size = new Size(178, 27);
+            MWT3.Size = new Size(140, 27);
             MWT3.TabIndex = 66;
+            MWT3.Visible = false;
             // 
             // VaporPress3
             // 
             VaporPress3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            VaporPress3.Location = new Point(714, 395);
+            VaporPress3.Location = new Point(752, 395);
             VaporPress3.Name = "VaporPress3";
-            VaporPress3.Size = new Size(178, 27);
+            VaporPress3.Size = new Size(140, 27);
             VaporPress3.TabIndex = 66;
+            VaporPress3.Visible = false;
             // 
             // Sol3
             // 
             Sol3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Sol3.Location = new Point(714, 423);
+            Sol3.Location = new Point(752, 423);
             Sol3.Name = "Sol3";
-            Sol3.Size = new Size(178, 27);
+            Sol3.Size = new Size(140, 27);
             Sol3.TabIndex = 66;
+            Sol3.Visible = false;
             // 
             // Henry3
             // 
             Henry3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Henry3.Location = new Point(714, 451);
+            Henry3.Location = new Point(752, 451);
             Henry3.Name = "Henry3";
-            Henry3.Size = new Size(178, 27);
+            Henry3.Size = new Size(140, 27);
             Henry3.TabIndex = 66;
+            Henry3.Visible = false;
             // 
             // AirDiff3
             // 
             AirDiff3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            AirDiff3.Location = new Point(714, 479);
+            AirDiff3.Location = new Point(752, 479);
             AirDiff3.Name = "AirDiff3";
-            AirDiff3.Size = new Size(178, 27);
+            AirDiff3.Size = new Size(140, 27);
             AirDiff3.TabIndex = 66;
+            AirDiff3.Visible = false;
             // 
             // HeatHenry3
             // 
             HeatHenry3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            HeatHenry3.Location = new Point(714, 507);
+            HeatHenry3.Location = new Point(752, 507);
             HeatHenry3.Name = "HeatHenry3";
-            HeatHenry3.Size = new Size(178, 27);
+            HeatHenry3.Size = new Size(140, 27);
             HeatHenry3.TabIndex = 66;
+            HeatHenry3.Visible = false;
             // 
             // WaterMolarRatio2
             // 
             WaterMolarRatio2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            WaterMolarRatio2.Location = new Point(671, 59);
+            WaterMolarRatio2.Location = new Point(701, 59);
             WaterMolarRatio2.Name = "WaterMolarRatio2";
-            WaterMolarRatio2.Size = new Size(37, 27);
+            WaterMolarRatio2.Size = new Size(45, 27);
             WaterMolarRatio2.TabIndex = 65;
+            WaterMolarRatio2.Visible = false;
             // 
             // BenthicMolarRatio2
             // 
             BenthicMolarRatio2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            BenthicMolarRatio2.Location = new Point(671, 115);
+            BenthicMolarRatio2.Location = new Point(701, 115);
             BenthicMolarRatio2.Name = "BenthicMolarRatio2";
-            BenthicMolarRatio2.Size = new Size(37, 27);
+            BenthicMolarRatio2.Size = new Size(45, 27);
             BenthicMolarRatio2.TabIndex = 66;
+            BenthicMolarRatio2.Visible = false;
             // 
             // PhotoMolarRatio2
             // 
             PhotoMolarRatio2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            PhotoMolarRatio2.Location = new Point(671, 171);
+            PhotoMolarRatio2.Location = new Point(701, 171);
             PhotoMolarRatio2.Name = "PhotoMolarRatio2";
-            PhotoMolarRatio2.Size = new Size(37, 27);
+            PhotoMolarRatio2.Size = new Size(45, 27);
             PhotoMolarRatio2.TabIndex = 67;
+            PhotoMolarRatio2.Visible = false;
             // 
             // HydroMolarRatio2
             // 
             HydroMolarRatio2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            HydroMolarRatio2.Location = new Point(671, 227);
+            HydroMolarRatio2.Location = new Point(701, 227);
             HydroMolarRatio2.Name = "HydroMolarRatio2";
-            HydroMolarRatio2.Size = new Size(37, 27);
+            HydroMolarRatio2.Size = new Size(45, 27);
             HydroMolarRatio2.TabIndex = 66;
+            HydroMolarRatio2.Visible = false;
             // 
             // SoilMolarRatio2
             // 
             SoilMolarRatio2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            SoilMolarRatio2.Location = new Point(671, 255);
+            SoilMolarRatio2.Location = new Point(701, 255);
             SoilMolarRatio2.Name = "SoilMolarRatio2";
-            SoilMolarRatio2.Size = new Size(37, 27);
+            SoilMolarRatio2.Size = new Size(45, 27);
             SoilMolarRatio2.TabIndex = 66;
+            SoilMolarRatio2.Visible = false;
             // 
             // FoliarMolarRatio2
             // 
             FoliarMolarRatio2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            FoliarMolarRatio2.Location = new Point(671, 311);
+            FoliarMolarRatio2.Location = new Point(701, 311);
             FoliarMolarRatio2.Name = "FoliarMolarRatio2";
-            FoliarMolarRatio2.Size = new Size(37, 27);
+            FoliarMolarRatio2.Size = new Size(45, 27);
             FoliarMolarRatio2.TabIndex = 66;
+            FoliarMolarRatio2.Visible = false;
             // 
             // label20
             // 
             label20.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label20.AutoSize = true;
-            label20.Location = new Point(505, 4);
+            label20.Location = new Point(558, 4);
             label20.Name = "label20";
-            label20.Size = new Size(160, 20);
+            label20.Size = new Size(137, 20);
             label20.TabIndex = 21;
             label20.Text = "Daughter";
             label20.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // sorption2
+            // Sorption2
             // 
-            sorption2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            sorption2.BackColor = Color.Ivory;
-            sorption2.Location = new Point(505, 31);
-            sorption2.Name = "sorption2";
-            sorption2.Size = new Size(160, 27);
-            sorption2.TabIndex = 47;
+            Sorption2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            Sorption2.BackColor = Color.Ivory;
+            Sorption2.Location = new Point(558, 31);
+            Sorption2.Name = "Sorption2";
+            Sorption2.Size = new Size(137, 27);
+            Sorption2.TabIndex = 47;
+            Sorption2.Visible = false;
             // 
             // WaterColMetab2
             // 
             WaterColMetab2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             WaterColMetab2.BackColor = Color.Ivory;
-            WaterColMetab2.Location = new Point(505, 59);
+            WaterColMetab2.Location = new Point(558, 59);
             WaterColMetab2.Name = "WaterColMetab2";
-            WaterColMetab2.Size = new Size(160, 27);
+            WaterColMetab2.Size = new Size(137, 27);
             WaterColMetab2.TabIndex = 48;
+            WaterColMetab2.Visible = false;
             // 
             // WaterColRef2
             // 
             WaterColRef2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             WaterColRef2.BackColor = Color.Ivory;
-            WaterColRef2.Location = new Point(505, 87);
+            WaterColRef2.Location = new Point(558, 87);
             WaterColRef2.Name = "WaterColRef2";
-            WaterColRef2.Size = new Size(160, 27);
+            WaterColRef2.Size = new Size(137, 27);
             WaterColRef2.TabIndex = 49;
+            WaterColRef2.Visible = false;
             // 
             // BenthicMetab2
             // 
             BenthicMetab2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             BenthicMetab2.BackColor = Color.Ivory;
-            BenthicMetab2.Location = new Point(505, 115);
+            BenthicMetab2.Location = new Point(558, 115);
             BenthicMetab2.Name = "BenthicMetab2";
-            BenthicMetab2.Size = new Size(160, 27);
+            BenthicMetab2.Size = new Size(137, 27);
             BenthicMetab2.TabIndex = 50;
+            BenthicMetab2.Visible = false;
             // 
             // BenthicRef2
             // 
             BenthicRef2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             BenthicRef2.BackColor = Color.Ivory;
-            BenthicRef2.Location = new Point(505, 143);
+            BenthicRef2.Location = new Point(558, 143);
             BenthicRef2.Name = "BenthicRef2";
-            BenthicRef2.Size = new Size(160, 27);
+            BenthicRef2.Size = new Size(137, 27);
             BenthicRef2.TabIndex = 51;
+            BenthicRef2.Visible = false;
             // 
             // Photo2
             // 
             Photo2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Photo2.BackColor = Color.Ivory;
-            Photo2.Location = new Point(505, 171);
+            Photo2.Location = new Point(558, 171);
             Photo2.Name = "Photo2";
-            Photo2.Size = new Size(160, 27);
+            Photo2.Size = new Size(137, 27);
             Photo2.TabIndex = 52;
+            Photo2.Visible = false;
             // 
             // PhotoLat2
             // 
             PhotoLat2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             PhotoLat2.BackColor = Color.Ivory;
-            PhotoLat2.Location = new Point(505, 199);
+            PhotoLat2.Location = new Point(558, 199);
             PhotoLat2.Name = "PhotoLat2";
-            PhotoLat2.Size = new Size(160, 27);
+            PhotoLat2.Size = new Size(137, 27);
             PhotoLat2.TabIndex = 53;
+            PhotoLat2.Visible = false;
             // 
             // Hydrolysis2
             // 
             Hydrolysis2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Hydrolysis2.BackColor = Color.Ivory;
-            Hydrolysis2.Location = new Point(505, 227);
+            Hydrolysis2.Location = new Point(558, 227);
             Hydrolysis2.Name = "Hydrolysis2";
-            Hydrolysis2.Size = new Size(160, 27);
+            Hydrolysis2.Size = new Size(137, 27);
             Hydrolysis2.TabIndex = 54;
+            Hydrolysis2.Visible = false;
             // 
             // SoilDegradation2
             // 
             SoilDegradation2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             SoilDegradation2.BackColor = Color.Ivory;
-            SoilDegradation2.Location = new Point(505, 255);
+            SoilDegradation2.Location = new Point(558, 255);
             SoilDegradation2.Name = "SoilDegradation2";
-            SoilDegradation2.Size = new Size(160, 27);
+            SoilDegradation2.Size = new Size(137, 27);
             SoilDegradation2.TabIndex = 55;
+            SoilDegradation2.Visible = false;
             // 
             // SoilRef2
             // 
             SoilRef2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             SoilRef2.BackColor = Color.Ivory;
-            SoilRef2.Location = new Point(505, 283);
+            SoilRef2.Location = new Point(558, 283);
             SoilRef2.Name = "SoilRef2";
-            SoilRef2.Size = new Size(160, 27);
+            SoilRef2.Size = new Size(137, 27);
             SoilRef2.TabIndex = 56;
+            SoilRef2.Visible = false;
             // 
             // FoliarDeg2
             // 
             FoliarDeg2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             FoliarDeg2.BackColor = Color.Ivory;
-            FoliarDeg2.Location = new Point(505, 311);
+            FoliarDeg2.Location = new Point(558, 311);
             FoliarDeg2.Name = "FoliarDeg2";
-            FoliarDeg2.Size = new Size(160, 27);
+            FoliarDeg2.Size = new Size(137, 27);
             FoliarDeg2.TabIndex = 57;
+            FoliarDeg2.Visible = false;
             // 
             // FoliarWashoff2
             // 
             FoliarWashoff2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             FoliarWashoff2.BackColor = Color.Ivory;
-            FoliarWashoff2.Location = new Point(505, 339);
+            FoliarWashoff2.Location = new Point(558, 339);
             FoliarWashoff2.Name = "FoliarWashoff2";
-            FoliarWashoff2.Size = new Size(160, 27);
+            FoliarWashoff2.Size = new Size(137, 27);
             FoliarWashoff2.TabIndex = 58;
+            FoliarWashoff2.Visible = false;
             // 
             // MWT2
             // 
             MWT2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             MWT2.BackColor = Color.Ivory;
-            MWT2.Location = new Point(505, 367);
+            MWT2.Location = new Point(558, 367);
             MWT2.Name = "MWT2";
-            MWT2.Size = new Size(160, 27);
+            MWT2.Size = new Size(137, 27);
             MWT2.TabIndex = 59;
+            MWT2.Visible = false;
             // 
             // VaporPress2
             // 
             VaporPress2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             VaporPress2.BackColor = Color.Ivory;
-            VaporPress2.Location = new Point(505, 395);
+            VaporPress2.Location = new Point(558, 395);
             VaporPress2.Name = "VaporPress2";
-            VaporPress2.Size = new Size(160, 27);
+            VaporPress2.Size = new Size(137, 27);
             VaporPress2.TabIndex = 60;
+            VaporPress2.Visible = false;
             // 
             // Sol2
             // 
             Sol2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Sol2.BackColor = Color.Ivory;
-            Sol2.Location = new Point(505, 423);
+            Sol2.Location = new Point(558, 423);
             Sol2.Name = "Sol2";
-            Sol2.Size = new Size(160, 27);
+            Sol2.Size = new Size(137, 27);
             Sol2.TabIndex = 61;
+            Sol2.Visible = false;
             // 
             // Henry2
             // 
             Henry2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Henry2.BackColor = Color.Ivory;
-            Henry2.Location = new Point(505, 451);
+            Henry2.Location = new Point(558, 451);
             Henry2.Name = "Henry2";
-            Henry2.Size = new Size(160, 27);
+            Henry2.Size = new Size(137, 27);
             Henry2.TabIndex = 62;
+            Henry2.Visible = false;
             // 
             // AirDiff2
             // 
             AirDiff2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             AirDiff2.BackColor = Color.Ivory;
-            AirDiff2.Location = new Point(505, 479);
+            AirDiff2.Location = new Point(558, 479);
             AirDiff2.Name = "AirDiff2";
-            AirDiff2.Size = new Size(160, 27);
+            AirDiff2.Size = new Size(137, 27);
             AirDiff2.TabIndex = 63;
+            AirDiff2.Visible = false;
             // 
             // HeatHenry2
             // 
             HeatHenry2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             HeatHenry2.BackColor = Color.Ivory;
-            HeatHenry2.Location = new Point(505, 507);
+            HeatHenry2.Location = new Point(558, 507);
             HeatHenry2.Name = "HeatHenry2";
-            HeatHenry2.Size = new Size(160, 27);
+            HeatHenry2.Size = new Size(137, 27);
             HeatHenry2.TabIndex = 64;
+            HeatHenry2.Visible = false;
             // 
             // FoliarMolarRatio1
             // 
             FoliarMolarRatio1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             FoliarMolarRatio1.BackColor = Color.Ivory;
-            FoliarMolarRatio1.Location = new Point(457, 311);
+            FoliarMolarRatio1.Location = new Point(502, 311);
             FoliarMolarRatio1.Name = "FoliarMolarRatio1";
-            FoliarMolarRatio1.Size = new Size(42, 27);
+            FoliarMolarRatio1.Size = new Size(50, 27);
             FoliarMolarRatio1.TabIndex = 46;
+            FoliarMolarRatio1.Visible = false;
             // 
             // SoilMolarRatio1
             // 
             SoilMolarRatio1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             SoilMolarRatio1.BackColor = Color.Ivory;
-            SoilMolarRatio1.Location = new Point(457, 255);
+            SoilMolarRatio1.Location = new Point(502, 255);
             SoilMolarRatio1.Name = "SoilMolarRatio1";
-            SoilMolarRatio1.Size = new Size(42, 27);
+            SoilMolarRatio1.Size = new Size(50, 27);
             SoilMolarRatio1.TabIndex = 45;
+            SoilMolarRatio1.Visible = false;
             // 
             // HydroMolarRatio1
             // 
             HydroMolarRatio1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             HydroMolarRatio1.BackColor = Color.Ivory;
-            HydroMolarRatio1.Location = new Point(457, 227);
+            HydroMolarRatio1.Location = new Point(502, 227);
             HydroMolarRatio1.Name = "HydroMolarRatio1";
-            HydroMolarRatio1.Size = new Size(42, 27);
+            HydroMolarRatio1.Size = new Size(50, 27);
             HydroMolarRatio1.TabIndex = 44;
+            HydroMolarRatio1.Visible = false;
             // 
             // PhotoMolarRatio1
             // 
             PhotoMolarRatio1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             PhotoMolarRatio1.BackColor = Color.Ivory;
-            PhotoMolarRatio1.Location = new Point(457, 171);
+            PhotoMolarRatio1.Location = new Point(502, 171);
             PhotoMolarRatio1.Name = "PhotoMolarRatio1";
-            PhotoMolarRatio1.Size = new Size(42, 27);
+            PhotoMolarRatio1.Size = new Size(50, 27);
             PhotoMolarRatio1.TabIndex = 43;
+            PhotoMolarRatio1.Visible = false;
             // 
             // BenthicMolarRatio1
             // 
             BenthicMolarRatio1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             BenthicMolarRatio1.BackColor = Color.Ivory;
-            BenthicMolarRatio1.Location = new Point(457, 115);
+            BenthicMolarRatio1.Location = new Point(502, 115);
             BenthicMolarRatio1.Name = "BenthicMolarRatio1";
-            BenthicMolarRatio1.Size = new Size(42, 27);
+            BenthicMolarRatio1.Size = new Size(50, 27);
             BenthicMolarRatio1.TabIndex = 42;
+            BenthicMolarRatio1.Visible = false;
             // 
             // label19
             // 
             label19.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label19.AutoSize = true;
-            label19.Location = new Point(308, 4);
+            label19.Location = new Point(359, 4);
             label19.Name = "label19";
-            label19.Size = new Size(143, 20);
+            label19.Size = new Size(137, 20);
             label19.TabIndex = 19;
             label19.Text = "Parent";
             label19.TextAlign = ContentAlignment.MiddleCenter;
@@ -934,144 +985,144 @@
             // 
             WaterColRef1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             WaterColRef1.BackColor = Color.FloralWhite;
-            WaterColRef1.Location = new Point(308, 87);
+            WaterColRef1.Location = new Point(359, 87);
             WaterColRef1.Name = "WaterColRef1";
-            WaterColRef1.Size = new Size(143, 27);
+            WaterColRef1.Size = new Size(137, 27);
             WaterColRef1.TabIndex = 25;
             // 
             // BenthicMetab1
             // 
             BenthicMetab1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             BenthicMetab1.BackColor = Color.FloralWhite;
-            BenthicMetab1.Location = new Point(308, 115);
+            BenthicMetab1.Location = new Point(359, 115);
             BenthicMetab1.Name = "BenthicMetab1";
-            BenthicMetab1.Size = new Size(143, 27);
+            BenthicMetab1.Size = new Size(137, 27);
             BenthicMetab1.TabIndex = 26;
             // 
             // BenthicRef1
             // 
             BenthicRef1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             BenthicRef1.BackColor = Color.FloralWhite;
-            BenthicRef1.Location = new Point(308, 143);
+            BenthicRef1.Location = new Point(359, 143);
             BenthicRef1.Name = "BenthicRef1";
-            BenthicRef1.Size = new Size(143, 27);
+            BenthicRef1.Size = new Size(137, 27);
             BenthicRef1.TabIndex = 27;
             // 
             // Photo1
             // 
             Photo1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Photo1.BackColor = Color.FloralWhite;
-            Photo1.Location = new Point(308, 171);
+            Photo1.Location = new Point(359, 171);
             Photo1.Name = "Photo1";
-            Photo1.Size = new Size(143, 27);
+            Photo1.Size = new Size(137, 27);
             Photo1.TabIndex = 28;
             // 
             // PhotoLat1
             // 
             PhotoLat1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             PhotoLat1.BackColor = Color.FloralWhite;
-            PhotoLat1.Location = new Point(308, 199);
+            PhotoLat1.Location = new Point(359, 199);
             PhotoLat1.Name = "PhotoLat1";
-            PhotoLat1.Size = new Size(143, 27);
+            PhotoLat1.Size = new Size(137, 27);
             PhotoLat1.TabIndex = 29;
             // 
             // Hydrolysis1
             // 
             Hydrolysis1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Hydrolysis1.BackColor = Color.FloralWhite;
-            Hydrolysis1.Location = new Point(308, 227);
+            Hydrolysis1.Location = new Point(359, 227);
             Hydrolysis1.Name = "Hydrolysis1";
-            Hydrolysis1.Size = new Size(143, 27);
+            Hydrolysis1.Size = new Size(137, 27);
             Hydrolysis1.TabIndex = 30;
             // 
             // SoilDegradation1
             // 
             SoilDegradation1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             SoilDegradation1.BackColor = Color.FloralWhite;
-            SoilDegradation1.Location = new Point(308, 255);
+            SoilDegradation1.Location = new Point(359, 255);
             SoilDegradation1.Name = "SoilDegradation1";
-            SoilDegradation1.Size = new Size(143, 27);
+            SoilDegradation1.Size = new Size(137, 27);
             SoilDegradation1.TabIndex = 31;
             // 
             // SoilRef1
             // 
             SoilRef1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             SoilRef1.BackColor = Color.FloralWhite;
-            SoilRef1.Location = new Point(308, 283);
+            SoilRef1.Location = new Point(359, 283);
             SoilRef1.Name = "SoilRef1";
-            SoilRef1.Size = new Size(143, 27);
+            SoilRef1.Size = new Size(137, 27);
             SoilRef1.TabIndex = 32;
             // 
             // FoliarDeg1
             // 
             FoliarDeg1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             FoliarDeg1.BackColor = Color.FloralWhite;
-            FoliarDeg1.Location = new Point(308, 311);
+            FoliarDeg1.Location = new Point(359, 311);
             FoliarDeg1.Name = "FoliarDeg1";
-            FoliarDeg1.Size = new Size(143, 27);
+            FoliarDeg1.Size = new Size(137, 27);
             FoliarDeg1.TabIndex = 33;
             // 
             // FoliarWashoff1
             // 
             FoliarWashoff1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             FoliarWashoff1.BackColor = Color.FloralWhite;
-            FoliarWashoff1.Location = new Point(308, 339);
+            FoliarWashoff1.Location = new Point(359, 339);
             FoliarWashoff1.Name = "FoliarWashoff1";
-            FoliarWashoff1.Size = new Size(143, 27);
+            FoliarWashoff1.Size = new Size(137, 27);
             FoliarWashoff1.TabIndex = 34;
             // 
             // MWT1
             // 
             MWT1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             MWT1.BackColor = Color.FloralWhite;
-            MWT1.Location = new Point(308, 367);
+            MWT1.Location = new Point(359, 367);
             MWT1.Name = "MWT1";
-            MWT1.Size = new Size(143, 27);
+            MWT1.Size = new Size(137, 27);
             MWT1.TabIndex = 35;
             // 
             // VaporPress1
             // 
             VaporPress1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             VaporPress1.BackColor = Color.FloralWhite;
-            VaporPress1.Location = new Point(308, 395);
+            VaporPress1.Location = new Point(359, 395);
             VaporPress1.Name = "VaporPress1";
-            VaporPress1.Size = new Size(143, 27);
+            VaporPress1.Size = new Size(137, 27);
             VaporPress1.TabIndex = 36;
             // 
             // Sol1
             // 
             Sol1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Sol1.BackColor = Color.FloralWhite;
-            Sol1.Location = new Point(308, 423);
+            Sol1.Location = new Point(359, 423);
             Sol1.Name = "Sol1";
-            Sol1.Size = new Size(143, 27);
+            Sol1.Size = new Size(137, 27);
             Sol1.TabIndex = 37;
             // 
             // Henry1
             // 
             Henry1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             Henry1.BackColor = Color.FloralWhite;
-            Henry1.Location = new Point(308, 451);
+            Henry1.Location = new Point(359, 451);
             Henry1.Name = "Henry1";
-            Henry1.Size = new Size(143, 27);
+            Henry1.Size = new Size(137, 27);
             Henry1.TabIndex = 38;
             // 
             // AirDiff1
             // 
             AirDiff1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             AirDiff1.BackColor = Color.FloralWhite;
-            AirDiff1.Location = new Point(308, 479);
+            AirDiff1.Location = new Point(359, 479);
             AirDiff1.Name = "AirDiff1";
-            AirDiff1.Size = new Size(143, 27);
+            AirDiff1.Size = new Size(137, 27);
             AirDiff1.TabIndex = 39;
             // 
             // HeatHenry1
             // 
             HeatHenry1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             HeatHenry1.BackColor = Color.FloralWhite;
-            HeatHenry1.Location = new Point(308, 507);
+            HeatHenry1.Location = new Point(359, 507);
             HeatHenry1.Name = "HeatHenry1";
-            HeatHenry1.Size = new Size(143, 27);
+            HeatHenry1.Size = new Size(137, 27);
             HeatHenry1.TabIndex = 40;
             // 
             // label17
@@ -1079,7 +1130,7 @@
             label17.Anchor = AnchorStyles.Right;
             label17.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label17, 3);
-            label17.Location = new Point(64, 480);
+            label17.Location = new Point(115, 480);
             label17.Name = "label17";
             label17.Size = new Size(238, 20);
             label17.TabIndex = 17;
@@ -1090,7 +1141,7 @@
             label16.Anchor = AnchorStyles.Right;
             label16.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label16, 3);
-            label16.Location = new Point(244, 452);
+            label16.Location = new Point(295, 452);
             label16.Name = "label16";
             label16.Size = new Size(58, 20);
             label16.TabIndex = 16;
@@ -1101,7 +1152,7 @@
             label15.Anchor = AnchorStyles.Right;
             label15.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label15, 3);
-            label15.Location = new Point(182, 424);
+            label15.Location = new Point(233, 424);
             label15.Name = "label15";
             label15.Size = new Size(120, 20);
             label15.TabIndex = 15;
@@ -1112,7 +1163,7 @@
             label14.Anchor = AnchorStyles.Right;
             label14.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label14, 3);
-            label14.Location = new Point(158, 396);
+            label14.Location = new Point(209, 396);
             label14.Name = "label14";
             label14.Size = new Size(144, 20);
             label14.TabIndex = 14;
@@ -1123,7 +1174,7 @@
             label13.Anchor = AnchorStyles.Right;
             label13.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label13, 3);
-            label13.Location = new Point(121, 368);
+            label13.Location = new Point(172, 368);
             label13.Name = "label13";
             label13.Size = new Size(181, 20);
             label13.TabIndex = 13;
@@ -1134,7 +1185,7 @@
             label12.Anchor = AnchorStyles.Right;
             label12.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label12, 3);
-            label12.Location = new Point(153, 340);
+            label12.Location = new Point(204, 340);
             label12.Name = "label12";
             label12.Size = new Size(149, 20);
             label12.TabIndex = 12;
@@ -1145,7 +1196,7 @@
             label11.Anchor = AnchorStyles.Right;
             label11.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label11, 3);
-            label11.Location = new Point(165, 312);
+            label11.Location = new Point(216, 312);
             label11.Name = "label11";
             label11.Size = new Size(137, 20);
             label11.TabIndex = 11;
@@ -1156,7 +1207,7 @@
             label10.Anchor = AnchorStyles.Right;
             label10.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label10, 3);
-            label10.Location = new Point(81, 284);
+            label10.Location = new Point(132, 284);
             label10.Name = "label10";
             label10.Size = new Size(221, 20);
             label10.TabIndex = 10;
@@ -1167,7 +1218,7 @@
             label9.Anchor = AnchorStyles.Right;
             label9.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label9, 3);
-            label9.Location = new Point(177, 256);
+            label9.Location = new Point(228, 256);
             label9.Name = "label9";
             label9.Size = new Size(125, 20);
             label9.TabIndex = 9;
@@ -1178,7 +1229,7 @@
             label8.Anchor = AnchorStyles.Right;
             label8.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label8, 3);
-            label8.Location = new Point(134, 228);
+            label8.Location = new Point(185, 228);
             label8.Name = "label8";
             label8.Size = new Size(168, 20);
             label8.TabIndex = 8;
@@ -1189,7 +1240,7 @@
             label7.Anchor = AnchorStyles.Right;
             label7.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label7, 3);
-            label7.Location = new Point(68, 200);
+            label7.Location = new Point(119, 200);
             label7.Name = "label7";
             label7.Size = new Size(234, 20);
             label7.TabIndex = 7;
@@ -1200,7 +1251,7 @@
             label4.Anchor = AnchorStyles.Right;
             label4.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label4, 3);
-            label4.Location = new Point(153, 116);
+            label4.Location = new Point(204, 116);
             label4.Name = "label4";
             label4.Size = new Size(149, 20);
             label4.TabIndex = 4;
@@ -1211,7 +1262,7 @@
             label3.Anchor = AnchorStyles.Right;
             label3.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label3, 3);
-            label3.Location = new Point(67, 88);
+            label3.Location = new Point(118, 88);
             label3.Name = "label3";
             label3.Size = new Size(235, 20);
             label3.TabIndex = 2;
@@ -1233,7 +1284,7 @@
             // 
             isKd.AutoSize = true;
             isKd.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            isKd.Location = new Point(65, 31);
+            isKd.Location = new Point(75, 31);
             isKd.Name = "isKd";
             isKd.Size = new Size(48, 22);
             isKd.TabIndex = 80;
@@ -1245,7 +1296,7 @@
             // 
             label1.Anchor = AnchorStyles.Right;
             label1.AutoSize = true;
-            label1.Location = new Point(187, 32);
+            label1.Location = new Point(238, 32);
             label1.Name = "label1";
             label1.Size = new Size(115, 20);
             label1.TabIndex = 20;
@@ -1256,7 +1307,7 @@
             label2.Anchor = AnchorStyles.Right;
             label2.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label2, 3);
-            label2.Location = new Point(123, 60);
+            label2.Location = new Point(174, 60);
             label2.Name = "label2";
             label2.Size = new Size(179, 20);
             label2.TabIndex = 1;
@@ -1266,17 +1317,18 @@
             // 
             WaterMolarRatio1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             WaterMolarRatio1.BackColor = Color.Ivory;
-            WaterMolarRatio1.Location = new Point(457, 59);
+            WaterMolarRatio1.Location = new Point(502, 59);
             WaterMolarRatio1.Name = "WaterMolarRatio1";
-            WaterMolarRatio1.Size = new Size(42, 27);
+            WaterMolarRatio1.Size = new Size(50, 27);
             WaterMolarRatio1.TabIndex = 41;
+            WaterMolarRatio1.Visible = false;
             // 
             // label18
             // 
             label18.Anchor = AnchorStyles.Right;
             label18.AutoSize = true;
             tableLayoutPanel1.SetColumnSpan(label18, 3);
-            label18.Location = new Point(149, 515);
+            label18.Location = new Point(200, 515);
             label18.Name = "label18";
             label18.Size = new Size(153, 20);
             label18.TabIndex = 18;
@@ -1287,50 +1339,53 @@
             DoDegradate2.Anchor = AnchorStyles.Left;
             DoDegradate2.AutoSize = true;
             DoDegradate2.Font = new Font("Symbol", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 2);
-            DoDegradate2.Location = new Point(671, 4);
+            DoDegradate2.Location = new Point(701, 4);
             DoDegradate2.Name = "DoDegradate2";
-            DoDegradate2.Size = new Size(37, 20);
+            DoDegradate2.Size = new Size(43, 20);
             DoDegradate2.TabIndex = 83;
             DoDegradate2.Text = "®";
             DoDegradate2.UseVisualStyleBackColor = true;
+            DoDegradate2.Visible = false;
             DoDegradate2.CheckedChanged += DoDegradate2_CheckedChanged;
             // 
             // DoDegradate1
             // 
-            DoDegradate1.Anchor = AnchorStyles.Left;
+            DoDegradate1.Anchor = AnchorStyles.Right;
             DoDegradate1.AutoSize = true;
             DoDegradate1.BackColor = Color.PaleGoldenrod;
             DoDegradate1.Font = new Font("Symbol", 7.8F, FontStyle.Bold, GraphicsUnit.Point, 2);
             DoDegradate1.ImageAlign = ContentAlignment.MiddleLeft;
-            DoDegradate1.Location = new Point(457, 4);
+            DoDegradate1.Location = new Point(509, 4);
             DoDegradate1.Name = "DoDegradate1";
-            DoDegradate1.Size = new Size(42, 20);
+            DoDegradate1.Size = new Size(43, 20);
             DoDegradate1.TabIndex = 82;
             DoDegradate1.Text = "®";
             DoDegradate1.TextAlign = ContentAlignment.TopCenter;
             DoDegradate1.UseVisualStyleBackColor = false;
+            DoDegradate1.CheckedChanged += DoDegradate1_CheckedChanged;
             // 
-            // sorption1
+            // Sorption1
             // 
-            sorption1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            sorption1.BackColor = Color.FloralWhite;
-            sorption1.Location = new Point(308, 31);
-            sorption1.Name = "sorption1";
-            sorption1.Size = new Size(143, 27);
-            sorption1.TabIndex = 23;
+            Sorption1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            Sorption1.BackColor = Color.FloralWhite;
+            Sorption1.Location = new Point(359, 31);
+            Sorption1.Name = "Sorption1";
+            Sorption1.Size = new Size(137, 27);
+            Sorption1.TabIndex = 23;
             // 
             // WaterColMetab1
             // 
             WaterColMetab1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             WaterColMetab1.BackColor = Color.FloralWhite;
-            WaterColMetab1.Location = new Point(308, 59);
+            WaterColMetab1.Location = new Point(359, 59);
             WaterColMetab1.Name = "WaterColMetab1";
-            WaterColMetab1.Size = new Size(143, 27);
+            WaterColMetab1.Size = new Size(137, 27);
             WaterColMetab1.TabIndex = 24;
             // 
             // tabPage2
             // 
             tabPage2.BackColor = Color.Aquamarine;
+            tabPage2.Controls.Add(label21);
             tabPage2.Controls.Add(ClearAllWaterBodies);
             tabPage2.Controls.Add(ClearSelectedWaterBody);
             tabPage2.Controls.Add(SelectOtherWaterbodies);
@@ -1347,43 +1402,59 @@
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Target Body";
             // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Location = new Point(607, 35);
+            label21.Name = "label21";
+            label21.Size = new Size(253, 20);
+            label21.TabIndex = 9;
+            label21.Text = "(requires USEPA Pond to be checked)";
+            // 
             // ClearAllWaterBodies
             // 
-            ClearAllWaterBodies.Location = new Point(53, 437);
+            ClearAllWaterBodies.BackColor = Color.Honeydew;
+            ClearAllWaterBodies.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            ClearAllWaterBodies.Location = new Point(23, 362);
             ClearAllWaterBodies.Margin = new Padding(2);
             ClearAllWaterBodies.Name = "ClearAllWaterBodies";
-            ClearAllWaterBodies.Size = new Size(131, 46);
+            ClearAllWaterBodies.Size = new Size(147, 79);
             ClearAllWaterBodies.TabIndex = 8;
             ClearAllWaterBodies.Text = "Clear All";
-            ClearAllWaterBodies.UseVisualStyleBackColor = true;
+            ClearAllWaterBodies.UseVisualStyleBackColor = false;
             ClearAllWaterBodies.Click += ClearAllWaterBodies_Click;
             // 
             // ClearSelectedWaterBody
             // 
-            ClearSelectedWaterBody.Location = new Point(53, 338);
+            ClearSelectedWaterBody.BackColor = Color.Honeydew;
+            ClearSelectedWaterBody.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            ClearSelectedWaterBody.Location = new Point(23, 263);
             ClearSelectedWaterBody.Margin = new Padding(2);
             ClearSelectedWaterBody.Name = "ClearSelectedWaterBody";
-            ClearSelectedWaterBody.Size = new Size(131, 46);
+            ClearSelectedWaterBody.Size = new Size(147, 79);
             ClearSelectedWaterBody.TabIndex = 7;
             ClearSelectedWaterBody.Text = "Clear Selected";
-            ClearSelectedWaterBody.UseVisualStyleBackColor = true;
+            ClearSelectedWaterBody.UseVisualStyleBackColor = false;
             ClearSelectedWaterBody.Click += ClearSelectedWaterBody_Click;
             // 
             // SelectOtherWaterbodies
             // 
-            SelectOtherWaterbodies.Location = new Point(53, 231);
+            SelectOtherWaterbodies.BackColor = Color.Honeydew;
+            SelectOtherWaterbodies.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            SelectOtherWaterbodies.Location = new Point(23, 156);
             SelectOtherWaterbodies.Margin = new Padding(2);
             SelectOtherWaterbodies.Name = "SelectOtherWaterbodies";
-            SelectOtherWaterbodies.Size = new Size(131, 58);
+            SelectOtherWaterbodies.Size = new Size(147, 79);
             SelectOtherWaterbodies.TabIndex = 6;
             SelectOtherWaterbodies.Text = "Select Other Waterbodies";
-            SelectOtherWaterbodies.UseVisualStyleBackColor = true;
+            SelectOtherWaterbodies.UseVisualStyleBackColor = false;
             SelectOtherWaterbodies.Click += SelectOtherWaterbodies_Click;
             // 
             // WaterbodyList
             // 
+            WaterbodyList.BackColor = Color.Honeydew;
             WaterbodyList.FormattingEnabled = true;
-            WaterbodyList.Location = new Point(258, 210);
+            WaterbodyList.Location = new Point(191, 141);
             WaterbodyList.Margin = new Padding(2);
             WaterbodyList.Name = "WaterbodyList";
             WaterbodyList.SelectionMode = SelectionMode.MultiExtended;
@@ -1393,8 +1464,9 @@
             // UseTPEZbuffers
             // 
             UseTPEZbuffers.AutoSize = true;
+            UseTPEZbuffers.Enabled = false;
             UseTPEZbuffers.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            UseTPEZbuffers.Location = new Point(522, 86);
+            UseTPEZbuffers.Location = new Point(418, 57);
             UseTPEZbuffers.Margin = new Padding(2);
             UseTPEZbuffers.Name = "UseTPEZbuffers";
             UseTPEZbuffers.Size = new Size(262, 27);
@@ -1405,20 +1477,21 @@
             // ItsTPEZWPEZ
             // 
             ItsTPEZWPEZ.AutoSize = true;
+            ItsTPEZWPEZ.Enabled = false;
             ItsTPEZWPEZ.Font = new Font("Segoe UI", 12F);
-            ItsTPEZWPEZ.Location = new Point(496, 58);
+            ItsTPEZWPEZ.Location = new Point(386, 27);
             ItsTPEZWPEZ.Margin = new Padding(2);
             ItsTPEZWPEZ.Name = "ItsTPEZWPEZ";
-            ItsTPEZWPEZ.Size = new Size(221, 32);
+            ItsTPEZWPEZ.Size = new Size(216, 32);
             ItsTPEZWPEZ.TabIndex = 3;
-            ItsTPEZWPEZ.Text = "USEPA TPEZ && WPEZ ";
+            ItsTPEZWPEZ.Text = "USEPA TPEZ && WPEZ";
             ItsTPEZWPEZ.UseVisualStyleBackColor = true;
             // 
             // ItsOther
             // 
             ItsOther.AutoSize = true;
             ItsOther.Font = new Font("Segoe UI", 12F);
-            ItsOther.Location = new Point(53, 114);
+            ItsOther.Location = new Point(43, 80);
             ItsOther.Margin = new Padding(2);
             ItsOther.Name = "ItsOther";
             ItsOther.Size = new Size(92, 32);
@@ -1430,7 +1503,7 @@
             // 
             ItsaReservoir.AutoSize = true;
             ItsaReservoir.Font = new Font("Segoe UI", 12F);
-            ItsaReservoir.Location = new Point(53, 86);
+            ItsaReservoir.Location = new Point(43, 52);
             ItsaReservoir.Margin = new Padding(2);
             ItsaReservoir.Name = "ItsaReservoir";
             ItsaReservoir.Size = new Size(275, 32);
@@ -1442,13 +1515,14 @@
             // 
             ItsaPond.AutoSize = true;
             ItsaPond.Font = new Font("Segoe UI", 12F);
-            ItsaPond.Location = new Point(53, 58);
+            ItsaPond.Location = new Point(43, 24);
             ItsaPond.Margin = new Padding(2);
             ItsaPond.Name = "ItsaPond";
             ItsaPond.Size = new Size(240, 32);
             ItsaPond.TabIndex = 0;
             ItsaPond.Text = "USEPA Pond Watershed";
             ItsaPond.UseVisualStyleBackColor = true;
+            ItsaPond.CheckedChanged += ItsaPond_CheckedChanged;
             // 
             // tabPage3
             // 
@@ -1535,7 +1609,7 @@
             // 
             // WeatherFileDirectory
             // 
-            WeatherFileDirectory.Location = new Point(178, 570);
+            WeatherFileDirectory.Location = new Point(178, 559);
             WeatherFileDirectory.Name = "WeatherFileDirectory";
             WeatherFileDirectory.Size = new Size(779, 27);
             WeatherFileDirectory.TabIndex = 3;
@@ -1660,7 +1734,7 @@
             label45.AutoSize = true;
             label45.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold);
             label45.ForeColor = Color.White;
-            label45.Location = new Point(409, 549);
+            label45.Location = new Point(407, 543);
             label45.Name = "label45";
             label45.Size = new Size(48, 22);
             label45.TabIndex = 21;
@@ -1671,7 +1745,7 @@
             label46.AutoSize = true;
             label46.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold);
             label46.ForeColor = Color.White;
-            label46.Location = new Point(409, 519);
+            label46.Location = new Point(407, 513);
             label46.Name = "label46";
             label46.Size = new Size(78, 22);
             label46.TabIndex = 20;
@@ -1682,7 +1756,7 @@
             label47.AutoSize = true;
             label47.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold);
             label47.ForeColor = Color.White;
-            label47.Location = new Point(409, 489);
+            label47.Location = new Point(407, 483);
             label47.Name = "label47";
             label47.Size = new Size(69, 22);
             label47.TabIndex = 19;
@@ -1690,7 +1764,7 @@
             // 
             // DriftMitigation
             // 
-            DriftMitigation.Location = new Point(347, 545);
+            DriftMitigation.Location = new Point(345, 540);
             DriftMitigation.Name = "DriftMitigation";
             DriftMitigation.Size = new Size(50, 27);
             DriftMitigation.TabIndex = 18;
@@ -1698,7 +1772,7 @@
             // 
             // ErosionMitigation
             // 
-            ErosionMitigation.Location = new Point(347, 515);
+            ErosionMitigation.Location = new Point(345, 510);
             ErosionMitigation.Name = "ErosionMitigation";
             ErosionMitigation.Size = new Size(50, 27);
             ErosionMitigation.TabIndex = 17;
@@ -1706,7 +1780,7 @@
             // 
             // RunoffMitigation
             // 
-            RunoffMitigation.Location = new Point(347, 485);
+            RunoffMitigation.Location = new Point(345, 480);
             RunoffMitigation.Name = "RunoffMitigation";
             RunoffMitigation.Size = new Size(50, 27);
             RunoffMitigation.TabIndex = 16;
@@ -1716,7 +1790,7 @@
             // 
             checkBox1.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold);
             checkBox1.ForeColor = Color.White;
-            checkBox1.Location = new Point(345, 456);
+            checkBox1.Location = new Point(345, 450);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(184, 32);
             checkBox1.TabIndex = 15;
@@ -1728,7 +1802,7 @@
             label44.AutoSize = true;
             label44.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold);
             label44.ForeColor = Color.White;
-            label44.Location = new Point(630, 582);
+            label44.Location = new Point(630, 574);
             label44.Name = "label44";
             label44.Size = new Size(336, 22);
             label44.TabIndex = 14;
@@ -1739,7 +1813,7 @@
             label43.AutoSize = true;
             label43.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold);
             label43.ForeColor = Color.White;
-            label43.Location = new Point(630, 552);
+            label43.Location = new Point(630, 544);
             label43.Name = "label43";
             label43.Size = new Size(331, 22);
             label43.TabIndex = 13;
@@ -1750,7 +1824,7 @@
             label42.AutoSize = true;
             label42.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold);
             label42.ForeColor = Color.White;
-            label42.Location = new Point(630, 522);
+            label42.Location = new Point(630, 514);
             label42.Name = "label42";
             label42.Size = new Size(289, 22);
             label42.TabIndex = 12;
@@ -1761,7 +1835,7 @@
             label41.AutoSize = true;
             label41.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold);
             label41.ForeColor = Color.White;
-            label41.Location = new Point(630, 492);
+            label41.Location = new Point(630, 484);
             label41.Name = "label41";
             label41.Size = new Size(196, 22);
             label41.TabIndex = 11;
@@ -1769,28 +1843,28 @@
             // 
             // MinDaysBetweenApps
             // 
-            MinDaysBetweenApps.Location = new Point(568, 578);
+            MinDaysBetweenApps.Location = new Point(568, 570);
             MinDaysBetweenApps.Name = "MinDaysBetweenApps";
             MinDaysBetweenApps.Size = new Size(50, 27);
             MinDaysBetweenApps.TabIndex = 10;
             // 
             // OptimumApplicationWindow
             // 
-            OptimumApplicationWindow.Location = new Point(568, 548);
+            OptimumApplicationWindow.Location = new Point(568, 540);
             OptimumApplicationWindow.Name = "OptimumApplicationWindow";
             OptimumApplicationWindow.Size = new Size(50, 27);
             OptimumApplicationWindow.TabIndex = 9;
             // 
             // IntolerableRainWindow
             // 
-            IntolerableRainWindow.Location = new Point(568, 518);
+            IntolerableRainWindow.Location = new Point(568, 510);
             IntolerableRainWindow.Name = "IntolerableRainWindow";
             IntolerableRainWindow.Size = new Size(50, 27);
             IntolerableRainWindow.TabIndex = 8;
             // 
             // RainLimit
             // 
-            RainLimit.Location = new Point(568, 488);
+            RainLimit.Location = new Point(568, 480);
             RainLimit.Name = "RainLimit";
             RainLimit.Size = new Size(50, 27);
             RainLimit.TabIndex = 7;
@@ -1800,7 +1874,7 @@
             label40.AutoSize = true;
             label40.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold);
             label40.ForeColor = Color.White;
-            label40.Location = new Point(69, 522);
+            label40.Location = new Point(69, 514);
             label40.Name = "label40";
             label40.Size = new Size(113, 22);
             label40.TabIndex = 5;
@@ -1811,7 +1885,7 @@
             label39.AutoSize = true;
             label39.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold);
             label39.ForeColor = Color.White;
-            label39.Location = new Point(69, 492);
+            label39.Location = new Point(69, 484);
             label39.Name = "label39";
             label39.Size = new Size(191, 22);
             label39.TabIndex = 4;
@@ -1819,7 +1893,7 @@
             // 
             // ApplicationWindowSpan
             // 
-            ApplicationWindowSpan.Location = new Point(15, 488);
+            ApplicationWindowSpan.Location = new Point(15, 480);
             ApplicationWindowSpan.Name = "ApplicationWindowSpan";
             ApplicationWindowSpan.Size = new Size(48, 27);
             ApplicationWindowSpan.TabIndex = 2;
@@ -1829,7 +1903,7 @@
             UseApplicationWindow.AutoSize = true;
             UseApplicationWindow.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold);
             UseApplicationWindow.ForeColor = Color.White;
-            UseApplicationWindow.Location = new Point(15, 461);
+            UseApplicationWindow.Location = new Point(15, 453);
             UseApplicationWindow.Name = "UseApplicationWindow";
             UseApplicationWindow.Size = new Size(276, 26);
             UseApplicationWindow.TabIndex = 1;
@@ -1841,7 +1915,7 @@
             UseRainFast.BackColor = Color.Transparent;
             UseRainFast.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold);
             UseRainFast.ForeColor = Color.White;
-            UseRainFast.Location = new Point(566, 459);
+            UseRainFast.Location = new Point(566, 451);
             UseRainFast.Name = "UseRainFast";
             UseRainFast.Size = new Size(410, 30);
             UseRainFast.TabIndex = 6;
@@ -1920,7 +1994,7 @@
             // 
             // ApplicationWindowStep
             // 
-            ApplicationWindowStep.Location = new Point(15, 518);
+            ApplicationWindowStep.Location = new Point(15, 510);
             ApplicationWindowStep.Name = "ApplicationWindowStep";
             ApplicationWindowStep.Size = new Size(48, 27);
             ApplicationWindowStep.TabIndex = 3;
@@ -1931,7 +2005,7 @@
             AppTableDisplay.BorderStyle = BorderStyle.None;
             AppTableDisplay.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             AppTableDisplay.GridColor = Color.Black;
-            AppTableDisplay.Location = new Point(7, 148);
+            AppTableDisplay.Location = new Point(14, 140);
             AppTableDisplay.Margin = new Padding(2);
             AppTableDisplay.Name = "AppTableDisplay";
             AppTableDisplay.RowHeadersVisible = false;
@@ -1941,6 +2015,7 @@
             // 
             // tabPage5
             // 
+            tabPage5.BackColor = Color.Maroon;
             tabPage5.Controls.Add(ClearAllScenarios);
             tabPage5.Controls.Add(ClearSelectedScenarios);
             tabPage5.Controls.Add(SelectScenarios);
@@ -1955,68 +2030,80 @@
             tabPage5.Size = new Size(980, 604);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "Scenarios";
-            tabPage5.UseVisualStyleBackColor = true;
             // 
             // ClearAllScenarios
             // 
-            ClearAllScenarios.Location = new Point(30, 224);
+            ClearAllScenarios.BackColor = Color.Bisque;
+            ClearAllScenarios.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ClearAllScenarios.Location = new Point(19, 250);
             ClearAllScenarios.Name = "ClearAllScenarios";
-            ClearAllScenarios.Size = new Size(94, 43);
+            ClearAllScenarios.Size = new Size(105, 63);
             ClearAllScenarios.TabIndex = 7;
             ClearAllScenarios.Text = "Clear All";
-            ClearAllScenarios.UseVisualStyleBackColor = true;
+            ClearAllScenarios.UseVisualStyleBackColor = false;
             // 
             // ClearSelectedScenarios
             // 
-            ClearSelectedScenarios.Location = new Point(30, 167);
+            ClearSelectedScenarios.BackColor = Color.Bisque;
+            ClearSelectedScenarios.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ClearSelectedScenarios.Location = new Point(19, 171);
             ClearSelectedScenarios.Name = "ClearSelectedScenarios";
-            ClearSelectedScenarios.Size = new Size(94, 51);
+            ClearSelectedScenarios.Size = new Size(105, 63);
             ClearSelectedScenarios.TabIndex = 6;
             ClearSelectedScenarios.Text = "Clear Selected";
-            ClearSelectedScenarios.UseVisualStyleBackColor = true;
+            ClearSelectedScenarios.UseVisualStyleBackColor = false;
             // 
             // SelectScenarios
             // 
-            SelectScenarios.Location = new Point(30, 110);
+            SelectScenarios.BackColor = Color.Bisque;
+            SelectScenarios.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SelectScenarios.Location = new Point(19, 92);
             SelectScenarios.Name = "SelectScenarios";
-            SelectScenarios.Size = new Size(94, 51);
+            SelectScenarios.Size = new Size(105, 63);
             SelectScenarios.TabIndex = 5;
             SelectScenarios.Text = "Select Scenarios";
-            SelectScenarios.UseVisualStyleBackColor = true;
+            SelectScenarios.UseVisualStyleBackColor = false;
             SelectScenarios.Click += SelectScenarios_Click;
             // 
             // label48
             // 
             label48.AutoSize = true;
-            label48.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label48.Location = new Point(401, 461);
+            label48.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label48.ForeColor = Color.Cornsilk;
+            label48.Location = new Point(19, 472);
             label48.Name = "label48";
-            label48.Size = new Size(67, 54);
+            label48.Size = new Size(592, 31);
             label48.TabIndex = 4;
-            label48.Text = "Or";
+            label48.Text = "Alternatively, you can upload a CSV Scnario batch file:";
             // 
             // SelectScenarioBatchFile
             // 
-            SelectScenarioBatchFile.Location = new Point(19, 572);
+            SelectScenarioBatchFile.BackColor = Color.Bisque;
+            SelectScenarioBatchFile.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SelectScenarioBatchFile.Location = new Point(19, 543);
             SelectScenarioBatchFile.Name = "SelectScenarioBatchFile";
-            SelectScenarioBatchFile.Size = new Size(105, 29);
+            SelectScenarioBatchFile.Size = new Size(125, 46);
             SelectScenarioBatchFile.TabIndex = 3;
             SelectScenarioBatchFile.Text = "Get CSV File";
-            SelectScenarioBatchFile.UseVisualStyleBackColor = true;
+            SelectScenarioBatchFile.UseVisualStyleBackColor = false;
             // 
             // ScenarioBatchFileName
             // 
-            ScenarioBatchFileName.Location = new Point(141, 574);
+            ScenarioBatchFileName.BackColor = SystemColors.Info;
+            ScenarioBatchFileName.ForeColor = SystemColors.ControlText;
+            ScenarioBatchFileName.Location = new Point(150, 553);
             ScenarioBatchFileName.Name = "ScenarioBatchFileName";
-            ScenarioBatchFileName.Size = new Size(673, 27);
+            ScenarioBatchFileName.Size = new Size(808, 27);
             ScenarioBatchFileName.TabIndex = 2;
             // 
             // GetScenariosBatchCheckBox
             // 
             GetScenariosBatchCheckBox.AutoSize = true;
-            GetScenariosBatchCheckBox.Location = new Point(19, 543);
+            GetScenariosBatchCheckBox.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            GetScenariosBatchCheckBox.ForeColor = Color.Cornsilk;
+            GetScenariosBatchCheckBox.Location = new Point(23, 511);
             GetScenariosBatchCheckBox.Name = "GetScenariosBatchCheckBox";
-            GetScenariosBatchCheckBox.Size = new Size(216, 24);
+            GetScenariosBatchCheckBox.Size = new Size(303, 32);
             GetScenariosBatchCheckBox.TabIndex = 1;
             GetScenariosBatchCheckBox.Text = "Get scenarios from a csv file";
             GetScenariosBatchCheckBox.UseVisualStyleBackColor = true;
@@ -2024,46 +2111,47 @@
             // ScenarioListBox
             // 
             ScenarioListBox.AccessibleDescription = "";
+            ScenarioListBox.BackColor = SystemColors.Info;
             ScenarioListBox.FormattingEnabled = true;
             ScenarioListBox.HorizontalScrollbar = true;
-            ScenarioListBox.Location = new Point(161, 37);
+            ScenarioListBox.Location = new Point(144, 37);
             ScenarioListBox.Name = "ScenarioListBox";
             ScenarioListBox.SelectionMode = SelectionMode.MultiExtended;
-            ScenarioListBox.Size = new Size(797, 424);
+            ScenarioListBox.Size = new Size(814, 424);
             ScenarioListBox.TabIndex = 0;
             // 
-            // tabPage6
+            // AdvancedTab
             // 
-            tabPage6.Controls.Add(label51);
-            tabPage6.Controls.Add(WaterbodyEvapAdjustment);
-            tabPage6.Controls.Add(AdjustCN);
-            tabPage6.Controls.Add(label49);
-            tabPage6.Controls.Add(ErosionFlag);
-            tabPage6.Controls.Add(IsAllMedia);
-            tabPage6.Controls.Add(label38);
-            tabPage6.Controls.Add(label37);
-            tabPage6.Controls.Add(label36);
-            tabPage6.Controls.Add(label35);
-            tabPage6.Controls.Add(label34);
-            tabPage6.Controls.Add(ExpParameter2);
-            tabPage6.Controls.Add(ProfileDepth2);
-            tabPage6.Controls.Add(profileDepth1);
-            tabPage6.Controls.Add(ExpParameter1);
-            tabPage6.Controls.Add(RampEndValue);
-            tabPage6.Controls.Add(ExponentialProfile);
-            tabPage6.Controls.Add(RampProfile);
-            tabPage6.Controls.Add(ConstantProfile);
-            tabPage6.Controls.Add(IsHydrolysisOverride);
-            tabPage6.Controls.Add(label33);
-            tabPage6.Controls.Add(Q10);
-            tabPage6.Controls.Add(groupBox1);
-            tabPage6.Location = new Point(4, 29);
-            tabPage6.Name = "tabPage6";
-            tabPage6.Padding = new Padding(3);
-            tabPage6.Size = new Size(980, 604);
-            tabPage6.TabIndex = 5;
-            tabPage6.Text = "Advanced";
-            tabPage6.UseVisualStyleBackColor = true;
+            AdvancedTab.Controls.Add(label51);
+            AdvancedTab.Controls.Add(WaterbodyEvapAdjustment);
+            AdvancedTab.Controls.Add(AdjustCN);
+            AdvancedTab.Controls.Add(label49);
+            AdvancedTab.Controls.Add(ErosionFlag);
+            AdvancedTab.Controls.Add(IsAllMedia);
+            AdvancedTab.Controls.Add(label38);
+            AdvancedTab.Controls.Add(label37);
+            AdvancedTab.Controls.Add(label36);
+            AdvancedTab.Controls.Add(label35);
+            AdvancedTab.Controls.Add(label34);
+            AdvancedTab.Controls.Add(ExpParameter2);
+            AdvancedTab.Controls.Add(ProfileDepth2);
+            AdvancedTab.Controls.Add(profileDepth1);
+            AdvancedTab.Controls.Add(ExpParameter1);
+            AdvancedTab.Controls.Add(RampEndValue);
+            AdvancedTab.Controls.Add(ExponentialProfile);
+            AdvancedTab.Controls.Add(RampProfile);
+            AdvancedTab.Controls.Add(ConstantProfile);
+            AdvancedTab.Controls.Add(IsHydrolysisOverride);
+            AdvancedTab.Controls.Add(label33);
+            AdvancedTab.Controls.Add(Q10);
+            AdvancedTab.Controls.Add(groupBox1);
+            AdvancedTab.Location = new Point(4, 29);
+            AdvancedTab.Name = "AdvancedTab";
+            AdvancedTab.Padding = new Padding(3);
+            AdvancedTab.Size = new Size(980, 604);
+            AdvancedTab.TabIndex = 5;
+            AdvancedTab.Text = "Advanced";
+            AdvancedTab.UseVisualStyleBackColor = true;
             // 
             // label51
             // 
@@ -2570,7 +2658,7 @@
             // label59
             // 
             label59.AutoSize = true;
-            label59.Location = new Point(639, 396);
+            label59.Location = new Point(647, 366);
             label59.Margin = new Padding(2, 0, 2, 0);
             label59.Name = "label59";
             label59.Size = new Size(295, 100);
@@ -2580,7 +2668,7 @@
             // label58
             // 
             label58.AutoSize = true;
-            label58.Location = new Point(18, 319);
+            label58.Location = new Point(26, 289);
             label58.Margin = new Padding(2, 0, 2, 0);
             label58.Name = "label58";
             label58.Size = new Size(768, 20);
@@ -2609,7 +2697,7 @@
             dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
             AdditionalOutputGridView.DefaultCellStyle = dataGridViewCellStyle6;
-            AdditionalOutputGridView.Location = new Point(18, 349);
+            AdditionalOutputGridView.Location = new Point(26, 319);
             AdditionalOutputGridView.Margin = new Padding(2);
             AdditionalOutputGridView.Name = "AdditionalOutputGridView";
             AdditionalOutputGridView.RowHeadersVisible = false;
@@ -2673,7 +2761,7 @@
             // outputSpraydrift
             // 
             outputSpraydrift.AutoSize = true;
-            outputSpraydrift.Location = new Point(673, 587);
+            outputSpraydrift.Location = new Point(654, 557);
             outputSpraydrift.Margin = new Padding(2);
             outputSpraydrift.Name = "outputSpraydrift";
             outputSpraydrift.Size = new Size(283, 24);
@@ -2684,7 +2772,7 @@
             // CalculateEoF
             // 
             CalculateEoF.AutoSize = true;
-            CalculateEoF.Location = new Point(26, 587);
+            CalculateEoF.Location = new Point(34, 557);
             CalculateEoF.Margin = new Padding(2);
             CalculateEoF.Name = "CalculateEoF";
             CalculateEoF.Size = new Size(188, 24);
@@ -2695,7 +2783,7 @@
             // label57
             // 
             label57.AutoSize = true;
-            label57.Location = new Point(908, 216);
+            label57.Location = new Point(908, 194);
             label57.Margin = new Padding(2, 0, 2, 0);
             label57.Name = "label57";
             label57.Size = new Size(29, 20);
@@ -2704,7 +2792,7 @@
             // 
             // outputInfiltrationDepth
             // 
-            outputInfiltrationDepth.Location = new Point(855, 214);
+            outputInfiltrationDepth.Location = new Point(855, 192);
             outputInfiltrationDepth.Margin = new Padding(2);
             outputInfiltrationDepth.Name = "outputInfiltrationDepth";
             outputInfiltrationDepth.Size = new Size(45, 27);
@@ -2713,7 +2801,7 @@
             // outputWaterConc
             // 
             outputWaterConc.AutoSize = true;
-            outputWaterConc.Location = new Point(26, 539);
+            outputWaterConc.Location = new Point(34, 509);
             outputWaterConc.Margin = new Padding(2);
             outputWaterConc.Name = "outputWaterConc";
             outputWaterConc.Size = new Size(651, 44);
@@ -2724,7 +2812,7 @@
             // output_GW_BTC
             // 
             output_GW_BTC.AutoSize = true;
-            output_GW_BTC.Location = new Point(623, 245);
+            output_GW_BTC.Location = new Point(623, 223);
             output_GW_BTC.Margin = new Padding(2);
             output_GW_BTC.Name = "output_GW_BTC";
             output_GW_BTC.Size = new Size(341, 44);
@@ -2735,7 +2823,7 @@
             // checkBox5
             // 
             checkBox5.AutoSize = true;
-            checkBox5.Location = new Point(623, 261);
+            checkBox5.Location = new Point(623, 239);
             checkBox5.Margin = new Padding(2);
             checkBox5.Name = "checkBox5";
             checkBox5.Size = new Size(101, 24);
@@ -2746,7 +2834,7 @@
             // outputInfiltrationAtDepth
             // 
             outputInfiltrationAtDepth.AutoSize = true;
-            outputInfiltrationAtDepth.Location = new Point(623, 214);
+            outputInfiltrationAtDepth.Location = new Point(623, 192);
             outputInfiltrationAtDepth.Margin = new Padding(2);
             outputInfiltrationAtDepth.Name = "outputInfiltrationAtDepth";
             outputInfiltrationAtDepth.Size = new Size(228, 24);
@@ -2757,7 +2845,7 @@
             // label54
             // 
             label54.AutoSize = true;
-            label54.Location = new Point(493, 238);
+            label54.Location = new Point(493, 216);
             label54.Margin = new Padding(2, 0, 2, 0);
             label54.Name = "label54";
             label54.Size = new Size(29, 20);
@@ -2767,7 +2855,7 @@
             // label55
             // 
             label55.AutoSize = true;
-            label55.Location = new Point(418, 238);
+            label55.Location = new Point(418, 216);
             label55.Margin = new Padding(2, 0, 2, 0);
             label55.Name = "label55";
             label55.Size = new Size(23, 20);
@@ -2776,7 +2864,7 @@
             // 
             // outputMassDepth2
             // 
-            outputMassDepth2.Location = new Point(443, 235);
+            outputMassDepth2.Location = new Point(443, 213);
             outputMassDepth2.Margin = new Padding(2);
             outputMassDepth2.Name = "outputMassDepth2";
             outputMassDepth2.Size = new Size(48, 27);
@@ -2784,7 +2872,7 @@
             // 
             // outputMassDepth1
             // 
-            outputMassDepth1.Location = new Point(365, 235);
+            outputMassDepth1.Location = new Point(365, 213);
             outputMassDepth1.Margin = new Padding(2);
             outputMassDepth1.Name = "outputMassDepth1";
             outputMassDepth1.Size = new Size(48, 27);
@@ -2793,7 +2881,7 @@
             // label53
             // 
             label53.AutoSize = true;
-            label53.Location = new Point(459, 193);
+            label53.Location = new Point(459, 171);
             label53.Margin = new Padding(2, 0, 2, 0);
             label53.Name = "label53";
             label53.Size = new Size(29, 20);
@@ -2803,7 +2891,7 @@
             // label52
             // 
             label52.AutoSize = true;
-            label52.Location = new Point(382, 193);
+            label52.Location = new Point(382, 171);
             label52.Margin = new Padding(2, 0, 2, 0);
             label52.Name = "label52";
             label52.Size = new Size(23, 20);
@@ -2812,7 +2900,7 @@
             // 
             // outputDecayDepth2
             // 
-            outputDecayDepth2.Location = new Point(409, 190);
+            outputDecayDepth2.Location = new Point(409, 168);
             outputDecayDepth2.Margin = new Padding(2);
             outputDecayDepth2.Name = "outputDecayDepth2";
             outputDecayDepth2.Size = new Size(48, 27);
@@ -2820,7 +2908,7 @@
             // 
             // outputDecayDepth1
             // 
-            outputDecayDepth1.Location = new Point(331, 190);
+            outputDecayDepth1.Location = new Point(331, 168);
             outputDecayDepth1.Margin = new Padding(2);
             outputDecayDepth1.Name = "outputDecayDepth1";
             outputDecayDepth1.Size = new Size(48, 27);
@@ -2829,7 +2917,7 @@
             // label50
             // 
             label50.AutoSize = true;
-            label50.Location = new Point(416, 123);
+            label50.Location = new Point(416, 101);
             label50.Margin = new Padding(2, 0, 2, 0);
             label50.Name = "label50";
             label50.Size = new Size(29, 20);
@@ -2838,7 +2926,7 @@
             // 
             // chemInfiltrationDepth
             // 
-            chemInfiltrationDepth.Location = new Point(365, 121);
+            chemInfiltrationDepth.Location = new Point(365, 99);
             chemInfiltrationDepth.Margin = new Padding(2);
             chemInfiltrationDepth.Name = "chemInfiltrationDepth";
             chemInfiltrationDepth.Size = new Size(48, 27);
@@ -2847,7 +2935,7 @@
             // outputIrrigation
             // 
             outputIrrigation.AutoSize = true;
-            outputIrrigation.Location = new Point(623, 168);
+            outputIrrigation.Location = new Point(623, 146);
             outputIrrigation.Margin = new Padding(2);
             outputIrrigation.Name = "outputIrrigation";
             outputIrrigation.Size = new Size(126, 24);
@@ -2858,7 +2946,7 @@
             // outputTotalSoilWater
             // 
             outputTotalSoilWater.AutoSize = true;
-            outputTotalSoilWater.Location = new Point(623, 145);
+            outputTotalSoilWater.Location = new Point(623, 123);
             outputTotalSoilWater.Margin = new Padding(2);
             outputTotalSoilWater.Name = "outputTotalSoilWater";
             outputTotalSoilWater.Size = new Size(237, 24);
@@ -2869,7 +2957,7 @@
             // outputActualEvap
             // 
             outputActualEvap.AutoSize = true;
-            outputActualEvap.Location = new Point(623, 122);
+            outputActualEvap.Location = new Point(623, 100);
             outputActualEvap.Margin = new Padding(2);
             outputActualEvap.Name = "outputActualEvap";
             outputActualEvap.Size = new Size(190, 24);
@@ -2880,7 +2968,7 @@
             // outputPrecipitation
             // 
             outputPrecipitation.AutoSize = true;
-            outputPrecipitation.Location = new Point(623, 98);
+            outputPrecipitation.Location = new Point(623, 76);
             outputPrecipitation.Margin = new Padding(2);
             outputPrecipitation.Name = "outputPrecipitation";
             outputPrecipitation.Size = new Size(149, 24);
@@ -2891,7 +2979,7 @@
             // outputErosion
             // 
             outputErosion.AutoSize = true;
-            outputErosion.Location = new Point(623, 75);
+            outputErosion.Location = new Point(623, 53);
             outputErosion.Margin = new Padding(2);
             outputErosion.Name = "outputErosion";
             outputErosion.Size = new Size(116, 24);
@@ -2902,7 +2990,7 @@
             // outputRunoff
             // 
             outputRunoff.AutoSize = true;
-            outputRunoff.Location = new Point(623, 52);
+            outputRunoff.Location = new Point(623, 30);
             outputRunoff.Margin = new Padding(2);
             outputRunoff.Name = "outputRunoff";
             outputRunoff.Size = new Size(109, 24);
@@ -2913,7 +3001,7 @@
             // outputInfiltratedWaterLastLayer
             // 
             outputInfiltratedWaterLastLayer.AutoSize = true;
-            outputInfiltratedWaterLastLayer.Location = new Point(623, 191);
+            outputInfiltratedWaterLastLayer.Location = new Point(623, 169);
             outputInfiltratedWaterLastLayer.Margin = new Padding(2);
             outputInfiltratedWaterLastLayer.Name = "outputInfiltratedWaterLastLayer";
             outputInfiltratedWaterLastLayer.Size = new Size(259, 24);
@@ -2924,7 +3012,7 @@
             // outputMassSoilSpecific
             // 
             outputMassSoilSpecific.AutoSize = true;
-            outputMassSoilSpecific.Location = new Point(46, 238);
+            outputMassSoilSpecific.Location = new Point(46, 216);
             outputMassSoilSpecific.Margin = new Padding(2);
             outputMassSoilSpecific.Name = "outputMassSoilSpecific";
             outputMassSoilSpecific.Size = new Size(317, 24);
@@ -2935,7 +3023,7 @@
             // outputMassInSoilProfile
             // 
             outputMassInSoilProfile.AutoSize = true;
-            outputMassInSoilProfile.Location = new Point(46, 214);
+            outputMassInSoilProfile.Location = new Point(46, 192);
             outputMassInSoilProfile.Margin = new Padding(2);
             outputMassInSoilProfile.Name = "outputMassInSoilProfile";
             outputMassInSoilProfile.Size = new Size(274, 24);
@@ -2946,7 +3034,7 @@
             // outputDecayedPest
             // 
             outputDecayedPest.AutoSize = true;
-            outputDecayedPest.Location = new Point(46, 191);
+            outputDecayedPest.Location = new Point(46, 169);
             outputDecayedPest.Margin = new Padding(2);
             outputDecayedPest.Name = "outputDecayedPest";
             outputDecayedPest.Size = new Size(287, 24);
@@ -2957,7 +3045,7 @@
             // outputMassOnFoliage
             // 
             outputMassOnFoliage.AutoSize = true;
-            outputMassOnFoliage.Location = new Point(46, 168);
+            outputMassOnFoliage.Location = new Point(46, 146);
             outputMassOnFoliage.Margin = new Padding(2);
             outputMassOnFoliage.Name = "outputMassOnFoliage";
             outputMassOnFoliage.Size = new Size(250, 24);
@@ -2968,7 +3056,7 @@
             // outputConcLastLayer
             // 
             outputConcLastLayer.AutoSize = true;
-            outputConcLastLayer.Location = new Point(46, 145);
+            outputConcLastLayer.Location = new Point(46, 123);
             outputConcLastLayer.Margin = new Padding(2);
             outputConcLastLayer.Name = "outputConcLastLayer";
             outputConcLastLayer.Size = new Size(271, 24);
@@ -2979,7 +3067,7 @@
             // outputDailyPestLeached
             // 
             outputDailyPestLeached.AutoSize = true;
-            outputDailyPestLeached.Location = new Point(46, 122);
+            outputDailyPestLeached.Location = new Point(46, 100);
             outputDailyPestLeached.Margin = new Padding(2);
             outputDailyPestLeached.Name = "outputDailyPestLeached";
             outputDailyPestLeached.Size = new Size(319, 24);
@@ -2990,7 +3078,7 @@
             // outputDailyFieldVolatilization
             // 
             outputDailyFieldVolatilization.AutoSize = true;
-            outputDailyFieldVolatilization.Location = new Point(46, 98);
+            outputDailyFieldVolatilization.Location = new Point(46, 76);
             outputDailyFieldVolatilization.Margin = new Padding(2);
             outputDailyFieldVolatilization.Name = "outputDailyFieldVolatilization";
             outputDailyFieldVolatilization.Size = new Size(273, 24);
@@ -3001,7 +3089,7 @@
             // outputPestErosion
             // 
             outputPestErosion.AutoSize = true;
-            outputPestErosion.Location = new Point(46, 75);
+            outputPestErosion.Location = new Point(46, 53);
             outputPestErosion.Margin = new Padding(2);
             outputPestErosion.Name = "outputPestErosion";
             outputPestErosion.Size = new Size(193, 24);
@@ -3012,7 +3100,7 @@
             // outputPestRunoff
             // 
             outputPestRunoff.AutoSize = true;
-            outputPestRunoff.Location = new Point(46, 52);
+            outputPestRunoff.Location = new Point(46, 30);
             outputPestRunoff.Margin = new Padding(2);
             outputPestRunoff.Name = "outputPestRunoff";
             outputPestRunoff.Size = new Size(185, 24);
@@ -3066,9 +3154,24 @@
             // 
             // moreTabsToolStripMenuItem
             // 
+            moreTabsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toggleOptionalOutput, toggleAdvancedSettings });
             moreTabsToolStripMenuItem.Name = "moreTabsToolStripMenuItem";
             moreTabsToolStripMenuItem.Size = new Size(91, 24);
             moreTabsToolStripMenuItem.Text = "More Tabs";
+            // 
+            // toggleOptionalOutput
+            // 
+            toggleOptionalOutput.Name = "toggleOptionalOutput";
+            toggleOptionalOutput.Size = new Size(265, 26);
+            toggleOptionalOutput.Text = "Toggle Optional Output";
+            toggleOptionalOutput.Click += toggleOptionalOutput_Click;
+            // 
+            // toggleAdvancedSettings
+            // 
+            toggleAdvancedSettings.Name = "toggleAdvancedSettings";
+            toggleAdvancedSettings.Size = new Size(265, 26);
+            toggleAdvancedSettings.Text = "Toggle Advanced Settings";
+            toggleAdvancedSettings.Click += toggleAdvancedSettings_Click;
             // 
             // saveFileDialog1
             // 
@@ -3077,18 +3180,6 @@
             // openOtherWaterbody
             // 
             openOtherWaterbody.Multiselect = true;
-            // 
-            // WorkingDirectory
-            // 
-            WorkingDirectory.AutoSize = true;
-            WorkingDirectory.Location = new Point(197, 682);
-            WorkingDirectory.Name = "WorkingDirectory";
-            WorkingDirectory.Size = new Size(142, 20);
-            WorkingDirectory.TabIndex = 2;
-            WorkingDirectory.Text = "Working Directory ...";
-            WorkingDirectory.DoubleClick += WorkingDirectory_DoubleClick;
-            WorkingDirectory.MouseEnter += WorkingDirectory_MouseEnter;
-            WorkingDirectory.MouseLeave += WorkingDirectory_MouseLeave;
             // 
             // IOFamilyName
             // 
@@ -3102,7 +3193,7 @@
             // label56
             // 
             label56.AutoSize = true;
-            label56.Location = new Point(7, 682);
+            label56.Location = new Point(7, 673);
             label56.Name = "label56";
             label56.Size = new Size(167, 20);
             label56.TabIndex = 4;
@@ -3120,13 +3211,15 @@
             // button1
             // 
             button1.Anchor = AnchorStyles.None;
-            button1.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(802, 710);
+            button1.BackColor = Color.ForestGreen;
+            button1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.Yellow;
+            button1.Location = new Point(806, 697);
             button1.Name = "button1";
-            button1.Size = new Size(174, 44);
+            button1.Size = new Size(175, 60);
             button1.TabIndex = 6;
             button1.Text = "Calculate";
-            button1.UseVisualStyleBackColor = true;
+            button1.UseVisualStyleBackColor = false;
             // 
             // weatherFileDialog
             // 
@@ -3140,16 +3233,30 @@
             // 
             openScenarios.Multiselect = true;
             // 
+            // WorkingDirectoryTextBox
+            // 
+            WorkingDirectoryTextBox.BackColor = SystemColors.Control;
+            WorkingDirectoryTextBox.BorderStyle = BorderStyle.None;
+            WorkingDirectoryTextBox.Location = new Point(197, 674);
+            WorkingDirectoryTextBox.Name = "WorkingDirectoryTextBox";
+            WorkingDirectoryTextBox.Size = new Size(779, 20);
+            WorkingDirectoryTextBox.TabIndex = 7;
+            WorkingDirectoryTextBox.Text = "Working Directory ...";
+            WorkingDirectoryTextBox.Click += WorkingDirectoryTextBox_Click;
+            WorkingDirectoryTextBox.MouseEnter += WorkingDirectoryTextBox_MouseEnter;
+            WorkingDirectoryTextBox.MouseLeave += WorkingDirectoryTextBox_MouseLeave;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Control;
             ClientSize = new Size(988, 760);
+            Controls.Add(WorkingDirectoryTextBox);
             Controls.Add(button1);
             Controls.Add(label60);
             Controls.Add(label56);
             Controls.Add(IOFamilyName);
-            Controls.Add(WorkingDirectory);
             Controls.Add(tabControl1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
@@ -3174,8 +3281,8 @@
             ((System.ComponentModel.ISupportInitialize)AppTableDisplay).EndInit();
             tabPage5.ResumeLayout(false);
             tabPage5.PerformLayout();
-            tabPage6.ResumeLayout(false);
-            tabPage6.PerformLayout();
+            AdvancedTab.ResumeLayout(false);
+            AdvancedTab.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             OptionalOutputTab.ResumeLayout(false);
@@ -3216,10 +3323,10 @@
         private Label label19;
         private Label label1;
         private Label label20;
-        private Label label21;
+        private Label GranddaughterLabel;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem fileToolStripMenuItem;
-        private TextBox sorption1;
+        private TextBox Sorption1;
         private TextBox WaterColMetab1;
         private TextBox WaterColRef1;
         private TextBox BenthicMetab1;
@@ -3243,7 +3350,7 @@
         private TextBox HydroMolarRatio1;
         private TextBox SoilMolarRatio1;
         private TextBox FoliarMolarRatio1;
-        private TextBox sorption2;
+        private TextBox Sorption2;
         private TextBox WaterColMetab2;
         private TextBox WaterColRef2;
         private TextBox BenthicMetab2;
@@ -3262,7 +3369,7 @@
         private TextBox AirDiff2;
         private TextBox HeatHenry2;
         private TextBox WaterMolarRatio2;
-        private TextBox sorption3;
+        private TextBox Sorption3;
         private TextBox FoliarMolarRatio2;
         private TextBox SoilMolarRatio2;
         private TextBox HydroMolarRatio2;
@@ -3293,7 +3400,7 @@
         private SaveFileDialog saveFileDialog1;
         private RadioButton radioButton3;
         private RadioButton isKoc;
-        private TabPage tabPage6;
+        private TabPage AdvancedTab;
         private Label label25;
         private Label label24;
         private Label label23;
@@ -3431,7 +3538,6 @@
         private RadioButton radioButton2;
         private RadioButton poundToKiloConversion;
         private TextBox WeatherFileDirectory;
-        private Label WorkingDirectory;
         private Label IOFamilyName;
         private Label label56;
         private Label label60;
@@ -3459,5 +3565,9 @@
         private DataGridViewButtonColumn Delete;
         private Button pasteScheme;
         private Button copyScheme;
+        private Label label21;
+        private TextBox WorkingDirectoryTextBox;
+        private ToolStripMenuItem toggleOptionalOutput;
+        private ToolStripMenuItem toggleAdvancedSettings;
     }
 }
