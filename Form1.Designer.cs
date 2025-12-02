@@ -300,7 +300,7 @@
             IOFamilyName = new Label();
             label56 = new Label();
             label60 = new Label();
-            button1 = new Button();
+            CalculateButton = new Button();
             weatherFileDialog = new OpenFileDialog();
             openSchemeFile = new OpenFileDialog();
             saveSchemeFile = new SaveFileDialog();
@@ -516,6 +516,7 @@
             // Sorption3
             // 
             Sorption3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            Sorption3.BackColor = Color.White;
             Sorption3.Location = new Point(752, 31);
             Sorption3.Name = "Sorption3";
             Sorption3.Size = new Size(140, 27);
@@ -525,6 +526,7 @@
             // WaterColMetab3
             // 
             WaterColMetab3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            WaterColMetab3.BackColor = Color.White;
             WaterColMetab3.Location = new Point(752, 59);
             WaterColMetab3.Name = "WaterColMetab3";
             WaterColMetab3.Size = new Size(140, 27);
@@ -534,6 +536,7 @@
             // WaterColRef3
             // 
             WaterColRef3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            WaterColRef3.BackColor = Color.White;
             WaterColRef3.Location = new Point(752, 87);
             WaterColRef3.Name = "WaterColRef3";
             WaterColRef3.Size = new Size(140, 27);
@@ -543,6 +546,7 @@
             // BenthicMetab3
             // 
             BenthicMetab3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            BenthicMetab3.BackColor = Color.White;
             BenthicMetab3.Location = new Point(752, 115);
             BenthicMetab3.Name = "BenthicMetab3";
             BenthicMetab3.Size = new Size(140, 27);
@@ -552,6 +556,7 @@
             // BenthicRef3
             // 
             BenthicRef3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            BenthicRef3.BackColor = Color.White;
             BenthicRef3.Location = new Point(752, 143);
             BenthicRef3.Name = "BenthicRef3";
             BenthicRef3.Size = new Size(140, 27);
@@ -561,6 +566,7 @@
             // Photo3
             // 
             Photo3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            Photo3.BackColor = Color.White;
             Photo3.Location = new Point(752, 171);
             Photo3.Name = "Photo3";
             Photo3.Size = new Size(140, 27);
@@ -570,6 +576,7 @@
             // PhotoLat3
             // 
             PhotoLat3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            PhotoLat3.BackColor = Color.White;
             PhotoLat3.Location = new Point(752, 199);
             PhotoLat3.Name = "PhotoLat3";
             PhotoLat3.Size = new Size(140, 27);
@@ -579,6 +586,7 @@
             // Hydrolysis3
             // 
             Hydrolysis3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            Hydrolysis3.BackColor = Color.White;
             Hydrolysis3.Location = new Point(752, 227);
             Hydrolysis3.Name = "Hydrolysis3";
             Hydrolysis3.Size = new Size(140, 27);
@@ -588,6 +596,7 @@
             // SoilDegradation3
             // 
             SoilDegradation3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            SoilDegradation3.BackColor = Color.White;
             SoilDegradation3.Location = new Point(752, 255);
             SoilDegradation3.Name = "SoilDegradation3";
             SoilDegradation3.Size = new Size(140, 27);
@@ -597,6 +606,7 @@
             // SoilRef3
             // 
             SoilRef3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            SoilRef3.BackColor = Color.White;
             SoilRef3.Location = new Point(752, 283);
             SoilRef3.Name = "SoilRef3";
             SoilRef3.Size = new Size(140, 27);
@@ -606,6 +616,7 @@
             // FoliarDeg3
             // 
             FoliarDeg3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            FoliarDeg3.BackColor = Color.White;
             FoliarDeg3.Location = new Point(752, 311);
             FoliarDeg3.Name = "FoliarDeg3";
             FoliarDeg3.Size = new Size(140, 27);
@@ -615,6 +626,7 @@
             // FoliarWashoff3
             // 
             FoliarWashoff3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            FoliarWashoff3.BackColor = Color.White;
             FoliarWashoff3.Location = new Point(752, 339);
             FoliarWashoff3.Name = "FoliarWashoff3";
             FoliarWashoff3.Size = new Size(140, 27);
@@ -624,6 +636,7 @@
             // MWT3
             // 
             MWT3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            MWT3.BackColor = Color.White;
             MWT3.Location = new Point(752, 367);
             MWT3.Name = "MWT3";
             MWT3.Size = new Size(140, 27);
@@ -633,6 +646,7 @@
             // VaporPress3
             // 
             VaporPress3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            VaporPress3.BackColor = Color.White;
             VaporPress3.Location = new Point(752, 395);
             VaporPress3.Name = "VaporPress3";
             VaporPress3.Size = new Size(140, 27);
@@ -642,6 +656,7 @@
             // Sol3
             // 
             Sol3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            Sol3.BackColor = Color.White;
             Sol3.Location = new Point(752, 423);
             Sol3.Name = "Sol3";
             Sol3.Size = new Size(140, 27);
@@ -651,6 +666,7 @@
             // Henry3
             // 
             Henry3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            Henry3.BackColor = Color.White;
             Henry3.Location = new Point(752, 451);
             Henry3.Name = "Henry3";
             Henry3.Size = new Size(140, 27);
@@ -660,6 +676,7 @@
             // AirDiff3
             // 
             AirDiff3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            AirDiff3.BackColor = Color.White;
             AirDiff3.Location = new Point(752, 479);
             AirDiff3.Name = "AirDiff3";
             AirDiff3.Size = new Size(140, 27);
@@ -669,6 +686,7 @@
             // HeatHenry3
             // 
             HeatHenry3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            HeatHenry3.BackColor = Color.White;
             HeatHenry3.Location = new Point(752, 507);
             HeatHenry3.Name = "HeatHenry3";
             HeatHenry3.Size = new Size(140, 27);
@@ -678,6 +696,7 @@
             // WaterMolarRatio2
             // 
             WaterMolarRatio2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            WaterMolarRatio2.BackColor = Color.White;
             WaterMolarRatio2.Location = new Point(701, 59);
             WaterMolarRatio2.Name = "WaterMolarRatio2";
             WaterMolarRatio2.Size = new Size(45, 27);
@@ -687,6 +706,7 @@
             // BenthicMolarRatio2
             // 
             BenthicMolarRatio2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            BenthicMolarRatio2.BackColor = Color.White;
             BenthicMolarRatio2.Location = new Point(701, 115);
             BenthicMolarRatio2.Name = "BenthicMolarRatio2";
             BenthicMolarRatio2.Size = new Size(45, 27);
@@ -696,6 +716,7 @@
             // PhotoMolarRatio2
             // 
             PhotoMolarRatio2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            PhotoMolarRatio2.BackColor = Color.White;
             PhotoMolarRatio2.Location = new Point(701, 171);
             PhotoMolarRatio2.Name = "PhotoMolarRatio2";
             PhotoMolarRatio2.Size = new Size(45, 27);
@@ -705,6 +726,7 @@
             // HydroMolarRatio2
             // 
             HydroMolarRatio2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            HydroMolarRatio2.BackColor = Color.White;
             HydroMolarRatio2.Location = new Point(701, 227);
             HydroMolarRatio2.Name = "HydroMolarRatio2";
             HydroMolarRatio2.Size = new Size(45, 27);
@@ -714,6 +736,7 @@
             // SoilMolarRatio2
             // 
             SoilMolarRatio2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            SoilMolarRatio2.BackColor = Color.White;
             SoilMolarRatio2.Location = new Point(701, 255);
             SoilMolarRatio2.Name = "SoilMolarRatio2";
             SoilMolarRatio2.Size = new Size(45, 27);
@@ -723,6 +746,7 @@
             // FoliarMolarRatio2
             // 
             FoliarMolarRatio2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            FoliarMolarRatio2.BackColor = Color.White;
             FoliarMolarRatio2.Location = new Point(701, 311);
             FoliarMolarRatio2.Name = "FoliarMolarRatio2";
             FoliarMolarRatio2.Size = new Size(45, 27);
@@ -743,7 +767,7 @@
             // Sorption2
             // 
             Sorption2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Sorption2.BackColor = Color.Ivory;
+            Sorption2.BackColor = Color.White;
             Sorption2.Location = new Point(558, 31);
             Sorption2.Name = "Sorption2";
             Sorption2.Size = new Size(137, 27);
@@ -753,7 +777,7 @@
             // WaterColMetab2
             // 
             WaterColMetab2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            WaterColMetab2.BackColor = Color.Ivory;
+            WaterColMetab2.BackColor = Color.White;
             WaterColMetab2.Location = new Point(558, 59);
             WaterColMetab2.Name = "WaterColMetab2";
             WaterColMetab2.Size = new Size(137, 27);
@@ -763,7 +787,7 @@
             // WaterColRef2
             // 
             WaterColRef2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            WaterColRef2.BackColor = Color.Ivory;
+            WaterColRef2.BackColor = Color.White;
             WaterColRef2.Location = new Point(558, 87);
             WaterColRef2.Name = "WaterColRef2";
             WaterColRef2.Size = new Size(137, 27);
@@ -773,7 +797,7 @@
             // BenthicMetab2
             // 
             BenthicMetab2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            BenthicMetab2.BackColor = Color.Ivory;
+            BenthicMetab2.BackColor = Color.White;
             BenthicMetab2.Location = new Point(558, 115);
             BenthicMetab2.Name = "BenthicMetab2";
             BenthicMetab2.Size = new Size(137, 27);
@@ -783,7 +807,7 @@
             // BenthicRef2
             // 
             BenthicRef2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            BenthicRef2.BackColor = Color.Ivory;
+            BenthicRef2.BackColor = Color.White;
             BenthicRef2.Location = new Point(558, 143);
             BenthicRef2.Name = "BenthicRef2";
             BenthicRef2.Size = new Size(137, 27);
@@ -793,7 +817,7 @@
             // Photo2
             // 
             Photo2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Photo2.BackColor = Color.Ivory;
+            Photo2.BackColor = Color.White;
             Photo2.Location = new Point(558, 171);
             Photo2.Name = "Photo2";
             Photo2.Size = new Size(137, 27);
@@ -803,7 +827,7 @@
             // PhotoLat2
             // 
             PhotoLat2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            PhotoLat2.BackColor = Color.Ivory;
+            PhotoLat2.BackColor = Color.White;
             PhotoLat2.Location = new Point(558, 199);
             PhotoLat2.Name = "PhotoLat2";
             PhotoLat2.Size = new Size(137, 27);
@@ -813,7 +837,7 @@
             // Hydrolysis2
             // 
             Hydrolysis2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Hydrolysis2.BackColor = Color.Ivory;
+            Hydrolysis2.BackColor = Color.White;
             Hydrolysis2.Location = new Point(558, 227);
             Hydrolysis2.Name = "Hydrolysis2";
             Hydrolysis2.Size = new Size(137, 27);
@@ -823,7 +847,7 @@
             // SoilDegradation2
             // 
             SoilDegradation2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            SoilDegradation2.BackColor = Color.Ivory;
+            SoilDegradation2.BackColor = Color.White;
             SoilDegradation2.Location = new Point(558, 255);
             SoilDegradation2.Name = "SoilDegradation2";
             SoilDegradation2.Size = new Size(137, 27);
@@ -833,7 +857,7 @@
             // SoilRef2
             // 
             SoilRef2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            SoilRef2.BackColor = Color.Ivory;
+            SoilRef2.BackColor = Color.White;
             SoilRef2.Location = new Point(558, 283);
             SoilRef2.Name = "SoilRef2";
             SoilRef2.Size = new Size(137, 27);
@@ -843,7 +867,7 @@
             // FoliarDeg2
             // 
             FoliarDeg2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            FoliarDeg2.BackColor = Color.Ivory;
+            FoliarDeg2.BackColor = Color.White;
             FoliarDeg2.Location = new Point(558, 311);
             FoliarDeg2.Name = "FoliarDeg2";
             FoliarDeg2.Size = new Size(137, 27);
@@ -853,7 +877,7 @@
             // FoliarWashoff2
             // 
             FoliarWashoff2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            FoliarWashoff2.BackColor = Color.Ivory;
+            FoliarWashoff2.BackColor = Color.White;
             FoliarWashoff2.Location = new Point(558, 339);
             FoliarWashoff2.Name = "FoliarWashoff2";
             FoliarWashoff2.Size = new Size(137, 27);
@@ -863,7 +887,7 @@
             // MWT2
             // 
             MWT2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            MWT2.BackColor = Color.Ivory;
+            MWT2.BackColor = Color.White;
             MWT2.Location = new Point(558, 367);
             MWT2.Name = "MWT2";
             MWT2.Size = new Size(137, 27);
@@ -873,7 +897,7 @@
             // VaporPress2
             // 
             VaporPress2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            VaporPress2.BackColor = Color.Ivory;
+            VaporPress2.BackColor = Color.White;
             VaporPress2.Location = new Point(558, 395);
             VaporPress2.Name = "VaporPress2";
             VaporPress2.Size = new Size(137, 27);
@@ -883,7 +907,7 @@
             // Sol2
             // 
             Sol2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Sol2.BackColor = Color.Ivory;
+            Sol2.BackColor = Color.White;
             Sol2.Location = new Point(558, 423);
             Sol2.Name = "Sol2";
             Sol2.Size = new Size(137, 27);
@@ -893,7 +917,7 @@
             // Henry2
             // 
             Henry2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Henry2.BackColor = Color.Ivory;
+            Henry2.BackColor = Color.White;
             Henry2.Location = new Point(558, 451);
             Henry2.Name = "Henry2";
             Henry2.Size = new Size(137, 27);
@@ -903,7 +927,7 @@
             // AirDiff2
             // 
             AirDiff2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            AirDiff2.BackColor = Color.Ivory;
+            AirDiff2.BackColor = Color.White;
             AirDiff2.Location = new Point(558, 479);
             AirDiff2.Name = "AirDiff2";
             AirDiff2.Size = new Size(137, 27);
@@ -913,7 +937,7 @@
             // HeatHenry2
             // 
             HeatHenry2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            HeatHenry2.BackColor = Color.Ivory;
+            HeatHenry2.BackColor = Color.White;
             HeatHenry2.Location = new Point(558, 507);
             HeatHenry2.Name = "HeatHenry2";
             HeatHenry2.Size = new Size(137, 27);
@@ -923,7 +947,7 @@
             // FoliarMolarRatio1
             // 
             FoliarMolarRatio1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            FoliarMolarRatio1.BackColor = Color.Ivory;
+            FoliarMolarRatio1.BackColor = Color.White;
             FoliarMolarRatio1.Location = new Point(502, 311);
             FoliarMolarRatio1.Name = "FoliarMolarRatio1";
             FoliarMolarRatio1.Size = new Size(50, 27);
@@ -933,7 +957,7 @@
             // SoilMolarRatio1
             // 
             SoilMolarRatio1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            SoilMolarRatio1.BackColor = Color.Ivory;
+            SoilMolarRatio1.BackColor = Color.White;
             SoilMolarRatio1.Location = new Point(502, 255);
             SoilMolarRatio1.Name = "SoilMolarRatio1";
             SoilMolarRatio1.Size = new Size(50, 27);
@@ -943,7 +967,7 @@
             // HydroMolarRatio1
             // 
             HydroMolarRatio1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            HydroMolarRatio1.BackColor = Color.Ivory;
+            HydroMolarRatio1.BackColor = Color.White;
             HydroMolarRatio1.Location = new Point(502, 227);
             HydroMolarRatio1.Name = "HydroMolarRatio1";
             HydroMolarRatio1.Size = new Size(50, 27);
@@ -953,7 +977,7 @@
             // PhotoMolarRatio1
             // 
             PhotoMolarRatio1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            PhotoMolarRatio1.BackColor = Color.Ivory;
+            PhotoMolarRatio1.BackColor = Color.White;
             PhotoMolarRatio1.Location = new Point(502, 171);
             PhotoMolarRatio1.Name = "PhotoMolarRatio1";
             PhotoMolarRatio1.Size = new Size(50, 27);
@@ -963,7 +987,7 @@
             // BenthicMolarRatio1
             // 
             BenthicMolarRatio1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            BenthicMolarRatio1.BackColor = Color.Ivory;
+            BenthicMolarRatio1.BackColor = Color.White;
             BenthicMolarRatio1.Location = new Point(502, 115);
             BenthicMolarRatio1.Name = "BenthicMolarRatio1";
             BenthicMolarRatio1.Size = new Size(50, 27);
@@ -984,7 +1008,7 @@
             // WaterColRef1
             // 
             WaterColRef1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            WaterColRef1.BackColor = Color.FloralWhite;
+            WaterColRef1.BackColor = Color.White;
             WaterColRef1.Location = new Point(359, 87);
             WaterColRef1.Name = "WaterColRef1";
             WaterColRef1.Size = new Size(137, 27);
@@ -993,7 +1017,7 @@
             // BenthicMetab1
             // 
             BenthicMetab1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            BenthicMetab1.BackColor = Color.FloralWhite;
+            BenthicMetab1.BackColor = Color.White;
             BenthicMetab1.Location = new Point(359, 115);
             BenthicMetab1.Name = "BenthicMetab1";
             BenthicMetab1.Size = new Size(137, 27);
@@ -1002,7 +1026,7 @@
             // BenthicRef1
             // 
             BenthicRef1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            BenthicRef1.BackColor = Color.FloralWhite;
+            BenthicRef1.BackColor = Color.White;
             BenthicRef1.Location = new Point(359, 143);
             BenthicRef1.Name = "BenthicRef1";
             BenthicRef1.Size = new Size(137, 27);
@@ -1011,7 +1035,7 @@
             // Photo1
             // 
             Photo1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Photo1.BackColor = Color.FloralWhite;
+            Photo1.BackColor = Color.White;
             Photo1.Location = new Point(359, 171);
             Photo1.Name = "Photo1";
             Photo1.Size = new Size(137, 27);
@@ -1020,7 +1044,7 @@
             // PhotoLat1
             // 
             PhotoLat1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            PhotoLat1.BackColor = Color.FloralWhite;
+            PhotoLat1.BackColor = Color.White;
             PhotoLat1.Location = new Point(359, 199);
             PhotoLat1.Name = "PhotoLat1";
             PhotoLat1.Size = new Size(137, 27);
@@ -1029,7 +1053,7 @@
             // Hydrolysis1
             // 
             Hydrolysis1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Hydrolysis1.BackColor = Color.FloralWhite;
+            Hydrolysis1.BackColor = Color.White;
             Hydrolysis1.Location = new Point(359, 227);
             Hydrolysis1.Name = "Hydrolysis1";
             Hydrolysis1.Size = new Size(137, 27);
@@ -1038,7 +1062,7 @@
             // SoilDegradation1
             // 
             SoilDegradation1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            SoilDegradation1.BackColor = Color.FloralWhite;
+            SoilDegradation1.BackColor = Color.White;
             SoilDegradation1.Location = new Point(359, 255);
             SoilDegradation1.Name = "SoilDegradation1";
             SoilDegradation1.Size = new Size(137, 27);
@@ -1047,7 +1071,7 @@
             // SoilRef1
             // 
             SoilRef1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            SoilRef1.BackColor = Color.FloralWhite;
+            SoilRef1.BackColor = Color.White;
             SoilRef1.Location = new Point(359, 283);
             SoilRef1.Name = "SoilRef1";
             SoilRef1.Size = new Size(137, 27);
@@ -1056,7 +1080,7 @@
             // FoliarDeg1
             // 
             FoliarDeg1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            FoliarDeg1.BackColor = Color.FloralWhite;
+            FoliarDeg1.BackColor = Color.White;
             FoliarDeg1.Location = new Point(359, 311);
             FoliarDeg1.Name = "FoliarDeg1";
             FoliarDeg1.Size = new Size(137, 27);
@@ -1065,7 +1089,7 @@
             // FoliarWashoff1
             // 
             FoliarWashoff1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            FoliarWashoff1.BackColor = Color.FloralWhite;
+            FoliarWashoff1.BackColor = Color.White;
             FoliarWashoff1.Location = new Point(359, 339);
             FoliarWashoff1.Name = "FoliarWashoff1";
             FoliarWashoff1.Size = new Size(137, 27);
@@ -1074,7 +1098,7 @@
             // MWT1
             // 
             MWT1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            MWT1.BackColor = Color.FloralWhite;
+            MWT1.BackColor = Color.White;
             MWT1.Location = new Point(359, 367);
             MWT1.Name = "MWT1";
             MWT1.Size = new Size(137, 27);
@@ -1083,7 +1107,7 @@
             // VaporPress1
             // 
             VaporPress1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            VaporPress1.BackColor = Color.FloralWhite;
+            VaporPress1.BackColor = Color.White;
             VaporPress1.Location = new Point(359, 395);
             VaporPress1.Name = "VaporPress1";
             VaporPress1.Size = new Size(137, 27);
@@ -1092,7 +1116,7 @@
             // Sol1
             // 
             Sol1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Sol1.BackColor = Color.FloralWhite;
+            Sol1.BackColor = Color.White;
             Sol1.Location = new Point(359, 423);
             Sol1.Name = "Sol1";
             Sol1.Size = new Size(137, 27);
@@ -1101,7 +1125,7 @@
             // Henry1
             // 
             Henry1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Henry1.BackColor = Color.FloralWhite;
+            Henry1.BackColor = Color.White;
             Henry1.Location = new Point(359, 451);
             Henry1.Name = "Henry1";
             Henry1.Size = new Size(137, 27);
@@ -1110,7 +1134,7 @@
             // AirDiff1
             // 
             AirDiff1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            AirDiff1.BackColor = Color.FloralWhite;
+            AirDiff1.BackColor = Color.White;
             AirDiff1.Location = new Point(359, 479);
             AirDiff1.Name = "AirDiff1";
             AirDiff1.Size = new Size(137, 27);
@@ -1119,7 +1143,7 @@
             // HeatHenry1
             // 
             HeatHenry1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            HeatHenry1.BackColor = Color.FloralWhite;
+            HeatHenry1.BackColor = Color.White;
             HeatHenry1.Location = new Point(359, 507);
             HeatHenry1.Name = "HeatHenry1";
             HeatHenry1.Size = new Size(137, 27);
@@ -1316,7 +1340,7 @@
             // WaterMolarRatio1
             // 
             WaterMolarRatio1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            WaterMolarRatio1.BackColor = Color.Ivory;
+            WaterMolarRatio1.BackColor = Color.White;
             WaterMolarRatio1.Location = new Point(502, 59);
             WaterMolarRatio1.Name = "WaterMolarRatio1";
             WaterMolarRatio1.Size = new Size(50, 27);
@@ -1367,7 +1391,7 @@
             // Sorption1
             // 
             Sorption1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            Sorption1.BackColor = Color.FloralWhite;
+            Sorption1.BackColor = Color.White;
             Sorption1.Location = new Point(359, 31);
             Sorption1.Name = "Sorption1";
             Sorption1.Size = new Size(137, 27);
@@ -1376,7 +1400,7 @@
             // WaterColMetab1
             // 
             WaterColMetab1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            WaterColMetab1.BackColor = Color.FloralWhite;
+            WaterColMetab1.BackColor = Color.White;
             WaterColMetab1.Location = new Point(359, 59);
             WaterColMetab1.Name = "WaterColMetab1";
             WaterColMetab1.Size = new Size(137, 27);
@@ -3208,18 +3232,19 @@
             label60.TabIndex = 5;
             label60.Text = "Family Name:";
             // 
-            // button1
+            // CalculateButton
             // 
-            button1.Anchor = AnchorStyles.None;
-            button1.BackColor = Color.ForestGreen;
-            button1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = Color.Yellow;
-            button1.Location = new Point(806, 697);
-            button1.Name = "button1";
-            button1.Size = new Size(175, 60);
-            button1.TabIndex = 6;
-            button1.Text = "Calculate";
-            button1.UseVisualStyleBackColor = false;
+            CalculateButton.Anchor = AnchorStyles.None;
+            CalculateButton.BackColor = Color.ForestGreen;
+            CalculateButton.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            CalculateButton.ForeColor = Color.Yellow;
+            CalculateButton.Location = new Point(806, 697);
+            CalculateButton.Name = "CalculateButton";
+            CalculateButton.Size = new Size(175, 60);
+            CalculateButton.TabIndex = 6;
+            CalculateButton.Text = "Calculate";
+            CalculateButton.UseVisualStyleBackColor = false;
+            CalculateButton.Click += CalculateButton_Click;
             // 
             // weatherFileDialog
             // 
@@ -3253,7 +3278,7 @@
             BackColor = SystemColors.Control;
             ClientSize = new Size(988, 760);
             Controls.Add(WorkingDirectoryTextBox);
-            Controls.Add(button1);
+            Controls.Add(CalculateButton);
             Controls.Add(label60);
             Controls.Add(label56);
             Controls.Add(IOFamilyName);
@@ -3541,7 +3566,7 @@
         private Label IOFamilyName;
         private Label label56;
         private Label label60;
-        private Button button1;
+        private Button CalculateButton;
         private Button GetWeatherFileDirectory;
         private OpenFileDialog weatherFileDialog;
         private GroupBox groupBox3;
