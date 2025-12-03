@@ -132,15 +132,16 @@ namespace PWC_Cs
 
                 if (applicationTable.UseApplicationWindow)
                 {
-                    ValidateInteger(applicationTable.ApplicationWindowStep, $"Window step in scheme {i + 1}");
-                    if (!isValid) return;
+                    var result = ValidateInteger(applicationTable.ApplicationWindowStep, $"Window step in scheme {i + 1}");
+                    if (!result.IsValid) return;
 
-                    ValidateInteger(applicationTable.ApplicationWindowSpan, $"Window span in scheme {i + 1}");
-                    if (!isValid) return;
+                    result = ValidateInteger(applicationTable.ApplicationWindowSpan, $"Window span in scheme {i + 1}");
+                    if (!result.IsValid) return;
 
                     if (Convert.ToInt32(applicationTable.ApplicationWindowSpan) > 365)
                     {
                         message = $"Application window span cannot be greater than 365, scheme {i + 1}";
+                        MessageBox.Show(message, "Input Error");
                         isValid = false;
                         return;
                     }
@@ -341,22 +342,36 @@ namespace PWC_Cs
 
         private bool ValidateInput(TextBox input, string exception = null)
         {
-            NumberValidator.TestRealNumbers(ref isValid, ref message, input, exception);
-            if (!isValid) MessageBox.Show(message);
+            var result = NumberValidator.TestRealNumbers(input.Text, exception);
 
-            return isValid;
-
-
-        }
-
-        private void ValidateInteger(string input, string context)
-        {
-            NumberValidator.TestActualIntegers(ref isValid, ref message, input);
-            if (!isValid)
+            if (!result.IsValid)
             {
-                message += $": {context}";
+                input.BackColor = Color.Orange;
+                MessageBox.Show(result.Message + " in " + input.Name, "Input Error");
             }
+            else 
+            {
+                input.BackColor = Color.White;
+            }
+
+            return result.IsValid;
         }
+
+        private ValidationResult ValidateInteger(string input, string context)
+        {
+            var result = NumberValidator.TestActualIntegers(input);
+
+            if (!result.IsValid)
+            {
+                MessageBox.Show($"{result.Message}: {context}", "Input Error");
+            }
+
+            return result;
+        }
+
+
+
+
 
 
 

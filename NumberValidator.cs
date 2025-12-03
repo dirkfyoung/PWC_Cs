@@ -1,89 +1,50 @@
-﻿using System.Linq;
+﻿using System;
+using System.Drawing;
+using System.Globalization;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace PWC_Cs
 {
-    public class NumberValidator
+    public class ValidationResult
     {
-        public static void TestRealNumbers(ref bool isValid, ref string message, TextBox textBox)
+        public bool IsValid { get; }
+        public string Message { get; }
+
+        public ValidationResult(bool isValid, string message = "")
         {
-            InitializeValidation(ref isValid, textBox);
-
-            if (!double.TryParse(textBox.Text, out _))
-            {
-                SetErrorState(ref isValid, ref message, textBox, "Check the value for");
-                return;
-            }
-
-            CheckForCommas(ref isValid, ref message, textBox);
+            IsValid = isValid;
+            Message = message;
         }
+    }
 
-        public static void TestRealNumbers(ref bool isValid, ref string message, TextBox textBox, string exception)
+    public static class NumberValidator
+    {
+        public static ValidationResult TestRealNumbers(string input, string exception = null)
         {
-            InitializeValidation(ref isValid, textBox);
+            if (input == exception)
+                return new ValidationResult(true);
 
-            if (textBox.Text == exception)
-            {
-                return;
-            }
-
-            if (!double.TryParse(textBox.Text, out _))
-            {
-                SetErrorState(ref isValid, ref message, textBox, "Check the value for");
-                return;
-            }
-
-            CheckForCommas(ref isValid, ref message, textBox);
-        }
-
-        public static void TestActualIntegers(ref bool isValid, ref string message, string input)
-        {
-            isValid = true;
-
-            if (!int.TryParse(input, out int parsedNumber))
-            {
-                message = "Value should be an integer";
-                isValid = false;
-                return;
-            }
-
-            if (double.TryParse(input, out double parsedDouble) && Math.Abs(parsedDouble - parsedNumber) > 0.01)
-            {
-                message = "Value should be an integer";
-                isValid = false;
-                return;
-            }
+            if (!double.TryParse(input, NumberStyles.Float, CultureInfo.InvariantCulture, out _))
+                return new ValidationResult(false, $"Invalid real number: {input}");
 
             if (input.Contains(","))
-            {
-                message = $"No commas allowed for {input}";
-                isValid = false;
-            }
+                return new ValidationResult(false, $"No commas allowed: {input}");
+
+            return new ValidationResult(true);
         }
 
-        private static void InitializeValidation(ref bool isValid, TextBox textBox)
+        public static ValidationResult TestActualIntegers(string input)
         {
-            isValid = true;
-            textBox.BackColor = Color.White;
-        }
+            if (!int.TryParse(input, NumberStyles.Integer, CultureInfo.InvariantCulture, out _))
+                return new ValidationResult(false, $"Value should be an integer: {input}");
 
-        private static void CheckForCommas(ref bool isValid, ref string message, TextBox textBox)
-        {
-            if (textBox.Text.Contains(","))
-            {
-                SetErrorState(ref isValid, ref message, textBox, "No commas allowed for");
-            }
-        }
+            if (input.Contains(","))
+                return new ValidationResult(false, $"No commas allowed: {input}");
 
-        private static void SetErrorState(ref bool isValid, ref string message, TextBox textBox, string errorMessage)
-        {
-            textBox.BackColor = Color.Orange;
-            message = $"{errorMessage} {textBox.Name}";
-            isValid = false;
+            return new ValidationResult(true);
         }
     }
 }
