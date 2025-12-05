@@ -23,126 +23,67 @@ namespace PWC_Cs
         {
             ResetValidationState();
 
-            if (!ValidateInput(Sorption1)) return;
-            if (!ValidateInput(WaterColMetab1, string.Empty)) return;
+            ValidateChemicalInputs();
+            ValidateSchemeInputs();
+            ValidateOptionalOutput();
+            ValidateAdvanceInputs();
+        }
+        private void ValidateChemicalInputs()
+        {
+            // Validate primary inputs
+            ValidateGroup([Sorption1, WaterColMetab1, BenthicMetab1, Photo1, Hydrolysis1, SoilDegradation1, FoliarDeg1, FoliarWashoff1, MWT1, VaporPress1, Sol1, Henry1, AirDiff1, HeatHenry1]);
 
-            if (!string.IsNullOrEmpty(WaterColMetab1.Text))
-            {
-                ValidateInput(WaterColRef1);
-            }
-
-            if (!ValidateInput(BenthicMetab1, string.Empty)) return;
-            if (!string.IsNullOrEmpty(BenthicMetab1.Text) && !ValidateInput(BenthicRef1)) return;
-
-            if (!ValidateInput(Photo1, string.Empty)) return;
-            if (!string.IsNullOrEmpty(Photo1.Text) && !ValidateInput(PhotoLat1)) return;
-
-            if (!ValidateInput(Hydrolysis1, string.Empty)) return;
-
-            if (!ValidateInput(SoilDegradation1, string.Empty)) return;
-            if (!string.IsNullOrEmpty(SoilDegradation1.Text) && !ValidateInput(SoilRef1)) return;
-
-            if (!ValidateInput(FoliarDeg1, string.Empty)) return;
-            if (!ValidateInput(FoliarWashoff1, string.Empty)) return;
-           
-            if (!ValidateInput(MWT1, string.Empty)) return;
-            if (!ValidateInput(VaporPress1, string.Empty)) return;
-            if (!ValidateInput(Sol1, string.Empty)) return;
-            if (!ValidateInput(Henry1, string.Empty)) return;
-            if (!ValidateInput(AirDiff1, string.Empty)) return;
-            if (!ValidateInput(HeatHenry1, string.Empty)) return;
+            // Validate references if applicable
+            ValidateReferences(WaterColMetab1, WaterColRef1);
+            ValidateReferences(BenthicMetab1, BenthicRef1);
+            ValidateReferences(Photo1, PhotoLat1);
+            ValidateReferences(SoilDegradation1, SoilRef1);
 
             if (DoDegradate1.Checked)
             {
-                if (!ValidateInput(WaterMolarRatio1, string.Empty)) return;
-                if (!ValidateInput(BenthicMolarRatio1, string.Empty)) return;
-                if (!ValidateInput(PhotoMolarRatio1, string.Empty)) return;
-                if (!ValidateInput(HydroMolarRatio1, string.Empty)) return;
-                if (!ValidateInput(SoilMolarRatio1, string.Empty)) return;
-                if (!ValidateInput(FoliarMolarRatio1, string.Empty)) return;
-
-                if (!ValidateInput(Sorption2)) return;
-                if (!ValidateInput(WaterColMetab2, string.Empty)) return;
-                if (!string.IsNullOrEmpty(WaterColMetab2.Text) && !ValidateInput(WaterColRef2)) return;
-
-                if (!ValidateInput(BenthicMetab2, string.Empty)) return;
-                if (!string.IsNullOrEmpty(BenthicMetab2.Text) && !ValidateInput(BenthicRef2)) return;
-
-                if (!ValidateInput(Photo2, string.Empty)) return;
-                if (!string.IsNullOrEmpty(Photo2.Text) && !ValidateInput(PhotoLat2)) return;
-
-                if (!ValidateInput(Hydrolysis2, string.Empty)) return;
-                if (!ValidateInput(SoilDegradation2, string.Empty)) return;
-                if (!string.IsNullOrEmpty(SoilDegradation2.Text) && !ValidateInput(SoilRef2)) return;
-
-                if (!ValidateInput(FoliarDeg2, string.Empty)) return;
-                if (!ValidateInput(FoliarWashoff2, string.Empty)) return;
-
-                if (!ValidateInput(MWT2, string.Empty)) return;
-                if (!ValidateInput(VaporPress2, string.Empty)) return;
-                if (!ValidateInput(Sol2, string.Empty)) return;
-                if (!ValidateInput(Henry2, string.Empty)) return;
-                if (!ValidateInput(AirDiff2, string.Empty)) return;
-                if (!ValidateInput(HeatHenry2, string.Empty)) return;
+                ValidateGroup(new[] { WaterMolarRatio1, BenthicMolarRatio1, PhotoMolarRatio1, HydroMolarRatio1, SoilMolarRatio1, FoliarMolarRatio1 });
+                ValidateGroup(new[] { Sorption2, WaterColMetab2, BenthicMetab2, Photo2, Hydrolysis2, SoilDegradation2, FoliarDeg2, FoliarWashoff2, MWT2, VaporPress2, Sol2, Henry2, AirDiff2, HeatHenry2 });
+                ValidateReferences(WaterColMetab2, WaterColRef2);
+                ValidateReferences(BenthicMetab2, BenthicRef2);
+                ValidateReferences(Photo2, PhotoLat2);
+                ValidateReferences(SoilDegradation2, SoilRef2);
             }
 
-            // Validate additional inputs if DoDegradate2 is checked
             if (DoDegradate2.Checked)
             {
-                if (!ValidateInput(WaterMolarRatio2, string.Empty)) return;
-                if (!ValidateInput(BenthicMolarRatio2, string.Empty)) return;
-                if (!ValidateInput(PhotoMolarRatio2, string.Empty)) return;
-                if (!ValidateInput(HydroMolarRatio2, string.Empty)) return;
-                if (!ValidateInput(SoilMolarRatio2, string.Empty)) return;
-                if (!ValidateInput(FoliarMolarRatio2, string.Empty)) return;
-
-                if (!ValidateInput(Sorption3)) return;
-                if (!ValidateInput(WaterColMetab3, string.Empty)) return;
-                if (!string.IsNullOrEmpty(WaterColMetab3.Text) && !ValidateInput(WaterColRef3)) return;
-
-                if (!ValidateInput(BenthicMetab3, string.Empty)) return;
-                if (!string.IsNullOrEmpty(BenthicMetab3.Text) && !ValidateInput(BenthicRef3)) return;
-
-                if (!ValidateInput(Photo3, string.Empty)) return;
-                if (!string.IsNullOrEmpty(Photo3.Text) && !ValidateInput(PhotoLat3)) return;
-
-                if (!ValidateInput(Hydrolysis3, string.Empty)) return;
-                if (!ValidateInput(SoilDegradation3, string.Empty)) return;
-                if (!string.IsNullOrEmpty(SoilDegradation3.Text) && !ValidateInput(SoilRef3)) return;
-
-                if (!ValidateInput(FoliarDeg3, string.Empty)) return;
-                if (!ValidateInput(FoliarWashoff3, string.Empty)) return;
-
-                if (!ValidateInput(MWT3, string.Empty)) return;
-                if (!ValidateInput(VaporPress3, string.Empty)) return;
-                if (!ValidateInput(Sol3, string.Empty)) return;
-                if (!ValidateInput(Henry3, string.Empty)) return;
-                if (!ValidateInput(AirDiff3, string.Empty)) return;
-                if (!ValidateInput(HeatHenry3, string.Empty)) return;
+                ValidateGroup(new[] { WaterMolarRatio2, BenthicMolarRatio2, PhotoMolarRatio2, HydroMolarRatio2, SoilMolarRatio2, FoliarMolarRatio2 });
+                ValidateGroup(new[] { Sorption3, WaterColMetab3, BenthicMetab3, Photo3, Hydrolysis3, SoilDegradation3, FoliarDeg3, FoliarWashoff3, MWT3, VaporPress3, Sol3, Henry3, AirDiff3, HeatHenry3 });
+                ValidateReferences(WaterColMetab3, WaterColRef3);
+                ValidateReferences(BenthicMetab3, BenthicRef3);
+                ValidateReferences(Photo3, PhotoLat3);
+                ValidateReferences(SoilDegradation3, SoilRef3);
             }
 
+
+
+
+        }
+
+        private void ValidateSchemeInputs()
+        {
+            // Commit any pending edits in the DataGridView
             AppTableDisplay.CommitEdit(DataGridViewDataErrorContexts.Commit);
-            SchemeTableDisplay.CommitEdit(DataGridViewDataErrorContexts.Commit); //'commit the cell if cursor still on box
+            SchemeTableDisplay.CommitEdit(DataGridViewDataErrorContexts.Commit);
 
             int numberOfSchemes = SchemeTableDisplay.RowCount - 1;
 
             for (int i = 0; i < numberOfSchemes; i++)
             {
-                SchemeDetails applicationTable = SchemeInfoList[i];
+                var applicationTable = SchemeInfoList[i];
 
                 if (applicationTable.UseApplicationWindow)
                 {
-                    var result = ValidateInteger(applicationTable.ApplicationWindowStep, $"Window step in scheme {i + 1}");
-                    if (!result.IsValid) return;
+                    if (!HandleValidationResult(NumberValidator.TestActualIntegers(applicationTable.ApplicationWindowStep), $"Window step in scheme {i + 1}")) return;
+                    if (!HandleValidationResult(NumberValidator.TestActualIntegers(applicationTable.ApplicationWindowSpan), $"Window span in scheme {i + 1}")) return;
 
-                    result = ValidateInteger(applicationTable.ApplicationWindowSpan, $"Window span in scheme {i + 1}");
-                    if (!result.IsValid) return;
-
-                    if (Convert.ToInt32(applicationTable.ApplicationWindowSpan) > 365)
+                    if (int.TryParse(applicationTable.ApplicationWindowSpan, out int windowSpan) && windowSpan > 365)
                     {
-                        message = $"Application window span cannot be greater than 365, scheme {i + 1}";
-                        MessageBox.Show(message, "Input Error");
-                        isValid = false;
+                        ShowErrorMessage($"Application window span cannot be greater than 365, scheme {i + 1}");
                         return;
                     }
                 }
@@ -151,8 +92,7 @@ namespace PWC_Cs
                 int actualRowsInAppTable = applicationTable.Days.Count;
                 if (actualRowsInAppTable < 1)
                 {
-                    message = $"There are no pesticide applications for scheme number {i + 1}";
-                    isValid = false;
+                    ShowErrorMessage($"There are no pesticide applications for scheme number {i + 1}");
                     return;
                 }
 
@@ -164,173 +104,113 @@ namespace PWC_Cs
                     {
                         if (!DateTime.TryParseExact(applicationTable.Days[j], formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out _))
                         {
-                            message = $"Absolute Application date is not in the right format for Scheme {i + 1}, Row {j + 1}";
-                            isValid = false;
+                            ShowErrorMessage($"Absolute Application date is not in the right format for Scheme {i + 1}, Row {j + 1}");
                             return;
                         }
                     }
                     else
                     {
-                        ValidateInteger(applicationTable.Days[j], $"for Scheme {i + 1}, Row {j + 1}");
-                        if (!isValid) return;
+                        if (!HandleValidationResult(NumberValidator.TestActualIntegers(applicationTable.Days[j]), $"for Scheme {i + 1}, Row {j + 1}")) return;
                     }
+
+                    if (!HandleValidationResult(NumberValidator.TestRealNumbers(applicationTable.Amount[j]), $"Application Amount for Scheme {i + 1}, Row {j + 1}")) return;
+                    if (!HandleValidationResult(NumberValidator.TestRealNumbers(applicationTable.Depth[j]), $"Application Depth for Scheme {i + 1}, Row {j + 1}")) return;
+                    if (!HandleValidationResult(NumberValidator.TestRealNumbers(applicationTable.Split[j]), $"Split Value for Scheme {i + 1}, Row {j + 1}")) return;
+                    if (!HandleValidationResult(NumberValidator.TestRealNumbers(applicationTable.Drift[j]), "Drift Value")) return;
+                    if (!HandleValidationResult(NumberValidator.TestRealNumbers(applicationTable.DriftBuffer[j]), "Buffer Distance")) return;
+                    if (!HandleValidationResult(NumberValidator.TestRealNumbers(applicationTable.Periodicity[j]), "Application Period")) return;
+
+                    if (double.TryParse(applicationTable.Periodicity[j], out double periodicity) && periodicity < 1)
+                    {
+                        ShowErrorMessage("Periodicity in Application Table must be 1 or greater");
+                        return;
+                    }
+
+                    if (!HandleValidationResult(NumberValidator.TestRealNumbers(applicationTable.Lag[j]), "Application Lag")) return;
                 }
             }
 
 
+        }
+
+        private void ValidateOptionalOutput()
+        {
+            // Check Optional Output Table
+            AdditionalOutputGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            var ztsModes = new List<string> { "TSER", "TCUM", "TAVE", "TSUM" };
+
+            for (int i = 0; i < AdditionalOutputGridView.RowCount - 1; i++)
+            {
+                if (!HandleValidationResult(NumberValidator.TestActualIntegers(AdditionalOutputGridView[1, i].Value.ToString()), $"Row {i + 1} in Optional Outputs Table")) return;
+
+                if (!DoDegradate1.Checked && Convert.ToInt32(AdditionalOutputGridView[1, i].Value) > 1)
+                {
+                    ShowErrorMessage($"Chemical form must be less than 2. Row {i + 1} in Optional Outputs Table. Degradate calculations were not selected on chemical tab.");
+                    return;
+                }
+
+                if (!DoDegradate2.Checked && Convert.ToInt32(AdditionalOutputGridView[1, i].Value) > 2)
+                {
+                    ShowErrorMessage($"Chemical form must be less than 3. Row {i + 1} in Optional Outputs Table. Grandaughter calculations were not selected on chemical tab.");
+                    return;
+                }
+
+                if (!ztsModes.Contains(AdditionalOutputGridView[2, i].Value.ToString()))
+                {
+                    ShowErrorMessage($"Mode selection can only be TSER, TAVE, TSUM, or TCUM. Row {i + 1} in Optional Outputs Table.");
+                    return;
+                }
+
+                if (!HandleValidationResult(NumberValidator.TestActualIntegers(AdditionalOutputGridView[3, i].Value.ToString()), $"Arg1 in Row {i + 1} in Optional Outputs Table")) return;
+                if (!HandleValidationResult(NumberValidator.TestActualIntegers(AdditionalOutputGridView[4, i].Value.ToString()), $"Arg2 in Row {i + 1} in Optional Outputs Table")) return;
+                if (!HandleValidationResult(NumberValidator.TestRealNumbers(AdditionalOutputGridView[5, i].Value.ToString()), $"Multiplier in Row {i + 1} in Optional Outputs Table")) return;
+            }
+        }
+
+        private void ValidateAdvanceInputs()
+        {
+            // Validate default linear isotherm requirements (daughter and granddaughter optional really)
+            ValidateGroup([SubTimeSteps, Nexp1Reg1, Nexp2Reg1, Nexp3Reg1]);
+
+            if (UseFreundlich.Checked)
+            {
+                ValidateGroup(new[] { FreundlichMinimumConc });
+            }
 
 
+            if (UseNonequilibrium.Checked)
+            {
+                ValidateGroup([Kf1Reg2, Kf2Reg2, Kf3Reg2, Nexp1Reg2, Nexp2Reg2, Nexp3Reg2, MassTransferRegion2, MassTransferRegion2Daughter, MassTransferRegion2GrandDaughter]);
+            }
+
+            if (ErosionFlag.Text.Trim() == "1" || ErosionFlag.Text.Trim() == "2" || ErosionFlag.Text.Trim() == "3")
+            {
+                ErosionFlag.BackColor = Color.White;
+            }
+            else 
+            {  
+                ErosionFlag.BackColor = Color.Orange;
+                MessageBox.Show("Erosion flag must be 1, 2, or 3", "Input Error");
+            }
+
+                if (UseNonequilibrium.Checked)
+            {
+                ValidateGroup([Kf1Reg2, Kf2Reg2, Kf3Reg2, Nexp1Reg2, Nexp2Reg2, Nexp3Reg2, MassTransferRegion2, MassTransferRegion2Daughter, MassTransferRegion2GrandDaughter]);
+                ValidateReferences(WaterColMetab2, WaterColRef2);
+                ValidateReferences(BenthicMetab2, BenthicRef2);
+                ValidateReferences(Photo2, PhotoLat2);
+                ValidateReferences(SoilDegradation2, SoilRef2);
+            }
 
 
-            //To be converted
+            // Validate primary inputs
+            ValidateGroup([Sorption1, WaterColMetab1, BenthicMetab1, Photo1, Hydrolysis1, SoilDegradation1, FoliarDeg1, FoliarWashoff1, MWT1, VaporPress1, Sol1, Henry1, AirDiff1, HeatHenry1]);
 
-        //    Dim formats() As String = { "MM/d/yyyy", "MM/dd/yyyy", "M/dd/yyyy", "M/d/yyyy", "M/d", "MM/d", "M/d", "M/dd" }
-        //    Dim thisDt As DateTime
-
-        //    For j As Integer = 0 To actualRowsInAppTable -1
-
-        //        If ApplicationTable.AbsoluteRelative Then  'TRUE MEANS ABSOLUTE
-        //            If Not DateTime.TryParseExact(ApplicationTable.Days(j), formats, Globalization.CultureInfo.InvariantCulture, DateTimeStyles.None, thisDt) Then
-        //                msg = "Absolute Application date is not in the right format" & String.Format(" for Scheme {0}, Row {1}", i + 1, j + 1)
-        //                TrueOrFalse = False
-        //                Return
-        //            End If
-
-        //        Else
-        //            TestActualIntegers(TrueOrFalse, msg, ApplicationTable.Days(j))
-        //            msg = msg & String.Format(" for Scheme {0}, Row {1}", i + 1, j + 1)
-        //            If TrueOrFalse = False Then Return
-        //        End If
-
-        //        TestActualRealNumbers(TrueOrFalse, msg, ApplicationTable.Amount(j))
-
-        //        If TrueOrFalse = False Then
-        //            msg = msg & " Application Amount" & String.Format(" for Scheme {0}, Row {1}", i + 1, j + 1)
-        //            Return
-        //        End If
-
-        //        TestActualRealNumbers(TrueOrFalse, msg, ApplicationTable.Depth(j))
-
-
-        //        If TrueOrFalse = False Then
-        //            msg = msg & " Application Depth" & String.Format(" for Scheme {0}, Row {1}", i + 1, j + 1)
-        //            Return
-        //        End If
-
-        //        TestActualRealNumbers(TrueOrFalse, msg, ApplicationTable.Split(j))
-        //        If TrueOrFalse = False Then
-        //            msg = msg & " Split Value" & String.Format(" for Scheme {0}, Row {1}", i + 1, j + 1)
-        //            Return
-        //        End If
-
-        //        'TestActualRealNumbers(TrueOrFalse, msg, ApplicationTable.Efficiency(j))
-        //        'If TrueOrFalse = False Then Return
-
-
-        //        TestActualRealNumbers(TrueOrFalse, msg, ApplicationTable.Drift(j))
-        //        If TrueOrFalse = False Then
-        //            msg = msg & " Drift Value"
-        //            Return
-        //        End If
-
-        //        TestActualRealNumbers(TrueOrFalse, msg, ApplicationTable.DriftBuffer(j))
-        //        If TrueOrFalse = False Then
-        //            msg = msg & " Buffer Distance"
-        //            Return
-        //        End If
-
-        //        TestActualRealNumbers(TrueOrFalse, msg, ApplicationTable.Periodicity(j))
-        //        If TrueOrFalse = False Then
-        //            msg = msg & " Application Period"
-        //            Return
-        //        End If
-
-
-        //        'Periodicity must be 1 or greater
-        //        If ApplicationTable.Periodicity(j) < 1 Then
-        //            msg = "Periodicity in Application Table must be 1 or greater"
-        //            TrueOrFalse = False
-        //            Return
-        //        End If
-
-
-
-        //        TestActualRealNumbers(TrueOrFalse, msg, ApplicationTable.Lag(j))
-        //        If TrueOrFalse = False Then
-        //            msg = msg & " Application Lag"
-        //            Return
-        //        End If
-
-
-
-        //    Next
-        //Next
-
-
-
-        //'Check Optional Output Table
-        //AdditionalOutputGridView.CommitEdit(DataGridViewDataErrorContexts.Commit)
-        //Dim zts_modes As New List(Of String) From { "TSER", "TCUM", "TAVE", "TSUM"}
-
-        //    For i As Integer = 0 To AdditionalOutputGridView.RowCount - 2  'minus 2 because there is always a last empty row
-
-        //    TestActualIntegers(TrueOrFalse, msg, AdditionalOutputGridView.Item(1, i).Value)
-        //    If TrueOrFalse = False Then Return
-
-        //    If DoDegradate1.Checked = False Then
-        //        If AdditionalOutputGridView.Item(1, i).Value > 1 Then
-        //            msg = String.Format("Chemical form must be less than 2.  Row {0} in Optional Outputs Table.  Degradate calculations were not selected on chemical tab.", i + 1)
-        //            TrueOrFalse = False
-        //            Return
-        //        End If
-        //    End If
-
-
-
-        //    If DoDegradate2.Checked = False Then
-        //        If AdditionalOutputGridView.Item(1, i).Value > 2 Then
-        //            msg = String.Format("Chemical form must be less than 3. Row {0} in Optional Outputs Table. Grandaughter calculations were not selected on chemical tab.", i + 1)
-        //            TrueOrFalse = False
-        //            Return
-        //        End If
-        //    End If
-
-        //    If Not zts_modes.Contains((AdditionalOutputGridView.Item(2, i).Value)) Then
-        //        msg = String.Format("Mode selection can only be TSER, TAVE, TSUM, or TCUM.  Row {0} in Optional Outputs Table.", i + 1)
-        //        TrueOrFalse = False
-        //        Return
-        //    End If
-
-
-        //    TestActualIntegers(TrueOrFalse, msg, AdditionalOutputGridView.Item(3, i).Value)
-        //    msg = msg & String.Format(" Arg1 in Row {0} in Optional Outputs Table.", i + 1)
-        //    If TrueOrFalse = False Then Return
-
-
-        //    TestActualIntegers(TrueOrFalse, msg, AdditionalOutputGridView.Item(4, i).Value)
-        //    msg = msg & String.Format(" Arg2 in Row {0} in Optional Outputs Table.", i + 1)
-        //    If TrueOrFalse = False Then Return
-
-
-        //    TestActualRealNumbers(TrueOrFalse, msg, AdditionalOutputGridView.Item(5, i).Value)
-        //    msg = msg & String.Format(" Multiplier in Row {0} in Optional Outputs Table.", i + 1)
-        //    If TrueOrFalse = False Then Return
-
-        //Next
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            // Validate references if applicable
+            ValidateReferences(WaterColMetab1, WaterColRef1);
+            ValidateReferences(BenthicMetab1, BenthicRef1);
+            ValidateReferences(Photo1, PhotoLat1);
+            ValidateReferences(SoilDegradation1, SoilRef1);
 
 
 
@@ -340,16 +220,34 @@ namespace PWC_Cs
 
         }
 
-        private bool ValidateInput(TextBox input, string exception = null)
+
+
+
+
+
+        private void ValidateGroup(IEnumerable<TextBox> inputs, string? exception = null)
+        {
+            foreach (var input in inputs)
+            {
+                if (!ValidateInput(input, exception)) return;
+            }
+        }
+
+        private void ValidateReferences(TextBox primary, TextBox reference)
+        {
+            if (!string.IsNullOrEmpty(primary.Text) && !ValidateInput(reference)) return;
+        }
+
+        private bool ValidateInput(TextBox input, string? exception = null)
         {
             var result = NumberValidator.TestRealNumbers(input.Text, exception);
 
             if (!result.IsValid)
             {
                 input.BackColor = Color.Orange;
-                MessageBox.Show(result.Message + " in " + input.Name, "Input Error");
+                MessageBox.Show($"{result.Message} in {input.Name}", "Input Error");
             }
-            else 
+            else
             {
                 input.BackColor = Color.White;
             }
@@ -357,30 +255,21 @@ namespace PWC_Cs
             return result.IsValid;
         }
 
-        private ValidationResult ValidateInteger(string input, string context)
+        private bool HandleValidationResult(ValidationResult result, string context)
         {
-            var result = NumberValidator.TestActualIntegers(input);
-
             if (!result.IsValid)
             {
-                MessageBox.Show($"{result.Message}: {context}", "Input Error");
+                ShowErrorMessage($"{result.Message}: {context}");
+                return false;
             }
-
-            return result;
+            return true;
         }
 
-
-
-
-
-
-
-
-
+        private void ShowErrorMessage(string message)
+        {
+            MessageBox.Show(message, "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
-
-
-
 
 
 }

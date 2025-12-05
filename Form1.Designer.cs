@@ -2146,6 +2146,7 @@
             // 
             // AdvancedTab
             // 
+            AdvancedTab.BorderStyle = BorderStyle.FixedSingle;
             AdvancedTab.Controls.Add(label51);
             AdvancedTab.Controls.Add(WaterbodyEvapAdjustment);
             AdvancedTab.Controls.Add(AdjustCN);
@@ -2188,6 +2189,7 @@
             // 
             // WaterbodyEvapAdjustment
             // 
+            WaterbodyEvapAdjustment.BorderStyle = BorderStyle.FixedSingle;
             WaterbodyEvapAdjustment.Location = new Point(320, 469);
             WaterbodyEvapAdjustment.Name = "WaterbodyEvapAdjustment";
             WaterbodyEvapAdjustment.Size = new Size(125, 27);
@@ -2210,7 +2212,7 @@
             // label49
             // 
             label49.AutoSize = true;
-            label49.Location = new Point(101, 469);
+            label49.Location = new Point(21, 456);
             label49.Margin = new Padding(2, 0, 2, 0);
             label49.Name = "label49";
             label49.Size = new Size(149, 40);
@@ -2219,10 +2221,11 @@
             // 
             // ErosionFlag
             // 
-            ErosionFlag.Location = new Point(20, 469);
+            ErosionFlag.BorderStyle = BorderStyle.FixedSingle;
+            ErosionFlag.Location = new Point(174, 467);
             ErosionFlag.Margin = new Padding(2);
             ErosionFlag.Name = "ErosionFlag";
-            ErosionFlag.Size = new Size(58, 27);
+            ErosionFlag.Size = new Size(22, 27);
             ErosionFlag.TabIndex = 42;
             ErosionFlag.Text = "3";
             // 
@@ -2283,6 +2286,7 @@
             // 
             // ExpParameter2
             // 
+            ExpParameter2.BorderStyle = BorderStyle.FixedSingle;
             ExpParameter2.Location = new Point(586, 393);
             ExpParameter2.Name = "ExpParameter2";
             ExpParameter2.Size = new Size(125, 27);
@@ -2290,6 +2294,7 @@
             // 
             // ProfileDepth2
             // 
+            ProfileDepth2.BorderStyle = BorderStyle.FixedSingle;
             ProfileDepth2.Location = new Point(581, 275);
             ProfileDepth2.Name = "ProfileDepth2";
             ProfileDepth2.Size = new Size(125, 27);
@@ -2298,6 +2303,7 @@
             // 
             // profileDepth1
             // 
+            profileDepth1.BorderStyle = BorderStyle.FixedSingle;
             profileDepth1.Location = new Point(581, 248);
             profileDepth1.Name = "profileDepth1";
             profileDepth1.Size = new Size(125, 27);
@@ -2306,6 +2312,7 @@
             // 
             // ExpParameter1
             // 
+            ExpParameter1.BorderStyle = BorderStyle.FixedSingle;
             ExpParameter1.Location = new Point(586, 366);
             ExpParameter1.Name = "ExpParameter1";
             ExpParameter1.Size = new Size(125, 27);
@@ -2313,6 +2320,7 @@
             // 
             // RampEndValue
             // 
+            RampEndValue.BorderStyle = BorderStyle.FixedSingle;
             RampEndValue.Location = new Point(581, 302);
             RampEndValue.Name = "RampEndValue";
             RampEndValue.Size = new Size(125, 27);
@@ -2372,6 +2380,7 @@
             // 
             // Q10
             // 
+            Q10.BorderStyle = BorderStyle.FixedSingle;
             Q10.Location = new Point(626, 79);
             Q10.Name = "Q10";
             Q10.Size = new Size(43, 27);
@@ -2416,6 +2425,7 @@
             // 
             // MassTransferRegion2GrandDaughter
             // 
+            MassTransferRegion2GrandDaughter.BorderStyle = BorderStyle.FixedSingle;
             MassTransferRegion2GrandDaughter.Location = new Point(215, 369);
             MassTransferRegion2GrandDaughter.Name = "MassTransferRegion2GrandDaughter";
             MassTransferRegion2GrandDaughter.Size = new Size(83, 27);
@@ -2423,6 +2433,7 @@
             // 
             // MassTransferRegion2Daughter
             // 
+            MassTransferRegion2Daughter.BorderStyle = BorderStyle.FixedSingle;
             MassTransferRegion2Daughter.Location = new Point(128, 369);
             MassTransferRegion2Daughter.Name = "MassTransferRegion2Daughter";
             MassTransferRegion2Daughter.Size = new Size(83, 27);
@@ -2430,6 +2441,7 @@
             // 
             // MassTransferRegion2
             // 
+            MassTransferRegion2.BorderStyle = BorderStyle.FixedSingle;
             MassTransferRegion2.Location = new Point(41, 369);
             MassTransferRegion2.Name = "MassTransferRegion2";
             MassTransferRegion2.Size = new Size(83, 27);
@@ -2446,10 +2458,12 @@
             // 
             // FreundlichMinimumConc
             // 
+            FreundlichMinimumConc.BorderStyle = BorderStyle.FixedSingle;
             FreundlichMinimumConc.Location = new Point(13, 106);
             FreundlichMinimumConc.Name = "FreundlichMinimumConc";
             FreundlichMinimumConc.Size = new Size(78, 27);
             FreundlichMinimumConc.TabIndex = 22;
+            FreundlichMinimumConc.Text = "0.000001";
             // 
             // label31
             // 
@@ -2462,10 +2476,12 @@
             // 
             // SubTimeSteps
             // 
+            SubTimeSteps.BorderStyle = BorderStyle.FixedSingle;
             SubTimeSteps.Location = new Point(13, 77);
             SubTimeSteps.Name = "SubTimeSteps";
             SubTimeSteps.Size = new Size(78, 27);
             SubTimeSteps.TabIndex = 20;
+            SubTimeSteps.Text = "1";
             // 
             // label30
             // 
@@ -2507,24 +2523,30 @@
             // 
             // Nexp3Reg2
             // 
+            Nexp3Reg2.BorderStyle = BorderStyle.FixedSingle;
             Nexp3Reg2.Location = new Point(215, 301);
             Nexp3Reg2.Name = "Nexp3Reg2";
             Nexp3Reg2.Size = new Size(83, 27);
             Nexp3Reg2.TabIndex = 15;
+            Nexp3Reg2.Text = "1";
             // 
             // Nexp2Reg2
             // 
+            Nexp2Reg2.BorderStyle = BorderStyle.FixedSingle;
             Nexp2Reg2.Location = new Point(128, 301);
             Nexp2Reg2.Name = "Nexp2Reg2";
             Nexp2Reg2.Size = new Size(83, 27);
             Nexp2Reg2.TabIndex = 14;
+            Nexp2Reg2.Text = "1";
             // 
             // Nexp1Reg2
             // 
+            Nexp1Reg2.BorderStyle = BorderStyle.FixedSingle;
             Nexp1Reg2.Location = new Point(41, 301);
             Nexp1Reg2.Name = "Nexp1Reg2";
             Nexp1Reg2.Size = new Size(83, 27);
             Nexp1Reg2.TabIndex = 13;
+            Nexp1Reg2.Text = "1";
             // 
             // label28
             // 
@@ -2537,6 +2559,7 @@
             // 
             // Kf3Reg2
             // 
+            Kf3Reg2.BorderStyle = BorderStyle.FixedSingle;
             Kf3Reg2.Location = new Point(215, 271);
             Kf3Reg2.Name = "Kf3Reg2";
             Kf3Reg2.Size = new Size(83, 27);
@@ -2544,6 +2567,7 @@
             // 
             // Kf2Reg2
             // 
+            Kf2Reg2.BorderStyle = BorderStyle.FixedSingle;
             Kf2Reg2.Location = new Point(128, 271);
             Kf2Reg2.Name = "Kf2Reg2";
             Kf2Reg2.Size = new Size(83, 27);
@@ -2551,6 +2575,7 @@
             // 
             // Kf1Reg2
             // 
+            Kf1Reg2.BorderStyle = BorderStyle.FixedSingle;
             Kf1Reg2.Location = new Point(41, 271);
             Kf1Reg2.Name = "Kf1Reg2";
             Kf1Reg2.Size = new Size(83, 27);
@@ -2612,24 +2637,30 @@
             // 
             // Nexp3Reg1
             // 
+            Nexp3Reg1.BorderStyle = BorderStyle.FixedSingle;
             Nexp3Reg1.Location = new Point(213, 206);
             Nexp3Reg1.Name = "Nexp3Reg1";
             Nexp3Reg1.Size = new Size(83, 27);
             Nexp3Reg1.TabIndex = 2;
+            Nexp3Reg1.Text = "1";
             // 
             // Nexp2Reg1
             // 
+            Nexp2Reg1.BorderStyle = BorderStyle.FixedSingle;
             Nexp2Reg1.Location = new Point(126, 206);
             Nexp2Reg1.Name = "Nexp2Reg1";
             Nexp2Reg1.Size = new Size(83, 27);
             Nexp2Reg1.TabIndex = 1;
+            Nexp2Reg1.Text = "1";
             // 
             // Nexp1Reg1
             // 
+            Nexp1Reg1.BorderStyle = BorderStyle.FixedSingle;
             Nexp1Reg1.Location = new Point(39, 206);
             Nexp1Reg1.Name = "Nexp1Reg1";
             Nexp1Reg1.Size = new Size(83, 27);
             Nexp1Reg1.TabIndex = 0;
+            Nexp1Reg1.Text = "1";
             // 
             // OptionalOutputTab
             // 
