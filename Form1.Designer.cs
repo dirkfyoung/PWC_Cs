@@ -190,6 +190,7 @@
             GetScenariosBatchCheckBox = new CheckBox();
             ScenarioListBox = new ListBox();
             AdvancedTab = new TabPage();
+            label61 = new Label();
             label51 = new Label();
             WaterbodyEvapAdjustment = new TextBox();
             AdjustCN = new CheckBox();
@@ -203,7 +204,7 @@
             label34 = new Label();
             ExpParameter2 = new TextBox();
             ProfileDepth2 = new TextBox();
-            profileDepth1 = new TextBox();
+            ProfileDepth1 = new TextBox();
             ExpParameter1 = new TextBox();
             RampEndValue = new TextBox();
             ExponentialProfile = new RadioButton();
@@ -2147,6 +2148,7 @@
             // AdvancedTab
             // 
             AdvancedTab.BorderStyle = BorderStyle.FixedSingle;
+            AdvancedTab.Controls.Add(label61);
             AdvancedTab.Controls.Add(label51);
             AdvancedTab.Controls.Add(WaterbodyEvapAdjustment);
             AdvancedTab.Controls.Add(AdjustCN);
@@ -2160,7 +2162,7 @@
             AdvancedTab.Controls.Add(label34);
             AdvancedTab.Controls.Add(ExpParameter2);
             AdvancedTab.Controls.Add(ProfileDepth2);
-            AdvancedTab.Controls.Add(profileDepth1);
+            AdvancedTab.Controls.Add(ProfileDepth1);
             AdvancedTab.Controls.Add(ExpParameter1);
             AdvancedTab.Controls.Add(RampEndValue);
             AdvancedTab.Controls.Add(ExponentialProfile);
@@ -2178,21 +2180,30 @@
             AdvancedTab.Text = "Advanced";
             AdvancedTab.UseVisualStyleBackColor = true;
             // 
+            // label61
+            // 
+            label61.AutoSize = true;
+            label61.Location = new Point(482, 239);
+            label61.Name = "label61";
+            label61.Size = new Size(218, 20);
+            label61.TabIndex = 47;
+            label61.Text = "Subsurface degradation profile:";
+            // 
             // label51
             // 
             label51.AutoSize = true;
-            label51.Location = new Point(451, 469);
+            label51.Location = new Point(21, 509);
             label51.Name = "label51";
-            label51.Size = new Size(478, 60);
+            label51.Size = new Size(304, 80);
             label51.TabIndex = 46;
-            label51.Text = "(VVWM Evaporation)/ (Weather File Evap)\r\nRecommend using 1.0; to eliminate waterbody evaporation, enter zero.\r\nThis does not impact evaporation from field.\r\n";
+            label51.Text = "(VVWM Evaporation)/ (Weather File Evap)\r\nRecommend using 1.0; \r\nZero eliminates waterbody evaporation.\r\nThis does not impact evaporation from field.\r\n";
             // 
             // WaterbodyEvapAdjustment
             // 
             WaterbodyEvapAdjustment.BorderStyle = BorderStyle.FixedSingle;
-            WaterbodyEvapAdjustment.Location = new Point(320, 469);
+            WaterbodyEvapAdjustment.Location = new Point(331, 507);
             WaterbodyEvapAdjustment.Name = "WaterbodyEvapAdjustment";
-            WaterbodyEvapAdjustment.Size = new Size(125, 27);
+            WaterbodyEvapAdjustment.Size = new Size(68, 27);
             WaterbodyEvapAdjustment.TabIndex = 45;
             WaterbodyEvapAdjustment.Text = "1.0";
             // 
@@ -2201,12 +2212,12 @@
             AdjustCN.AutoSize = true;
             AdjustCN.Checked = true;
             AdjustCN.CheckState = CheckState.Checked;
-            AdjustCN.Location = new Point(26, 529);
+            AdjustCN.Location = new Point(488, 57);
             AdjustCN.Margin = new Padding(2);
             AdjustCN.Name = "AdjustCN";
-            AdjustCN.Size = new Size(209, 24);
+            AdjustCN.Size = new Size(328, 24);
             AdjustCN.TabIndex = 44;
-            AdjustCN.Text = "Adjust CN for soil moisture";
+            AdjustCN.Text = "Adjust CN for soil moisture (default checked)";
             AdjustCN.UseVisualStyleBackColor = true;
             // 
             // label49
@@ -2232,17 +2243,19 @@
             // IsAllMedia
             // 
             IsAllMedia.AutoSize = true;
-            IsAllMedia.Location = new Point(573, 28);
+            IsAllMedia.Checked = true;
+            IsAllMedia.CheckState = CheckState.Checked;
+            IsAllMedia.Location = new Point(488, 6);
             IsAllMedia.Name = "IsAllMedia";
-            IsAllMedia.Size = new Size(385, 24);
+            IsAllMedia.Size = new Size(480, 44);
             IsAllMedia.TabIndex = 41;
-            IsAllMedia.Text = "Degradation of Sorbed Chemical (Total Degradation)";
+            IsAllMedia.Text = "Soil degradation input applies to both aqueous and sorbed phases. \r\nUncheck for aqueous phase only. (default checked)";
             IsAllMedia.UseVisualStyleBackColor = true;
             // 
             // label38
             // 
             label38.AutoSize = true;
-            label38.Location = new Point(716, 398);
+            label38.Location = new Point(649, 471);
             label38.Name = "label38";
             label38.Size = new Size(259, 20);
             label38.TabIndex = 40;
@@ -2251,7 +2264,7 @@
             // label37
             // 
             label37.AutoSize = true;
-            label37.Location = new Point(716, 370);
+            label37.Location = new Point(649, 444);
             label37.Name = "label37";
             label37.Size = new Size(71, 20);
             label37.TabIndex = 39;
@@ -2260,7 +2273,7 @@
             // label36
             // 
             label36.AutoSize = true;
-            label36.Location = new Point(711, 308);
+            label36.Location = new Point(649, 380);
             label36.Name = "label36";
             label36.Size = new Size(265, 20);
             label36.TabIndex = 38;
@@ -2269,7 +2282,7 @@
             // label35
             // 
             label35.AutoSize = true;
-            label35.Location = new Point(711, 278);
+            label35.Location = new Point(649, 353);
             label35.Name = "label35";
             label35.Size = new Size(166, 20);
             label35.TabIndex = 37;
@@ -2278,7 +2291,7 @@
             // label34
             // 
             label34.AutoSize = true;
-            label34.Location = new Point(711, 252);
+            label34.Location = new Point(649, 326);
             label34.Name = "label34";
             label34.Size = new Size(160, 20);
             label34.TabIndex = 36;
@@ -2287,7 +2300,7 @@
             // ExpParameter2
             // 
             ExpParameter2.BorderStyle = BorderStyle.FixedSingle;
-            ExpParameter2.Location = new Point(586, 393);
+            ExpParameter2.Location = new Point(513, 468);
             ExpParameter2.Name = "ExpParameter2";
             ExpParameter2.Size = new Size(125, 27);
             ExpParameter2.TabIndex = 35;
@@ -2295,25 +2308,25 @@
             // ProfileDepth2
             // 
             ProfileDepth2.BorderStyle = BorderStyle.FixedSingle;
-            ProfileDepth2.Location = new Point(581, 275);
+            ProfileDepth2.Location = new Point(513, 350);
             ProfileDepth2.Name = "ProfileDepth2";
             ProfileDepth2.Size = new Size(125, 27);
             ProfileDepth2.TabIndex = 34;
             ProfileDepth2.Text = "200.0";
             // 
-            // profileDepth1
+            // ProfileDepth1
             // 
-            profileDepth1.BorderStyle = BorderStyle.FixedSingle;
-            profileDepth1.Location = new Point(581, 248);
-            profileDepth1.Name = "profileDepth1";
-            profileDepth1.Size = new Size(125, 27);
-            profileDepth1.TabIndex = 33;
-            profileDepth1.Text = "10";
+            ProfileDepth1.BorderStyle = BorderStyle.FixedSingle;
+            ProfileDepth1.Location = new Point(513, 323);
+            ProfileDepth1.Name = "ProfileDepth1";
+            ProfileDepth1.Size = new Size(125, 27);
+            ProfileDepth1.TabIndex = 33;
+            ProfileDepth1.Text = "10";
             // 
             // ExpParameter1
             // 
             ExpParameter1.BorderStyle = BorderStyle.FixedSingle;
-            ExpParameter1.Location = new Point(586, 366);
+            ExpParameter1.Location = new Point(513, 441);
             ExpParameter1.Name = "ExpParameter1";
             ExpParameter1.Size = new Size(125, 27);
             ExpParameter1.TabIndex = 32;
@@ -2321,7 +2334,7 @@
             // RampEndValue
             // 
             RampEndValue.BorderStyle = BorderStyle.FixedSingle;
-            RampEndValue.Location = new Point(581, 302);
+            RampEndValue.Location = new Point(513, 377);
             RampEndValue.Name = "RampEndValue";
             RampEndValue.Size = new Size(125, 27);
             RampEndValue.TabIndex = 31;
@@ -2330,7 +2343,7 @@
             // ExponentialProfile
             // 
             ExponentialProfile.AutoSize = true;
-            ExponentialProfile.Location = new Point(548, 336);
+            ExponentialProfile.Location = new Point(488, 411);
             ExponentialProfile.Name = "ExponentialProfile";
             ExponentialProfile.Size = new Size(108, 24);
             ExponentialProfile.TabIndex = 30;
@@ -2341,7 +2354,7 @@
             // 
             RampProfile.AutoSize = true;
             RampProfile.Checked = true;
-            RampProfile.Location = new Point(573, 224);
+            RampProfile.Location = new Point(488, 299);
             RampProfile.Name = "RampProfile";
             RampProfile.Size = new Size(69, 24);
             RampProfile.TabIndex = 29;
@@ -2352,7 +2365,7 @@
             // ConstantProfile
             // 
             ConstantProfile.AutoSize = true;
-            ConstantProfile.Location = new Point(573, 197);
+            ConstantProfile.Location = new Point(488, 272);
             ConstantProfile.Name = "ConstantProfile";
             ConstantProfile.Size = new Size(135, 24);
             ConstantProfile.TabIndex = 28;
@@ -2362,17 +2375,19 @@
             // IsHydrolysisOverride
             // 
             IsHydrolysisOverride.AutoSize = true;
-            IsHydrolysisOverride.Location = new Point(547, 151);
+            IsHydrolysisOverride.Checked = true;
+            IsHydrolysisOverride.CheckState = CheckState.Checked;
+            IsHydrolysisOverride.Location = new Point(488, 128);
             IsHydrolysisOverride.Name = "IsHydrolysisOverride";
-            IsHydrolysisOverride.Size = new Size(329, 44);
+            IsHydrolysisOverride.Size = new Size(388, 44);
             IsHydrolysisOverride.TabIndex = 27;
-            IsHydrolysisOverride.Text = "Use greater of hydrolysis or soil metaballism \r\nfor soil aqueous phase degradation\r\n";
+            IsHydrolysisOverride.Text = "Use greater of hydrolysis or soil metabolism \r\nfor soil aqueous phase degradation. (default checked)\r\n";
             IsHydrolysisOverride.UseVisualStyleBackColor = true;
             // 
             // label33
             // 
             label33.AutoSize = true;
-            label33.Location = new Point(584, 82);
+            label33.Location = new Point(488, 94);
             label33.Name = "label33";
             label33.Size = new Size(36, 20);
             label33.TabIndex = 26;
@@ -2381,11 +2396,11 @@
             // Q10
             // 
             Q10.BorderStyle = BorderStyle.FixedSingle;
-            Q10.Location = new Point(626, 79);
+            Q10.Location = new Point(540, 92);
             Q10.Name = "Q10";
             Q10.Size = new Size(43, 27);
             Q10.TabIndex = 24;
-            Q10.Text = "2";
+            Q10.Text = "2.0";
             // 
             // groupBox1
             // 
@@ -2418,7 +2433,7 @@
             groupBox1.Controls.Add(Nexp1Reg1);
             groupBox1.Location = new Point(20, 15);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(522, 430);
+            groupBox1.Size = new Size(390, 430);
             groupBox1.TabIndex = 23;
             groupBox1.TabStop = false;
             groupBox1.Text = "Advanced Sorption";
@@ -2468,11 +2483,11 @@
             // label31
             // 
             label31.AutoSize = true;
-            label31.Location = new Point(94, 109);
+            label31.Location = new Point(97, 104);
             label31.Name = "label31";
-            label31.Size = new Size(426, 20);
+            label31.Size = new Size(249, 40);
             label31.TabIndex = 21;
-            label31.Text = "Lowest concentration for Freundlich before going linear (mg/L)";
+            label31.Text = "Lowest concentration for Freundlich \r\nbefore going linear (mg/L)";
             // 
             // SubTimeSteps
             // 
@@ -2593,7 +2608,7 @@
             // label26
             // 
             label26.AutoSize = true;
-            label26.Location = new Point(123, 160);
+            label26.Location = new Point(123, 167);
             label26.Name = "label26";
             label26.Size = new Size(68, 20);
             label26.TabIndex = 7;
@@ -2602,7 +2617,7 @@
             // label25
             // 
             label25.AutoSize = true;
-            label25.Location = new Point(200, 183);
+            label25.Location = new Point(200, 190);
             label25.Name = "label25";
             label25.Size = new Size(109, 20);
             label25.TabIndex = 6;
@@ -2611,7 +2626,7 @@
             // label24
             // 
             label24.AutoSize = true;
-            label24.Location = new Point(123, 183);
+            label24.Location = new Point(123, 190);
             label24.Name = "label24";
             label24.Size = new Size(71, 20);
             label24.TabIndex = 5;
@@ -2620,7 +2635,7 @@
             // label23
             // 
             label23.AutoSize = true;
-            label23.Location = new Point(46, 183);
+            label23.Location = new Point(46, 190);
             label23.Name = "label23";
             label23.Size = new Size(50, 20);
             label23.TabIndex = 4;
@@ -2629,7 +2644,7 @@
             // label22
             // 
             label22.AutoSize = true;
-            label22.Location = new Point(13, 209);
+            label22.Location = new Point(13, 216);
             label22.Name = "label22";
             label22.Size = new Size(20, 20);
             label22.TabIndex = 3;
@@ -2638,7 +2653,7 @@
             // Nexp3Reg1
             // 
             Nexp3Reg1.BorderStyle = BorderStyle.FixedSingle;
-            Nexp3Reg1.Location = new Point(213, 206);
+            Nexp3Reg1.Location = new Point(213, 213);
             Nexp3Reg1.Name = "Nexp3Reg1";
             Nexp3Reg1.Size = new Size(83, 27);
             Nexp3Reg1.TabIndex = 2;
@@ -2647,7 +2662,7 @@
             // Nexp2Reg1
             // 
             Nexp2Reg1.BorderStyle = BorderStyle.FixedSingle;
-            Nexp2Reg1.Location = new Point(126, 206);
+            Nexp2Reg1.Location = new Point(126, 213);
             Nexp2Reg1.Name = "Nexp2Reg1";
             Nexp2Reg1.Size = new Size(83, 27);
             Nexp2Reg1.TabIndex = 1;
@@ -2656,7 +2671,7 @@
             // Nexp1Reg1
             // 
             Nexp1Reg1.BorderStyle = BorderStyle.FixedSingle;
-            Nexp1Reg1.Location = new Point(39, 206);
+            Nexp1Reg1.Location = new Point(39, 213);
             Nexp1Reg1.Name = "Nexp1Reg1";
             Nexp1Reg1.Size = new Size(83, 27);
             Nexp1Reg1.TabIndex = 0;
@@ -3490,7 +3505,7 @@
         private Label label33;
         private TextBox ExpParameter2;
         private TextBox ProfileDepth2;
-        private TextBox profileDepth1;
+        private TextBox ProfileDepth1;
         private TextBox ExpParameter1;
         private TextBox RampEndValue;
         private RadioButton ExponentialProfile;
@@ -3625,5 +3640,6 @@
         private TextBox WorkingDirectoryTextBox;
         private ToolStripMenuItem toggleOptionalOutput;
         private ToolStripMenuItem toggleAdvancedSettings;
+        private Label label61;
     }
 }

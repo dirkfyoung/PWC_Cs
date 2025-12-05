@@ -183,7 +183,7 @@ namespace PWC_Cs
 
             col = reader.ReadLine()!.Split(',');
             RampProfile.Checked = Convert.ToBoolean(col[0]);
-            profileDepth1.Text = col[1];
+            ProfileDepth1.Text = col[1];
             ProfileDepth2.Text = col[2];
             RampEndValue.Text = col[3];
 
@@ -492,7 +492,7 @@ namespace PWC_Cs
 
                 WriteCsvLine(sw, Q10.Text);
                 WriteCsvLine(sw, ConstantProfile.Checked);
-                WriteCsvLine(sw, RampProfile.Checked.ToString(), profileDepth1.Text, ProfileDepth2.Text, RampEndValue.Text);
+                WriteCsvLine(sw, RampProfile.Checked.ToString(), ProfileDepth1.Text, ProfileDepth2.Text, RampEndValue.Text);
                 WriteCsvLine(sw, ExponentialProfile.Checked.ToString(), ExpParameter1.Text, ExpParameter2.Text);
 
                 // *********************Process the schemes: Extract info from SchemeInfo **************************
