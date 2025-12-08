@@ -19,6 +19,10 @@ namespace PWC_Cs
 
         private readonly List<SchemeDetails> SchemeInfoList = new List<SchemeDetails>();
         private SchemeDetails? copiedScheme;  //null protection in place in paste routine
+        private TabPage hiddenOptionalOutputTabPage = null;
+        private TabPage hiddenAdvancedTabPage = null;
+
+
 
         public Form1()
         {
@@ -107,6 +111,10 @@ namespace PWC_Cs
             AppTableDisplay.Columns.Add(btnApp);
             AppTableDisplay.Columns["Delete"].FillWeight = 12;
 
+
+            //Hide the optional tab pages
+            hiddenOptionalOutputTabPage = HideTab(tabControl1, OptionalOutputTab, hiddenOptionalOutputTabPage);
+            hiddenAdvancedTabPage = HideTab(tabControl1, AdvancedTab, hiddenAdvancedTabPage);
 
         }
         //**********************************************************************
@@ -222,7 +230,6 @@ namespace PWC_Cs
             }
 
         }
-
 
         private void GetWeatherFileDirectory_Click(object sender, EventArgs e)
         {
@@ -376,8 +383,6 @@ namespace PWC_Cs
             }
         }
 
-
-
         private void DoDegradate1_CheckedChanged(object sender, EventArgs e)
         {
             SetDaughterVisibleStatus(false);
@@ -475,12 +480,6 @@ namespace PWC_Cs
         }
 
 
-
-        private void WorkingDirectory_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void WorkingDirectoryTextBox_MouseEnter(object sender, EventArgs e)
         {
             WorkingDirectoryTextBox.ForeColor = Color.Blue;
@@ -491,15 +490,6 @@ namespace PWC_Cs
             WorkingDirectoryTextBox.ForeColor = Color.Black;
         }
 
-
-
-
-
-
-
-
-        private TabPage hiddenOptionalOutputTabPage = null;
-        private TabPage hiddenAdvancedTabPage = null;
 
         private void toggleOptionalOutput_Click(object sender, EventArgs e)
         {
@@ -524,7 +514,6 @@ namespace PWC_Cs
                 ShowTab(tabControl1, hiddenAdvancedTabPage);
             }
         }
-
 
 
 
