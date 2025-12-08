@@ -11,29 +11,16 @@ namespace PWC_Cs
 {
     public partial class Form1 : Form
     {
-        private bool isValid;
-        private string message;
-
-        private void ResetValidationState()
+        public bool ValidateInputs()
         {
-            isValid = true;
-            message = string.Empty;
-        }
-
-        public void ValidateInputs()
-        {
-            ResetValidationState();
-
-            if(!ValidateChemicalInputs()) return;
-            if(!ValidateSchemeInputs()) return;
-            if(!ValidateOptionalOutput()) return;
-            if(!ValidateAdvanceInputs()) return;
+            if(!ValidateChemicalInputs()) return false;
+            if(!ValidateSchemeInputs()) return false;
+            if(!ValidateOptionalOutput()) return false;
+            if(!ValidateAdvanceInputs()) return false;
+            return true;
         }
         private bool ValidateChemicalInputs()
         {
-            ResetValidationState();
-            
-
             // Validate primary inputs
             if (!ValidateGroup([Sorption1, WaterColMetab1, BenthicMetab1, Photo1, Hydrolysis1, SoilDegradation1, FoliarDeg1, FoliarWashoff1, MWT1, VaporPress1, Sol1, Henry1, AirDiff1, HeatHenry1]))
             {
@@ -136,7 +123,6 @@ namespace PWC_Cs
 
             return true;
         }
-
         private bool ValidateOptionalOutput()
         {
 
@@ -189,7 +175,6 @@ namespace PWC_Cs
             }
             return true;
         }
-
         private bool ValidateAdvanceInputs()
         {
             // Validate default linear isotherm requirements (daughter and granddaughter optional really)
@@ -245,8 +230,7 @@ namespace PWC_Cs
         }
 
 
-
-        private bool ValidateGroup(IEnumerable<TextBox> inputs, string? exception = null)
+        private static bool ValidateGroup(IEnumerable<TextBox> inputs, string? exception = null)
         {
             foreach (var input in inputs)
             {
@@ -254,8 +238,7 @@ namespace PWC_Cs
             }
             return true;
         }
-
-        private bool ValidateReferences(TextBox primary, TextBox reference)
+        private static bool ValidateReferences(TextBox primary, TextBox reference)
         {
             if (!string.IsNullOrEmpty(primary.Text) && !ValidateInput(reference))
             {
@@ -263,8 +246,7 @@ namespace PWC_Cs
             }
             return true;
         }
-
-        private bool ValidateInput(TextBox input, string? exception = null)
+        private static bool ValidateInput(TextBox input, string? exception = null)
         {
             var result = NumberValidator.TestRealNumbers(input.Text, exception);
 
@@ -281,9 +263,6 @@ namespace PWC_Cs
 
             return true;
         }
-
-
-
         private bool HandleValidationResult(ValidationResult result, string context)
         {
             if (!result.IsValid)
@@ -293,12 +272,9 @@ namespace PWC_Cs
             }
             return true;
         }
-
-        private void ShowErrorMessage(string message)
+        private static void ShowErrorMessage(string message)
         {
             MessageBox.Show(message, "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
-
-
 }

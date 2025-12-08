@@ -22,7 +22,7 @@ namespace PWC_Cs
 
     public static class NumberValidator
     {
-        public static ValidationResult TestRealNumbers(string input, string exception = null)
+        public static ValidationResult TestRealNumbers(string input, string? exception = null)
         {
             if (input == exception)
                 return new ValidationResult(true);

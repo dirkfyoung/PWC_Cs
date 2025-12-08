@@ -3,11 +3,12 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using static System.ComponentModel.Design.ObjectSelectorEditor;
 using static System.Net.Mime.MediaTypeNames;
-using static System.Net.WebRequestMethods;
+//using static System.Net.WebRequestMethods;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
@@ -17,7 +18,7 @@ namespace PWC_Cs
     {
 
         private readonly List<SchemeDetails> SchemeInfoList = new List<SchemeDetails>();
-        private SchemeDetails copiedScheme;
+        private SchemeDetails? copiedScheme;  //null protection in place in paste routine
 
         public Form1()
         {
@@ -343,6 +344,14 @@ namespace PWC_Cs
         private void pasteScheme_Click(object sender, EventArgs e)
         {
 
+            // Check if copiedScheme is null
+            if (copiedScheme == null)
+            {
+                MessageBox.Show("No scheme has been copied. Please copy a scheme first.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+
             //find row with checked box
             foreach (DataGridViewRow row in SchemeTableDisplay.Rows)
             {
@@ -540,7 +549,7 @@ namespace PWC_Cs
             }
         }
 
-        private void CalculateButton_Click(object sender, EventArgs e)
+        private async void CalculateButton_Click(object sender, EventArgs e)
         {
 
             //First record the scheme if it was not auto committed by checking or unchecking rows
@@ -563,12 +572,69 @@ namespace PWC_Cs
 
             //Check values for errors
 
-            ValidateInputs();
+            if (!ValidateInputs()) return;
 
+            //Run PRZM-VWM.exe
 
+            await RunExternalProcessAsync();
 
         }
+
+
+        private async Task RunExternalProcessAsync()
+        {
+            // Get the directory path of the currently executing assembly
+            string directoryPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!;
+
+            // Combine the directory path with the executable name
+            string exePath = Path.Combine(directoryPath, "PRZM-VVWM.exe");
+
+
+            ProcessStartInfo startInfo = new ProcessStartInfo
+            {
+                FileName = exePath,
+                Arguments = "przmvvwm.txt",
+                UseShellExecute = false,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true
+            };
+
+            try
+            {
+
+                using Process process = new() 
+                { StartInfo = startInfo };
+                process.Start();
+
+                // Read output and error streams asynchronously
+                string output = await process.StandardOutput.ReadToEndAsync();
+                string error = await process.StandardError.ReadToEndAsync();
+
+                await Task.Run(() => process.WaitForExit());
+
+                // Combine output and error messages
+                string combinedOutput = $"Output:\n{output}\nErrors:\n{error}";
+
+                // Write combined output to a file
+                await File.WriteAllTextAsync("run_status.txt", combinedOutput);
+
+                MessageBox.Show("Process finished with exit code: " + process.ExitCode);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Start proceess error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+
     }
+
+
+
+
+
 
 
 
