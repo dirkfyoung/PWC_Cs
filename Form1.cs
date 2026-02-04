@@ -544,15 +544,15 @@ namespace PWC_Cs
             //First record the scheme if it was not auto committed by checking or unchecking rows
             foreach (DataGridViewRow row in SchemeTableDisplay.Rows)       //Find the checked row
             {
-                    if (Convert.ToBoolean(row.Cells[1].Value))
-                    {
-                        RecordScheme(row.Index);  //this is the checked scheme if there is one
-                    }
+                if (Convert.ToBoolean(row.Cells[1].Value))
+                {
+                    RecordScheme(row.Index);  //this is the checked scheme if there is one
+                }
             }
 
 
             //Check for a working directory
-            if (!Directory.Exists(WorkingDirectoryTextBox.Text)) 
+            if (!Directory.Exists(WorkingDirectoryTextBox.Text))
             {
                 MessageBox.Show("No working directory. Save this work, and a working directory will be created automatically", "Error");
                 return;
@@ -591,7 +591,7 @@ namespace PWC_Cs
             try
             {
 
-                using Process process = new() 
+                using Process process = new()
                 { StartInfo = startInfo };
                 process.Start();
 
@@ -615,9 +615,7 @@ namespace PWC_Cs
             }
         }
 
-
-
-
+     
     }
 
 

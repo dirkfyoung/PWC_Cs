@@ -359,7 +359,7 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 8.12182F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 8.121821F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 23.7396488F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15.9788132F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15.97881F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 6.364873F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15.9788132F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5.7153964F));
@@ -455,10 +455,10 @@
             tableLayoutPanel1.Controls.Add(DoDegradate1, 4, 0);
             tableLayoutPanel1.Controls.Add(Sorption1, 3, 1);
             tableLayoutPanel1.Controls.Add(WaterColMetab1, 3, 2);
-            tableLayoutPanel1.Location = new Point(22, 6);
+            tableLayoutPanel1.Location = new Point(8, 6);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 19;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 5.26040554F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 5.260406F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 5.264098F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 5.264098F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 5.263562F));
