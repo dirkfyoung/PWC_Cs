@@ -450,6 +450,12 @@ namespace PWC_Cs
                 writer.WriteLine(string.Join(",", parts.Select(Safe)) + ",");
             }
 
+            void WriteCsvLineNoTrailComma(StreamWriter writer, params object?[] parts)
+            {
+                //Trailing comma to indicate end of line, especially for Fortran compatibility
+                writer.WriteLine(string.Join(",", parts.Select(Safe)));
+            }
+
 
             //Pass the filepath and filename to the StreamWriter Constructor
             using StreamWriter sw = new(savefilename);
@@ -458,7 +464,7 @@ namespace PWC_Cs
                 WriteCsvLine(sw, "PWC Version 4.0 C#");
                 WriteCsvLine(sw, WorkingDirectoryTextBox.Text);
                 WriteCsvLine(sw, IOFamilyName.Text);
-                WriteCsvLine(sw, WeatherFileDirectory);
+                WriteCsvLineNoTrailComma(sw, WeatherFileDirectory.Text);
                 WriteCsvLine(sw, WaterbodyEvapAdjustment.Text);
                 WriteCsvLine(sw, isKoc.Checked, UseFreundlich.Checked, UseNonequilibrium.Checked, poundToKiloConversion.Checked, IsHydrolysisOverride.Checked);
 

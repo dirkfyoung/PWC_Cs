@@ -578,12 +578,12 @@ namespace PWC_Cs
 
             // Combine the directory path with the executable name
             string exePath = Path.Combine(directoryPath, "PRZM-VVWM.exe");
-
+            MessageBox.Show(exePath);
 
             ProcessStartInfo startInfo = new ProcessStartInfo
             {
                 FileName = exePath,
-                Arguments = "przmvvwm.txt",
+                Arguments = "PWCnew.PW4",
                 UseShellExecute = false,
                 RedirectStandardOutput = true,
                 RedirectStandardError = true

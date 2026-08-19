@@ -8,13 +8,13 @@ Output:
        Washington, DC 20460-0001
        E-mail: young.dirk@epa.gov
  
- Problem with PRZMVVWM input file: 
- przmvvwm.txt                                                                   
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                       
+ working directory is: C:\Users\dyoung03\source\repos\PWC_Cs\test files\PWCc#\,                                                                                                                                                                                                                                                    
+ weather directory is: C:\Users\dyoung03\source\repos\PWC_Cs\test files\Scenarios\                                                                                                                                                                                                                                                 
+ Number of schemes =                      1
+ Doing waterbody: USEPA Pond
+ Doing Scheme No.                      1
+ cpu time, scheme   1   1.40625000000000     
+ End program cpu time    1.40625000000000     
+ Total clock time =    1.57500004768372     
 
 Errors:
