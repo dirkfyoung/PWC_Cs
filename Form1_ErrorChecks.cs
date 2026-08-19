@@ -21,13 +21,21 @@ namespace PWC_Cs
         }
         private bool ValidateChemicalInputs()
         {
-            // Validate primary inputs
-            if (!ValidateGroup([Sorption1, WaterColMetab1, BenthicMetab1, Photo1, Hydrolysis1, SoilDegradation1, FoliarDeg1, FoliarWashoff1, MWT1, VaporPress1, Sol1, Henry1, AirDiff1, HeatHenry1]))
-            {
+            // Required numeric fields
+            if (!ValidateGroup([Sorption1, FoliarWashoff1, MWT1, VaporPress1, Sol1, Henry1]))
                 return false;
-            }
 
-            // Validate references if applicable
+            // Optional numeric fields: blank is allowed, but if filled it must be numeric
+            if (!ValidateOptionalNumeric(WaterColMetab1)) return false;
+            if (!ValidateOptionalNumeric(BenthicMetab1)) return false;
+            if (!ValidateOptionalNumeric(Photo1)) return false;
+            if (!ValidateOptionalNumeric(Hydrolysis1)) return false;
+            if (!ValidateOptionalNumeric(SoilDegradation1)) return false;
+            if (!ValidateOptionalNumeric(FoliarDeg1)) return false;
+            if (!ValidateOptionalNumeric(AirDiff1)) return false;
+            if (!ValidateOptionalNumeric(HeatHenry1)) return false;
+
+            // References only required when the primary field has a value
             if (!ValidateReferences(WaterColMetab1, WaterColRef1)) return false;
             if (!ValidateReferences(BenthicMetab1, BenthicRef1)) return false;
             if (!ValidateReferences(Photo1, PhotoLat1)) return false;
@@ -35,8 +43,20 @@ namespace PWC_Cs
 
             if (DoDegradate1.Checked)
             {
-                if (!ValidateGroup([WaterMolarRatio1, BenthicMolarRatio1, PhotoMolarRatio1, HydroMolarRatio1, SoilMolarRatio1, FoliarMolarRatio1])) return false;
-                if (!ValidateGroup([Sorption2, WaterColMetab2, BenthicMetab2, Photo2, Hydrolysis2, SoilDegradation2, FoliarDeg2, FoliarWashoff2, MWT2, VaporPress2, Sol2, Henry2, AirDiff2, HeatHenry2])) return false;
+                if (!ValidateGroup([WaterMolarRatio1, BenthicMolarRatio1, PhotoMolarRatio1, HydroMolarRatio1, SoilMolarRatio1, FoliarMolarRatio1]))
+                    return false;
+
+                // For daughter values, make the same fields optional where needed
+                if (!ValidateGroup([Sorption2, FoliarWashoff2, MWT2, VaporPress2, Sol2, Henry2, AirDiff2, HeatHenry2]))
+                    return false;
+
+                if (!ValidateOptionalNumeric(WaterColMetab2)) return false;
+                if (!ValidateOptionalNumeric(BenthicMetab2)) return false;
+                if (!ValidateOptionalNumeric(Photo2)) return false;
+                if (!ValidateOptionalNumeric(Hydrolysis2)) return false;
+                if (!ValidateOptionalNumeric(SoilDegradation2)) return false;
+                if (!ValidateOptionalNumeric(FoliarDeg2)) return false;
+
                 if (!ValidateReferences(WaterColMetab2, WaterColRef2)) return false;
                 if (!ValidateReferences(BenthicMetab2, BenthicRef2)) return false;
                 if (!ValidateReferences(Photo2, PhotoLat2)) return false;
@@ -45,13 +65,25 @@ namespace PWC_Cs
 
             if (DoDegradate2.Checked)
             {
-                if (!ValidateGroup(new[] { WaterMolarRatio2, BenthicMolarRatio2, PhotoMolarRatio2, HydroMolarRatio2, SoilMolarRatio2, FoliarMolarRatio2 })) return false;
-                if (!ValidateGroup(new[] { Sorption3, WaterColMetab3, BenthicMetab3, Photo3, Hydrolysis3, SoilDegradation3, FoliarDeg3, FoliarWashoff3, MWT3, VaporPress3, Sol3, Henry3, AirDiff3, HeatHenry3 })) return false;
+                if (!ValidateGroup([WaterMolarRatio2, BenthicMolarRatio2, PhotoMolarRatio2, HydroMolarRatio2, SoilMolarRatio2, FoliarMolarRatio2]))
+                    return false;
+
+                if (!ValidateGroup([Sorption3, FoliarWashoff3, MWT3, VaporPress3, Sol3, Henry3, AirDiff3, HeatHenry3]))
+                    return false;
+
+                if (!ValidateOptionalNumeric(WaterColMetab3)) return false;
+                if (!ValidateOptionalNumeric(BenthicMetab3)) return false;
+                if (!ValidateOptionalNumeric(Photo3)) return false;
+                if (!ValidateOptionalNumeric(Hydrolysis3)) return false;
+                if (!ValidateOptionalNumeric(SoilDegradation3)) return false;
+                if (!ValidateOptionalNumeric(FoliarDeg3)) return false;
+
                 if (!ValidateReferences(WaterColMetab3, WaterColRef3)) return false;
                 if (!ValidateReferences(BenthicMetab3, BenthicRef3)) return false;
                 if (!ValidateReferences(Photo3, PhotoLat3)) return false;
                 if (!ValidateReferences(SoilDegradation3, SoilRef3)) return false;
             }
+
             return true;
         }
 
@@ -220,12 +252,7 @@ namespace PWC_Cs
                 if (!ValidateReferences(SoilDegradation2, SoilRef2)) return false;
             }
 
-            // Validate primary inputs
-            if(!ValidateGroup([Sorption1, WaterColMetab1, BenthicMetab1, Photo1, Hydrolysis1, SoilDegradation1, FoliarDeg1, FoliarWashoff1, MWT1, VaporPress1, Sol1, Henry1, AirDiff1, HeatHenry1])) return false;
-            if(!ValidateReferences(WaterColMetab1, WaterColRef1)) return false;
-            if(!ValidateReferences(BenthicMetab1, BenthicRef1))return false;
-            if(!ValidateReferences(Photo1, PhotoLat1)) return false;
-            if(!ValidateReferences(SoilDegradation1, SoilRef1)) return false;
+ 
             return true;
         }
 
@@ -276,5 +303,36 @@ namespace PWC_Cs
         {
             MessageBox.Show(message, "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+
+        private static bool ValidateOptionalNumeric(TextBox input)
+        {
+     
+            if (string.IsNullOrWhiteSpace(input.Text))
+            {
+                input.BackColor = Color.White;
+                return true;
+            }
+
+            var result = NumberValidator.TestRealNumbers(input.Text);
+
+            if (!result.IsValid)
+            {
+                input.BackColor = Color.Orange;
+                MessageBox.Show($"{result.Message} in {input.Name}", "Input Error");
+                return false;
+            }
+
+            input.BackColor = Color.White;
+            return true;
+        }
+
+
+
+
+
+
+
+
     }
 }
