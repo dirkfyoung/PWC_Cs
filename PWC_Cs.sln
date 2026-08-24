@@ -5,7 +5,9 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PWC_Cs", "PWC_Cs.csproj", "{C8FC4D11-FAD2-42A2-B566-AAC6B9C4AB71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PWC_Cs.Core", "..\PWC_Cs.Core\PWC_Cs.Core.csproj", "{1283A3F3-A487-4E65-A874-95CA7835992D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PWC_Cs.Core", "..\PWC_Cs.Core\PWC_Cs.Core.csproj", "{1283A3F3-A487-4E65-A874-95CA7835992D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PWC_Cs.Web", "..\PWC_Cs.Web\PWC_Cs.Web.csproj", "{5B4EFD36-8C5D-4D2E-90DD-23712610E995}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{1283A3F3-A487-4E65-A874-95CA7835992D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1283A3F3-A487-4E65-A874-95CA7835992D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1283A3F3-A487-4E65-A874-95CA7835992D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B4EFD36-8C5D-4D2E-90DD-23712610E995}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B4EFD36-8C5D-4D2E-90DD-23712610E995}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B4EFD36-8C5D-4D2E-90DD-23712610E995}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B4EFD36-8C5D-4D2E-90DD-23712610E995}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

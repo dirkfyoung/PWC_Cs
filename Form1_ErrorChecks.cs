@@ -6,6 +6,7 @@ using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PWC_Cs.Core;
 
 namespace PWC_Cs
 {
