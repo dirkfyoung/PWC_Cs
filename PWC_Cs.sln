@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PWC_Cs", "PWC_Cs.csproj", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PWC_Cs.Core", "..\PWC_Cs.Core\PWC_Cs.Core.csproj", "{1283A3F3-A487-4E65-A874-95CA7835992D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PWC_Cs.Web", "..\PWC_Cs.Web\PWC_Cs.Web.csproj", "{5B4EFD36-8C5D-4D2E-90DD-23712610E995}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PWC_Cs.Web", "..\PWC_Cs.Web\PWC_Cs.Web.csproj", "{5B4EFD36-8C5D-4D2E-90DD-23712610E995}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
