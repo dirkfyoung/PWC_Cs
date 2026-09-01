@@ -9,24 +9,18 @@
     <DataAnnotationsValidator />
     <ValidationSummary />
 
-    <div class="form-check mb-3">
-        <InputCheckbox class="form-check-input" @bind-Value="_model.UseFreundlich" />
-        <label class="form-check-label">Use Freundlich</label>
-    </div>
-
-    <div class="form-check mb-3">
-        <InputCheckbox class="form-check-input" @bind-Value="_model.UseNonequilibrium" />
-        <label class="form-check-label">Use Nonequilibrium</label>
-    </div>
-
-    <div class="form-check mb-3">
-        <InputCheckbox class="form-check-input" @bind-Value="_model.IsKoc" />
-        <label class="form-check-label">Koc</label>
-    </div>
-
-    <div class="form-check mb-3">
-        <InputCheckbox class="form-check-input" @bind-Value="_model.IsKd" />
-        <label class="form-check-label">Kd</label>
+    <div class="mb-3">
+        <label class="form-label">Sorption Type</label>
+        <InputRadioGroup @bind-Value="_model.SorptionType">
+            <div class="form-check">
+                <InputRadio class="form-check-input" Value="@("Koc")" />
+                <label class="form-check-label">Koc</label>
+            </div>
+            <div class="form-check">
+                <InputRadio class="form-check-input" Value="@("Kd")" />
+                <label class="form-check-label">Kd</label>
+            </div>
+        </InputRadioGroup>
     </div>
 
     <div class="form-check mb-3">
@@ -38,7 +32,6 @@
         <InputCheckbox class="form-check-input" @bind-Value="_model.IsHydrolysisOverride" />
         <label class="form-check-label">Hydrolysis Override</label>
     </div>
-
 
     <div class="mb-3">
         <label class="form-label">Sorption</label>
@@ -152,12 +145,6 @@
         <label class="form-label">Heat Henry</label>
         <InputText class="form-control" @bind-Value="_model.HeatHenry" />
         <ValidationMessage For="@(() => _model.HeatHenry)" />
-    </div>
-
-    <div class="mb-3">
-        <label class="form-label">Q10</label>
-        <InputText class="form-control" @bind-Value="_model.Q10" />
-        <ValidationMessage For="@(() => _model.Q10)" />
     </div>
 
     <button type="submit" class="btn btn-primary">Save</button>

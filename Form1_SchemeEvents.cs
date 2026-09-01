@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PWC_Cs.Core;
-
+using PWC_Cs.Core.Models;
 namespace PWC_Cs
 {
     public partial class Form1 : Form

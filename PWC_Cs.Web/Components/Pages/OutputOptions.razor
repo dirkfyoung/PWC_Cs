@@ -3,8 +3,27 @@
 
 <PageTitle>Output Options</PageTitle>
 
+@using PWC_Cs.Core.Models
 @inject PWC_Cs.Web.Services.ProjectState ProjectState
 
 <h1>Output Options</h1>
 
-<p>This page will contain output settings.</p>
+<div class="form-check mb-2">
+    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.OutputOptions.IncludeSummaryOutput" />
+    <label class="form-check-label">Include Summary Output</label>
+</div>
+
+<div class="form-check mb-2">
+    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.OutputOptions.IncludeDetailedOutput" />
+    <label class="form-check-label">Include Detailed Output</label>
+</div>
+
+<div class="form-check mb-2">
+    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.OutputOptions.IncludeGraphs" />
+    <label class="form-check-label">Include Graphs</label>
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Output Directory</label>
+    <InputText class="form-control" @bind-Value="ProjectState.Current.OutputOptions.OutputDirectory" />
+</div>

@@ -1,7 +1,81 @@
 ﻿@page "/advanced-settings"
+@rendermode InteractiveServer
 
 <PageTitle>Advanced Settings</PageTitle>
 
+@using PWC_Cs.Core.Models
+@inject PWC_Cs.Web.Services.ProjectState ProjectState
+
 <h1>Advanced Settings</h1>
 
-<p>This page will contain advanced and expert-only options.</p>
+<div class="mb-3">
+    <label class="form-label">Q10</label>
+    <InputText class="form-control" @bind-Value="ProjectState.Current.AdvancedSettings.Q10" />
+</div>
+
+<div class="form-check mb-2">
+    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.AdvancedSettings.AdjustCnForSoilMoisture" />
+    <label class="form-check-label">Adjust CN for Soil Moisture</label>
+</div>
+
+<div class="form-check mb-2">
+    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.AdvancedSettings.UseFreundlich" />
+    <label class="form-check-label">Use Freundlich</label>
+</div>
+
+<div class="form-check mb-2">
+    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.AdvancedSettings.UseNonequilibrium" />
+    <label class="form-check-label">Use Nonequilibrium</label>
+</div>
+
+
+<div class="mb-3">
+    <label class="form-label">Sub Time Steps</label>
+    <InputText class="form-control" @bind-Value="ProjectState.Current.AdvancedSettings.SubTimeSteps" />
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Lowest Concentration for Freundlich (mg/L)</label>
+    <InputText class="form-control" @bind-Value="ProjectState.Current.AdvancedSettings.LowestConcentrationForFreundlichMgL" />
+</div>
+
+<hr />
+<h3>Nonequilibrium Matrix</h3>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Parent</th>
+            <th>Daughter</th>
+            <th>Granddaughter</th>
+        </tr>
+    </thead>
+<tbody>
+    <tr>
+        <td>N1</td>
+        <td><InputText class="form-control" @bind-Value="ProjectState.Current.AdvancedSettings.N1Parent" /></td>
+        <td><InputText class="form-control" @bind-Value="ProjectState.Current.AdvancedSettings.N1Daughter" /></td>
+        <td><InputText class="form-control" @bind-Value="ProjectState.Current.AdvancedSettings.N1Granddaughter" /></td>
+    </tr>
+    <tr>
+        <td>Kf2</td>
+        <td><InputText class="form-control" @bind-Value="ProjectState.Current.AdvancedSettings.Kf2Parent" /></td>
+        <td><InputText class="form-control" @bind-Value="ProjectState.Current.AdvancedSettings.Kf2Daughter" /></td>
+        <td><InputText class="form-control" @bind-Value="ProjectState.Current.AdvancedSettings.Kf2Granddaughter" /></td>
+    </tr>
+    <tr>
+        <td>N2</td>
+        <td><InputText class="form-control" @bind-Value="ProjectState.Current.AdvancedSettings.N2Parent" /></td>
+        <td><InputText class="form-control" @bind-Value="ProjectState.Current.AdvancedSettings.N2Daughter" /></td>
+        <td><InputText class="form-control" @bind-Value="ProjectState.Current.AdvancedSettings.N2Granddaughter" /></td>
+    </tr>
+    <tr>
+        <td>Ks (1/d)</td>
+        <td><InputText class="form-control" @bind-Value="ProjectState.Current.AdvancedSettings.KsParent" /></td>
+        <td><InputText class="form-control" @bind-Value="ProjectState.Current.AdvancedSettings.KsDaughter" /></td>
+        <td><InputText class="form-control" @bind-Value="ProjectState.Current.AdvancedSettings.KsGranddaughter" /></td>
+    </tr>
+</tbody>
+</table>
+

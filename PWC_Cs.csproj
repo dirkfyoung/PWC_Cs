@@ -5,11 +5,13 @@
     <TargetFramework>net8.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
-    <ImplicitUsings>enable</ImplicitUsings>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo> 
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PWC_Cs.Core\PWC_Cs.Core.csproj" />
+	  <ProjectReference Include="PWC_Cs.Core\PWC_Cs.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

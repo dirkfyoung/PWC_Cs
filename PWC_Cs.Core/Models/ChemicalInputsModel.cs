@@ -62,12 +62,12 @@ public class ChemicalInputsModel
     public string HeatHenry { get; set; } = string.Empty;
 
     [Required(ErrorMessage = "Q10 is required.")]
-    public string Q10 { get; set; } = string.Empty;
 
-    public bool UseFreundlich { get; set; }
-    public bool UseNonequilibrium { get; set; }
-    public bool IsKoc { get; set; }
-    public bool IsKd { get; set; }
+
+    public string? SorptionType { get; set; }
     public bool PoundToKiloConversion { get; set; }
     public bool IsHydrolysisOverride { get; set; }
+
+    
+
 }

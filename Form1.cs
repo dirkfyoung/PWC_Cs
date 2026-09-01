@@ -11,6 +11,7 @@ using static System.Net.Mime.MediaTypeNames;
 //using static System.Net.WebRequestMethods;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using PWC_Cs.Core;
+using PWC_Cs.Core.Models;
 
 
 namespace PWC_Cs
