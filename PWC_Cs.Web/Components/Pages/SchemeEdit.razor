@@ -1,0 +1,54 @@
+﻿@page "/schemeedit"
+@using PWC_Cs.Core.Models
+
+<h3>Scheme Edit</h3>
+
+<div class="mb-3">
+    <label class="form-label">Scheme Description</label>
+    <input class="form-control" @bind="_scheme.SchemeDescription" />
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Runoff Mitigation</label>
+    <input class="form-control" @bind="_scheme.RunoffMitigation" />
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Erosion Mitigation</label>
+    <input class="form-control" @bind="_scheme.ErosionMitigation" />
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Drift Mitigation</label>
+    <input class="form-control" @bind="_scheme.DriftMitigation" />
+</div>
+
+<button class="btn btn-primary" @onclick="ShowValues">Show Values</button>
+
+@if (!string.IsNullOrWhiteSpace(_message))
+{
+    <div class="alert alert-info mt-3">
+        @_message
+    </div>
+}
+
+@code {
+    private SchemeDetails _scheme = new SchemeDetails
+        {
+            SchemeDescription = "Test Scheme",
+            RunoffMitigation = "1.0",
+            ErosionMitigation = "1.0",
+            DriftMitigation = "1.0"
+        };
+
+    private string? _message;
+
+    private void ShowValues()
+    {
+        _message =
+            $"Description: {_scheme.SchemeDescription}, " +
+            $"Runoff: {_scheme.RunoffMitigation}, " +
+            $"Erosion: {_scheme.ErosionMitigation}, " +
+            $"Drift: {_scheme.DriftMitigation}";
+    }
+}

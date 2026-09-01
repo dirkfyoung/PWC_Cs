@@ -1,0 +1,27 @@
+﻿@page "/"
+
+<PageTitle>Overview</PageTitle>
+
+@inject PWC_Cs.Web.Services.ProjectState ProjectState
+
+<h1>Overview</h1>
+
+<p><strong>Project Name:</strong> @ProjectState.Current.ProjectName</p>
+<p><strong>Run Name:</strong> @ProjectState.Current.RunName</p>
+<p><strong>Number of Schemes:</strong> @ProjectState.Current.Schemes.Count</p>
+
+<hr />
+
+<h3>Sections</h3>
+
+<ul>
+    <li>Chemical Inputs</li>
+    <li>Scheme Inputs</li>
+    <li>Output Options</li>
+    <li>Advanced Settings</li>
+</ul>
+
+<hr />
+
+<h3>Notes</h3>
+<p>Scenario file references are managed inside each scheme.</p>

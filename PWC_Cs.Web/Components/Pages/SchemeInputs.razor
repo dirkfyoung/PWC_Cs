@@ -1,0 +1,287 @@
+﻿@page "/scheme-inputs"
+@rendermode InteractiveServer
+
+<PageTitle>Scheme Inputs</PageTitle>
+
+@inject PWC_Cs.Web.Services.ProjectState ProjectState
+@using PWC_Cs.Core.Models
+
+<h1>Scheme Inputs</h1>
+
+<p>Scheme count: @ProjectState.Current.Schemes.Count</p>
+
+<button type="button" class="btn btn-primary mb-3" @onclick="AddScheme">Add Scheme</button>
+
+@if (ProjectState.Current.Schemes.Count == 0)
+{
+    <p>No schemes have been added yet.</p>
+}
+else
+{
+    <ul>
+        @foreach (var scheme in ProjectState.Current.Schemes)
+        {
+            <li>
+                <button type="button" class="btn btn-link p-0" @onclick="() => SelectScheme(scheme)">
+                    <strong>@scheme.Name</strong> - @scheme.Description
+                </button>
+            </li>
+        }
+    </ul>
+}
+
+
+
+@if (ProjectState.SelectedScheme is not null)
+{
+    <hr />
+    <h3>Edit Selected Scheme</h3>
+
+    <div class="mb-3">
+        <label class="form-label">Scheme Name</label>
+        <InputText class="form-control" @bind-Value="ProjectState.SelectedScheme.Name" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Scheme Description</label>
+        <InputText class="form-control" @bind-Value="ProjectState.SelectedScheme.Description" />
+    </div>
+
+    <button type="button" class="btn btn-secondary mb-3" @onclick="AddRow">Add Row</button>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Day</th>
+                <th>Amount</th>
+                <th>Method</th>
+                <th>Depth</th>
+                <th>Split</th>
+                <th>Drift</th>
+                <th>Drift Buffer</th>
+                <th>Periodicity</th>
+                <th>Lag</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < ProjectState.SelectedScheme.Details.Rows.Count; i++)
+            {
+                var row = ProjectState.SelectedScheme.Details.Rows[i];
+                <tr>
+                    <td>@(i + 1)</td>
+                    <td><InputText class="form-control" @bind-Value="row.Day" /></td>
+                    <td><InputText class="form-control" @bind-Value="row.Amount" /></td>
+                    <td><InputText class="form-control" @bind-Value="row.Method" /></td>
+                    <td><InputText class="form-control" @bind-Value="row.Depth" /></td>
+                    <td><InputText class="form-control" @bind-Value="row.Split" /></td>
+                    <td><InputText class="form-control" @bind-Value="row.Drift" /></td>
+                    <td><InputText class="form-control" @bind-Value="row.DriftBuffer" /></td>
+                    <td><InputText class="form-control" @bind-Value="row.Periodicity" /></td>
+                    <td><InputText class="form-control" @bind-Value="row.Lag" /></td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-danger" @onclick="() => RemoveRow(row)">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <hr />
+    <h3>Scenario File References</h3>
+
+    <div class="mb-3">
+        <label class="form-label">New Scenario File Reference</label>
+        <InputText class="form-control" @bind-Value="_newScenarioReference" />
+    </div>
+
+    <button type="button" class="btn btn-primary mb-3" @onclick="AddScenarioName">Add Scenario File Reference</button>
+
+    @if (ProjectState.SelectedScheme.Details.Scenarios.Count == 0)
+    {
+        <p>No scenario file references have been added yet.</p>
+    }
+    else
+    {
+        <ul>
+            @foreach (var scenario in ProjectState.SelectedScheme.Details.Scenarios)
+            {
+                <li>
+                    @scenario
+                    <button type="button" class="btn btn-sm btn-danger ms-2" @onclick="() => RemoveScenarioName(scenario)">
+                        Remove
+                    </button>
+                </li>
+            }
+        </ul>
+    }
+
+    <hr />
+    <h3>Application Options</h3>
+
+    <div class="form-check mb-2">
+        <InputCheckbox class="form-check-input" @bind-Value="ProjectState.SelectedScheme.Details.AbsoluteDays" />
+        <label class="form-check-label">Absolute Days</label>
+    </div>
+
+    <div class="form-check mb-2">
+        <InputCheckbox class="form-check-input" @bind-Value="ProjectState.SelectedScheme.Details.Emerge" />
+        <label class="form-check-label">Emerge</label>
+    </div>
+
+    <div class="form-check mb-2">
+        <InputCheckbox class="form-check-input" @bind-Value="ProjectState.SelectedScheme.Details.Maturity" />
+        <label class="form-check-label">Maturity</label>
+    </div>
+
+    <div class="form-check mb-2">
+        <InputCheckbox class="form-check-input" @bind-Value="ProjectState.SelectedScheme.Details.Removal" />
+        <label class="form-check-label">Removal</label>
+    </div>
+
+    <div class="form-check mb-3">
+        <InputCheckbox class="form-check-input" @bind-Value="ProjectState.SelectedScheme.Details.UseApplicationWindow" />
+        <label class="form-check-label">Use Application Window</label>
+    </div>
+
+
+    @if (ProjectState.SelectedScheme.Details.UseApplicationWindow)
+    {
+        <div class="mb-3">
+            <label class="form-label">Application Window Span</label>
+            <InputText class="form-control" @bind-Value="ProjectState.SelectedScheme.Details.ApplicationWindowSpan" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Application Window Step</label>
+            <InputText class="form-control" @bind-Value="ProjectState.SelectedScheme.Details.ApplicationWindowStep" />
+        </div>
+    }
+
+    <hr />
+    <h3>Rain Fast Options</h3>
+
+    <div class="form-check mb-3">
+        <InputCheckbox class="form-check-input" @bind-Value="ProjectState.SelectedScheme.Details.UseRainFast" />
+        <label class="form-check-label">Use Rain Fast</label>
+    </div>
+
+    @if (ProjectState.SelectedScheme.Details.UseRainFast)
+    {
+        <div class="mb-3">
+            <label class="form-label">Rain Limit</label>
+            <InputText class="form-control" @bind-Value="ProjectState.SelectedScheme.Details.RainLimit" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Intolerable Rain Window</label>
+            <InputText class="form-control" @bind-Value="ProjectState.SelectedScheme.Details.IntolerableRainWindow" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Optimum Application Window</label>
+            <InputText class="form-control" @bind-Value="ProjectState.SelectedScheme.Details.OptimumApplicationWindow" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Min Days Between Apps</label>
+            <InputText class="form-control" @bind-Value="ProjectState.SelectedScheme.Details.MinDaysBetweenApps" />
+        </div>
+    }
+    <hr />
+    <h3>Batch Scenario File</h3>
+
+    <div class="form-check mb-3">
+        <InputCheckbox class="form-check-input" @bind-Value="ProjectState.SelectedScheme.Details.UseBatchScenarioFile" />
+        <label class="form-check-label">Use Batch Scenario File</label>
+    </div>
+
+    @if (ProjectState.SelectedScheme.Details.UseBatchScenarioFile)
+    {
+        <div class="mb-3">
+            <label class="form-label">Scenario Batch File Name</label>
+            <InputText class="form-control" @bind-Value="ProjectState.SelectedScheme.Details.ScenarioBatchFileName" />
+        </div>
+    }
+
+
+    <hr />
+    <h3>Mitigation Settings</h3>
+
+    <div class="mb-3">
+        <label class="form-label">Runoff Mitigation</label>
+        <InputText class="form-control" @bind-Value="ProjectState.SelectedScheme.Details.RunoffMitigation" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Erosion Mitigation</label>
+        <InputText class="form-control" @bind-Value="ProjectState.SelectedScheme.Details.ErosionMitigation" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Drift Mitigation</label>
+        <InputText class="form-control" @bind-Value="ProjectState.SelectedScheme.Details.DriftMitigation" />
+    </div>
+
+
+}
+
+
+@code {
+    private string? _newScenarioReference;
+
+    private void AddScheme()
+    {
+        ProjectState.AddScheme();
+        StateHasChanged();
+    }
+
+    private void SelectScheme(SchemeModel scheme)
+    {
+        ProjectState.SelectScheme(scheme);
+        StateHasChanged();
+    }
+
+    private void AddRow()
+    {
+        if (ProjectState.SelectedScheme is null)
+            return;
+
+        ProjectState.SelectedScheme.Details.Rows.Add(new SchemeTableRowModel());
+        StateHasChanged();
+    }
+
+    private void RemoveRow(SchemeTableRowModel row)
+    {
+        if (ProjectState.SelectedScheme is null)
+            return;
+
+        ProjectState.SelectedScheme.Details.Rows.Remove(row);
+        StateHasChanged();
+    }
+
+    private void AddScenarioName()
+    {
+        if (ProjectState.SelectedScheme is null)
+            return;
+
+        if (string.IsNullOrWhiteSpace(_newScenarioReference))
+            return;
+
+        ProjectState.SelectedScheme.Details.Scenarios.Add(_newScenarioReference.Trim());
+        _newScenarioReference = string.Empty;
+        StateHasChanged();
+    }
+
+    private void RemoveScenarioName(string scenario)
+    {
+        if (ProjectState.SelectedScheme is null)
+            return;
+
+        ProjectState.SelectedScheme.Details.Scenarios.Remove(scenario);
+        StateHasChanged();
+    }
+}
