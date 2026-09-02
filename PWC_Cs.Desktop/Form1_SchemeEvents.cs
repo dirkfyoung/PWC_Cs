@@ -3,17 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using PWC_Cs.Core;
 using PWC_Cs.Core.Models;
-namespace PWC_Cs
+namespace PWC_Cs.Desktop
 {
     public partial class Form1 : Form
     {
         internal SchemeDetails GetSingleSchemeFromGUI(int schemenumber)
         {
-            // Gets scheme details residing in App and scenario tabs
-            // Need to send in scheme number to get description from scheme table
-
             SchemeDetails singleScheme = new SchemeDetails();
 
             AppTableDisplay.EndEdit();
@@ -26,21 +24,20 @@ namespace PWC_Cs
             {
                 if (AppTableDisplay.Rows[i].IsNewRow) continue;
 
-                singleScheme.Days.Add(AppTableDisplay[0, i].Value?.ToString() ?? "");
-                singleScheme.Amount.Add(AppTableDisplay[1, i].Value?.ToString() ?? "");
+                var row = new SchemeTableRowModel
+                {
+                    Day = AppTableDisplay[0, i].Value?.ToString() ?? "",
+                    Amount = AppTableDisplay[1, i].Value?.ToString() ?? "",
+                    Method = GetMethodCode(AppTableDisplay[2, i].FormattedValue?.ToString()),
+                    Depth = AppTableDisplay[3, i].Value?.ToString() ?? "",
+                    Split = AppTableDisplay[4, i].Value?.ToString() ?? "",
+                    Drift = GetDriftCode(AppTableDisplay[5, i].FormattedValue?.ToString()),
+                    DriftBuffer = AppTableDisplay[6, i].Value?.ToString() ?? "",
+                    Periodicity = AppTableDisplay[7, i].Value?.ToString() ?? "",
+                    Lag = AppTableDisplay[8, i].Value?.ToString() ?? ""
+                };
 
-                singleScheme.Method.Add(GetMethodCode(AppTableDisplay[2, i].FormattedValue?.ToString()));
-
-
-                singleScheme.Depth.Add(AppTableDisplay[3, i].Value?.ToString() ?? "");
-                singleScheme.Split.Add(AppTableDisplay[4, i].Value?.ToString() ?? "");
-
-                singleScheme.Drift.Add(GetDriftCode(AppTableDisplay[5, i].FormattedValue?.ToString()));
-
-
-                singleScheme.DriftBuffer.Add(AppTableDisplay[6, i].Value?.ToString() ?? "");
-                singleScheme.Periodicity.Add(AppTableDisplay[7, i].Value?.ToString() ?? "");
-                singleScheme.Lag.Add(AppTableDisplay[8, i].Value?.ToString() ?? "");
+                singleScheme.Rows.Add(row);
             }
 
             singleScheme.AbsoluteDays = AbsoluteDaysButton.Checked;
@@ -68,6 +65,8 @@ namespace PWC_Cs
 
             return singleScheme;
         }
+
+
 
 
         private void RecordScheme(int schemeNumber)
@@ -200,26 +199,28 @@ namespace PWC_Cs
 
             SchemeTableDisplay.Rows[schemeNumber].Cells[2].Value = SchemeInfoList[schemeNumber].SchemeDescription;
 
-            int numberApps = SchemeInfoList[schemeNumber].Days.Count;
+            int numberApps = SchemeInfoList[schemeNumber].Rows.Count;
             for (int i = 0; i < numberApps; i++)
             {
+                var row = SchemeInfoList[schemeNumber].Rows[i];
+
                 AppTableDisplay.Rows.Add();
 
-                AppTableDisplay.Rows[i].Cells["Days"].Value = SchemeInfoList[schemeNumber].Days[i];
-                AppTableDisplay.Rows[i].Cells[1].Value = SchemeInfoList[schemeNumber].Amount[i];
+                AppTableDisplay.Rows[i].Cells["Days"].Value = row.Day;
+                AppTableDisplay.Rows[i].Cells[1].Value = row.Amount;
 
                 // Application Method combo box
-                AppTableDisplay.Rows[i].Cells[2].Value = GetMethodDisplay(SchemeInfoList[schemeNumber].Method[i]);
+                AppTableDisplay.Rows[i].Cells[2].Value = GetMethodDisplay(row.Method);
 
-                AppTableDisplay.Rows[i].Cells[3].Value = SchemeInfoList[schemeNumber].Depth[i];
-                AppTableDisplay.Rows[i].Cells[4].Value = SchemeInfoList[schemeNumber].Split[i];
+                AppTableDisplay.Rows[i].Cells[3].Value = row.Depth;
+                AppTableDisplay.Rows[i].Cells[4].Value = row.Split;
 
                 // Drift Type combo box
-                AppTableDisplay.Rows[i].Cells[5].Value = GetDriftDisplay(SchemeInfoList[schemeNumber].Drift[i]);
+                AppTableDisplay.Rows[i].Cells[5].Value = GetDriftDisplay(row.Drift);
 
-                AppTableDisplay.Rows[i].Cells[6].Value = SchemeInfoList[schemeNumber].DriftBuffer[i];
-                AppTableDisplay.Rows[i].Cells[7].Value = SchemeInfoList[schemeNumber].Periodicity[i];
-                AppTableDisplay.Rows[i].Cells[8].Value = SchemeInfoList[schemeNumber].Lag[i];
+                AppTableDisplay.Rows[i].Cells[6].Value = row.DriftBuffer;
+                AppTableDisplay.Rows[i].Cells[7].Value = row.Periodicity;
+                AppTableDisplay.Rows[i].Cells[8].Value = row.Lag;
             }
 
             AbsoluteDaysButton.Checked = SchemeInfoList[schemeNumber].AbsoluteDays;

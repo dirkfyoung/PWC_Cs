@@ -1,4 +1,4 @@
-﻿namespace PWC_Cs
+﻿namespace PWC_Cs.Desktop
 {
     partial class Form1
     {

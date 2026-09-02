@@ -14,7 +14,7 @@ using PWC_Cs.Core;
 using PWC_Cs.Core.Models;
 
 
-namespace PWC_Cs
+namespace PWC_Cs.Desktop
 {
     public partial class Form1 : Form
     {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PWC_Cs.Core;
 using PWC_Cs.Core.Models;
-namespace PWC_Cs
+namespace PWC_Cs.Desktop
 {
     public partial class Form1 : Form
     {
@@ -113,7 +113,7 @@ namespace PWC_Cs
                 }
 
                 // Application Table Information
-                int actualRowsInAppTable = applicationTable.Days.Count;
+                int actualRowsInAppTable = applicationTable.Rows.Count;
                 if (actualRowsInAppTable < 1)
                 {
                     ShowErrorMessage($"There are no pesticide applications for scheme number {i + 1}");
@@ -124,9 +124,11 @@ namespace PWC_Cs
 
                 for (int j = 0; j < actualRowsInAppTable; j++)
                 {
+                    var row = applicationTable.Rows[j];
+
                     if (applicationTable.AbsoluteDays)
                     {
-                        if (!DateTime.TryParseExact(applicationTable.Days[j], formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out _))
+                        if (!DateTime.TryParseExact(row.Day, formats, CultureInfo.InvariantCulture, DateTimeStyles.None, out _))
                         {
                             ShowErrorMessage($"Absolute Application date is not in the right format for Scheme {i + 1}, Row {j + 1}");
                             return false;
@@ -134,23 +136,23 @@ namespace PWC_Cs
                     }
                     else
                     {
-                        if (!HandleValidationResult(NumberValidator.TestActualIntegers(applicationTable.Days[j]), $"for Scheme {i + 1}, Row {j + 1}")) return false;
+                        if (!HandleValidationResult(NumberValidator.TestActualIntegers(row.Day), $"for Scheme {i + 1}, Row {j + 1}")) return false;
                     }
 
-                    if (!HandleValidationResult(NumberValidator.TestRealNumbers(applicationTable.Amount[j]), $"Application Amount for Scheme {i + 1}, Row {j + 1}")) return false;
-                    if (!HandleValidationResult(NumberValidator.TestRealNumbers(applicationTable.Depth[j]), $"Application Depth for Scheme {i + 1}, Row {j + 1}")) return false;
-                    if (!HandleValidationResult(NumberValidator.TestRealNumbers(applicationTable.Split[j]), $"Split Value for Scheme {i + 1}, Row {j + 1}")) return false;
-                    if (!HandleValidationResult(NumberValidator.TestRealNumbers(applicationTable.Drift[j]), "Drift Value")) return false;
-                    if (!HandleValidationResult(NumberValidator.TestRealNumbers(applicationTable.DriftBuffer[j]), "Buffer Distance")) return false;
-                    if (!HandleValidationResult(NumberValidator.TestRealNumbers(applicationTable.Periodicity[j]), "Application Period")) return false;
+                    if (!HandleValidationResult(NumberValidator.TestRealNumbers(row.Amount), $"Application Amount for Scheme {i + 1}, Row {j + 1}")) return false;
+                    if (!HandleValidationResult(NumberValidator.TestRealNumbers(row.Depth), $"Application Depth for Scheme {i + 1}, Row {j + 1}")) return false;
+                    if (!HandleValidationResult(NumberValidator.TestRealNumbers(row.Split), $"Split Value for Scheme {i + 1}, Row {j + 1}")) return false;
+                    if (!HandleValidationResult(NumberValidator.TestRealNumbers(row.Drift), "Drift Value")) return false;
+                    if (!HandleValidationResult(NumberValidator.TestRealNumbers(row.DriftBuffer), "Buffer Distance")) return false;
+                    if (!HandleValidationResult(NumberValidator.TestRealNumbers(row.Periodicity), "Application Period")) return false;
 
-                    if (double.TryParse(applicationTable.Periodicity[j], out double periodicity) && periodicity < 1)
+                    if (double.TryParse(row.Periodicity, out double periodicity) && periodicity < 1)
                     {
                         ShowErrorMessage("Periodicity in Application Table must be 1 or greater");
                         return false;
                     }
 
-                    if (!HandleValidationResult(NumberValidator.TestRealNumbers(applicationTable.Lag[j]), "Application Lag")) return false;
+                    if (!HandleValidationResult(NumberValidator.TestRealNumbers(row.Lag), "Application Lag")) return false;
                 }
             }
 

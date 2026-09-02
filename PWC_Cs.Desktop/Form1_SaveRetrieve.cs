@@ -13,7 +13,7 @@ using PWC_Cs.Core.Models;
 
 
 
-namespace PWC_Cs
+namespace PWC_Cs.Desktop
 {
     public partial class Form1 : Form
     {
@@ -240,17 +240,21 @@ namespace PWC_Cs
 
                     col = line.Split(',');
 
-                    SingleScheme.Days.Add(col.Length > 0 ? col[0].Trim() : "");
-                    SingleScheme.Amount.Add(col.Length > 1 ? col[1].Trim() : "");
-                    SingleScheme.Method.Add(col.Length > 2 ? col[2].Trim() : "");
-                    SingleScheme.Depth.Add(col.Length > 3 ? col[3].Trim() : "");
-                    SingleScheme.Split.Add(col.Length > 4 ? col[4].Trim() : "");
-                    SingleScheme.Drift.Add(col.Length > 5 ? col[5].Trim() : "");
-                    SingleScheme.DriftBuffer.Add(col.Length > 6 ? col[6].Trim() : "");
-                    SingleScheme.Periodicity.Add(col.Length > 7 ? col[7].Trim() : "");
-                    SingleScheme.Lag.Add(col.Length > 8 ? col[8].Trim() : "");
-                }
+                    var row = new SchemeTableRowModel
+                    {
+                        Day = col.Length > 0 ? col[0].Trim() : "",
+                        Amount = col.Length > 1 ? col[1].Trim() : "",
+                        Method = col.Length > 2 ? col[2].Trim() : "",
+                        Depth = col.Length > 3 ? col[3].Trim() : "",
+                        Split = col.Length > 4 ? col[4].Trim() : "",
+                        Drift = col.Length > 5 ? col[5].Trim() : "",
+                        DriftBuffer = col.Length > 6 ? col[6].Trim() : "",
+                        Periodicity = col.Length > 7 ? col[7].Trim() : "",
+                        Lag = col.Length > 8 ? col[8].Trim() : ""
+                    };
 
+                    SingleScheme.Rows.Add(row);
+                }
                 col = reader.ReadLine()!.Split(',');                 //Application Window
                 SingleScheme.UseApplicationWindow = Convert.ToBoolean(col[0]);
                 SingleScheme.ApplicationWindowSpan = col[1];
@@ -532,24 +536,25 @@ namespace PWC_Cs
                     WriteCsvLine(sw, referencedate);
 
 
-                    WriteCsvLine(sw, SchemeInfoList[i].Days.Count);
+                    WriteCsvLine(sw, SchemeInfoList[i].Rows.Count);
 
                     //Go through the apps
-                    for (int j = 0; j < SchemeInfoList[i].Days.Count; j++)
+                    for (int j = 0; j < SchemeInfoList[i].Rows.Count; j++)
                     {
-                        sw.WriteLine(string.Join(",",
-                            SchemeInfoList[i].Days[j],
-                            SchemeInfoList[i].Amount[j],
-                            SchemeInfoList[i].Method[j],
-                            SchemeInfoList[i].Depth[j],
-                            SchemeInfoList[i].Split[j],
-                            SchemeInfoList[i].Drift[j],
-                            SchemeInfoList[i].DriftBuffer[j],
-                            SchemeInfoList[i].Periodicity[j],
-                            SchemeInfoList[i].Lag[j]
-                            ));
-                    }
+                        var row = SchemeInfoList[i].Rows[j];
 
+                        sw.WriteLine(string.Join(",",
+                            row.Day,
+                            row.Amount,
+                            row.Method,
+                            row.Depth,
+                            row.Split,
+                            row.Drift,
+                            row.DriftBuffer,
+                            row.Periodicity,
+                            row.Lag
+                        ));
+                    }
                     WriteCsvLine(sw, SchemeInfoList[i].UseApplicationWindow, SchemeInfoList[i].ApplicationWindowSpan, SchemeInfoList[i].ApplicationWindowStep);
                     WriteCsvLine(sw, SchemeInfoList[i].UseRainFast, SchemeInfoList[i].RainLimit, SchemeInfoList[i].IntolerableRainWindow, SchemeInfoList[i].OptimumApplicationWindow, SchemeInfoList[i].MinDaysBetweenApps);
                     WriteCsvLine(sw, SchemeInfoList[i].Scenarios.Count);  //number of scenarios
@@ -687,7 +692,7 @@ namespace PWC_Cs
                         writer.Write($"{referencedate},");
 
                         // Application Table Information
-                        actualRowsInAppTable = SchemeInfoList[i].Days.Count;
+                        actualRowsInAppTable = SchemeInfoList[i].Rows.Count;
                         writer.Write($"{actualRowsInAppTable},");
 
                         // Maximum of 10 applications for a scheme dump
@@ -698,10 +703,11 @@ namespace PWC_Cs
 
                         for (int j = 0; j < actualRowsInAppTable; j++)
                         {
-                            writer.Write($"{SchemeInfoList[i].Days[j]},{SchemeInfoList[i].Amount[j]},{SchemeInfoList[i].Method[j]},{SchemeInfoList[i].Depth[j]},{SchemeInfoList[i].Split[j]},");
-                            writer.Write($"{SchemeInfoList[i].Drift[j]},{SchemeInfoList[i].DriftBuffer[j]},{SchemeInfoList[i].Periodicity[j]},{SchemeInfoList[i].Lag[j]},");
-                        }
+                            var row = SchemeInfoList[i].Rows[j];
 
+                            writer.Write($"{row.Day},{row.Amount},{row.Method},{row.Depth},{row.Split},");
+                            writer.Write($"{row.Drift},{row.DriftBuffer},{row.Periodicity},{row.Lag},");
+                        }
                         if (actualRowsInAppTable < 10)
                         {
                             for (int j = 0; j < (10 - actualRowsInAppTable); j++)

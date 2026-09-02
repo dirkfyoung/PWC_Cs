@@ -79,3 +79,76 @@
 </tbody>
 </table>
 
+<div class="mb-3">
+    <label class="form-label">Waterbody Evaporation Coefficient</label>
+    <InputText class="form-control" @bind-Value="ProjectState.Current.AdvancedSettings.WaterbodyEvaporationCoefficient" />
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Degradation Type</label>
+    <InputRadioGroup @bind-Value="ProjectState.Current.AdvancedSettings.DegradationType">
+        <div class="form-check">
+            <InputRadio class="form-check-input" Value="@("Total Degradation")" />
+            <label class="form-check-label">Total Degradation</label>
+        </div>
+
+        <div class="form-check">
+            <InputRadio class="form-check-input" Value="@("Aqueous-Only Degradation")" />
+            <label class="form-check-label">Aqueous-Only Degradation</label>
+        </div>
+    </InputRadioGroup>
+</div>
+
+
+<hr />
+<h3>Subsurface Degradation Profile</h3>
+
+<div class="mb-3">
+    <InputRadioGroup @bind-Value="ProjectState.Current.AdvancedSettings.SubsurfaceDegradationProfile">
+        <div class="form-check">
+            <InputRadio class="form-check-input" Value="@("Constant")" />
+            <label class="form-check-label">Constant</label>
+        </div>
+
+        <div class="form-check">
+            <InputRadio class="form-check-input" Value="@("Ramp")" />
+            <label class="form-check-label">Ramp</label>
+        </div>
+
+        <div class="form-check">
+            <InputRadio class="form-check-input" Value="@("Exponential")" />
+            <label class="form-check-label">Exponential</label>
+        </div>
+    </InputRadioGroup>
+</div>
+
+@if (ProjectState.Current.AdvancedSettings.SubsurfaceDegradationProfile == "Ramp")
+{
+    <div class="mb-3">
+        <label class="form-label">1st plateau (cm)</label>
+        <InputText class="form-control" @bind-Value="ProjectState.Current.AdvancedSettings.RampFirstPlateauCm" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">2nd Plateau (cm)</label>
+        <InputText class="form-control" @bind-Value="ProjectState.Current.AdvancedSettings.RampSecondPlateauCm" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">2nd Plateau Value (fraction)</label>
+        <InputText class="form-control" @bind-Value="ProjectState.Current.AdvancedSettings.RampSecondPlateauValueFraction" />
+    </div>
+}
+
+@if (ProjectState.Current.AdvancedSettings.SubsurfaceDegradationProfile == "Exponential")
+{
+    <div class="mb-3">
+        <label class="form-label">Exponent</label>
+        <InputText class="form-control" @bind-Value="ProjectState.Current.AdvancedSettings.ExponentialExponent" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Asymptote (fraction)</label>
+        <InputText class="form-control" @bind-Value="ProjectState.Current.AdvancedSettings.ExponentialAsymptoteFraction" />
+    </div>
+}

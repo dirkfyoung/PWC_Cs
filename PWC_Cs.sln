@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PWC_Cs", "PWC_Cs.csproj", "{C8FC4D11-FAD2-42A2-B566-AAC6B9C4AB71}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PWC_Cs.Core", "PWC_Cs.Core\PWC_Cs.Core.csproj", "{A9801E31-12DE-4CE5-BF51-29DCADE6D89A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PWC_Cs.Web", "PWC_Cs.Web\PWC_Cs.Web.csproj", "{F7BC3470-001C-4DB1-8FC0-F17A4CF1B740}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PWC_Cs.Desktop", "PWC_Cs.Desktop\PWC_Cs.Desktop.csproj", "{0D099BBE-7665-46A9-9337-220BEECF605E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C8FC4D11-FAD2-42A2-B566-AAC6B9C4AB71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C8FC4D11-FAD2-42A2-B566-AAC6B9C4AB71}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C8FC4D11-FAD2-42A2-B566-AAC6B9C4AB71}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A9801E31-12DE-4CE5-BF51-29DCADE6D89A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A9801E31-12DE-4CE5-BF51-29DCADE6D89A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9801E31-12DE-4CE5-BF51-29DCADE6D89A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -26,6 +23,10 @@ Global
 		{F7BC3470-001C-4DB1-8FC0-F17A4CF1B740}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7BC3470-001C-4DB1-8FC0-F17A4CF1B740}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7BC3470-001C-4DB1-8FC0-F17A4CF1B740}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D099BBE-7665-46A9-9337-220BEECF605E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D099BBE-7665-46A9-9337-220BEECF605E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D099BBE-7665-46A9-9337-220BEECF605E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D099BBE-7665-46A9-9337-220BEECF605E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

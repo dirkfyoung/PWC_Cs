@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace PWC_Cs
+namespace PWC_Cs.Desktop
 {
 
     public static class FileNames

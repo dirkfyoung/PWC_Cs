@@ -22,7 +22,16 @@ public class AdvancedSettingsModel
     public string? KsDaughter { get; set; }
     public string? KsGranddaughter { get; set; }
 
+    public string? WaterbodyEvaporationCoefficient { get; set; } = "1.0";
 
+    public string? DegradationType { get; set; } = "Total Degradation";
+    public string? SubsurfaceDegradationProfile { get; set; } = "Ramp";
 
+    public string? RampFirstPlateauCm { get; set; } = "10.0";
+    public string? RampSecondPlateauCm { get; set; } = "200";
+    public string? RampSecondPlateauValueFraction { get; set; } = "0.0";
+
+    public string? ExponentialExponent { get; set; }
+    public string? ExponentialAsymptoteFraction { get; set; }
 
 }
