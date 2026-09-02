@@ -9,21 +9,191 @@
 <h1>Output Options</h1>
 
 <div class="form-check mb-2">
-    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.OutputOptions.IncludeSummaryOutput" />
-    <label class="form-check-label">Include Summary Output</label>
+    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.OutputOptions.OutputRunoff" />
+    <label class="form-check-label">Output Runoff</label>
 </div>
 
 <div class="form-check mb-2">
-    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.OutputOptions.IncludeDetailedOutput" />
-    <label class="form-check-label">Include Detailed Output</label>
+    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.OutputOptions.OutputErosion" />
+    <label class="form-check-label">Output Erosion</label>
 </div>
 
 <div class="form-check mb-2">
-    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.OutputOptions.IncludeGraphs" />
-    <label class="form-check-label">Include Graphs</label>
+    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.OutputOptions.OutputPestRunoff" />
+    <label class="form-check-label">Output Pest Runoff</label>
+</div>
+
+<div class="form-check mb-2">
+    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.OutputOptions.OutputPestErosion" />
+    <label class="form-check-label">Output Pest Erosion</label>
+</div>
+
+<div class="form-check mb-2">
+    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.OutputOptions.OutputConcLastLayer" />
+    <label class="form-check-label">Output Concentration Last Layer</label>
+</div>
+
+<div class="form-check mb-2">
+    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.OutputOptions.OutputDailyFieldVolatilization" />
+    <label class="form-check-label">Output Daily Field Volatilization</label>
+</div>
+
+<div class="form-check mb-2">
+    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.OutputOptions.OutputDailyPestLeached" />
+    <label class="form-check-label">Output Daily Pest Leached</label>
 </div>
 
 <div class="mb-3">
-    <label class="form-label">Output Directory</label>
-    <InputText class="form-control" @bind-Value="ProjectState.Current.OutputOptions.OutputDirectory" />
+    <label class="form-label">Chem Infiltration Depth</label>
+    <InputText class="form-control" @bind-Value="ProjectState.Current.OutputOptions.ChemInfiltrationDepth" />
 </div>
+
+<div class="form-check mb-2">
+    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.OutputOptions.OutputDecayedPest" />
+    <label class="form-check-label">Output Decayed Pest</label>
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Decay Depth 1</label>
+    <InputText class="form-control" @bind-Value="ProjectState.Current.OutputOptions.OutputDecayDepth1" />
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Decay Depth 2</label>
+    <InputText class="form-control" @bind-Value="ProjectState.Current.OutputOptions.OutputDecayDepth2" />
+</div>
+
+<div class="form-check mb-2">
+    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.OutputOptions.OutputMassInSoilProfile" />
+    <label class="form-check-label">Output Mass In Soil Profile</label>
+</div>
+
+<div class="form-check mb-2">
+    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.OutputOptions.OutputMassSoilSpecific" />
+    <label class="form-check-label">Output Mass Soil Specific</label>
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Mass Depth 1</label>
+    <InputText class="form-control" @bind-Value="ProjectState.Current.OutputOptions.OutputMassDepth1" />
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Mass Depth 2</label>
+    <InputText class="form-control" @bind-Value="ProjectState.Current.OutputOptions.OutputMassDepth2" />
+</div>
+
+<div class="form-check mb-2">
+    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.OutputOptions.OutputMassOnFoliage" />
+    <label class="form-check-label">Output Mass On Foliage</label>
+</div>
+
+<div class="form-check mb-2">
+    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.OutputOptions.OutputPrecipitation" />
+    <label class="form-check-label">Output Precipitation</label>
+</div>
+
+<div class="form-check mb-2">
+    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.OutputOptions.OutputActualEvap" />
+    <label class="form-check-label">Output Actual Evap</label>
+</div>
+
+<div class="form-check mb-2">
+    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.OutputOptions.OutputTotalSoilWater" />
+    <label class="form-check-label">Output Total Soil Water</label>
+</div>
+
+<div class="form-check mb-2">
+    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.OutputOptions.OutputIrrigation" />
+    <label class="form-check-label">Output Irrigation</label>
+</div>
+
+<div class="form-check mb-2">
+    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.OutputOptions.OutputInfiltrationAtDepth" />
+    <label class="form-check-label">Output Infiltration At Depth</label>
+</div>
+
+<div class="mb-3">
+    <label class="form-label">Infiltration Depth</label>
+    <InputText class="form-control" @bind-Value="ProjectState.Current.OutputOptions.OutputInfiltrationDepth" />
+</div>
+
+<div class="form-check mb-2">
+    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.OutputOptions.OutputInfiltratedWaterLastLayer" />
+    <label class="form-check-label">Output Infiltrated Water Last Layer</label>
+</div>
+
+<div class="form-check mb-2">
+    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.OutputOptions.OutputWaterConc" />
+    <label class="form-check-label">Output Water Conc</label>
+</div>
+
+<div class="form-check mb-2">
+    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.OutputOptions.OutputSpraydrift" />
+    <label class="form-check-label">Output Spraydrift</label>
+</div>
+
+<div class="form-check mb-2">
+    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.OutputOptions.OutputGwBtc" />
+    <label class="form-check-label">Output GW BTC</label>
+</div>
+
+<div class="form-check mb-2">
+    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.OutputOptions.CalculateEoF" />
+    <label class="form-check-label">Calculate EoF</label>
+</div>
+
+<hr />
+<h3>Additional Output Rows</h3>
+
+<button type="button" class="btn btn-primary mb-3" @onclick="AddAdditionalOutputRow">Add Row</button>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Chem</th>
+            <th>Mode</th>
+            <th>Arg 1</th>
+            <th>Arg 2</th>
+            <th>Multiplier</th>
+            <th>Remove</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < ProjectState.Current.OutputOptions.AdditionalOutputRows.Count; i++)
+        {
+            var row = ProjectState.Current.OutputOptions.AdditionalOutputRows[i];
+            <tr>
+                <td><InputText class="form-control" @bind-Value="row.Item" /></td>
+                <td><InputText class="form-control" @bind-Value="row.Chem" /></td>
+                <td><InputText class="form-control" @bind-Value="row.Mode" /></td>
+                <td><InputText class="form-control" @bind-Value="row.Arg1" /></td>
+                <td><InputText class="form-control" @bind-Value="row.Arg2" /></td>
+                <td><InputText class="form-control" @bind-Value="row.Multiplier" /></td>
+                <td>
+                    <button type="button" class="btn btn-sm btn-danger" @onclick="() => RemoveAdditionalOutputRow(row)">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+@code {
+    private void AddAdditionalOutputRow()
+    {
+        ProjectState.Current.OutputOptions.AdditionalOutputRows.Add(new AdditionalOutputRowModel());
+        StateHasChanged();
+    }
+
+    private void RemoveAdditionalOutputRow(AdditionalOutputRowModel row)
+    {
+        ProjectState.Current.OutputOptions.AdditionalOutputRows.Remove(row);
+        StateHasChanged();
+    }
+}

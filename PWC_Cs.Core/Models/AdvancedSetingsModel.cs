@@ -34,4 +34,6 @@ public class AdvancedSettingsModel
     public string? ExponentialExponent { get; set; }
     public string? ExponentialAsymptoteFraction { get; set; }
 
+    public bool IsHydrolysisOverride { get; set; } = true;
+
 }

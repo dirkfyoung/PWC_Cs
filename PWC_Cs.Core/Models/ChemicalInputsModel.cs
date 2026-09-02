@@ -66,7 +66,7 @@ public class ChemicalInputsModel
 
     public string? SorptionType { get; set; }
     public bool PoundToKiloConversion { get; set; }
-    public bool IsHydrolysisOverride { get; set; }
+
 
     
 
