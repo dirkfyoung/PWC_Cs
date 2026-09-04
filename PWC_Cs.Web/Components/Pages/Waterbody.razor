@@ -1,0 +1,47 @@
+﻿@page "/waterbody"
+@rendermode InteractiveServer
+
+<PageTitle>Waterbody</PageTitle>
+
+@using PWC_Cs.Core.Models
+@inject PWC_Cs.Web.Services.ProjectState ProjectState
+
+<h1>Waterbody</h1>
+
+<div class="form-check mb-2">
+    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.Waterbody.UseEpaReservoir" />
+    <label class="form-check-label">USEPA Reservoir</label>
+</div>
+
+<div class="form-check mb-2">
+    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.Waterbody.UseEpaPond" />
+    <label class="form-check-label">USEPA Pond</label>
+</div>
+
+<div class="form-check mb-2">
+    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.Waterbody.UseEpaTpezWpez" />
+    <label class="form-check-label">USEPA TPEZ &amp; WPEZ</label>
+</div>
+
+<div class="form-check mb-2">
+    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.Waterbody.UseSprayBuffersForTpez" />
+    <label class="form-check-label">Use Spray Buffers for TPEZ</label>
+</div>
+
+<hr />
+
+<h3>Special Waterbodies</h3>
+
+@if (ProjectState.Current.Waterbody.SpecialWaterbodies.Count == 0)
+{
+    <p>No special waterbodies added yet.</p>
+}
+else
+{
+    <ul>
+        @foreach (var item in ProjectState.Current.Waterbody.SpecialWaterbodies)
+        {
+            <li>@item</li>
+        }
+    </ul>
+}

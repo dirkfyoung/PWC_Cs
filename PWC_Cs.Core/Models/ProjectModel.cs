@@ -9,4 +9,5 @@ public class ProjectModel
     public List<SchemeModel> Schemes { get; set; } = new();
     public OutputOptionsModel OutputOptions { get; set; } = new();
     public AdvancedSettingsModel AdvancedSettings { get; set; } = new();
+    public WaterbodyModel Waterbody { get; set; } = new();
 }

@@ -13,8 +13,8 @@ Output:
  Number of schemes =                      1
  Doing waterbody: USEPA Pond
  Doing Scheme No.                      1
- cpu time, scheme   1   1.40625000000000     
- End program cpu time    1.40625000000000     
- Total clock time =    1.57500004768372     
+ cpu time, scheme   1   13.5312500000000     
+ End program cpu time    13.5312500000000     
+ Total clock time =    14.0729999542236     
 
 Errors:
