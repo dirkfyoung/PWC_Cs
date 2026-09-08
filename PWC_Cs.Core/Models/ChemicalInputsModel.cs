@@ -4,8 +4,12 @@ namespace PWC_Cs.Core.Models;
 
 public class ChemicalInputsModel
 {
+    public string? ChemicalLevel { get; set; } = "Parent";
+
     [Required(ErrorMessage = "Sorption is required.")]
-    public string Sorption { get; set; } = string.Empty;
+    public string? SorptionParent { get; set; }
+    public string? SorptionDaughter { get; set; }
+    public string? SorptionGranddaughter { get; set; }
 
     [Required(ErrorMessage = "Water Column Halflife is required.")]
     public string WaterColumnHalflife { get; set; } = string.Empty;
@@ -65,7 +69,7 @@ public class ChemicalInputsModel
 
 
     public string? SorptionType { get; set; }
-    public bool PoundToKiloConversion { get; set; }
+ 
 
 
     

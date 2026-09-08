@@ -23,7 +23,7 @@
     <label class="form-check-label">USEPA TPEZ &amp; WPEZ</label>
 </div>
 
-<div class="form-check mb-2">
+<div class="form-check mb-3">
     <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.Waterbody.UseSprayBuffersForTpez" />
     <label class="form-check-label">Use Spray Buffers for TPEZ</label>
 </div>
@@ -31,6 +31,15 @@
 <hr />
 
 <h3>Special Waterbodies</h3>
+
+<div class="mb-3">
+    <label class="form-label">New Special Waterbody</label>
+    <InputText class="form-control" @bind-Value="_newSpecialWaterbody" />
+</div>
+
+<button type="button" class="btn btn-primary mb-3" @onclick="AddSpecialWaterbody">
+    Add Special Waterbody
+</button>
 
 @if (ProjectState.Current.Waterbody.SpecialWaterbodies.Count == 0)
 {
@@ -41,7 +50,30 @@ else
     <ul>
         @foreach (var item in ProjectState.Current.Waterbody.SpecialWaterbodies)
         {
-            <li>@item</li>
+            <li>
+                @item
+                <button type="button" class="btn btn-sm btn-danger ms-2" @onclick="() => RemoveSpecialWaterbody(item)">
+                    Remove
+                </button>
+            </li>
         }
     </ul>
+}
+
+@code {
+    private string? _newSpecialWaterbody;
+
+    private void AddSpecialWaterbody()
+    {
+        if (string.IsNullOrWhiteSpace(_newSpecialWaterbody))
+            return;
+
+        ProjectState.Current.Waterbody.SpecialWaterbodies.Add(_newSpecialWaterbody.Trim());
+        _newSpecialWaterbody = string.Empty;
+    }
+
+    private void RemoveSpecialWaterbody(string item)
+    {
+        ProjectState.Current.Waterbody.SpecialWaterbodies.Remove(item);
+    }
 }

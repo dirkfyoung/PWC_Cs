@@ -8,6 +8,11 @@
 
 <h1>Scheme Inputs</h1>
 
+<div class="form-check mb-3">
+    <InputCheckbox class="form-check-input" @bind-Value="ProjectState.Current.PoundToKiloConversion" />
+    <label class="form-check-label">Pound to Kilo Conversion</label>
+</div>
+
 <p>Scheme count: @ProjectState.Current.Schemes.Count</p>
 
 <button type="button" class="btn btn-primary mb-3" @onclick="AddScheme">Add Scheme</button>
@@ -36,6 +41,8 @@ else
 {
     <hr />
     <h3>Edit Selected Scheme</h3>
+
+
 
     <div class="mb-3">
         <label class="form-label">Scheme Name</label>

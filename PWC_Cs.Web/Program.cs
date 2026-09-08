@@ -9,6 +9,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 builder.Services.AddScoped<ProjectState>();
+builder.Services.AddScoped<ProjectFileService>();
 
 var app = builder.Build();
 

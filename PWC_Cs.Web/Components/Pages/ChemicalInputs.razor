@@ -3,147 +3,172 @@
 @using PWC_Cs.Core.Models
 @using System.ComponentModel.DataAnnotations
 
+@inject PWC_Cs.Web.Services.ProjectState ProjectState
+
 <h3>Chemical Inputs</h3>
 
-<EditForm Model="_model" FormName="ChemicalInputsForm" OnValidSubmit="HandleValidSubmit">
+<EditForm Model="ProjectState.Current.ChemicalInputs" FormName="ChemicalInputsForm" OnValidSubmit="HandleValidSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
 
     <div class="mb-3">
-        <label class="form-label">Sorption Type</label>
-        <InputRadioGroup @bind-Value="_model.SorptionType">
-            <div class="form-check">
-                <InputRadio class="form-check-input" Value="@("Koc")" />
-                <label class="form-check-label">Koc</label>
-            </div>
-            <div class="form-check">
-                <InputRadio class="form-check-input" Value="@("Kd")" />
-                <label class="form-check-label">Kd</label>
-            </div>
+        <label class="form-label d-block">Chemical Level</label>
+
+        <InputRadioGroup @bind-Value="ProjectState.Current.ChemicalInputs.ChemicalLevel" class="d-flex flex-row gap-3 align-items-center">
+            <label class="form-check form-check-inline m-0">
+                <InputRadio class="form-check-input" Value="@("Parent")" />
+                <span class="form-check-label">Parent</span>
+            </label>
+
+            <label class="form-check form-check-inline m-0">
+                <InputRadio class="form-check-input" Value="@("Daughter")" />
+                <span class="form-check-label">Daughter</span>
+            </label>
+
+            <label class="form-check form-check-inline m-0">
+                <InputRadio class="form-check-input" Value="@("Granddaughter")" />
+                <span class="form-check-label">Granddaughter</span>
+            </label>
         </InputRadioGroup>
     </div>
 
-    <div class="form-check mb-3">
-        <InputCheckbox class="form-check-input" @bind-Value="_model.PoundToKiloConversion" />
-        <label class="form-check-label">Pound to Kilo Conversion</label>
-    </div>
+    @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Parent" ||
+         ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
+         ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+    {
+        <div class="mb-3">
+            <label class="form-label">Sorption Parent</label>
+            <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.SorptionParent" />
+        </div>
+    }
 
+    @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
+         ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+    {
+        <div class="mb-3">
+            <label class="form-label">Sorption Daughter</label>
+            <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.SorptionDaughter" />
+        </div>
+    }
 
-    <div class="mb-3">
-        <label class="form-label">Sorption</label>
-        <InputText class="form-control" @bind-Value="_model.Sorption" />
-        <ValidationMessage For="@(() => _model.Sorption)" />
-    </div>
+    @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+    {
+        <div class="mb-3">
+            <label class="form-label">Sorption Granddaughter</label>
+            <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.SorptionGranddaughter" />
+        </div>
+    }
+
 
     <div class="mb-3">
         <label class="form-label">Water Column Halflife</label>
-        <InputText class="form-control" @bind-Value="_model.WaterColumnHalflife" />
-        <ValidationMessage For="@(() => _model.WaterColumnHalflife)" />
+        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.WaterColumnHalflife" />
+        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.WaterColumnHalflife)" />
     </div>
 
     <div class="mb-3">
         <label class="form-label">Water Reference Temperature</label>
-        <InputText class="form-control" @bind-Value="_model.WaterReferenceTemperature" />
-        <ValidationMessage For="@(() => _model.WaterReferenceTemperature)" />
+        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.WaterReferenceTemperature" />
+        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.WaterReferenceTemperature)" />
     </div>
 
     <div class="mb-3">
         <label class="form-label">Benthic Halflife</label>
-        <InputText class="form-control" @bind-Value="_model.BenthicHalflife" />
-        <ValidationMessage For="@(() => _model.BenthicHalflife)" />
+        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.BenthicHalflife" />
+        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.BenthicHalflife)" />
     </div>
 
     <div class="mb-3">
         <label class="form-label">Benthic Reference Temperature</label>
-        <InputText class="form-control" @bind-Value="_model.BenthicReferenceTemperature" />
-        <ValidationMessage For="@(() => _model.BenthicReferenceTemperature)" />
+        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.BenthicReferenceTemperature" />
+        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.BenthicReferenceTemperature)" />
     </div>
 
     <div class="mb-3">
         <label class="form-label">Photo Halflife</label>
-        <InputText class="form-control" @bind-Value="_model.PhotoHalflife" />
-        <ValidationMessage For="@(() => _model.PhotoHalflife)" />
+        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.PhotoHalflife" />
+        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.PhotoHalflife)" />
     </div>
 
     <div class="mb-3">
         <label class="form-label">Photo Reference Temperature</label>
-        <InputText class="form-control" @bind-Value="_model.PhotoReferenceTemperature" />
-        <ValidationMessage For="@(() => _model.PhotoReferenceTemperature)" />
+        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.PhotoReferenceTemperature" />
+        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.PhotoReferenceTemperature)" />
     </div>
 
     <div class="mb-3">
         <label class="form-label">Hydrolysis Halflife</label>
-        <InputText class="form-control" @bind-Value="_model.HydrolysisHalflife" />
-        <ValidationMessage For="@(() => _model.HydrolysisHalflife)" />
+        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.HydrolysisHalflife" />
+        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.HydrolysisHalflife)" />
     </div>
 
     <div class="mb-3">
         <label class="form-label">Hydrolysis Reference Temperature</label>
-        <InputText class="form-control" @bind-Value="_model.HydrolysisReferenceTemperature" />
-        <ValidationMessage For="@(() => _model.HydrolysisReferenceTemperature)" />
+        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.HydrolysisReferenceTemperature" />
+        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.HydrolysisReferenceTemperature)" />
     </div>
 
     <div class="mb-3">
         <label class="form-label">Soil Halflife</label>
-        <InputText class="form-control" @bind-Value="_model.SoilHalflife" />
-        <ValidationMessage For="@(() => _model.SoilHalflife)" />
+        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.SoilHalflife" />
+        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.SoilHalflife)" />
     </div>
 
     <div class="mb-3">
         <label class="form-label">Soil Reference Temperature</label>
-        <InputText class="form-control" @bind-Value="_model.SoilReferenceTemperature" />
-        <ValidationMessage For="@(() => _model.SoilReferenceTemperature)" />
+        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.SoilReferenceTemperature" />
+        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.SoilReferenceTemperature)" />
     </div>
 
     <div class="mb-3">
         <label class="form-label">Foliar Halflife</label>
-        <InputText class="form-control" @bind-Value="_model.FoliarHalflife" />
-        <ValidationMessage For="@(() => _model.FoliarHalflife)" />
+        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.FoliarHalflife" />
+        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.FoliarHalflife)" />
     </div>
 
     <div class="mb-3">
         <label class="form-label">Foliar Washoff</label>
-        <InputText class="form-control" @bind-Value="_model.FoliarWashoff" />
-        <ValidationMessage For="@(() => _model.FoliarWashoff)" />
+        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.FoliarWashoff" />
+        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.FoliarWashoff)" />
     </div>
 
     <div class="mb-3">
         <label class="form-label">MWT</label>
-        <InputText class="form-control" @bind-Value="_model.MWT" />
-        <ValidationMessage For="@(() => _model.MWT)" />
+        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.MWT" />
+        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.MWT)" />
     </div>
 
     <div class="mb-3">
         <label class="form-label">Vapor Pressure</label>
-        <InputText class="form-control" @bind-Value="_model.VaporPressure" />
-        <ValidationMessage For="@(() => _model.VaporPressure)" />
+        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.VaporPressure" />
+        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.VaporPressure)" />
     </div>
 
     <div class="mb-3">
         <label class="form-label">Solubility</label>
-        <InputText class="form-control" @bind-Value="_model.Solubility" />
-        <ValidationMessage For="@(() => _model.Solubility)" />
+        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.Solubility" />
+        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.Solubility)" />
     </div>
 
     <div class="mb-3">
         <label class="form-label">Henry</label>
-        <InputText class="form-control" @bind-Value="_model.Henry" />
-        <ValidationMessage For="@(() => _model.Henry)" />
+        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.Henry" />
+        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.Henry)" />
     </div>
 
     <div class="mb-3">
         <label class="form-label">Air Diffusion</label>
-        <InputText class="form-control" @bind-Value="_model.AirDiffusion" />
-        <ValidationMessage For="@(() => _model.AirDiffusion)" />
+        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.AirDiffusion" />
+        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.AirDiffusion)" />
     </div>
 
     <div class="mb-3">
         <label class="form-label">Heat Henry</label>
-        <InputText class="form-control" @bind-Value="_model.HeatHenry" />
-        <ValidationMessage For="@(() => _model.HeatHenry)" />
+        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.HeatHenry" />
+        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.HeatHenry)" />
     </div>
 
-    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="submit" class="btn btn-primary">Check Values</button>
 </EditForm>
 
 @if (!string.IsNullOrWhiteSpace(_message))
@@ -152,7 +177,6 @@
 }
 
 @code {
-    private ChemicalInputsModel _model = new();
     private string? _message;
 
     private void HandleValidSubmit()

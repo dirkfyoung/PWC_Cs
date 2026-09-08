@@ -1,8 +1,13 @@
 ﻿@page "/"
-
+@rendermode InteractiveServer
 <PageTitle>Overview</PageTitle>
 
-@inject PWC_Cs.Web.Services.ProjectState ProjectState
+@using System.IO
+@using PWC_Cs.Web.Services
+@using PWC_Cs.Core.Models
+
+@inject ProjectState ProjectState
+@inject ProjectFileService FileService
 
 <h1>Overview</h1>
 
@@ -17,6 +22,7 @@
 <ul>
     <li>Chemical Inputs</li>
     <li>Scheme Inputs</li>
+    <li>Waterbody</li>
     <li>Output Options</li>
     <li>Advanced Settings</li>
 </ul>
@@ -25,3 +31,59 @@
 
 <h3>Notes</h3>
 <p>Scenario file references are managed inside each scheme.</p>
+
+<hr />
+
+<h3>Save / Load</h3>
+
+<div class="mb-3">
+    <label class="form-label">File Path</label>
+    <InputText class="form-control" @bind-Value="_filePath" />
+</div>
+
+<button type="button" class="btn btn-primary me-2" @onclick="SaveProject">
+    Save Project
+</button>
+
+<button type="button" class="btn btn-secondary" @onclick="LoadProject">
+    Load Project
+</button>
+
+@if (!string.IsNullOrWhiteSpace(_message))
+{
+    <div class="alert alert-info mt-3">@_message</div>
+}
+
+@code {
+    private string _filePath = Path.Combine(
+        Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+        "PWC_project",
+        "PWC_Project.json");
+
+    private string? _message;
+
+    private async Task SaveProject()
+    {
+        try
+        {
+            await FileService.SaveAsync(ProjectState.Current, _filePath);
+            _message = $"Project saved to {_filePath}";
+        }
+        catch (Exception ex)
+        {
+            _message = $"Save failed: {ex.Message}";
+        }
+        StateHasChanged();
+    }
+
+
+
+
+
+
+    private async Task LoadProject()
+    {
+        ProjectState.Load(await FileService.LoadAsync(_filePath));
+        _message = $"Project loaded from {_filePath}";
+    }
+}

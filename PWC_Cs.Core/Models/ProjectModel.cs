@@ -4,6 +4,7 @@ public class ProjectModel
 {
     public string? ProjectName { get; set; }
     public string? RunName { get; set; }
+    public bool PoundToKiloConversion { get; set; }
 
     public ChemicalInputsModel ChemicalInputs { get; set; } = new();
     public List<SchemeModel> Schemes { get; set; } = new();
