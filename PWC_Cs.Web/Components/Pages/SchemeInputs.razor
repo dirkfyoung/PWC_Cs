@@ -1,6 +1,6 @@
 ﻿@page "/scheme-inputs"
 @rendermode InteractiveServer
-
+@implements IDisposable
 <PageTitle>Scheme Inputs</PageTitle>
 
 @inject PWC_Cs.Web.Services.ProjectState ProjectState
@@ -291,4 +291,20 @@ else
         ProjectState.SelectedScheme.Details.Scenarios.Remove(scenario);
         StateHasChanged();
     }
+
+    protected override void OnInitialized()
+    {
+        ProjectState.OnChange += OnProjectStateChanged;
+    }
+
+    private async void OnProjectStateChanged()
+    {
+        await InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        ProjectState.OnChange -= OnProjectStateChanged;
+    }
+
 }

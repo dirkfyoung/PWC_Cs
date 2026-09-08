@@ -1,5 +1,6 @@
 ﻿@page "/"
 @rendermode InteractiveServer
+@implements IDisposable
 <PageTitle>Overview</PageTitle>
 
 @using System.IO
@@ -62,6 +63,10 @@
 
     private string? _message;
 
+
+
+
+
     private async Task SaveProject()
     {
         try
@@ -79,11 +84,27 @@
 
 
 
-
-
     private async Task LoadProject()
     {
         ProjectState.Load(await FileService.LoadAsync(_filePath));
         _message = $"Project loaded from {_filePath}";
     }
+
+
+    protected override void OnInitialized()
+    {
+        ProjectState.OnChange += OnProjectStateChanged;
+    }
+
+    private async void OnProjectStateChanged()
+    {
+        await InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        ProjectState.OnChange -= OnProjectStateChanged;
+    }
+
+
 }

@@ -1,77 +1,84 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace PWC_Cs.Core.Models;
+﻿namespace PWC_Cs.Core.Models;
 
 public class ChemicalInputsModel
 {
     public string? ChemicalLevel { get; set; } = "Parent";
 
-    [Required(ErrorMessage = "Sorption is required.")]
+    public string? SorptionType { get; set; }
+
     public string? SorptionParent { get; set; }
     public string? SorptionDaughter { get; set; }
     public string? SorptionGranddaughter { get; set; }
 
-    [Required(ErrorMessage = "Water Column Halflife is required.")]
-    public string WaterColumnHalflife { get; set; } = string.Empty;
+    public string? WaterColumnHalflifeParent { get; set; }
+    public string? WaterColumnHalflifeDaughter { get; set; }
+    public string? WaterColumnHalflifeGranddaughter { get; set; }
 
-    [Required(ErrorMessage = "Water Reference Temperature is required.")]
-    public string WaterReferenceTemperature { get; set; } = string.Empty;
+    public string? WaterReferenceTemperatureParent { get; set; }
+    public string? WaterReferenceTemperatureDaughter { get; set; }
+    public string? WaterReferenceTemperatureGranddaughter { get; set; }
 
-    [Required(ErrorMessage = "Benthic Halflife is required.")]
-    public string BenthicHalflife { get; set; } = string.Empty;
+    public string? BenthicHalflifeParent { get; set; }
+    public string? BenthicHalflifeDaughter { get; set; }
+    public string? BenthicHalflifeGranddaughter { get; set; }
 
-    [Required(ErrorMessage = "Benthic Reference Temperature is required.")]
-    public string BenthicReferenceTemperature { get; set; } = string.Empty;
+    public string? BenthicReferenceTemperatureParent { get; set; }
+    public string? BenthicReferenceTemperatureDaughter { get; set; }
+    public string? BenthicReferenceTemperatureGranddaughter { get; set; }
 
-    [Required(ErrorMessage = "Photo Halflife is required.")]
-    public string PhotoHalflife { get; set; } = string.Empty;
+    public string? PhotoHalflifeParent { get; set; }
+    public string? PhotoHalflifeDaughter { get; set; }
+    public string? PhotoHalflifeGranddaughter { get; set; }
 
-    [Required(ErrorMessage = "Photo Reference Temperature is required.")]
-    public string PhotoReferenceTemperature { get; set; } = string.Empty;
+    public string? PhotoReferenceTemperatureParent { get; set; }
+    public string? PhotoReferenceTemperatureDaughter { get; set; }
+    public string? PhotoReferenceTemperatureGranddaughter { get; set; }
 
-    [Required(ErrorMessage = "Hydrolysis Halflife is required.")]
-    public string HydrolysisHalflife { get; set; } = string.Empty;
+    public string? HydrolysisHalflifeParent { get; set; }
+    public string? HydrolysisHalflifeDaughter { get; set; }
+    public string? HydrolysisHalflifeGranddaughter { get; set; }
 
-    [Required(ErrorMessage = "Hydrolysis Reference Temperature is required.")]
-    public string HydrolysisReferenceTemperature { get; set; } = string.Empty;
+    public string? HydrolysisReferenceTemperatureParent { get; set; }
+    public string? HydrolysisReferenceTemperatureDaughter { get; set; }
+    public string? HydrolysisReferenceTemperatureGranddaughter { get; set; }
 
-    [Required(ErrorMessage = "Soil Halflife is required.")]
-    public string SoilHalflife { get; set; } = string.Empty;
+    public string? SoilHalflifeParent { get; set; }
+    public string? SoilHalflifeDaughter { get; set; }
+    public string? SoilHalflifeGranddaughter { get; set; }
 
-    [Required(ErrorMessage = "Soil Reference Temperature is required.")]
-    public string SoilReferenceTemperature { get; set; } = string.Empty;
+    public string? SoilReferenceTemperatureParent { get; set; }
+    public string? SoilReferenceTemperatureDaughter { get; set; }
+    public string? SoilReferenceTemperatureGranddaughter { get; set; }
 
-    [Required(ErrorMessage = "Foliar Halflife is required.")]
-    public string FoliarHalflife { get; set; } = string.Empty;
+    public string? FoliarHalflifeParent { get; set; }
+    public string? FoliarHalflifeDaughter { get; set; }
+    public string? FoliarHalflifeGranddaughter { get; set; }
 
-    [Required(ErrorMessage = "Foliar Washoff is required.")]
-    public string FoliarWashoff { get; set; } = string.Empty;
+    public string? FoliarWashoffParent { get; set; }
+    public string? FoliarWashoffDaughter { get; set; }
+    public string? FoliarWashoffGranddaughter { get; set; }
 
-    [Required(ErrorMessage = "MWT is required.")]
-    public string MWT { get; set; } = string.Empty;
+    public string? MWTParent { get; set; }
+    public string? MWTDaughter { get; set; }
+    public string? MWTGranddaughter { get; set; }
 
-    [Required(ErrorMessage = "Vapor Pressure is required.")]
-    public string VaporPressure { get; set; } = string.Empty;
+    public string? VaporPressureParent { get; set; }
+    public string? VaporPressureDaughter { get; set; }
+    public string? VaporPressureGranddaughter { get; set; }
 
-    [Required(ErrorMessage = "Solubility is required.")]
-    public string Solubility { get; set; } = string.Empty;
+    public string? SolubilityParent { get; set; }
+    public string? SolubilityDaughter { get; set; }
+    public string? SolubilityGranddaughter { get; set; }
 
-    [Required(ErrorMessage = "Henry is required.")]
-    public string Henry { get; set; } = string.Empty;
+    public string? HenryParent { get; set; }
+    public string? HenryDaughter { get; set; }
+    public string? HenryGranddaughter { get; set; }
 
-    [Required(ErrorMessage = "Air Diffusion is required.")]
-    public string AirDiffusion { get; set; } = string.Empty;
+    public string? AirDiffusionParent { get; set; }
+    public string? AirDiffusionDaughter { get; set; }
+    public string? AirDiffusionGranddaughter { get; set; }
 
-    [Required(ErrorMessage = "Heat Henry is required.")]
-    public string HeatHenry { get; set; } = string.Empty;
-
-    [Required(ErrorMessage = "Q10 is required.")]
-
-
-    public string? SorptionType { get; set; }
- 
-
-
-    
-
+    public string? HeatHenryParent { get; set; }
+    public string? HeatHenryDaughter { get; set; }
+    public string? HeatHenryGranddaughter { get; set; }
 }

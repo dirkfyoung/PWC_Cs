@@ -1,6 +1,6 @@
 ﻿@page "/output-options"
 @rendermode InteractiveServer
-
+@implements IDisposable
 <PageTitle>Output Options</PageTitle>
 
 @using PWC_Cs.Core.Models
@@ -196,4 +196,21 @@
         ProjectState.Current.OutputOptions.AdditionalOutputRows.Remove(row);
         StateHasChanged();
     }
+
+    protected override void OnInitialized()
+    {
+        ProjectState.OnChange += OnProjectStateChanged;
+    }
+
+    private async void OnProjectStateChanged()
+    {
+        await InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        ProjectState.OnChange -= OnProjectStateChanged;
+    }
+
+
 }

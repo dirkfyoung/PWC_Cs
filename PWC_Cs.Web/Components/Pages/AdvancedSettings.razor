@@ -1,6 +1,6 @@
 ﻿@page "/advanced-settings"
 @rendermode InteractiveServer
-
+@implements IDisposable
 <PageTitle>Advanced Settings</PageTitle>
 
 @using PWC_Cs.Core.Models
@@ -158,4 +158,18 @@
         <label class="form-label">Asymptote (fraction)</label>
         <InputText class="form-control" @bind-Value="ProjectState.Current.AdvancedSettings.ExponentialAsymptoteFraction" />
     </div>
+}
+
+
+
+@code {
+    protected override void OnInitialized()
+    {
+        ProjectState.OnChange += StateHasChanged;
+    }
+    
+    public void Dispose()
+    {
+        ProjectState.OnChange -= StateHasChanged;
+    }
 }

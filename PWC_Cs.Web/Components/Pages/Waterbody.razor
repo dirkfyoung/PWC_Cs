@@ -1,6 +1,6 @@
 ﻿@page "/waterbody"
 @rendermode InteractiveServer
-
+@implements IDisposable
 <PageTitle>Waterbody</PageTitle>
 
 @using PWC_Cs.Core.Models
@@ -76,4 +76,21 @@ else
     {
         ProjectState.Current.Waterbody.SpecialWaterbodies.Remove(item);
     }
+
+    protected override void OnInitialized()
+    {
+        ProjectState.OnChange += OnProjectStateChanged;
+    }
+
+    private async void OnProjectStateChanged()
+    {
+        await InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        ProjectState.OnChange -= OnProjectStateChanged;
+    }
+
+
 }

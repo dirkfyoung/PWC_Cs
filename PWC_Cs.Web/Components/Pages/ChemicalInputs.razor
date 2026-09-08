@@ -1,5 +1,6 @@
 ﻿@page "/chemical-inputs"
 @rendermode InteractiveServer
+@implements IDisposable
 @using PWC_Cs.Core.Models
 @using System.ComponentModel.DataAnnotations
 
@@ -32,140 +33,475 @@
         </InputRadioGroup>
     </div>
 
-    @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Parent" ||
-         ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
-         ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
-    {
-        <div class="mb-3">
+    <div class="mb-3">
+        <label class="form-label">Sorption Type</label>
+        <InputRadioGroup @bind-Value="ProjectState.Current.ChemicalInputs.SorptionType" class="d-flex flex-row gap-3 align-items-center">
+            <label class="form-check form-check-inline m-0">
+                <InputRadio class="form-check-input" Value="@("Koc")" />
+                <span class="form-check-label">Koc</span>
+            </label>
+
+            <label class="form-check form-check-inline m-0">
+                <InputRadio class="form-check-input" Value="@("Kd")" />
+                <span class="form-check-label">Kd</span>
+            </label>
+        </InputRadioGroup>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-4">
             <label class="form-label">Sorption Parent</label>
             <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.SorptionParent" />
         </div>
-    }
 
-    @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
-         ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
-    {
-        <div class="mb-3">
-            <label class="form-label">Sorption Daughter</label>
-            <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.SorptionDaughter" />
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
+        ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Sorption Daughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.SorptionDaughter" />
+            </div>
+        }
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Sorption Granddaughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.SorptionGranddaughter" />
+            </div>
+        }
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-label">Water Column Halflife Parent</label>
+            <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.WaterColumnHalflifeParent" />
         </div>
-    }
 
-    @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
-    {
-        <div class="mb-3">
-            <label class="form-label">Sorption Granddaughter</label>
-            <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.SorptionGranddaughter" />
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
+        ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Water Column Halflife Daughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.WaterColumnHalflifeDaughter" />
+            </div>
+        }
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Water Column Halflife Granddaughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.WaterColumnHalflifeGranddaughter" />
+            </div>
+        }
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-label">Water Reference Temperature Parent</label>
+            <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.WaterReferenceTemperatureParent" />
         </div>
-    }
 
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
+        ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Water Reference Temperature Daughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.WaterReferenceTemperatureDaughter" />
+            </div>
+        }
 
-    <div class="mb-3">
-        <label class="form-label">Water Column Halflife</label>
-        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.WaterColumnHalflife" />
-        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.WaterColumnHalflife)" />
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Water Reference Temperature Granddaughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.WaterReferenceTemperatureGranddaughter" />
+            </div>
+        }
     </div>
 
-    <div class="mb-3">
-        <label class="form-label">Water Reference Temperature</label>
-        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.WaterReferenceTemperature" />
-        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.WaterReferenceTemperature)" />
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-label">Benthic Halflife Parent</label>
+            <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.BenthicHalflifeParent" />
+        </div>
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
+        ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Benthic Halflife Daughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.BenthicHalflifeDaughter" />
+            </div>
+        }
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Benthic Halflife Granddaughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.BenthicHalflifeGranddaughter" />
+            </div>
+        }
     </div>
 
-    <div class="mb-3">
-        <label class="form-label">Benthic Halflife</label>
-        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.BenthicHalflife" />
-        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.BenthicHalflife)" />
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-label">Benthic Reference Temperature Parent</label>
+            <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.BenthicReferenceTemperatureParent" />
+        </div>
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
+        ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Benthic Reference Temperature Daughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.BenthicReferenceTemperatureDaughter" />
+            </div>
+        }
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Benthic Reference Temperature Granddaughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.BenthicReferenceTemperatureGranddaughter" />
+            </div>
+        }
     </div>
 
-    <div class="mb-3">
-        <label class="form-label">Benthic Reference Temperature</label>
-        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.BenthicReferenceTemperature" />
-        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.BenthicReferenceTemperature)" />
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-label">Photo Halflife Parent</label>
+            <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.PhotoHalflifeParent" />
+        </div>
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
+        ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Photo Halflife Daughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.PhotoHalflifeDaughter" />
+            </div>
+        }
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Photo Halflife Granddaughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.PhotoHalflifeGranddaughter" />
+            </div>
+        }
     </div>
 
-    <div class="mb-3">
-        <label class="form-label">Photo Halflife</label>
-        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.PhotoHalflife" />
-        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.PhotoHalflife)" />
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-label">Photo Reference Temperature Parent</label>
+            <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.PhotoReferenceTemperatureParent" />
+        </div>
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
+        ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Photo Reference Temperature Daughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.PhotoReferenceTemperatureDaughter" />
+            </div>
+        }
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Photo Reference Temperature Granddaughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.PhotoReferenceTemperatureGranddaughter" />
+            </div>
+        }
     </div>
 
-    <div class="mb-3">
-        <label class="form-label">Photo Reference Temperature</label>
-        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.PhotoReferenceTemperature" />
-        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.PhotoReferenceTemperature)" />
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-label">Hydrolysis Halflife Parent</label>
+            <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.HydrolysisHalflifeParent" />
+        </div>
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
+        ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Hydrolysis Halflife Daughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.HydrolysisHalflifeDaughter" />
+            </div>
+        }
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Hydrolysis Halflife Granddaughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.HydrolysisHalflifeGranddaughter" />
+            </div>
+        }
     </div>
 
-    <div class="mb-3">
-        <label class="form-label">Hydrolysis Halflife</label>
-        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.HydrolysisHalflife" />
-        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.HydrolysisHalflife)" />
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-label">Hydrolysis Reference Temperature Parent</label>
+            <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.HydrolysisReferenceTemperatureParent" />
+        </div>
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
+        ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Hydrolysis Reference Temperature Daughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.HydrolysisReferenceTemperatureDaughter" />
+            </div>
+        }
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Hydrolysis Reference Temperature Granddaughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.HydrolysisReferenceTemperatureGranddaughter" />
+            </div>
+        }
     </div>
 
-    <div class="mb-3">
-        <label class="form-label">Hydrolysis Reference Temperature</label>
-        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.HydrolysisReferenceTemperature" />
-        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.HydrolysisReferenceTemperature)" />
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-label">Soil Halflife Parent</label>
+            <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.SoilHalflifeParent" />
+        </div>
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
+        ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Soil Halflife Daughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.SoilHalflifeDaughter" />
+            </div>
+        }
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Soil Halflife Granddaughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.SoilHalflifeGranddaughter" />
+            </div>
+        }
     </div>
 
-    <div class="mb-3">
-        <label class="form-label">Soil Halflife</label>
-        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.SoilHalflife" />
-        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.SoilHalflife)" />
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-label">Soil Reference Temperature Parent</label>
+            <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.SoilReferenceTemperatureParent" />
+        </div>
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
+        ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Soil Reference Temperature Daughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.SoilReferenceTemperatureDaughter" />
+            </div>
+        }
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Soil Reference Temperature Granddaughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.SoilReferenceTemperatureGranddaughter" />
+            </div>
+        }
     </div>
 
-    <div class="mb-3">
-        <label class="form-label">Soil Reference Temperature</label>
-        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.SoilReferenceTemperature" />
-        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.SoilReferenceTemperature)" />
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-label">Foliar Halflife Parent</label>
+            <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.FoliarHalflifeParent" />
+        </div>
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
+        ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Foliar Halflife Daughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.FoliarHalflifeDaughter" />
+            </div>
+        }
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Foliar Halflife Granddaughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.FoliarHalflifeGranddaughter" />
+            </div>
+        }
     </div>
 
-    <div class="mb-3">
-        <label class="form-label">Foliar Halflife</label>
-        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.FoliarHalflife" />
-        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.FoliarHalflife)" />
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-label">Foliar Washoff Parent</label>
+            <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.FoliarWashoffParent" />
+        </div>
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
+        ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Foliar Washoff Daughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.FoliarWashoffDaughter" />
+            </div>
+        }
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Foliar Washoff Granddaughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.FoliarWashoffGranddaughter" />
+            </div>
+        }
     </div>
 
-    <div class="mb-3">
-        <label class="form-label">Foliar Washoff</label>
-        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.FoliarWashoff" />
-        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.FoliarWashoff)" />
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-label">MWT Parent</label>
+            <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.MWTParent" />
+        </div>
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
+        ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">MWT Daughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.MWTDaughter" />
+            </div>
+        }
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">MWT Granddaughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.MWTGranddaughter" />
+            </div>
+        }
     </div>
 
-    <div class="mb-3">
-        <label class="form-label">MWT</label>
-        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.MWT" />
-        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.MWT)" />
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-label">Vapor Pressure Parent</label>
+            <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.VaporPressureParent" />
+        </div>
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
+        ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Vapor Pressure Daughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.VaporPressureDaughter" />
+            </div>
+        }
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Vapor Pressure Granddaughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.VaporPressureGranddaughter" />
+            </div>
+        }
     </div>
 
-    <div class="mb-3">
-        <label class="form-label">Vapor Pressure</label>
-        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.VaporPressure" />
-        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.VaporPressure)" />
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-label">Solubility Parent</label>
+            <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.SolubilityParent" />
+        </div>
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
+        ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Solubility Daughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.SolubilityDaughter" />
+            </div>
+        }
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Solubility Granddaughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.SolubilityGranddaughter" />
+            </div>
+        }
     </div>
 
-    <div class="mb-3">
-        <label class="form-label">Solubility</label>
-        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.Solubility" />
-        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.Solubility)" />
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-label">Henry Parent</label>
+            <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.HenryParent" />
+        </div>
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
+        ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Henry Daughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.HenryDaughter" />
+            </div>
+        }
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Henry Granddaughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.HenryGranddaughter" />
+            </div>
+        }
     </div>
 
-    <div class="mb-3">
-        <label class="form-label">Henry</label>
-        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.Henry" />
-        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.Henry)" />
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-label">Air Diffusion Parent</label>
+            <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.AirDiffusionParent" />
+        </div>
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
+        ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Air Diffusion Daughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.AirDiffusionDaughter" />
+            </div>
+        }
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Air Diffusion Granddaughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.AirDiffusionGranddaughter" />
+            </div>
+        }
     </div>
 
-    <div class="mb-3">
-        <label class="form-label">Air Diffusion</label>
-        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.AirDiffusion" />
-        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.AirDiffusion)" />
-    </div>
+    <div class="row mb-3">
+        <div class="col-md-4">
+            <label class="form-label">Heat Henry Parent</label>
+            <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.HeatHenryParent" />
+        </div>
 
-    <div class="mb-3">
-        <label class="form-label">Heat Henry</label>
-        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.HeatHenry" />
-        <ValidationMessage For="@(() => ProjectState.Current.ChemicalInputs.HeatHenry)" />
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
+        ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Heat Henry Daughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.HeatHenryDaughter" />
+            </div>
+        }
+
+        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+        {
+            <div class="col-md-4">
+                <label class="form-label">Heat Henry Granddaughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.HeatHenryGranddaughter" />
+            </div>
+        }
     </div>
 
     <button type="submit" class="btn btn-primary">Check Values</button>
@@ -183,4 +519,22 @@
     {
         _message = "Input is valid";
     }
+
+
+    protected override void OnInitialized()
+    {
+        ProjectState.OnChange += OnProjectStateChanged;
+    }
+
+    private async void OnProjectStateChanged()
+    {
+        await InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        ProjectState.OnChange -= OnProjectStateChanged;
+    }
+
+
 }
