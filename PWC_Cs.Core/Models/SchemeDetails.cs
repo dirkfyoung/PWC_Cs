@@ -5,13 +5,19 @@ namespace PWC_Cs.Core.Models;
 public class SchemeDetails
 {
     public string? SchemeDescription { get; set; }
-
+    
     public List<SchemeTableRowModel> Rows { get; set; } = new();
 
+    public string? ApplicationMode { get; set; } = "Absolute Days";
+
+
+    // these need updating to use ApplicationMode instead
     public bool AbsoluteDays { get; set; }
     public bool Emerge { get; set; }
     public bool Maturity { get; set; }
     public bool Removal { get; set; }
+    /// /////////////////////////////////////////////////
+    
 
     public bool UseApplicationWindow { get; set; }
     public string? ApplicationWindowSpan { get; set; }

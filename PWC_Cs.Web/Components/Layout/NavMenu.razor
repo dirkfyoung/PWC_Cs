@@ -1,7 +1,11 @@
-﻿@using System.IO
+﻿@rendermode InteractiveServer
+@using System.IO
 @using PWC_Cs.Web.Services
 
-@rendermode InteractiveServer
+@inject ProjectState ProjectState
+@inject ProjectFileService FileService
+@inject PrzmVvwmInputWriter PrzmWriter
+
 <div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">PWC_Cs.Web</a>
@@ -26,20 +30,14 @@
         </div>
 
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/waterbody">
-                Waterbody
-            </NavLink>
-        </div>
-
-        <div class="nav-item px-3">
             <NavLink class="nav-link" href="/scheme-inputs">
                 Scheme Inputs
             </NavLink>
         </div>
 
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/advanced-settings">
-                Advanced Settings
+            <NavLink class="nav-link" href="/waterbody">
+                Waterbody
             </NavLink>
         </div>
 
@@ -49,18 +47,31 @@
             </NavLink>
         </div>
 
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="/advanced-settings">
+                Advanced Settings
+            </NavLink>
+        </div>
+
         <hr class="text-white" />
 
         <div class="px-3">
-            <label class="form-label text-white">File Path</label>
-            <InputText class="form-control mb-2" @bind-Value="_filePath" />
+            <label class="form-label text-white">JSON File Path</label>
+            <InputText class="form-control mb-2" @bind-Value="_jsonFilePath" />
 
-            <button class="btn btn-primary w-100 mb-2" @onclick="SaveProject" type="button">
+            <button class="btn btn-primary w-100 mb-2" type="button" @onclick="SaveProject">
                 Save Project
             </button>
 
-            <button class="btn btn-secondary w-100" @onclick="LoadProject" type="button">
+            <button class="btn btn-secondary w-100 mb-3" type="button" @onclick="LoadProject">
                 Load Project
+            </button>
+
+            <label class="form-label text-white">PRZM Input File Path</label>
+            <InputText class="form-control mb-2" @bind-Value="_przmFilePath" />
+
+            <button class="btn btn-success w-100" type="button" @onclick="WritePrzmInput">
+                Write PRZM Input
             </button>
 
             @if (!string.IsNullOrWhiteSpace(_message))
@@ -72,22 +83,24 @@
 </div>
 
 @code {
-    private string _filePath = Path.Combine(
+    private string _jsonFilePath = Path.Combine(
         Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
         "PWC_project",
         "PWC_Project.json");
 
-    private string? _message;
+    private string _przmFilePath = Path.Combine(
+        Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+        "PWC_project",
+        "przm_input_test.txt");
 
-    [Inject] private ProjectState ProjectState { get; set; } = default!;
-    [Inject] private ProjectFileService FileService { get; set; } = default!;
+    private string? _message;
 
     private async Task SaveProject()
     {
         try
         {
-            await FileService.SaveAsync(ProjectState.Current, _filePath);
-            _message = $"Project saved to {_filePath}";
+            await FileService.SaveAsync(ProjectState.Current, _jsonFilePath);
+            _message = $"Project saved to {_jsonFilePath}";
         }
         catch (Exception ex)
         {
@@ -99,14 +112,25 @@
     {
         try
         {
-            ProjectState.Load(await FileService.LoadAsync(_filePath));
-            _message = $"Project loaded from {_filePath}";
+            ProjectState.Load(await FileService.LoadAsync(_jsonFilePath));
+            _message = $"Project loaded from {_jsonFilePath}";
         }
         catch (Exception ex)
         {
             _message = $"Load failed: {ex.Message}";
         }
+    }
 
-        StateHasChanged();
+    private async Task WritePrzmInput()
+    {
+        try
+        {
+            await PrzmWriter.WriteAsync(ProjectState.Current, _przmFilePath);
+            _message = $"PRZM input written to {_przmFilePath}";
+        }
+        catch (Exception ex)
+        {
+            _message = $"PRZM write failed: {ex.Message}";
+        }
     }
 }

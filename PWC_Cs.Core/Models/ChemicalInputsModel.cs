@@ -30,9 +30,9 @@ public class ChemicalInputsModel
     public string? PhotoHalflifeDaughter { get; set; }
     public string? PhotoHalflifeGranddaughter { get; set; }
 
-    public string? PhotoReferenceTemperatureParent { get; set; }
-    public string? PhotoReferenceTemperatureDaughter { get; set; }
-    public string? PhotoReferenceTemperatureGranddaughter { get; set; }
+    public string? PhotoReferenceLatitudeParent { get; set; }
+    public string? PhotoReferenceLatitudeDaughter { get; set; }
+    public string? PhotoReferenceLatitudeGranddaughter { get; set; }
 
     public string? HydrolysisHalflifeParent { get; set; }
     public string? HydrolysisHalflifeDaughter { get; set; }

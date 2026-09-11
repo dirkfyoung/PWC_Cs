@@ -8,8 +8,7 @@ public class ProjectState
 
     public ProjectModel Current { get; private set; } = new()
     {
-        ProjectName = "Test Project",
-        RunName = "Test Run",
+
         Schemes = new List<SchemeModel>()
     };
 
@@ -19,8 +18,6 @@ public class ProjectState
     {
         Current = new ProjectModel
         {
-            ProjectName = string.Empty,
-            RunName = string.Empty,
             Schemes = new List<SchemeModel>()
         };
         SelectedScheme = null;

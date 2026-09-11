@@ -194,24 +194,24 @@
 
     <div class="row mb-3">
         <div class="col-md-4">
-            <label class="form-label">Photo Reference Temperature Parent</label>
-            <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.PhotoReferenceTemperatureParent" />
+            <label class="form-label">Photo Reference Latitude Parent</label>
+            <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.PhotoReferenceLatitudeParent" />
         </div>
 
         @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
         ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
         {
             <div class="col-md-4">
-                <label class="form-label">Photo Reference Temperature Daughter</label>
-                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.PhotoReferenceTemperatureDaughter" />
+                <label class="form-label">Photo Reference Latitude Daughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.PhotoReferenceLatitudeDaughter" />
             </div>
         }
 
         @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
         {
             <div class="col-md-4">
-                <label class="form-label">Photo Reference Temperature Granddaughter</label>
-                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.PhotoReferenceTemperatureGranddaughter" />
+                <label class="form-label">Photo Reference Latitude Granddaughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.PhotoReferenceLatitudeGranddaughter" />
             </div>
         }
     </div>

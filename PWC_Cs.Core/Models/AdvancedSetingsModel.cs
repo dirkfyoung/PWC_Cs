@@ -7,7 +7,7 @@ public class AdvancedSettingsModel
     public bool UseNonequilibrium { get; set; }
     public string? Q10 { get; set; } = "2.0";
     public string SubTimeSteps { get; set; } = "1";
-    public string LowestConcentrationForFreundlichMgL { get; set; } = "0.0001";
+    public string LowestConcentrationForFreundlichMgL { get; set; } = "0.00001";
 
     public string? N1Parent { get; set; }
     public string? N1Daughter { get; set; }

@@ -129,25 +129,35 @@ else
     <hr />
     <h3>Application Options</h3>
 
-    <div class="form-check mb-2">
-        <InputCheckbox class="form-check-input" @bind-Value="ProjectState.SelectedScheme.Details.AbsoluteDays" />
-        <label class="form-check-label">Absolute Days</label>
+
+
+    <div class="mb-3">
+        <label class="form-label d-block">Application Mode</label>
+
+        <InputRadioGroup @bind-Value="ProjectState.SelectedScheme.Details.ApplicationMode" class="d-flex flex-row gap-3 align-items-center">
+            <label class="form-check form-check-inline m-0">
+                <InputRadio class="form-check-input" Value="@("Absolute Days")" />
+                <span class="form-check-label">Absolute Days</span>
+            </label>
+
+            <label class="form-check form-check-inline m-0">
+                <InputRadio class="form-check-input" Value="@("Emerge")" />
+                <span class="form-check-label">Emerge</span>
+            </label>
+
+            <label class="form-check form-check-inline m-0">
+                <InputRadio class="form-check-input" Value="@("Maturity")" />
+                <span class="form-check-label">Maturity</span>
+            </label>
+
+            <label class="form-check form-check-inline m-0">
+                <InputRadio class="form-check-input" Value="@("Removal")" />
+                <span class="form-check-label">Removal</span>
+            </label>
+        </InputRadioGroup>
     </div>
 
-    <div class="form-check mb-2">
-        <InputCheckbox class="form-check-input" @bind-Value="ProjectState.SelectedScheme.Details.Emerge" />
-        <label class="form-check-label">Emerge</label>
-    </div>
 
-    <div class="form-check mb-2">
-        <InputCheckbox class="form-check-input" @bind-Value="ProjectState.SelectedScheme.Details.Maturity" />
-        <label class="form-check-label">Maturity</label>
-    </div>
-
-    <div class="form-check mb-2">
-        <InputCheckbox class="form-check-input" @bind-Value="ProjectState.SelectedScheme.Details.Removal" />
-        <label class="form-check-label">Removal</label>
-    </div>
 
     <div class="form-check mb-3">
         <InputCheckbox class="form-check-input" @bind-Value="ProjectState.SelectedScheme.Details.UseApplicationWindow" />

@@ -2,10 +2,11 @@
 
 public class ProjectModel
 {
-    public string? ProjectName { get; set; }
-    public string? RunName { get; set; }
-    public bool PoundToKiloConversion { get; set; }
+    public string? WorkingDirectory { get; set; }
+    public string? FamilyName { get; set; }
+    public string? WeatherFileDirectory { get; set; }
 
+   public bool PoundToKiloConversion { get; set; }
     public ChemicalInputsModel ChemicalInputs { get; set; } = new();
     public List<SchemeModel> Schemes { get; set; } = new();
     public OutputOptionsModel OutputOptions { get; set; } = new();

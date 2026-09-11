@@ -6,4 +6,5 @@ public class SchemeModel
     public string? Description { get; set; }
 
     public SchemeDetails Details { get; set; } = new();
+   
 }

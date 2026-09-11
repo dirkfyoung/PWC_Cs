@@ -10,6 +10,7 @@ builder.Services.AddRazorComponents()
 
 builder.Services.AddScoped<ProjectState>();
 builder.Services.AddScoped<ProjectFileService>();
+builder.Services.AddScoped<PrzmVvwmInputWriter>();
 
 var app = builder.Build();
 
