@@ -87,6 +87,28 @@
 </table>
 
 <div class="mb-3">
+    <label class="form-label d-block">Erosion Model</label>
+
+    <InputRadioGroup @bind-Value="ProjectState.Current.AdvancedSettings.ErosionModel">
+        <div class="form-check">
+            <InputRadio class="form-check-input" Value="1" />
+            <label class="form-check-label">MUST</label>
+        </div>
+
+        <div class="form-check">
+            <InputRadio class="form-check-input" Value="2" />
+            <label class="form-check-label">MUSLE</label>
+        </div>
+
+        <div class="form-check">
+            <InputRadio class="form-check-input" Value="3" />
+            <label class="form-check-label">MUSS</label>
+        </div>
+    </InputRadioGroup>
+</div>
+
+
+<div class="mb-3">
     <label class="form-label">Waterbody Evaporation Coefficient</label>
     <InputText class="form-control" @bind-Value="ProjectState.Current.AdvancedSettings.WaterbodyEvaporationCoefficient" />
 </div>

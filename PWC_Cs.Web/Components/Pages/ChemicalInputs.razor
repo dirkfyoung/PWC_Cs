@@ -96,6 +96,29 @@
         }
     </div>
 
+    @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
+    ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+    {
+        <div class="row mb-3">
+            <div class="col-md-4"></div>
+
+            <div class="col-md-4">
+                <label class="form-label">Molar Ratio Daughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.WaterColumnMolarRatioDaughter" />
+            </div>
+
+            @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+            {
+                <div class="col-md-4">
+                    <label class="form-label">Molar Ratio Granddaughter</label>
+                    <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.WaterColumnMolarRatioGranddaughter" />
+                </div>
+            }
+        </div>
+    }
+
+
+
     <div class="row mb-3">
         <div class="col-md-4">
             <label class="form-label">Water Reference Temperature Parent</label>
@@ -120,6 +143,10 @@
         }
     </div>
 
+
+
+
+
     <div class="row mb-3">
         <div class="col-md-4">
             <label class="form-label">Benthic Halflife Parent</label>
@@ -143,6 +170,27 @@
             </div>
         }
     </div>
+
+    @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
+    ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+    {
+        <div class="row mb-3">
+            <div class="col-md-4"></div>
+
+            <div class="col-md-4">
+                <label class="form-label">Molar Ratio Daughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.BenthicMolarRatioDaughter" />
+            </div>
+
+            @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+            {
+                <div class="col-md-4">
+                    <label class="form-label">Molar Ratio Granddaughter</label>
+                    <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.BenthicMolarRatioGranddaughter" />
+                </div>
+            }
+        </div>
+    }
 
     <div class="row mb-3">
         <div class="col-md-4">
@@ -192,6 +240,27 @@
         }
     </div>
 
+    @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
+    ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+    {
+        <div class="row mb-3">
+            <div class="col-md-4"></div>
+
+            <div class="col-md-4">
+                <label class="form-label">Photolysis Molar Ratio Daughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.PhotoMolarRatioDaughter" />
+            </div>
+
+            @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+            {
+                <div class="col-md-4">
+                    <label class="form-label">Photolysis Molar Ratio Granddaughter</label>
+                    <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.PhotoMolarRatioGranddaughter" />
+                </div>
+            }
+        </div>
+    }
+
     <div class="row mb-3">
         <div class="col-md-4">
             <label class="form-label">Photo Reference Latitude Parent</label>
@@ -240,53 +309,73 @@
         }
     </div>
 
-    <div class="row mb-3">
-        <div class="col-md-4">
-            <label class="form-label">Hydrolysis Reference Temperature Parent</label>
-            <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.HydrolysisReferenceTemperatureParent" />
-        </div>
+    @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
+    ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+    {
+        <div class="row mb-3">
+            <div class="col-md-4"></div>
 
-        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
-        ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
-        {
             <div class="col-md-4">
-                <label class="form-label">Hydrolysis Reference Temperature Daughter</label>
-                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.HydrolysisReferenceTemperatureDaughter" />
+                <label class="form-label">Hydrolysis Molar Ratio Daughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.HydrolysisMolarRatioDaughter" />
             </div>
-        }
+
+            @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+            {
+                <div class="col-md-4">
+                    <label class="form-label">Hydrolysis Molar Ratio Granddaughter</label>
+                    <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.HydrolysisMolarRatioGranddaughter" />
+                </div>
+            }
+        </div>
+    }
+
+   
+
+ <div class="row mb-3">
+    <div class="col-md-4">
+        <label class="form-label">Soil Halflife Parent</label>
+        <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.SoilHalflifeParent" />
+    </div>
+
+    @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
+         ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+    {
+        <div class="col-md-4">
+            <label class="form-label">Soil Halflife Daughter</label>
+            <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.SoilHalflifeDaughter" />
+        </div>
+    }
+
+    @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+    {
+        <div class="col-md-4">
+            <label class="form-label">Soil Halflife Granddaughter</label>
+            <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.SoilHalflifeGranddaughter" />
+        </div>
+    }
+</div>
+
+@if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
+     ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+{
+    <div class="row mb-3">
+        <div class="col-md-4"></div>
+
+        <div class="col-md-4">
+            <label class="form-label">Soil Molar Ratio Daughter</label>
+            <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.SoilMolarRatioDaughter" />
+        </div>
 
         @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
         {
             <div class="col-md-4">
-                <label class="form-label">Hydrolysis Reference Temperature Granddaughter</label>
-                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.HydrolysisReferenceTemperatureGranddaughter" />
+                <label class="form-label">Soil Molar Ratio Granddaughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.SoilMolarRatioGranddaughter" />
             </div>
         }
     </div>
-
-    <div class="row mb-3">
-        <div class="col-md-4">
-            <label class="form-label">Soil Halflife Parent</label>
-            <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.SoilHalflifeParent" />
-        </div>
-
-        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
-        ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
-        {
-            <div class="col-md-4">
-                <label class="form-label">Soil Halflife Daughter</label>
-                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.SoilHalflifeDaughter" />
-            </div>
-        }
-
-        @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
-        {
-            <div class="col-md-4">
-                <label class="form-label">Soil Halflife Granddaughter</label>
-                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.SoilHalflifeGranddaughter" />
-            </div>
-        }
-    </div>
+}
 
     <div class="row mb-3">
         <div class="col-md-4">
@@ -335,6 +424,27 @@
             </div>
         }
     </div>
+
+    @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Daughter" ||
+    ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+    {
+        <div class="row mb-3">
+            <div class="col-md-4"></div>
+
+            <div class="col-md-4">
+                <label class="form-label">Foliar Molar Ratio Daughter</label>
+                <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.FoliarMolarRatioDaughter" />
+            </div>
+
+            @if (ProjectState.Current.ChemicalInputs.ChemicalLevel == "Granddaughter")
+            {
+                <div class="col-md-4">
+                    <label class="form-label">Foliar Molar Ratio Granddaughter</label>
+                    <InputText class="form-control" @bind-Value="ProjectState.Current.ChemicalInputs.FoliarMolarRatioGranddaughter" />
+                </div>
+            }
+        </div>
+    }
 
     <div class="row mb-3">
         <div class="col-md-4">

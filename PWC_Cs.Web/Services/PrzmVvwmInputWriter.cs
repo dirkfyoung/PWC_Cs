@@ -29,15 +29,20 @@ public class PrzmVvwmInputWriter
         WriteCsvLine(sw, project.AdvancedSettings.WaterbodyEvaporationCoefficient ?? "1.0");
 
         // --- Chemical flags and counts ---
+        // --- Chemical flags and counts ---
         WriteCsvLine(sw,
             project.ChemicalInputs.SorptionType == "Koc",
-            false,   // UseFreundlich - will wire later
-            false,   // UseNonequilibrium - will wire later
-            false,   // PoundToKiloConversion - will wire later
-            false    // IsHydrolysisOverride - will wire later
+            project.AdvancedSettings.UseFreundlich,
+            project.AdvancedSettings.UseNonequilibrium,
+            project.PoundToKiloConversion,
+            project.AdvancedSettings.IsHydrolysisOverride
         );
 
-        WriteCsvLine(sw, 1); // nchem placeholder for now
+        WriteCsvLine(sw,
+    project.ChemicalInputs.ChemicalLevel == "Parent" ? 1 :
+    project.ChemicalInputs.ChemicalLevel == "Daughter" ? 2 :
+    3
+);
 
         // --- Chemical section (one chemical set for now) ---
         WriteCsvLine(sw, project.ChemicalInputs.SorptionParent, project.ChemicalInputs.SorptionDaughter, project.ChemicalInputs.SorptionGranddaughter);
@@ -47,20 +52,17 @@ public class PrzmVvwmInputWriter
         WriteCsvLine(sw, project.AdvancedSettings.KsParent, project.AdvancedSettings.KsDaughter, project.AdvancedSettings.KsGranddaughter);
         WriteCsvLine(sw, project.AdvancedSettings.LowestConcentrationForFreundlichMgL, project.AdvancedSettings.SubTimeSteps);
 
-
-
-
-        WriteCsvLine(sw, project.ChemicalInputs.WaterColumnHalflifeParent, project.ChemicalInputs.WaterColumnHalflifeDaughter, project.ChemicalInputs.WaterColumnHalflifeGranddaughter);
+        WriteCsvLine(sw, project.ChemicalInputs.WaterColumnHalflifeParent, project.ChemicalInputs.WaterColumnHalflifeDaughter, project.ChemicalInputs.WaterColumnHalflifeGranddaughter, project.ChemicalInputs.WaterColumnMolarRatioDaughter, project.ChemicalInputs.WaterColumnMolarRatioGranddaughter);
         WriteCsvLine(sw, project.ChemicalInputs.WaterReferenceTemperatureParent, project.ChemicalInputs.WaterReferenceTemperatureDaughter, project.ChemicalInputs.WaterReferenceTemperatureGranddaughter);
-        WriteCsvLine(sw, project.ChemicalInputs.BenthicHalflifeParent, project.ChemicalInputs.BenthicHalflifeDaughter, project.ChemicalInputs.BenthicHalflifeGranddaughter);
+        WriteCsvLine(sw, project.ChemicalInputs.BenthicHalflifeParent, project.ChemicalInputs.BenthicHalflifeDaughter, project.ChemicalInputs.BenthicHalflifeGranddaughter, project.ChemicalInputs.BenthicMolarRatioDaughter, project.ChemicalInputs.BenthicMolarRatioGranddaughter);
         WriteCsvLine(sw, project.ChemicalInputs.BenthicReferenceTemperatureParent, project.ChemicalInputs.BenthicReferenceTemperatureDaughter, project.ChemicalInputs.BenthicReferenceTemperatureGranddaughter);
-        WriteCsvLine(sw, project.ChemicalInputs.PhotoHalflifeParent, project.ChemicalInputs.PhotoHalflifeDaughter, project.ChemicalInputs.PhotoHalflifeGranddaughter);
+        WriteCsvLine(sw, project.ChemicalInputs.PhotoHalflifeParent, project.ChemicalInputs.PhotoHalflifeDaughter, project.ChemicalInputs.PhotoHalflifeGranddaughter, project.ChemicalInputs.PhotoMolarRatioDaughter, project.ChemicalInputs.PhotoMolarRatioGranddaughter);
         WriteCsvLine(sw, project.ChemicalInputs.PhotoReferenceLatitudeParent, project.ChemicalInputs.PhotoReferenceLatitudeDaughter, project.ChemicalInputs.PhotoReferenceLatitudeGranddaughter);
-        WriteCsvLine(sw, project.ChemicalInputs.HydrolysisHalflifeParent, project.ChemicalInputs.HydrolysisHalflifeDaughter, project.ChemicalInputs.HydrolysisHalflifeGranddaughter);
-        WriteCsvLine(sw, project.ChemicalInputs.HydrolysisReferenceTemperatureParent, project.ChemicalInputs.HydrolysisReferenceTemperatureDaughter, project.ChemicalInputs.HydrolysisReferenceTemperatureGranddaughter);
-        WriteCsvLine(sw, project.ChemicalInputs.SoilHalflifeParent, project.ChemicalInputs.SoilHalflifeDaughter, project.ChemicalInputs.SoilHalflifeGranddaughter);
+        WriteCsvLine(sw, project.ChemicalInputs.HydrolysisHalflifeParent, project.ChemicalInputs.HydrolysisHalflifeDaughter, project.ChemicalInputs.HydrolysisHalflifeGranddaughter, project.ChemicalInputs.HydrolysisMolarRatioDaughter, project.ChemicalInputs.HydrolysisMolarRatioGranddaughter);
+  
+        WriteCsvLine(sw, project.ChemicalInputs.SoilHalflifeParent, project.ChemicalInputs.SoilHalflifeDaughter, project.ChemicalInputs.SoilHalflifeGranddaughter, project.ChemicalInputs.SoilMolarRatioDaughter, project.ChemicalInputs.SoilMolarRatioGranddaughter, project.AdvancedSettings.IsHydrolysisOverride);
         WriteCsvLine(sw, project.ChemicalInputs.SoilReferenceTemperatureParent, project.ChemicalInputs.SoilReferenceTemperatureDaughter, project.ChemicalInputs.SoilReferenceTemperatureGranddaughter);
-        WriteCsvLine(sw, project.ChemicalInputs.FoliarHalflifeParent, project.ChemicalInputs.FoliarHalflifeDaughter, project.ChemicalInputs.FoliarHalflifeGranddaughter);
+        WriteCsvLine(sw, project.ChemicalInputs.FoliarHalflifeParent, project.ChemicalInputs.FoliarHalflifeDaughter, project.ChemicalInputs.FoliarHalflifeGranddaughter, project.ChemicalInputs.FoliarMolarRatioDaughter, project.ChemicalInputs.FoliarMolarRatioGranddaughter);
         WriteCsvLine(sw, project.ChemicalInputs.FoliarWashoffParent, project.ChemicalInputs.FoliarWashoffDaughter, project.ChemicalInputs.FoliarWashoffGranddaughter);
         WriteCsvLine(sw, project.ChemicalInputs.MWTParent, project.ChemicalInputs.MWTDaughter, project.ChemicalInputs.MWTGranddaughter);
         WriteCsvLine(sw, project.ChemicalInputs.VaporPressureParent, project.ChemicalInputs.VaporPressureDaughter, project.ChemicalInputs.VaporPressureGranddaughter);
@@ -68,7 +70,57 @@ public class PrzmVvwmInputWriter
         WriteCsvLine(sw, project.ChemicalInputs.HenryParent, project.ChemicalInputs.HenryDaughter, project.ChemicalInputs.HenryGranddaughter);
         WriteCsvLine(sw, project.ChemicalInputs.AirDiffusionParent, project.ChemicalInputs.AirDiffusionDaughter, project.ChemicalInputs.AirDiffusionGranddaughter);
         WriteCsvLine(sw, project.ChemicalInputs.HeatHenryParent, project.ChemicalInputs.HeatHenryDaughter, project.ChemicalInputs.HeatHenryGranddaughter);
+        WriteCsvLine(sw, project.AdvancedSettings.Q10);
+        WriteCsvLine(sw, project.AdvancedSettings.SubsurfaceDegradationProfile == "Constant");
+        WriteCsvLine(sw, project.AdvancedSettings.SubsurfaceDegradationProfile == "Ramp", project.AdvancedSettings.RampFirstPlateauCm, project.AdvancedSettings.RampSecondPlateauCm, project.AdvancedSettings.RampSecondPlateauValueFraction);
+        WriteCsvLine(sw, project.AdvancedSettings.SubsurfaceDegradationProfile == "Exponential", project.AdvancedSettings.ExponentialExponent, project.AdvancedSettings.ExponentialAsymptoteFraction);
+        WriteCsvLine(sw, project.Schemes.Count);
 
-        // TODO: expand with advanced settings, schemes, waterbody, and output sections next
+        for (int i = 0; i < project.Schemes.Count; i++)
+        {
+            var scheme = project.Schemes[i];
+
+            WriteCsvLine(sw, i + 1, $"\"{scheme.Description}\"");
+
+            int appReferencePoint = scheme.Details.ApplicationMode == "Absolute Days" ? 0 :
+                                    scheme.Details.ApplicationMode == "Emerge" ? 1 :
+                                    scheme.Details.ApplicationMode == "Maturity" ? 2 :
+                                    scheme.Details.ApplicationMode == "Removal" ? 3 : 0;
+            WriteCsvLine(sw, appReferencePoint);
+            WriteCsvLine(sw, scheme.Details.Rows.Count);
+
+            foreach (var row in scheme.Details.Rows)
+            {
+                WriteCsvLine(sw, row.Day, row.Amount, row.Method, row.Depth, row.Split, row.Drift, row.DriftBuffer, row.Periodicity, row.Lag);
+            }
+            WriteCsvLine(sw, scheme.Details.UseApplicationWindow, scheme.Details.ApplicationWindowSpan, scheme.Details.ApplicationWindowStep);
+            WriteCsvLine(sw, scheme.Details.UseRainFast, scheme.Details.RainLimit, scheme.Details.IntolerableRainWindow, scheme.Details.OptimumApplicationWindow, scheme.Details.MinDaysBetweenApps);
+            WriteCsvLine(sw, scheme.Details.Scenarios.Count);
+            foreach (var scenario in scheme.Details.Scenarios)
+            {
+                WriteCsvLineNoTrailComma(sw, scenario);
+            }
+            WriteCsvLine(sw, scheme.Details.UseBatchScenarioFile);
+            WriteCsvLineNoTrailComma(sw, scheme.Details.ScenarioBatchFileName);
+            WriteCsvLine(sw, "Mitigations (flag to make older versions still readable)");
+            WriteCsvLine(sw, scheme.Details.RunoffMitigation, scheme.Details.ErosionMitigation, scheme.Details.DriftMitigation);
+        }
+        WriteCsvLine(sw, project.AdvancedSettings.ErosionModel);
+        sw.WriteLine();
+        sw.WriteLine();
+        sw.WriteLine();
+        sw.WriteLine();
+        sw.WriteLine();
+        WriteCsvLine(sw, project.AdvancedSettings.AdjustCnForSoilMoisture);
+        WriteCsvLine(sw, project.Waterbody.UseEpaPond, project.Waterbody.UseEpaReservoir, project.Waterbody.SpecialWaterbodies.Count > 0, project.Waterbody.UseEpaTpezWpez, project.Waterbody.UseSprayBuffersForTpez);
+
+        WriteCsvLine(sw, project.Waterbody.SpecialWaterbodies.Count);
+
+        foreach (var wb in project.Waterbody.SpecialWaterbodies)
+        {
+            WriteCsvLine(sw, wb);
+        }
+
+
     }
 }

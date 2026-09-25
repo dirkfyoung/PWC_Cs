@@ -6,6 +6,5 @@ public class WaterbodyModel
     public bool UseEpaPond { get; set; }
     public bool UseEpaTpezWpez { get; set; }
     public bool UseSprayBuffersForTpez { get; set; }
-
     public List<string> SpecialWaterbodies { get; set; } = new();
 }

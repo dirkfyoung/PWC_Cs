@@ -18,9 +18,16 @@ public class ChemicalInputsModel
     public string? WaterReferenceTemperatureDaughter { get; set; }
     public string? WaterReferenceTemperatureGranddaughter { get; set; }
 
+    public string? WaterColumnMolarRatioDaughter { get; set; }
+    public string? WaterColumnMolarRatioGranddaughter { get; set; }
+
+
     public string? BenthicHalflifeParent { get; set; }
     public string? BenthicHalflifeDaughter { get; set; }
     public string? BenthicHalflifeGranddaughter { get; set; }
+
+    public string? BenthicMolarRatioDaughter { get; set; }
+    public string? BenthicMolarRatioGranddaughter { get; set; }
 
     public string? BenthicReferenceTemperatureParent { get; set; }
     public string? BenthicReferenceTemperatureDaughter { get; set; }
@@ -30,6 +37,10 @@ public class ChemicalInputsModel
     public string? PhotoHalflifeDaughter { get; set; }
     public string? PhotoHalflifeGranddaughter { get; set; }
 
+    public string? PhotoMolarRatioDaughter { get; set; }
+    public string? PhotoMolarRatioGranddaughter { get; set; }
+
+
     public string? PhotoReferenceLatitudeParent { get; set; }
     public string? PhotoReferenceLatitudeDaughter { get; set; }
     public string? PhotoReferenceLatitudeGranddaughter { get; set; }
@@ -38,21 +49,28 @@ public class ChemicalInputsModel
     public string? HydrolysisHalflifeDaughter { get; set; }
     public string? HydrolysisHalflifeGranddaughter { get; set; }
 
-    public string? HydrolysisReferenceTemperatureParent { get; set; }
-    public string? HydrolysisReferenceTemperatureDaughter { get; set; }
-    public string? HydrolysisReferenceTemperatureGranddaughter { get; set; }
+    public string? HydrolysisMolarRatioDaughter { get; set; }
+    public string? HydrolysisMolarRatioGranddaughter { get; set; }
+
 
     public string? SoilHalflifeParent { get; set; }
     public string? SoilHalflifeDaughter { get; set; }
     public string? SoilHalflifeGranddaughter { get; set; }
 
+    public string? SoilMolarRatioDaughter { get; set; }
+    public string? SoilMolarRatioGranddaughter { get; set; }
+
     public string? SoilReferenceTemperatureParent { get; set; }
     public string? SoilReferenceTemperatureDaughter { get; set; }
     public string? SoilReferenceTemperatureGranddaughter { get; set; }
 
-    public string? FoliarHalflifeParent { get; set; }
-    public string? FoliarHalflifeDaughter { get; set; }
-    public string? FoliarHalflifeGranddaughter { get; set; }
+    public string? FoliarHalflifeParent { get; set; } = "0.5";
+    public string? FoliarHalflifeDaughter { get; set; } = "0.5";
+    public string? FoliarHalflifeGranddaughter { get; set; } = "0.5";
+
+    public string? FoliarMolarRatioDaughter { get; set; }
+    public string? FoliarMolarRatioGranddaughter { get; set; }
+
 
     public string? FoliarWashoffParent { get; set; }
     public string? FoliarWashoffDaughter { get; set; }

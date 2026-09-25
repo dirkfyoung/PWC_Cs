@@ -9,6 +9,8 @@ public class AdvancedSettingsModel
     public string SubTimeSteps { get; set; } = "1";
     public string LowestConcentrationForFreundlichMgL { get; set; } = "0.00001";
 
+    public int ErosionModel { get; set; } = 3;
+
     public string? N1Parent { get; set; }
     public string? N1Daughter { get; set; }
     public string? N1Granddaughter { get; set; }
