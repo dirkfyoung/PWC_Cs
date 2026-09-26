@@ -120,7 +120,36 @@ public class PrzmVvwmInputWriter
         {
             WriteCsvLine(sw, wb);
         }
-
+        WriteCsvLine(sw, project.OutputOptions.OutputRunoff);
+        WriteCsvLine(sw, project.OutputOptions.OutputErosion);
+        WriteCsvLine(sw, project.OutputOptions.OutputPestRunoff);
+        WriteCsvLine(sw, project.OutputOptions.OutputPestErosion);
+        WriteCsvLine(sw, project.OutputOptions.OutputConcLastLayer);
+        WriteCsvLine(sw, project.OutputOptions.OutputDailyFieldVolatilization);
+        WriteCsvLine(sw, project.OutputOptions.OutputDailyPestLeached, project.OutputOptions.ChemInfiltrationDepth);
+        WriteCsvLine(sw, project.OutputOptions.OutputDecayedPest, project.OutputOptions.OutputDecayDepth1, project.OutputOptions.OutputDecayDepth2);
+        WriteCsvLine(sw, project.OutputOptions.OutputMassInSoilProfile);
+        WriteCsvLine(sw, project.OutputOptions.OutputMassSoilSpecific, project.OutputOptions.OutputMassDepth1, project.OutputOptions.OutputMassDepth2);
+        WriteCsvLine(sw, project.OutputOptions.OutputMassOnFoliage);
+        WriteCsvLine(sw, project.OutputOptions.OutputPrecipitation);
+        WriteCsvLine(sw, project.OutputOptions.OutputActualEvap);
+        WriteCsvLine(sw, project.OutputOptions.OutputTotalSoilWater);
+        WriteCsvLine(sw, project.OutputOptions.OutputIrrigation);
+        WriteCsvLine(sw, project.OutputOptions.OutputInfiltrationAtDepth, project.OutputOptions.OutputInfiltrationDepth);
+        WriteCsvLine(sw, project.OutputOptions.OutputInfiltratedWaterLastLayer);
+        WriteCsvLine(sw, project.OutputOptions.OutputWaterConc);
+        WriteCsvLine(sw, project.OutputOptions.OutputSpraydrift);
+        WriteCsvLine(sw, project.OutputOptions.OutputGwBtc);
+        sw.WriteLine("holder for future expansion,");
+        sw.WriteLine("holder for future expansion,");
+        sw.WriteLine("holder for future expansion,");
+        sw.WriteLine("holder for future expansion,");
+        WriteCsvLine(sw, project.OutputOptions.CalculateEoF);
+        WriteCsvLine(sw, project.OutputOptions.AdditionalOutputRows.Count);
+        foreach (var row in project.OutputOptions.AdditionalOutputRows)
+        {
+            WriteCsvLine(sw, row.Item, row.Chem, row.Mode, row.Arg1, row.Arg2, row.Multiplier);
+        }
 
     }
 }

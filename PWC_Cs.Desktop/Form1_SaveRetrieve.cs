@@ -647,7 +647,7 @@ namespace PWC_Cs.Desktop
                        CellValue(i, 4),
                        CellValue(i, 5)
                     };
-                    sw.WriteLine();
+     
                     WriteCsvLine(sw, parts);
                 }
 
